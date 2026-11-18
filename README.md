@@ -21,6 +21,8 @@ uv run python manage.py migrate
 uv run python manage.py runserver
 ```
 
+O comando `uv lock` resolve as dependências e gera o arquivo `uv.lock`. Mantenha esse arquivo versionado para que as instalações usem as mesmas versões.
+
 A aplicação ficará disponível em http://127.0.0.1:8000.
 
 ## Comandos úteis
@@ -33,7 +35,7 @@ uv run ruff check .
 uv run python manage.py collectstatic
 ```
 
-O arquivo `.env` contém configurações locais e não deve ser versionado. Em produção, defina uma `SECRET_KEY` própria, `DEBUG=false`, os hosts permitidos e as origens confiáveis de CSRF.
+O arquivo `.env` contém configurações locais e não deve ser versionado. Em produção, defina uma `SECRET_KEY` própria, `DEBUG=false`, os hosts permitidos e as origens confiáveis de CSRF. Quando estiver atrás de um proxy TLS confiável, configure também `TRUST_PROXY_SSL=true`.
 
 ## Estrutura
 
