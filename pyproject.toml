@@ -1,0 +1,31 @@
+[project]
+name = "inova-araras"
+version = "0.1.0"
+description = "Projeto desenvolvido para o 1º Inova Araras."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "Django>=5.2,<5.3",
+    "dj-database-url>=2.3,<4",
+    "django-htmx>=1.29,<2",
+    "djangorestframework>=3.18,<4",
+    "gunicorn>=23,<24",
+    "psycopg[binary]>=3.2,<4",
+    "python-dotenv>=1,<2",
+    "whitenoise>=6.9,<7",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3", "pytest-django>=4.11", "ruff>=0.14"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = ["migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
