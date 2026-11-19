@@ -1,6 +1,6 @@
 # Estado atual do projeto
 
-**Atualizado:** 19/11/2026, documentação do fluxo de Rotas de Descoberta.
+**Atualizado:** 19/11/2026, incentivos de Rotas de Descoberta e fluxo do Painel do Proprietário.
 
 ## Contexto
 
@@ -27,7 +27,9 @@
 
 ## Baseline de produto
 
-A jornada central é: descobrir → planejar → visitar → registrar participação → explorar/benefício → retornar.
+A jornada central é: descobrir → planejar → visitar → registrar participação → acompanhar progresso → desbloquear benefício elegível → continuar explorando e retornar.
+
+Rotas combinam descoberta temática, progresso e recompensas condicionadas a campanhas. Benefícios cruzados devem incentivar novas visitas a outros estabelecimentos; não há compra obrigatória em cada parada.
 
 O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Rotas de Descoberta. Campanhas/cupons simples complementam a jornada. Inteligência comercial, pesquisas de lacunas e painel institucional são evolução P2, sujeita a governança e validação de privacidade. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
 
@@ -50,10 +52,10 @@ Nenhum teste de aplicação foi executado por esta atualização documental. Nã
 
 1. `docs/flows/CONSUMER_NAVIGATION.md`: navegação principal do consumidor, cinco destinos, descoberta pública, Agenda, Rotas de Descoberta, Perfil e autenticação contextual.
 2. `docs/flows/COMMERCE_DISCOVERY.md`: busca e categorias, resultados, páginas públicas de estabelecimento e produto/serviço, contato, orientação de visita e estados alternativos.
-3. `docs/flows/DISCOVERY_ROUTES.md`: consulta de rotas, detalhe, autenticação contextual, participação, QR check-in, progresso, conclusão e estados alternativos.
+3. `docs/flows/DISCOVERY_ROUTES.md`: consulta de rotas, detalhe, autenticação contextual, participação, QR check-in, progresso, conclusão e recompensas condicionadas a campanhas elegíveis.
+4. `docs/flows/OWNER_PANEL.md`: entrada com a mesma conta, cadastro e seleção de estabelecimentos, aprovação, edição de informações, catálogo, pré-visualização e estados alternativos.
 
 Próximos fluxos previstos:
-- Painel do proprietário: acesso com a mesma conta, gestão do estabelecimento e catálogo.
 - Demonstração integrada: encadeamento das jornadas de consumidor e proprietário para o pitch.
 
 ## Preparação da demonstração

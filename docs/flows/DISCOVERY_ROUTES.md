@@ -197,9 +197,11 @@ A tela de conclusão deve:
 - informar que a rota foi concluída;
 - resumir as paradas obrigatórias registradas;
 - manter visível o histórico da participação;
+- apresentar a recompensa, quando a rota estiver vinculada a uma campanha elegível;
+- explicar as condições, validade, limites e estabelecimento(s) onde o benefício pode ser utilizado;
 - oferecer retorno à lista de rotas e caminhos para continuar explorando o Centro.
 
-Não associar automaticamente pontos, dinheiro, cupons ou benefícios à conclusão. Qualquer recompensa depende de campanha e regra próprias, fora desta jornada.
+A conclusão, por si só, não concede pontos, dinheiro ou cupons. O benefício só é apresentado ou emitido quando existir campanha ativa e elegibilidade confirmada. A interface deve distinguir claramente uma rota concluída sem recompensa de uma rota que desbloqueou um benefício. Campanhas podem incentivar a visita a outro estabelecimento, por exemplo, com cupom emitido após concluir uma rota gastronômica e resgatável em uma loja participante diferente.
 
 ## Estados alternativos e recuperação
 
@@ -232,7 +234,7 @@ Não associar automaticamente pontos, dinheiro, cupons ou benefícios à conclus
 - Não decide a política final de repetição, reentrada ou múltiplas participações.
 - Não define fallback de check-in manual pelo comerciante; a decisão permanece em aberto na spec.
 - Não inclui GPS contínuo, geofencing, ranking competitivo ou gamificação complexa.
-- Não concede pontos ou benefícios financeiros automaticamente.
+- Não concede pontos ou benefícios financeiros automaticamente; quando houver campanha elegível, apresenta as condições e o destino do benefício sem prometer recompensa fora das regras publicadas.
 - Não define layout final, componentes visuais, cores ou animações.
 
 ## Critérios de validação do fluxo

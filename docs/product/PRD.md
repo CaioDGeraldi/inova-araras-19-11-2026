@@ -100,13 +100,23 @@ Não incluir checkout, pagamento, entrega ou logística no MVP. Solicitação/re
 
 ## 10. Rotas de Descoberta
 
-Rotas de Descoberta é o mecanismo de circulação presencial. Uma rota conecta estabelecimentos, espaços públicos ou atividades em um percurso temático. Pode ter ordem sugerida, paradas obrigatórias/opcionais, período de validade, regras de conclusão e benefício associado.
+Rotas de Descoberta são experiências presenciais temáticas que conectam estabelecimentos, espaços públicos e atividades em um percurso. Podem ser gastronômicas, culturais, históricas, comerciais ou mistas. Uma rota pode definir ordem sugerida, paradas obrigatórias/opcionais, período de validade, regra de conclusão e benefício associado.
 
-O consumidor consulta a rota sem login. Login é necessário para iniciar participação, registrar check-ins e acompanhar progresso individual.
+A motivação combina três elementos:
+- **Descoberta:** apresentar lugares, produtos, atividades e experiências que a pessoa talvez não conhecesse.
+- **Progresso:** permitir acompanhar as paradas visitadas e entender o que falta para concluir.
+- **Recompensa:** campanhas podem oferecer pontos, cupons, brindes ou experiências após participação elegível, criando um motivo adicional para continuar explorando e retornar ao Centro.
 
-O MVP pode usar QR Code por parada como registro de visita. Check-in não é prova antifraude absoluta: códigos podem ser compartilhados. O produto deve descrevê-lo como registro de participação, aplicar controles de duplicidade e permitir substituição/rotação dos códigos. Não usar GPS contínuo.
+Exemplo ilustrativo: uma rota gastronômica pode conectar uma cafeteria, uma hamburgueria e uma sorveteria. A pessoa consulta o percurso, visita os locais e lê o QR Code disponibilizado em cada parada. Cada check-in aceito registra a parada como visitada e atualiza o progresso. Ao cumprir a regra de conclusão, pode desbloquear um benefício previsto em uma campanha. Gastronomia é apenas um exemplo; não limita os temas possíveis.
 
-Rotas não devem exigir compra em todas as paradas. Participação pode envolver visita, presença em atividade, descoberta ou interação definida na regra.
+O consumidor consulta rotas e detalhes sem login. Login é necessário para iniciar participação, registrar check-ins e acompanhar progresso individual. O detalhe deve apresentar previamente tema, paradas, período, obrigatoriedade, regra de conclusão e eventual recompensa, incluindo suas condições.
+
+O MVP pode usar QR Code por parada como registro de visita. A leitura de um código válido registra a parada na participação e atualiza o progresso. Check-in não é prova antifraude absoluta de presença: códigos podem ser compartilhados. O produto deve descrevê-lo como registro de participação, aplicar controles de duplicidade e permitir revogação/rotação dos códigos. Não usar GPS contínuo.
+
+Rotas não devem exigir compra em todas as paradas. Participação pode envolver visita, presença em atividade, descoberta ou interação definida na regra. O check-in comprova somente que a conta apresentou um código válido associado à parada, não que permaneceu no local ou realizou uma compra.
+
+Benefícios não são automáticos nem inerentes a qualquer rota. Quando houver recompensa, ela deve estar vinculada a uma campanha com responsável identificado, elegibilidade, período, limites, benefício e regras de resgate/cancelamento explícitas. Priorizar incentivos que conectem estabelecimentos: por exemplo, concluir uma rota em uma cafeteria pode habilitar um cupom para uso em uma sorveteria participante. Não emitir pontos ou cupons sem regra e responsável pelo custo definidos.
+
 
 ## 11. Inteligência comercial e oportunidades do Centro
 
@@ -177,7 +187,7 @@ Uma atividade pode estar vinculada a rota e/ou estabelecimento, mas também pode
 
 Campanhas podem ser individuais, coletivas ou institucionais. Cada campanha informa responsável, período, elegibilidade, benefício, limites, estabelecimentos participantes, regras de resgate, cancelamento e responsável pelo custo.
 
-A primeira versão deve priorizar cupons simples, controlados e auditáveis. Benefício cruzado é importante: uma compra ou participação em um estabelecimento pode habilitar benefício em outro.
+A primeira versão deve priorizar cupons simples, controlados e auditáveis. Benefício cruzado é importante: uma compra ou participação elegível em um estabelecimento pode habilitar benefício em outro. Uma rota pode estar associada a uma campanha para recompensar sua conclusão, desde que a elegibilidade, o período, os limites, o benefício e o responsável pelo custo estejam definidos. A recompensa deve incentivar novas visitas, não exigir compra em todas as paradas.
 
 Não emitir benefício sem responsável financeiro/comercial identificado. Não converter pontos em dinheiro. Carteira de pontos, lotes, expiração, FEFO e regras configuráveis ficam para evolução específica, salvo exigência expressa e tempo para implementar com segurança.
 
