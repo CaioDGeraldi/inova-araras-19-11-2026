@@ -2,27 +2,35 @@
 
 ## Contexto e problema
 
-## Objetivo
+## Objetivo e resultado verificável
+
+## Requisitos relacionados
+- RF-...
+- RNF-...
+
+## Atores e permissões
 
 ## Escopo
 ### Incluído
 ### Excluído
 
-## Atores e fluxo
+## Fluxos principais e alternativos
 
-## Requisitos funcionais
+## Regras de negócio e invariantes
 
-## Regras de negócio
+## Dados, relacionamentos e estados
 
-## Dados e estados
+## Erros, cancelamentos e concorrência
 
 ## Segurança, privacidade e acessibilidade
 
 ## Dependências e riscos
 
 ## Critérios de aceitação
-- [ ] 
+- [ ] Cada critério deve ser verificável e, quando possível, associado a um teste.
 
-## Observabilidade e verificação
+## Testes e evidências esperadas
+
+## Observabilidade e auditoria
 
 ## Decisões em aberto
