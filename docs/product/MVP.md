@@ -31,7 +31,7 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 ### Rotas de Descoberta
 - Administração cria rota, define descrição, período e paradas.
 - Paradas podem representar estabelecimento, atividade ou local.
-- Circuito define ordem sugerida e paradas obrigatórias/opcionais.
+- Rota define ordem sugerida e paradas obrigatórias/opcionais.
 - Visitante consulta rota sem login.
 - Usuário autenticado inicia participação e registra check-in por QR Code.
 - Sistema controla duplicidade e apresenta progresso.
@@ -110,7 +110,7 @@ Quando uma solicitação existir, o responsável pode registrar conclusão como 
 - [ ] Usuário autenticado inicia rota e registra check-in.
 - [ ] Check-in duplicado é tratado conforme regra da parada.
 - [ ] Progresso e conclusão correspondem às regras do rota.
-- [ ] Circuito não exige compra em todas as paradas.
+- [ ] Rota não exige compra em todas as paradas.
 - [ ] QR Code não é apresentado como prova absoluta de presença.
 - [ ] Dados privados não aparecem em páginas públicas.
 - [ ] Indicadores institucionais, quando habilitados, exibem apenas agregações protegidas e não permitem consultar buscas ou respostas individuais.
