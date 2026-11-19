@@ -5,7 +5,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-from apps.establishments.models import Establishment
+from apps.establishments.models import Establishment, validate_image
 from apps.events.models import Event
 
 
@@ -20,6 +20,9 @@ class Route(models.Model):
     published = models.BooleanField("publicada", default=True)
     starts_on = models.DateField("início", null=True, blank=True)
     ends_on = models.DateField("fim", null=True, blank=True)
+    image = models.ImageField(
+        "imagem", upload_to="rotas/", blank=True, validators=[validate_image]
+    )
 
     class Meta:
         ordering = ["title"]

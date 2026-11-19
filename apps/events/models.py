@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from apps.establishments.models import Establishment
+from apps.establishments.models import Establishment, validate_image
 
 
 class Event(models.Model):
@@ -19,6 +19,9 @@ class Event(models.Model):
     free = models.BooleanField("gratuito", default=True)
     requires_registration = models.BooleanField("exige inscrição", default=False)
     status = models.CharField(max_length=10, choices=Status.choices, default=Status.PUBLISHED)
+    image = models.ImageField(
+        "imagem", upload_to="eventos/", blank=True, validators=[validate_image]
+    )
     establishment = models.ForeignKey(
         Establishment, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="loja"
     )

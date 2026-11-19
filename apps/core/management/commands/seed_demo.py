@@ -1,5 +1,8 @@
 from datetime import timedelta
 
+from django.conf import settings
+from django.core.files import File
+from django.core.files.storage import default_storage
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
@@ -11,6 +14,7 @@ from apps.events.models import Event
 
 PASSWORD = "demo12345"
 TAG = "[Demonstração]"
+DEMO_IMAGES = settings.BASE_DIR / "static" / "img" / "demo"
 
 STORES = [
     (
@@ -20,7 +24,8 @@ STORES = [
         "Cafés",
         "19999990001",
         "cafedocentro",
-        [("Pão de queijo", "5.50"), ("Café coado", "4.00")],
+        "cafe-do-centro",
+        [("Pão de queijo", "5.50", "pao-de-queijo"), ("Café coado", "4.00", "cafe-coado")],
     ),
     (
         "loja-b",
@@ -29,7 +34,11 @@ STORES = [
         "Livros",
         "19999990002",
         "",
-        [("Romance nacional", "39.90"), ("Caderno artesanal", None)],
+        "livraria-esquina",
+        [
+            ("Romance nacional", "39.90", "romance-nacional"),
+            ("Caderno artesanal", None, "caderno-artesanal"),
+        ],
     ),
     (
         "loja-c",
@@ -38,9 +47,19 @@ STORES = [
         "Moda",
         "",
         "brechodapraca",
-        [("Jaqueta jeans", "70.00")],
+        "brecho-da-praca",
+        [("Jaqueta jeans", "70.00", "jaqueta-jeans")],
     ),
 ]
+
+
+def attach_demo_image(instance, folder, name):
+    path = f"{folder}/demo-{name}.jpg"
+    if not default_storage.exists(path):
+        with (DEMO_IMAGES / f"{name}.jpg").open("rb") as source:
+            default_storage.save(path, File(source))
+    instance.image.name = path
+    instance.save(update_fields=["image"])
 
 
 class Command(BaseCommand):
@@ -62,7 +81,7 @@ class Command(BaseCommand):
             users[username] = user
 
         stores = []
-        for slug, name, owner, category, whatsapp, instagram, products in STORES:
+        for slug, name, owner, category, whatsapp, instagram, image, products in STORES:
             store, _ = Establishment.objects.update_or_create(
                 slug=slug,
                 defaults={
@@ -80,21 +99,23 @@ class Command(BaseCommand):
                     "instagram": instagram,
                 },
             )
+            attach_demo_image(store, "lojas", image)
             cat, _ = Category.objects.get_or_create(name=category)
             store.categories.add(cat)
-            for product_name, price in products:
-                Product.objects.update_or_create(
+            for product_name, price, product_image in products:
+                product, _ = Product.objects.update_or_create(
                     establishment=store,
                     name=f"{product_name} {TAG}",
                     defaults={"price": price, "available": True},
                 )
+                attach_demo_image(product, "produtos", product_image)
             stores.append(store)
 
         now = timezone.now()
         events = []
-        for title, days, status in [
-            ("Feira de artesanato", 3, Event.Status.PUBLISHED),
-            ("Show na praça", 5, Event.Status.CANCELLED),
+        for title, days, status, image in [
+            ("Feira de artesanato", 3, Event.Status.PUBLISHED, "feira-de-artesanato"),
+            ("Show na praça", 5, Event.Status.CANCELLED, "show-na-praca"),
         ]:
             event, _ = Event.objects.update_or_create(
                 title=f"{title} {TAG}",
@@ -108,6 +129,7 @@ class Command(BaseCommand):
                     "status": status,
                 },
             )
+            attach_demo_image(event, "eventos", image)
             events.append(event)
 
         route, _ = Route.objects.update_or_create(
@@ -120,6 +142,7 @@ class Command(BaseCommand):
                 "ends_on": timezone.localdate() + timedelta(days=30),
             },
         )
+        attach_demo_image(route, "rotas", "rota-do-centro")
         for order, (store, required) in enumerate(zip(stores, [True, True, False], strict=True)):
             Stop.objects.update_or_create(
                 route=route,
