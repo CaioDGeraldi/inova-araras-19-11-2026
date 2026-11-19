@@ -140,6 +140,8 @@ As campanhas podem ser individuais, coletivas ou institucionais. Cada ação dev
 
 Nenhum desconto, ponto ou recompensa deve ser emitido sem que exista um responsável comercial, financeiro ou patrocinador definido. Subsídio público não é presumido.
 
+Quando uma campanha utilizar uma compra como condição, o registro acontece após a venda presencial: o consumidor apresenta um QR Code individual de identificação em sua conta e o responsável autenticado do estabelecimento confirma explicitamente a compra no painel. O QR associa a operação à conta, mas não comprova pagamento. A plataforma não substitui caixa, PDV ou sistema fiscal. Compras espontâneas também podem participar, sem reserva prévia. Mensagens de reserva pelo WhatsApp ou Instagram não comprovam compra nem geram benefício por si só. A concessão depende da validação das regras, limites e responsável pelo custo da campanha.
+
 ### 5.4 Cronograma do Centro
 
 Uma programação centralizada reúne eventos, feiras, atividades culturais, oficinas, apresentações, ações comerciais e experiências comunitárias.
@@ -368,6 +370,8 @@ A avaliação deve separar atividade da plataforma, comportamento de visita e im
 
 ### Indicadores de circulação e participação
 
+- Compras presenciais declaradas pelos responsáveis e registradas pela plataforma, separadas de pagamento comprovado ou faturamento auditado;
+- Benefícios emitidos a partir de compras confirmadas e cupons efetivamente resgatados;
 - Rotas de Descoberta iniciadas e concluídas;
 - estabelecimentos distintos visitados por participação registrada;
 - atividades consultadas e participantes;
@@ -403,7 +407,7 @@ A iniciativa deverá observar a Lei Geral de Proteção de Dados (LGPD) e os pri
 
 O tratamento de dados deve ser limitado ao necessário para operar a plataforma e avaliar as iniciativas. Dados individuais não serão disponibilizados ao poder público para monitoramento de consumidores.
 
-Indicadores de interesse público devem ser produzidos por agregação, com proteção contra reidentificação e supressão de grupos pequenos. A simples remoção de nomes não é suficiente para garantir anonimização.
+Indicadores de interesse público devem ser produzidos por agregação, com proteção contra reidentificação e supressão de grupos pequenos. A simples remoção de nomes não é suficiente para garantir anonimização. O QR de identificação do consumidor não contém dados pessoais e não deve expor telefone, e-mail, CPF ou identificador sequencial ao estabelecimento; o painel apresenta apenas os dados mínimos para conferência. A confirmação de compra registra a declaração do responsável, não uma comprovação independente de pagamento.
 
 As avaliações públicas precisam de regras claras, canal de denúncia, moderação proporcional e proteção contra exposição indevida. O anonimato público não significa ausência de responsabilidade ou impossibilidade de moderação.
 
