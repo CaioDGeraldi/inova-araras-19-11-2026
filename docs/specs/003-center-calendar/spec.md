@@ -23,13 +23,13 @@ RF-030 a RF-041; RNF-001 a RNF-012, RNF-022 a RNF-025, RNF-030, RNF-031, RNF-034
 - Indicação de inscrição obrigatória/opcional.
 - Listagem pública por data e detalhe da atividade.
 - Estados draft, published, cancelled, completed/archived.
-- Associação opcional com estabelecimento ou rota quando explicitamente configurada.
-
+ 
 ### P1
 - Sugestão de atividade por responsável/organizador autenticado, sujeita à aprovação administrativa.
 - Salvar e remover atividade na conta do consumidor.
 - Consulta pessoal de atividades salvas.
 - Atualização do estado da atividade salva quando houver edição ou cancelamento.
+- Associação explícita de atividades com estabelecimentos e/ou Rotas de Descoberta.
 
 ## Excluído
 - Venda de ingressos e pagamento.
@@ -75,7 +75,7 @@ RF-030 a RF-041; RNF-001 a RNF-012, RNF-022 a RNF-025, RNF-030, RNF-031, RNF-034
 - Uma atividade salva não garante vaga nem gera inscrição.
 - A mesma conta não deve acumular vínculos duplicados para a mesma atividade.
 - Notificações de alteração/cancelamento não fazem parte do primeiro corte; o estado atualizado aparece quando a pessoa consulta a atividade salva.
-- Vínculos com estabelecimento/rota são explícitos e não inferidos por proximidade ou nome.
+- Vínculos P1 com estabelecimento/rota são explícitos e não inferidos por proximidade ou nome.
 
 ## Dados e estados
 Event: draft, published, cancelled, completed/archived.  
