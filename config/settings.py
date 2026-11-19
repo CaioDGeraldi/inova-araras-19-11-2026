@@ -31,9 +31,7 @@ ALLOWED_HOSTS = [
     if host.strip()
 ]
 CSRF_TRUSTED_ORIGINS = [
-    origin.strip()
-    for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
-    if origin.strip()
+    origin.strip() for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if origin.strip()
 ]
 
 INSTALLED_APPS = [
@@ -46,6 +44,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_htmx",
     "apps.core.apps.CoreConfig",
+    "apps.establishments.apps.EstablishmentsConfig",
+    "apps.discovery_routes.apps.DiscoveryRoutesConfig",
+    "apps.campaigns.apps.CampaignsConfig",
+    "apps.events.apps.EventsConfig",
 ]
 
 MIDDLEWARE = [
@@ -90,6 +92,9 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = "core.User"
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
