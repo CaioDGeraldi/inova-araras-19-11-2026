@@ -109,7 +109,7 @@ Quando uma solicitação existir, o responsável pode registrar conclusão como 
 - [ ] Administração cria rota com diferentes tipos de parada.
 - [ ] Usuário autenticado inicia rota e registra check-in.
 - [ ] Check-in duplicado é tratado conforme regra da parada.
-- [ ] Progresso e conclusão correspondem às regras do rota.
+- [ ] Progresso e conclusão correspondem às regras da rota.
 - [ ] Rota não exige compra em todas as paradas.
 - [ ] QR Code não é apresentado como prova absoluta de presença.
 - [ ] Dados privados não aparecem em páginas públicas.
