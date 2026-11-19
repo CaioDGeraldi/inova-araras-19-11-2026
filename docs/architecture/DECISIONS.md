@@ -25,27 +25,24 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 - Vaga Legal é o nome correto.
 - PRD define visão; MVP limita escopo; requisitos detalham comportamento; domínio define estados/invariantes; specs orientam mudanças.
 
-## Recomendações como baseline do MVP
+## Baseline funcional consolidada
 
 - Priorizar jornada integrada: vitrine → cronograma → rota → check-in → progresso → retorno.
-- Cronograma público gerenciado inicialmente pela administração.
-- DiscoveryRouteos com paradas que podem representar estabelecimento, atividade ou local.
-- Check-in por QR Code como registro de participação, sem alegar prova absoluta de presença.
-- Não exigir compra em cada parada.
-- Campanhas simples/cupom antes de carteira complexa de pontos.
-- Django Admin para operações internas iniciais.
+- Cronograma público é administrado centralmente; sugestões P1 passam por revisão e nunca publicam automaticamente.
+- Rotas usam QR estático por parada, revogável e rotacionável atomicamente. Participação representa uma execução; check-in é único por participação/parada. Há fallback assistido por operador autorizado.
+- Campanhas do primeiro release são criadas/publicadas pela administração; correções de resgate usam eventos compensatórios.
+- Comunidade usa nota 1–5, comentário opcional até 1.000 caracteres, uma avaliação ativa por conta/alvo, moderação fundamentada e anonimato apenas público.
+- Administração usa provisionamento privilegiado, auditoria de ações críticas, correções compensatórias e indicadores operacionais somente leitura.
+- Django Admin pode atender operações internas iniciais; não duplicar regras de domínio no painel.
 - Não implementar checkout, pagamento, entrega ou GPS contínuo.
 - Desenvolvimento individual por fatias verticais.
 - Se o prazo apertar, cortar funcionalidades periféricas antes do núcleo presencial.
 
-## Recomendações dependentes de confirmação operacional
+## Dependências pré-produção
 
-- Se o botão de mensagem contextualizada pelo WhatsApp entra no primeiro slice executável ou logo após estabilizar a vitrine; o cadastro do número público faz parte dos dados de contato do estabelecimento.
-- Se campanhas/cupons entram no primeiro MVP executável ou após rota.
-- Se avaliações entram no piloto inicial.
-- Se check-in permite repetição por parada, ocorrência ou período.
-- Se eventos terão inscrição/limite de participantes no piloto.
-- Quais estabelecimentos, atividades, locais e campanhas estarão efetivamente disponíveis.
+- Testar leitura de QR em navegadores móveis reais e escolher biblioteca/estratégia após spike.
+- Formalizar política de retenção, exclusão, anonimização, acesso e descarte de dados/auditoria antes da produção.
+- Confirmar estabelecimentos, atividades, locais e campanhas reais do piloto; marcar dados fictícios como demonstração.
 
 ## Hipóteses e parâmetros não aprovados
 

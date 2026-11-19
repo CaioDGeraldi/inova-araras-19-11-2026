@@ -1,10 +1,6 @@
 # Tasks | Spec 004 - Rotas de Descoberta
 
 ## Preparação e decisões
-- [ ] Definir política de repetição e reentrada de participação.
-- [ ] Definir se QR será estático revogável ou token de curta duração no piloto.
-- [ ] Definir se haverá fallback assistido para check-in.
-- [ ] Definir política para alteração/cancelamento de rota com participações ativas.
 
 ## Domínio e administração P0
 - [ ] Modelar DiscoveryRoute e RouteStop.
@@ -13,14 +9,17 @@
 - [ ] Implementar ordem sugerida, obrigatoriedade/opcionalidade e instruções.
 - [ ] Validar ao menos uma parada e regra explícita de conclusão antes de publicar.
 - [ ] Implementar publicação, ativação, cancelamento e arquivamento.
-- [ ] Gerar token de check-in por parada sem PII ou identificador sequencial.
+- [ ] Gerar token QR estático, aleatório, opaco e não sequencial por parada, sem PII.
+- [ ] Implementar revogação e rotação atômica do token, invalidando o anterior.
 - [ ] Implementar revogação imediata de token comprometido (P0).
 
 ## Participação e check-in P0
 - [ ] Implementar consulta pública de lista, detalhe e paradas.
 - [ ] Implementar início autenticado de participação.
 - [ ] Implementar validação server-side de token, rota, parada, período e participação.
-- [ ] Implementar gravação transacional de CheckIn.
+- [ ] Implementar gravação transacional de CheckIn com unicidade por participação e parada.
+- [ ] Modelar cada RouteParticipation como uma execução da rota; nova execução cria nova participação.
+- [ ] Implementar check-in assistido por operador autorizado como fallback, registrando operador, participante, parada, instante e motivo.
 - [ ] Impedir duplicidade conforme política definida e restrições do banco.
 - [ ] Calcular progresso somente com check-ins aceitos.
 - [ ] Concluir participação conforme regra explícita.
@@ -29,7 +28,7 @@
 ## Recursos P1
 - [ ] Implementar histórico de rotas e check-ins da conta.
 - [ ] Implementar rotação atômica de token quando a política P1 for aprovada.
-- [ ] Avaliar suporte a edições/ocorrências de rota sem quebrar participações existentes.
+- [ ] Manter edições/ocorrências programadas e DiscoveryRouteEdition fora do MVP.
 
 ## Segurança e qualidade
 - [ ] Testar usuário não autenticado, rota encerrada e participação incompatível.

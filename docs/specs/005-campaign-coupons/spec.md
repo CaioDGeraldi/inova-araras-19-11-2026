@@ -104,6 +104,11 @@ Redemption é registro histórico, não estado editável. A validação prelimin
 - O código pode ser compartilhado; validação online e uso único reduzem risco, mas não provam a identidade física do portador. Benefícios de alto valor podem exigir verificação adicional definida pela campanha, sem documento por padrão.
 
 ## Critérios de aceitação
+- [ ] Apenas administração cria e publica campanhas no primeiro release.
+- [ ] Correção de resgate indevido usa evento compensatório vinculado ao original, com motivo, operador e instante; original permanece intacto.
+- [ ] Campanha pode exigir validação adicional para benefício de alto valor sem exigir documento pessoal por padrão.
+- [ ] Leitura QR é testada em navegadores móveis reais antes da escolha da biblioteca/estratégia técnica.
+
 
 - [ ] Admin cria campanha com período, regra, lojas e responsável pelo custo.
 - [ ] Campanha incompleta ou sem responsável não pode ser ativada.
@@ -137,9 +142,11 @@ Redemption é registro histórico, não estado editável. A validação prelimin
 - No MVP, o operador é o responsável principal autenticado pela loja.
 - WhatsApp e Instagram não validam cupons.
 
-## Decisões ainda abertas
+## Decisões consolidadas
 
-- Biblioteca/estratégia de leitura de QR Code no navegador.
-- Se campanhas individuais criadas por proprietários estarão habilitadas no primeiro release.
-- Política de compensação quando um cupom for resgatado indevidamente.
-- Requisitos adicionais para benefícios de alto valor.
+- No primeiro release, campanhas são criadas e publicadas pela administração. Criação individual por proprietários fica fora do MVP.
+- Resgate indevido é corrigido por operação/evento compensatório vinculado ao resgate original, com motivo, operador autorizado e instante. O registro original nunca é editado ou excluído.
+- Campanha pode exigir validação adicional para benefício de alto valor, mas não exige documento pessoal por padrão.
+- Leitura de QR deve ser testada em navegadores móveis reais. Escolha de biblioteca e estratégia técnica é decisão de implementação após spike, não decisão de produto.
+- Toda campanha declara emissor, receptor, responsável pelo custo, período, elegibilidade e limites.
+- A confirmação de compra presencial da Spec 007 é a fonte de elegibilidade por compra. Uma confirmação avalia todas as campanhas elegíveis para a loja.

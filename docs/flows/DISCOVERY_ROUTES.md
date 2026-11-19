@@ -230,9 +230,11 @@ A conclusão, por si só, não concede pontos, dinheiro ou cupons. O benefício 
 ## Limites desta definição
 
 - Não define a interface administrativa de criação e publicação de rotas; pertence ao fluxo do painel e à spec.
-- Não define o formato visual do QR Code ou o mecanismo de rotação.
-- Não decide a política final de repetição, reentrada ou múltiplas participações.
-- Não define fallback de check-in manual pelo comerciante; a decisão permanece em aberto na spec.
+- Cada parada possui QR estático próprio, com token aleatório, opaco e não sequencial. A administração pode revogar e gerar outro; a rotação invalida o anterior atomicamente.
+- Cada RouteParticipation representa uma execução da rota; nova execução exige nova participação. Check-in é único por participação e parada.
+- Fallback assistido por responsável autorizado do estabelecimento/local registra operador, participante, parada, instante e motivo. O participante não pode confirmar a própria presença.
+- Check-in é registro de participação declarada, não prova absoluta de presença ou compra. Revogar token não apaga check-ins já aceitos.
+- Edições programadas e DiscoveryRouteEdition ficam fora do MVP.
 - Não inclui GPS contínuo, geofencing, ranking competitivo ou gamificação complexa.
 - Não concede pontos ou benefícios financeiros automaticamente; quando houver campanha elegível, apresenta as condições e o destino do benefício sem prometer recompensa fora das regras publicadas.
 - Não define layout final, componentes visuais, cores ou animações.

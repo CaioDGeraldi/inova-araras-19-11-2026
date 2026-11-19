@@ -38,10 +38,10 @@ Os diretórios são limites conceituais, não ordem obrigatória de criação. N
 
 - User pode ser responsável por várias Stores.
 - Store possui categorias e produtos/serviços.
-- Event possui local e organizador; pode relacionar-se opcionalmente a Store ou DiscoveryRoute.
+- Event representa a atividade principal; EventOccurrence representa cada realização com data, horário, local e estado próprios. Place é reutilizável entre atividades e paradas; Event pode relacionar-se opcionalmente a Store ou DiscoveryRoute.
 - DiscoveryRoute possui RouteStops ordenadas; uma parada referencia Store, Event ou Place.
-- User participa de DiscoveryRoute por RouteParticipation.
-- CheckIn pertence a uma participação e parada.
+- User participa de DiscoveryRoute por RouteParticipation; cada participação representa uma execução da rota.
+- CheckIn pertence a uma participação e parada, com unicidade por participação/parada. QR estático por parada é revogável e rotacionável atomicamente; check-in assistido exige operador autorizado.
 - Campaign pode envolver uma ou mais Stores.
 - Coupon pertence a Campaign; Redemption registra uso por consumidor e estabelecimento elegível.
 - Store mantém os canais públicos de contato; links de reserva contextualizam Store/Product, mas não criam uma entidade de reserva.
@@ -72,7 +72,7 @@ Transições devem ser explícitas e autorizadas no servidor. Não permitir edi�
 
 ## QR Code e presença
 
-QR contém token opaco/não sequencial, não dados pessoais. Validar no servidor, controlar validade/rotação e duplicidade. Check-in é registro de participação, não prova infalível de presença. Não coletar GPS continuamente. Para benefício de maior valor, exigir validação adicional pelo estabelecimento.
+QR de parada é estático por parada, com token aleatório, opaco, não sequencial e sem PII. Revogação/rotação invalida o token anterior atomicamente, sem apagar check-ins aceitos. Check-in é único por participação/parada. Fallback assistido registra operador autorizado, participante, parada, instante e motivo, sem autoconfirmação. Check-in é registro de participação declarada, não prova absoluta de presença ou compra. Não coletar GPS continuamente.
 
 ## Interface
 
@@ -86,7 +86,7 @@ QR contém token opaco/não sequencial, não dados pessoais. Validar no servidor
 
 ## Segurança e privacidade
 
-Autorização no servidor e por objeto/estabelecimento. Manter CSRF, validação de entrada e escaping de saída. Uploads validam tipo, tamanho e conteúdo. Segredos ficam fora do Git. Dados privados não aparecem em serializers, templates ou logs públicos. Auditoria para publicação, cancelamento, confirmação de compra, emissão e resgate de benefícios. Minimização, finalidade, retenção e direitos conforme LGPD.
+Autorização no servidor e por objeto/estabelecimento. Manter CSRF, validação de entrada e escaping de saída. Uploads validam tipo, tamanho e conteúdo. Segredos ficam fora do Git. Dados privados não aparecem em serializers, templates ou logs públicos. Auditoria para provisionamento administrativo; aprovação/suspensão; publicação/edição relevante/cancelamento; campanhas; confirmação/correção de compra e resgate; moderação; revogação/rotação QR. Correções preservam o evento original e usam eventos compensatórios. Minimização, finalidade, retenção e direitos conforme LGPD.
 
 ## Testes
 

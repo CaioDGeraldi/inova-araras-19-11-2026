@@ -94,6 +94,11 @@ Organizer: referência a usuário/organização responsável, com contato públi
 - A autorização de salvar/remover verifica titularidade da conta no servidor.
 
 ## Critérios de aceitação
+- [ ] Atividade principal pode possuir ocorrências individuais com data, horário, local e estado próprios.
+- [ ] Place é reutilizável por atividades e paradas de rotas; categorias iniciais seguem taxonomia aprovada.
+- [ ] Sugestão devolvida registra orientação e pode ser editada e reenviada pelo autor; aprovação não publica automaticamente.
+- [ ] Atividades salvas ficam em Perfil e não criam inscrição, reserva de vaga ou presença.
+
 ### P0
 - [ ] Admin cria, edita, publica e cancela atividade.
 - [ ] Visitante consulta atividades sem login.
@@ -114,9 +119,13 @@ Organizer: referência a usuário/organização responsável, com contato públi
 - [ ] Alteração/cancelamento aparece no estado consultado da atividade salva.
 - [ ] Testes cobrem autorização, duplicidade e estados da sugestão.
 
-## Decisões em aberto
-- Se atividades recorrentes serão representadas por ocorrências separadas.
-- Quais categorias iniciais serão oferecidas.
-- Se endereço será Place separado ou campo reutilizável no Event.
-- Campos obrigatórios e política de correção de sugestões.
-- Localização da área pessoal de atividades salvas na navegação.
+## Decisões consolidadas
+
+- Atividades recorrentes são representadas por uma atividade principal e ocorrências individuais. Cada ocorrência possui data, horário, local e estado próprios.
+- Não implementar expansão automática complexa de recorrência no primeiro release; ocorrências são cadastradas explicitamente.
+- Categorias iniciais: gastronomia, cultura, comércio, lazer e comunidade/serviços. A administração mantém a taxonomia.
+- `Place` é reutilizável para locais de atividades e paradas de Rotas de Descoberta.
+- Sugestões podem ser aprovadas para edição/publicação, rejeitadas ou devolvidas para correção. A devolução registra orientação; o autor edita e reenvia.
+- A aprovação de uma sugestão não publica automaticamente a atividade. Apenas a publicação administrativa a torna pública.
+- Atividades salvas ficam na área Perfil. Salvar não equivale a inscrição, reserva de vaga ou confirmação de presença.
+- Não implementar inscrições, lotação ou notificações automáticas no MVP.

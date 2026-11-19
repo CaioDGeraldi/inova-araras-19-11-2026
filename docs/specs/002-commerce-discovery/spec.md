@@ -68,6 +68,11 @@ Category: active/inactive.
 - Não permitir enumeração de recursos privados.
 
 ## Critérios de aceitação
+- [ ] Cadastro espontâneo cria estabelecimento em `pending_review`; não existe publicação antes da aprovação.
+- [ ] Cadastro exige nome público, categoria, endereço estruturado e canal público de contato.
+- [ ] Endereço contém CEP, logradouro, número, bairro, município e UF; complemento é opcional e não depende de API externa.
+- [ ] Upload aceita JPEG/PNG/WebP, até 5 MB e 5 imagens por estabelecimento e produto/serviço, com validação server-side de tipo real, dimensões e conteúdo.
+
 - [ ] Visitante acessa vitrine sem login.
 - [ ] Busca por nome encontra apenas estabelecimentos/produtos publicados.
 - [ ] Filtro por categoria funciona.
@@ -82,7 +87,14 @@ Category: active/inactive.
 - [ ] Dados privados não aparecem na resposta pública.
 - [ ] Testes cobrem permissões, estados e busca.
 
-## Decisões em aberto
-- Campos obrigatórios finais de cadastro e validação de endereço.
-- Se cadastro entra automaticamente como pendente ou precisa convite.
-- Limites de quantidade/tamanho de imagens.
+## Decisões consolidadas
+
+- Cadastro público de estabelecimento cria registro em `pending_review`; nenhuma loja aparece como participante oficial antes da aprovação administrativa.
+- Campos obrigatórios: nome público, ao menos uma categoria, endereço de atendimento e ao menos um canal público de contato. WhatsApp é prioritário; Instagram é opcional.
+- Endereço é estruturado em CEP, logradouro, número, bairro, município e UF; complemento é opcional. O responsável confirma os dados. O cadastro não depende de API externa de endereço.
+- Imagens aceitas: JPEG, PNG e WebP, até 5 MB por arquivo, com limite de 5 imagens por estabelecimento e por produto/serviço.
+- O servidor valida tipo real, dimensões e conteúdo do arquivo; extensão e Content-Type enviados pelo cliente não são suficientes.
+- Dados fiscais e contatos privados permanecem separados dos campos públicos.
+- Cadastro espontâneo é permitido, sujeito à revisão administrativa. Não há convite obrigatório.
+- WhatsApp abre conversa com mensagem contextualizada, mas o consumidor precisa enviar manualmente. Instagram abre perfil/Direct e oferece texto copiável.
+- A plataforma não armazena status, histórico ou confirmação da reserva externa.

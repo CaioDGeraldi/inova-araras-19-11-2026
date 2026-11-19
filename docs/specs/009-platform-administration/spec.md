@@ -107,6 +107,13 @@ Cada indicador precisa informar período, unidade e fonte. Não expor ranking p�
 - Acessibilidade por teclado e leitor de tela.
 
 ## Critérios de aceitação
+- [ ] Administradores são provisionados por operação privilegiada; cadastro público não concede privilégio.
+- [ ] Recuperação de credenciais é segura; revogação desativa a conta e invalida sessões/tokens ativos.
+- [ ] Ações críticas definidas na spec são auditadas com ator, recurso, ação, instante, resultado e motivo quando aplicável.
+- [ ] Correções preservam o evento original e criam evento compensatório vinculado.
+- [ ] Consultas operacionais são somente leitura; indicadores apresentam período, unidade e fonte e compras são identificadas como declarações.
+- [ ] Política de retenção, acesso e descarte da auditoria é formalizada antes da produção.
+
 ### P0
 - [ ] Usuário sem permissão não acessa o painel nem executa ações administrativas por endpoint.
 - [ ] Administrador acessa gestão de categorias, estabelecimentos, cronograma e rotas.
@@ -123,9 +130,15 @@ Cada indicador precisa informar período, unidade e fonte. Não expor ranking p�
 - [ ] Relatórios não misturam dados demonstrativos e reais sem indicação explícita.
 - [ ] Testes cobrem autorização, auditoria e separação de dados.
 
-## Decisões em aberto
-- Processo de provisionamento, recuperação e revogação de administradores.
-- Lista final de ações auditáveis e política de retenção.
-- Indicadores operacionais exatos do P1.
-- Se consulta operacional terá filtros por estabelecimento/período e quais perfis podem usá-los.
-- Como representar correções administrativas sem alterar eventos originais.
+## Decisões consolidadas
+
+- Administradores são provisionados por operação privilegiada, como bootstrap de superusuário ou comando administrativo protegido. Cadastro público nunca concede privilégio.
+- Recuperação usa redefinição segura de credenciais. Revogação desativa a conta e invalida sessões/tokens ativos. Autoelevação não é permitida.
+- Ações auditáveis incluem: provisionamento/revogação administrativa; aprovação/rejeição/suspensão de estabelecimento; publicação/edição relevante/cancelamento de atividade ou rota; emissão/pausa/cancelamento de campanha; confirmação/correção de compra e resgate; moderação/revisões; revogação/rotação de QR.
+- Auditoria registra ator, recurso, ação, instante, resultado e motivo quando aplicável. Segredos, tokens completos e PII desnecessária não são armazenados.
+- Retenção da auditoria será definida na política de privacidade/segurança antes da produção, com acesso restrito e descarte documentado. Não presumir prazo legal.
+- Indicadores operacionais P1: estabelecimentos por estado; atividades publicadas/canceladas; rotas ativas e participações/check-ins aceitos; campanhas ativas; cupons emitidos/resgatados; confirmações de compra declaradas.
+- Indicadores sempre apresentam período, unidade e fonte. Consultas operacionais são somente leitura, com filtros por período e estabelecimento quando pertinente.
+- Somente administradores autorizados acessam dados globais. Responsável de loja consulta apenas a própria loja quando houver interface específica.
+- Correções preservam o evento original e criam evento compensatório vinculado, com motivo, operador e instante.
+- Não implementar impersonação nem acesso irrestrito a PII por conveniência.

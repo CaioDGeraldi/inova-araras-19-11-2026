@@ -38,16 +38,20 @@ Campanhas e cupons P1 possuem resgate presencial: consumidor apresenta código o
 
 O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Rotas de Descoberta. Campanhas/cupons simples complementam a jornada. Comunidade e operação administrativa são P1, podendo ser cortadas do primeiro release se o tempo ameaçar a jornada central. Inteligência comercial, pesquisas de lacunas e painel institucional são evolução P2, sujeita a governança e validação de privacidade. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
 
+## Decisões funcionais fechadas
+
+As decisões consolidadas em 19/11/2026 estão refletidas nas Specs 002, 003, 004, 005, 008 e 009 e nos fluxos correspondentes: cadastro pendente e validado; ocorrências de atividade explícitas; QR estático revogável por parada com fallback assistido; campanhas centralizadas; regras de avaliação/moderação; provisionamento administrativo e auditoria. Não tratar essas decisões como pendências de produto.
+
 ## Pendências antes da implementação
 
 1. Revisar e validar PR #4 e a fundação técnica.
 2. Confirmar a ordem final dos slices conforme o tempo e as exigências do desafio.
 3. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar dados fictícios como demonstração.
-4. Definir regra operacional de QR por parada/ocorrência e processo de rotação do código.
-5. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
-6. Definir política de privacidade, retenção e contato antes de dados reais.
-7. Resolver decisões em aberto das Specs 003, 004, 005, 007, 008 e 009 antes das respectivas implementações.
-8. Gerar Issues por fatia vertical via FractawProjects, sem duplicar o workflow do motor SDD.
+4. Executar spike de compatibilidade de leitura QR em navegadores móveis reais e selecionar a estratégia técnica.
+5. Formalizar política de privacidade, retenção, exclusão, anonimização e descarte antes da produção.
+6. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
+7. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar dados fictícios como demonstração.
+8. Gerar e manter Issues por fatia vertical, vinculadas às Specs e tasks, sem duplicar o workflow do motor SDD.
 
 ## Validação
 

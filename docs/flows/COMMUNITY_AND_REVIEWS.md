@@ -173,14 +173,14 @@ Princípios:
 - [ ] Ações de moderação são auditáveis e têm acesso restrito.
 - [ ] Dados pessoais e identidade de denunciantes não aparecem publicamente.
 
-## Decisões pendentes para a spec
+## Decisões consolidadas
 
-- Nota e escala de avaliação.
-- Se comentário é opcional e limites de tamanho.
-- Uma avaliação por usuário/estabelecimento ou por experiência/ocorrência.
-- Se e como o usuário pode editar/excluir avaliação.
-- Se responsável pode editar/excluir resposta.
-- Motivos de denúncia e limiar de rate limit.
-- Estados de moderação, prazo de revisão e mecanismo de contestação.
-- Política de retenção de avaliações, denúncias e autoria interna.
-- Se avaliações podem ser criadas sem evidência de visita/compra; não presumir verificação.
+- Nota inteira de 1 a 5 estrelas; comentário opcional com até 1.000 caracteres.
+- Uma avaliação ativa por conta e alvo (estabelecimento ou ocorrência/experiência); edição versionada, sem duplicata.
+- Autor pode editar; exclusão lógica preserva trilha mínima, sujeita à política de retenção e direitos do titular.
+- Responsável pode editar/remover resposta oficial; alterações auditáveis e sem alterar a avaliação original.
+- Motivos de denúncia: spam/fraude, assédio/discriminação, conteúdo ilegal, exposição de dados pessoais, conflito de interesse e outro com justificativa curta.
+- Limitar denúncias repetidas e aplicar rate limit. Denúncia não oculta conteúdo automaticamente.
+- Moderador decide manter, ocultar ou remover com motivo. Usuário afetado pode solicitar uma revisão uma vez pelo canal administrativo.
+- Identificação pública usa nome de exibição escolhido pelo usuário; nunca nome legal, telefone, e-mail ou ID interno. Anonimato público preserva autoria interna restrita.
+- Retenção, exclusão e anonimização seguem política publicada e solicitações válidas dos titulares. Prazo operacional deve ser aprovado antes da produção, sem presumir prazo legal.

@@ -59,6 +59,7 @@ RF-050 a RF-065; RNF-001 a RNF-008, RNF-013 a RNF-025, RNF-027 a RNF-029, RNF-03
 - QR Code compartilhado pode gerar fraude; o sistema não deve prometer prova absoluta de presença.
 - Check-in aceito não é apagado silenciosamente; correção é auditada.
 
+
 ## Estados
 Rota: draft, published, active, cancelled, archived.  
 Participation: active, completed, cancelled.  
@@ -75,6 +76,11 @@ CheckIn: submitted, accepted, rejected.
 - Não coletar localização contínua.
 
 ## Critérios de aceitação
+
+- [ ] QR estático, aleatório, opaco e não sequencial por parada pode ser revogado/rotacionado; token anterior é invalidado atomicamente.
+- [ ] Check-in é único por participação/parada; cada nova execução da rota exige nova RouteParticipation.
+- [ ] Fallback assistido registra operador autorizado, participante, parada, instante e motivo, sem autoconfirmação.
+- [ ] Revogação não apaga check-ins já aceitos; check-in não é prova absoluta de presença ou compra.
 - [ ] Admin cria rota e adiciona Store/Event/Place como paradas.
 - [ ] A rota pública exibe paradas, ordem sugerida e regra de conclusão.
 - [ ] Visitante consulta sem login.

@@ -26,7 +26,7 @@ Campanha, concessão e resgate são operações diferentes. Criar uma campanha n
 - Pontos não são dinheiro. Não há conversão monetária, cashback ou carteira complexa no P1.
 - Não emitir pontos ou cupons sem regra e responsável financeiro/comercial.
 - Compra, reserva por WhatsApp/Instagram, check-in e conclusão de rota são eventos distintos. Uma conversa de reserva ou um QR check-in isolado não comprova compra.
-- Campanhas coletivas são administradas pela plataforma no fluxo P1. A criação autônoma de campanhas por proprietários permanece uma decisão aberta na Spec 005 e não é presumida neste fluxo.
+- No primeiro release, campanhas são criadas e publicadas pela administração. Criação individual por proprietários fica fora do MVP.
 - O fluxo não implementa checkout, pagamento, PDV, integração de estoque, equipe de loja ou carteira financeira.
 
 ## Atores e responsabilidades
@@ -111,7 +111,7 @@ Uma campanha não pode ser ativada sem responsável pelo custo, condição de el
 
 ### Campanhas criadas por proprietários
 
-A Spec 005 ainda deixa em aberto se o proprietário poderá criar campanhas individuais no primeiro release. Portanto, o fluxo P1 assume criação e publicação pela administração. A eventual criação pelo proprietário exige decisão de escopo, permissões, revisão e responsabilidade financeira antes de ser habilitada. Não deve surgir como permissão implícita no painel atual.
+No primeiro release, somente a administração cria e publica campanhas. Proprietários não recebem permissão de autoria individual. Uma evolução futura exigirá revisão explícita de escopo, permissões e responsabilidade financeira.
 
 ## 2. Descoberta e consulta pelo consumidor
 

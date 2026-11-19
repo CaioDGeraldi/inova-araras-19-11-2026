@@ -83,7 +83,7 @@ Regras:
 Campos funcionais previstos:
 - nome público;
 - descrição/apresentação;
-- endereço e referência;
+- endereço estruturado: CEP, logradouro, número, bairro, município e UF; complemento opcional;
 - categorias;
 - número público de WhatsApp para atendimento e pedidos de reserva;
 - perfil público do Instagram, opcional;
@@ -94,9 +94,10 @@ Fluxo:
 1. A pessoa escolhe cadastrar estabelecimento.
 2. Preenche os campos obrigatórios e identifica quais contatos são públicos.
 3. Revê os dados e envia.
-4. O sistema valida os campos e cria o cadastro em estado pendente de análise.
+4. O sistema valida nome público, ao menos uma categoria, endereço estruturado e ao menos um canal público de contato.
+5. O sistema cria o cadastro em `pending_review`; nenhuma loja aparece publicamente antes da aprovação administrativa.
 5. A interface confirma o envio e explica que a publicação depende de aprovação.
-6. A pessoa pode consultar a situação do cadastro.
+7. A pessoa pode consultar a situação do cadastro.
 
 Regras:
 - Não expor telefone/e-mail privado, CNPJ ou dados internos na página pública.
@@ -312,6 +313,15 @@ O fluxo detalhado e os critérios de segurança estão em `PURCHASE_CONFIRMATION
 - Não permite ao proprietário criar/publicar rotas ou campanhas sem regras e permissões próprias.
 - Não define o painel administrativo da iniciativa; aprovação é operação interna.
 - Não define recuperação de senha, cadastro detalhado de conta ou autenticação social.
+
+## Regras de cadastro e mídia
+
+- Cadastro espontâneo é permitido, sem convite obrigatório, mas sempre começa em `pending_review`.
+- Campos obrigatórios: nome público, ao menos uma categoria, endereço com CEP, logradouro, número, bairro, município e UF, e pelo menos um contato público. Complemento é opcional.
+- O responsável confirma os dados do endereço; não depender de API externa.
+- Imagens JPEG, PNG e WebP, até 5 MB por arquivo e até 5 imagens por estabelecimento e por produto/serviço.
+- O servidor valida tipo real, dimensões e conteúdo dos arquivos.
+- Dados fiscais e contatos privados não são publicados na vitrine.
 
 ## Critérios de validação do fluxo
 

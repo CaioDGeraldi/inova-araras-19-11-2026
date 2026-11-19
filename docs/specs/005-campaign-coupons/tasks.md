@@ -1,14 +1,12 @@
 # Tasks | Spec 005 - Campanhas e cupons simples
 
 ## Preparação e regras comerciais
-- [ ] Definir se proprietários podem criar campanhas no primeiro release ou se a autoria permanece centralizada na administração.
 - [ ] Definir política para cupons emitidos quando campanha for pausada/cancelada.
-- [ ] Definir compensação para resgate indevido e requisitos adicionais para benefícios de alto valor.
-- [ ] Confirmar responsável pelo custo e regras de cada campanha demonstrativa.
+- [ ] Validar em cada campanha emissor, receptor, responsável pelo custo, período, elegibilidade e limites.
 
 ## Domínio e elegibilidade
 - [ ] Modelar Campaign, Coupon e CouponRedemption.
-- [ ] Implementar estados e transições de campanha.
+- [ ] Implementar estados e transições de campanha, com criação/publicação administrativa no primeiro release.
 - [ ] Implementar regras versionadas de elegibilidade, período, limites, emissor e receptor.
 - [ ] Impedir ativação de campanha sem responsável pelo custo.
 - [ ] Implementar emissão de cupom individual opaco, não sequencial e associado à conta elegível.
@@ -23,6 +21,7 @@
 
 ## Resgate presencial
 - [ ] Implementar tela Cupons e resgates no painel da loja.
+- [ ] Implementar correção por evento compensatório vinculado ao resgate original, com motivo, operador e instante, sem alterar o original.
 - [ ] Permitir leitura de QR ou digitação do código.
 - [ ] Implementar consulta preliminar sem consumir o cupom.
 - [ ] Exibir somente dados mínimos para conferência.

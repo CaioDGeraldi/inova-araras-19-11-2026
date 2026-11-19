@@ -25,17 +25,17 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **ConsumerIdentificationToken:** token temporário, aleatório, opaco e rotativo, emitido para uma conta autenticada e representado visualmente por **Meu QR**. Guarda hash/representação segura, usuário, instante de emissão, expiração e instante de consumo/revogação. Não contém dados pessoais nem substitui o identificador interno da conta.
 
-**Place:** local físico de atividade ou parada que não seja necessariamente loja, como praça ou espaço cultural. Não duplicar se Store já representar o local.
+**Place:** local físico reutilizável de atividade ou parada que não seja necessariamente loja, como praça ou espaço cultural.
 
-**Event:** atividade programada, com organizador, local, início, término opcional, categoria, estado, gratuidade/preço e indicação de inscrição. Pode relacionar-se a Store e DiscoveryRoute.
+**Event:** atividade principal programada, com organizador e categoria. Possui ocorrências individuais com data, horário, local e estado próprios. Não há expansão automática complexa de recorrência no primeiro release.
 
 **DiscoveryRoute:** percurso temático publicado pela administração, com período opcional, regra de participação/conclusão, estado e paradas.
 
 **RouteStop:** parada de DiscoveryRoute, com ordem sugerida, obrigatoriedade, instruções e referência a Store, Event ou Place. Deve possuir exatamente um alvo válido no MVP.
 
-**RouteParticipation:** participação de User em DiscoveryRoute ou ocorrência da rota. Controla início, estado e conclusão.
+**RouteParticipation:** uma execução de User em DiscoveryRoute. Cada nova execução cria nova participação. Controla início, estado e conclusão.
 
-**CheckIn:** registro de tentativa/aceite de visita em RouteStop, associado à participação. Guarda instante, resultado e referência segura ao token. Política de repetição explícita.
+**CheckIn:** registro de participação declarada em RouteStop, associado à participação. É único por participação/parada e guarda instante, resultado e referência segura ao token. Fallback assistido registra operador autorizado, participante, parada, instante e motivo; não permite autoconfirmação.
 
 **Campaign:** ação promocional com responsável, período, estado, elegibilidade, benefício, limites, lojas envolvidas e responsável pelo custo.
 
@@ -45,7 +45,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **PurchaseConfirmation:** registro transacional e auditável de uma compra presencial declarada como concluída pelo responsável autenticado. Referencia consumidor, estabelecimento, operador, instante, chave de idempotência, token de identificação consumido, valor total opcional e campanhas/regras avaliadas com seus resultados. Não representa pagamento processado ou comprovado pela plataforma.
 
-**Review / Report (P1):** opinião de consumidor e denúncia/moderação. Anonimato apenas na apresentação pública; autoria permanece vinculada internamente.
+**Review / Report (P1):** avaliação e denúncia/moderação. Nota inteira de 1 a 5; comentário opcional até 1.000 caracteres; uma avaliação ativa por conta/alvo, com edição versionada. Exclusão lógica preserva trilha mínima. Identificação pública usa nome de exibição escolhido ou anonimato; autoria permanece vinculada internamente.
 
 **SearchSignal (P2):** evento minimizado de busca sem resultado ou com baixa cobertura. Deve evitar identidade, identificadores persistentes, localização precisa e armazenamento desnecessário de texto livre. Os eventos brutos têm acesso restrito e retenção limitada.
 
@@ -55,25 +55,25 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **SurveyResult (P2):** resultado agregado de pesquisa, com tamanho de amostra, método de recrutamento, período, limitações e supressão de grupos pequenos. Respostas individuais não são disponibilizadas no painel institucional.
 
-**InstitutionalAccess / AuditEntry (P2):** autorização de acesso ao painel por finalidade e perfil, com trilha de auditoria de visualização, exportação e alteração de permissões.
+**AuditEntry (P0/P1):** trilha restrita de ações administrativas e operacionais, com ator, recurso, ação, instante, resultado e motivo quando aplicável. Não armazena segredos, tokens completos ou PII desnecessária. Retenção e descarte são definidos na política de privacidade/segurança antes da produção.
 
 ## Relacionamentos
 
 - User 1:N Store como owner.
 - Store N:M Category.
 - Store 1:N Product.
-- Event N:1 Place e organizador; pode relacionar-se a Store e DiscoveryRoute.
+- Event 1:N EventOccurrence; EventOccurrence N:1 Place e organizador. A ocorrência pode relacionar-se a Store e DiscoveryRoute.
 - DiscoveryRoute 1:N RouteStop.
 - RouteStop aponta para Store, Event ou Place.
-- User 1:N RouteParticipation; DiscoveryRoute 1:N RouteParticipation.
-- RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop.
+- User 1:N RouteParticipation; DiscoveryRoute 1:N RouteParticipation; cada participação é uma execução independente.
+- RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop e possui unicidade por participação/parada. Fallback assistido referencia operador.
 - Campaign N:M Store; Campaign 1:N Coupon.
 - Coupon 0..1 CouponRedemption para cupons de uso único; o registro associa consumidor, loja receptora e operador responsável.
 - User 1:N ConsumerIdentificationToken; tokens expirados, revogados ou consumidos não podem ser reutilizados.
 - User 1:N PurchaseConfirmation; Store 1:N PurchaseConfirmation; cada confirmação referencia o operador responsável e as campanhas/regras avaliadas. Uma confirmação pode originar benefícios em campanhas diferentes.
 - O encaminhamento de reserva gera apenas um link de contato externo com contexto de Store/Product; não cria entidade transacional nem estado de reserva na plataforma.
 - SearchSignal alimenta agregações sem expor evento individual; DemandAggregate pode ser contextualizado por FieldSurvey/SurveyResult.
-- Acesso institucional consulta somente DemandAggregate e SurveyResult agregados, com AuditEntry.
+- Acesso institucional P2 consulta somente DemandAggregate e SurveyResult agregados, com AuditEntry. A trilha administrativa P0/P1 é transversal e restrita.
 
 ## Estados e transições
 
@@ -121,13 +121,16 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 22. Busca sem resultado é sinal de cobertura insuficiente na plataforma, não prova de inexistência da oferta no Centro.
 23. Pesquisas voluntárias apresentam método, amostra e limitações; amostras de conveniência não são representativas por padrão.
 
-## Decisões de modelagem em aberto
+## Decisões consolidadas e limites de implementação
 
-- Rota recorrente: RouteEdition/Occurrence no MVP ou período simples.
-- Check-in repetível por rota, parada ou ocorrência.
-- Duração exata do token temporário de **Meu QR** (referência inicial: até 60 segundos), sujeita a testes de usabilidade e segurança.
-- Place separado ou endereço embutido, conforme reuso real.
-- Campanhas/cupons e confirmação de compra P1 após estabilização do núcleo.
-- Definir política editorial e validação dos canais públicos de contato do estabelecimento.
+- Event possui ocorrências explícitas; não há expansão automática complexa de recorrência no primeiro release.
+- Place é reutilizável entre EventOccurrence e RouteStop.
+- Cada RouteParticipation representa uma execução; check-in é único por participação/parada.
+- QR de parada é estático, revogável e rotacionável atomicamente; fallback assistido exige operador autorizado.
+- Não criar DiscoveryRouteEdition no MVP.
+- Meu QR de compra mantém token temporário de referência até 60 segundos, sujeito a teste de usabilidade e segurança.
+- Campanhas do primeiro release são administradas centralmente.
+- Endereço estruturado e upload seguem limites da Spec 002.
+- Retenção de avaliações, denúncias e auditoria será formalizada antes da produção; não presumir prazo legal.
 
-Não criar todas as entidades de uma vez. Primeira spec deve detalhar Store/Product e Event; próxima DiscoveryRoute/RouteStop/Participation/CheckIn. Campanhas/cupons são detalhados na Spec 005; confirmação de compra tem spec própria (007). Links externos de contato não criam entidade de reserva na plataforma.
+Não criar todas as entidades de uma vez. Cada slice implementa somente o domínio necessário, conforme sua spec e tasks. Links externos de contato não criam entidade de reserva na plataforma.

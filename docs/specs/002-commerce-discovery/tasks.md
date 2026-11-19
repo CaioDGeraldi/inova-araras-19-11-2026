@@ -2,10 +2,6 @@
 
 ## Preparação
 - [ ] Confirmar dependência da fundação e do modelo de usuário da Spec 001.
-- [ ] Resolver campos obrigatórios finais do estabelecimento e validação de endereço.
-- [ ] Definir limites de quantidade, tipo e tamanho de imagens.
-- [ ] Definir política de cadastro espontâneo versus convite, mantendo estado pendente antes da aprovação.
-- [ ] Confirmar política de disponibilidade declarada e atualização do catálogo.
 
 ## Domínio e autorização
 - [ ] Implementar Category com estado ativo/inativo.
@@ -17,11 +13,15 @@
 - [ ] Impedir que estabelecimento pendente/rejeitado/suspenso apareça publicamente.
 
 ## Painel do proprietário
-- [ ] Implementar cadastro e edição de estabelecimento.
+- [ ] Implementar cadastro e edição de estabelecimento com nome público, categoria, endereço estruturado e canal público de contato.
+- [ ] Criar cadastro espontâneo em `pending_review`, sem publicação automática.
+- [ ] Validar CEP, logradouro, número, bairro, município e UF sem depender de API externa; complemento é opcional.
 - [ ] Implementar gerenciamento de categorias vinculadas.
 - [ ] Implementar cadastro, edição, publicação e arquivamento de produtos/serviços.
 - [ ] Implementar cadastro de WhatsApp público separado de contatos privados.
 - [ ] Implementar cadastro opcional de Instagram público.
+- [ ] Implementar upload com JPEG, PNG e WebP, limite de 5 MB por arquivo e até 5 imagens por estabelecimento e por produto/serviço.
+- [ ] Validar tipo real, dimensões e conteúdo dos arquivos no servidor.
 - [ ] Exibir estado de aprovação e orientação de correção ao responsável.
 
 ## Vitrine pública
@@ -45,7 +45,8 @@
 - [ ] Testar isolamento entre estabelecimentos de responsáveis diferentes.
 - [ ] Testar estados e visibilidade pública.
 - [ ] Testar busca e filtros com conteúdo não publicado.
-- [ ] Testar upload por tipo, conteúdo e tamanho.
+- [ ] Testar upload por tipo real, dimensões, conteúdo, tamanho e limites de quantidade.
+- [ ] Testar cadastro pendente e ausência de publicação antes da aprovação.
 - [ ] Testar CSRF, abuso e enumeração de recursos privados.
 - [ ] Testar links externos e ausência de dados pessoais na mensagem.
 - [ ] Verificar acessibilidade e responsividade dos fluxos públicos e privados.

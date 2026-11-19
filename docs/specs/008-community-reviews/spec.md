@@ -48,6 +48,18 @@ P1 do MVP. Pode ser removida do primeiro corte caso o tempo ameace a entrega da 
 8. Conteúdo que viola a política recebe medida proporcional; crítica legítima permanece publicada.
 
 ## Regras de domínio
+- Nota é inteira de 1 a 5 estrelas.
+- Comentário é opcional e limitado inicialmente a 1.000 caracteres; deve seguir a política da comunidade e não expor dados pessoais de terceiros.
+- Uma conta mantém uma avaliação ativa por alvo (estabelecimento ou ocorrência/experiência). Edição é versionada, sem criar avaliação duplicada.
+- Autor pode editar a própria avaliação. Exclusão lógica preserva trilha mínima, sujeita à política de retenção e aos direitos do titular.
+- Responsável principal pode editar ou remover a própria resposta oficial; alterações são auditáveis e não alteram a avaliação original.
+- Motivos de denúncia: spam/fraude, assédio/discriminação, conteúdo ilegal, exposição de dados pessoais, conflito de interesse e outro com justificativa curta.
+- Denúncias repetidas são limitadas e sujeitas a rate limit. Denúncia não oculta automaticamente o conteúdo.
+- Moderador decide manter, ocultar ou remover o conteúdo e registra motivo. Usuário afetado pode solicitar uma revisão uma vez pelo canal administrativo.
+- Identificação pública usa nome de exibição escolhido pelo usuário. Nome legal, telefone, e-mail e ID interno nunca são publicados.
+- Anonimato público preserva autoria interna restrita para moderação e obrigações operacionais.
+- Retenção, exclusão e anonimização seguem política de privacidade publicada e solicitações válidas dos titulares. Não presumir prazo legal; aprovar prazo operacional antes da produção.
+
 - RF-100: criar avaliação exige autenticação.
 - RF-101: o usuário escolhe exibição identificada ou anônima publicamente.
 - RF-102: autoria interna permanece vinculada à conta e acessível somente a perfis autorizados para moderação e obrigações operacionais.
@@ -81,6 +93,14 @@ A transição de estado deve registrar autor, instante e motivo. Os estados fina
 - Permitir acesso por teclado e leitor de tela; estados de moderação devem ser textuais, não apenas por cor.
 
 ## Critérios de aceitação
+- [ ] Nota é inteira de 1 a 5 estrelas; comentário opcional até 1.000 caracteres.
+- [ ] Há uma avaliação ativa por conta e alvo, com edição versionada e sem duplicidade.
+- [ ] Autor pode editar; exclusão lógica preserva trilha mínima.
+- [ ] Respostas oficiais podem ser editadas/removidas pelo responsável com auditoria, sem alterar a avaliação.
+- [ ] Denúncias usam motivos publicados, limite de repetição e rate limit; não ocultam conteúdo automaticamente.
+- [ ] Moderador decide manter, ocultar ou remover com motivo; usuário afetado pode solicitar uma revisão uma vez.
+- [ ] Identificação pública usa nome de exibição escolhido ou anonimato, nunca nome legal, telefone, e-mail ou ID interno.
+
 - [ ] Visitante consulta avaliações públicas sem login.
 - [ ] Usuário autenticado cria avaliação de estabelecimento ou experiência.
 - [ ] Usuário escolhe exibição identificada ou anônima publicamente.
@@ -96,13 +116,3 @@ A transição de estado deve registrar autor, instante e motivo. Os estados fina
 - [ ] Dados de autoria interna e denunciantes não aparecem publicamente.
 - [ ] Testes cobrem autorização, anonimato público, denúncia, moderação e preservação de críticas legítimas.
 
-## Decisões em aberto antes da implementação
-- Escala da nota e se comentário será opcional.
-- Limite de tamanho e política de conteúdo.
-- Uma avaliação por usuário/estabelecimento ou por experiência/ocorrência.
-- Política de edição e exclusão pelo autor.
-- Política de edição e exclusão de respostas pelo responsável.
-- Motivos de denúncia, limites de frequência e prevenção de abuso.
-- Critérios objetivos, prazo e mecanismo de contestação da moderação.
-- Política de retenção e atendimento a solicitações de titulares.
-- Forma de identificação pública permitida para avaliações identificadas.

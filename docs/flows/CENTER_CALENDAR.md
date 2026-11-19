@@ -210,6 +210,15 @@ Regras:
 - [ ] Falhas técnicas são diferenciadas de agenda sem resultados.
 - [ ] Navegação funciona em celular, teclado e leitor de tela.
 
+## Decisões consolidadas de modelagem
+
+- Atividades recorrentes são atividade principal com ocorrências individuais; cada ocorrência tem data, horário, local e estado próprios. Não há expansão automática complexa no primeiro release.
+- Categorias iniciais: gastronomia, cultura, comércio, lazer e comunidade/serviços.
+- Place é reutilizável entre Cronograma e Rotas de Descoberta.
+- Sugestões podem ser aprovadas para edição/publicação, rejeitadas ou devolvidas com orientação registrada. O autor pode corrigir e reenviar; aprovação não publica automaticamente.
+- Atividades salvas ficam em Perfil e não representam inscrição, reserva de vaga ou presença confirmada.
+- Não há inscrições, lotação ou notificações automáticas no MVP.
+
 ## Limites desta definição
 
 - Sem venda de ingressos, pagamentos ou inscrições completas.
@@ -217,4 +226,4 @@ Regras:
 - Sem notificações push ou lembretes.
 - Sem sincronização com calendários externos.
 - Sem integração presumida com mapas, transporte ou estacionamento.
-- Recorrência e ocorrências múltiplas dependem de decisão de modelagem registrada na Spec 003.
+- Não implementar recorrência automática complexa; ocorrências são cadastradas explicitamente.

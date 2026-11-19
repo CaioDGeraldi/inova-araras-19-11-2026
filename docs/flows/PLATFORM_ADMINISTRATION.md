@@ -215,10 +215,14 @@ Limites:
 - [ ] Falhas não são apresentadas como operações concluídas.
 - [ ] Inteligência institucional P2 não aparece como funcionalidade entregue no MVP.
 
-## Decisões operacionais pendentes
+## Decisões operacionais consolidadas
 
-- Processo seguro de provisionamento, recuperação e revogação de administradores.
-- Critérios objetivos e comunicação de rejeição/suspensão de estabelecimentos.
-- Política de retenção e acesso aos registros administrativos.
-- Política pública de comunidade que sustente decisões de moderação.
-- Quais indicadores operacionais P1 estarão disponíveis no primeiro release.
+- Administradores são provisionados por bootstrap de superusuário ou comando administrativo protegido. Cadastro público não concede privilégio.
+- Recuperação usa redefinição segura de credenciais; revogação desativa a conta e invalida sessões/tokens ativos.
+- Auditoria cobre provisionamento/revogação administrativa; decisões sobre estabelecimentos; publicação, edição relevante e cancelamento de atividades/rotas; operações de campanhas; confirmação/correção de compra e resgate; moderação/revisões; revogação/rotação QR.
+- Auditoria registra ator, recurso, ação, instante, resultado e motivo quando aplicável, sem segredos, tokens completos ou PII desnecessária.
+- Retenção, acesso restrito e descarte documentado serão formalizados na política de privacidade/segurança antes da produção.
+- Indicadores P1 incluem estabelecimentos por estado, atividades publicadas/canceladas, rotas e check-ins, campanhas, cupons e compras declaradas. Sempre informar período, unidade e fonte.
+- Consultas são somente leitura, com filtros por período e estabelecimento quando pertinente. Dados globais ficam restritos a administradores; responsáveis consultam somente a própria loja quando houver interface.
+- Correções preservam o evento original e criam evento compensatório vinculado, com motivo, operador e instante.
+- Não haverá impersonação nem acesso irrestrito a dados pessoais por conveniência.

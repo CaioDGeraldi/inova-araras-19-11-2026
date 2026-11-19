@@ -1,15 +1,14 @@
 # Tasks | Spec 008 - Comunidade e avaliações
 
 ## Decisões e preparação
-- [ ] Definir escala da nota, campos, limites de texto e forma de identificação pública.
-- [ ] Definir política de uma avaliação por usuário/estabelecimento ou por experiência.
-- [ ] Definir edição/exclusão de avaliações e respostas.
-- [ ] Definir motivos de denúncia, limites de frequência, estados e contestação.
-- [ ] Definir retenção de avaliações, denúncias e autoria interna.
-- [ ] Aprovar política de comunidade antes de habilitar publicação pública.
+- [ ] Formalizar política de retenção, exclusão e anonimização antes da produção, sem presumir prazo legal.
+- [ ] Publicar política da comunidade antes de habilitar avaliações públicas.
+- [ ] Usar somente nome de exibição escolhido pelo usuário na identificação pública; nunca nome legal, telefone, e-mail ou ID interno.
 
 ## Domínio e autorização
-- [ ] Modelar Review com alvo, autor interno, nota, conteúdo e estado.
+- [ ] Modelar Review com alvo, autor interno, nota inteira de 1 a 5, comentário opcional até 1.000 caracteres e estado.
+- [ ] Garantir uma avaliação ativa por conta/alvo e versionamento das edições.
+- [ ] Implementar exclusão lógica com trilha mínima e respeito à política de retenção/direitos do titular.
 - [ ] Modelar ReviewResponse vinculada à avaliação e ao estabelecimento.
 - [ ] Modelar Report com denunciante, alvo, motivo, estado e instante.
 - [ ] Modelar registro imutável/auditável de decisão de moderação.
@@ -21,13 +20,15 @@
 - [ ] Exibir avaliações e respostas públicas no detalhe do estabelecimento/experiência.
 - [ ] Implementar criação de avaliação autenticada.
 - [ ] Implementar escolha entre exibição identificada e anônima.
-- [ ] Implementar denúncia autenticada com motivos definidos.
+- [ ] Implementar denúncia autenticada para spam/fraude, assédio/discriminação, conteúdo ilegal, exposição de dados pessoais, conflito de interesse ou outro com justificativa.
+- [ ] Limitar denúncias repetidas e aplicar rate limit sem ocultação automática.
 - [ ] Exibir confirmação de denúncia sem remoção automática.
 - [ ] Implementar estados vazios, erros e conteúdo moderado.
 
 ## Experiência do estabelecimento
 - [ ] Exibir avaliações recebidas no painel do estabelecimento.
 - [ ] Permitir resposta oficial pelo responsável autorizado.
+- [ ] Permitir edição e remoção da resposta pelo responsável, com auditoria e sem alterar a avaliação original.
 - [ ] Impedir resposta ou alteração em estabelecimento de terceiro.
 - [ ] Preservar avaliação original e nota após resposta.
 
