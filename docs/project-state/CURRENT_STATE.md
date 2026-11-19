@@ -46,6 +46,12 @@ O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do
 
 Nenhum teste de aplicação foi executado por esta atualização documental. Não declarar fundação, banco, migrations, endpoints ou testes como validados.
 
+## Fluxos de navegação
+
+- Primeiro fluxo documentado: `docs/flows/CONSUMER_NAVIGATION.md`.
+- Define cinco destinos da navegação inferior, descoberta pública, acesso à Agenda, Rotas de Descoberta, Perfil e autenticação contextual.
+- Detalhamento do painel do proprietário e da demonstração integrada permanece pendente.
+
 ## Preparação da demonstração
 
 - Seed demonstrativo documentado; implementação do comando `python manage.py seed_demo` ainda pendente.
