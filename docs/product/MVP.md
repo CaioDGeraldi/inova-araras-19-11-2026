@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Entregar uma primeira versão demonstrável que conecte descoberta digital a experiências presenciais no Centro de Araras. O MVP deve provar uma jornada entre vitrine, cronograma e Circuito Vivo, com campanha simples como incentivo complementar.
+Entregar uma primeira versão demonstrável que conecte descoberta digital a experiências presenciais no Centro de Araras. O MVP deve provar uma jornada entre vitrine, cronograma e Rotas de Descoberta, com campanha simples como incentivo complementar.
 
 **Princípio de corte:** preservar a jornada presencial integrada; reduzir funcionalidades periféricas antes de comprometer segurança, acessibilidade ou integridade.
 
@@ -11,7 +11,7 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 ### Identidade e operação
 - Conta individual, autenticação e autorização.
 - Uma conta pode atuar como consumidor e responsável por estabelecimentos.
-- Administração aprova estabelecimentos, publica atividades e gerencia circuitos.
+- Administração aprova estabelecimentos, publica atividades e gerencia rotas.
 
 ### Vitrine Digital
 - Cadastro e edição de estabelecimento.
@@ -26,13 +26,13 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 - Listagem pública por data e detalhe da atividade.
 - Data, horário, local, descrição, categoria, organizador e condição gratuita/paga.
 - Indicação clara de cancelamento e necessidade de inscrição.
-- Atividade pode ser associada a estabelecimento ou circuito.
+- Atividade pode ser associada a estabelecimento ou rota.
 
-### Circuito Vivo
-- Administração cria circuito, define descrição, período e paradas.
+### Rotas de Descoberta
+- Administração cria rota, define descrição, período e paradas.
 - Paradas podem representar estabelecimento, atividade ou local.
 - Circuito define ordem sugerida e paradas obrigatórias/opcionais.
-- Visitante consulta circuito sem login.
+- Visitante consulta rota sem login.
 - Usuário autenticado inicia participação e registra check-in por QR Code.
 - Sistema controla duplicidade e apresenta progresso.
 - Regra de conclusão é explícita e testada.
@@ -40,14 +40,14 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 
 ### Demonstração integrada
 - Dados de demonstração identificados como tais.
-- Pelo menos um circuito com paradas reais ou claramente demonstrativas.
+- Pelo menos um rota com paradas reais ou claramente demonstrativas.
 - Pelo menos uma atividade publicada no cronograma.
 - Jornada de visitante parte da descoberta e chega ao check-in presencial.
 - Painel administrativo mantém o conteúdo.
 
 ## P0 condicionado à jornada comercial
 
-Solicitação de reserva/interesse pode entrar no P0 se necessária para demonstrar contato com a loja e confirmação de compra. Não é checkout nem reserva garantida. Se o tempo apertar, usar contato direto e preservar vitrine + cronograma + circuito.
+Solicitação de reserva/interesse pode entrar no P0 se necessária para demonstrar contato com a loja e confirmação de compra. Não é checkout nem reserva garantida. Se o tempo apertar, usar contato direto e preservar vitrine + cronograma + rota.
 
 Quando uma solicitação existir, o responsável pode registrar conclusão como compra. A operação deve ser autorizada, idempotente e auditável. Só gera benefício se houver campanha ativa com regra explícita.
 
@@ -59,11 +59,22 @@ Quando uma solicitação existir, o responsável pode registrar conclusão como 
 - Estabelecimentos sugerem atividades para aprovação administrativa.
 - Consumidor salva atividades.
 - Avaliações com anonimato público, denúncia e moderação básica.
-- Histórico de circuitos e participação.
+- Histórico de rotas e participação.
 - Filtros por proximidade sem rastreamento contínuo.
 - Métricas operacionais em painel simples.
 
 ## P2 | Evolução posterior
+
+### Inteligência comercial e planejamento institucional
+- Agregar buscas sem resultados por termo normalizado, categoria e período, sem histórico individual.
+- Diferenciar ausência de resultado, poucos resultados e indisponibilidade declarada.
+- Cruzar sinais de busca com cobertura do catálogo e categorias dos estabelecimentos.
+- Disponibilizar painel restrito com tendências agregadas, cobertura, metodologia, período e limitações.
+- Conduzir pesquisas voluntárias com consumidores e comerciantes para validar lacunas percebidas.
+- Gerar relatórios agregados para orientar campanhas de digitalização, capacitação e articulação institucional.
+- Aplicar limiar mínimo de grupo, supressão de células pequenas, controle de acesso, auditoria e retenção limitada.
+
+
 
 - Carteira de pontos, lotes, expiração, FEFO, estorno e regras configuráveis.
 - Inscrição completa, lista de presença e notificações de eventos.
@@ -74,6 +85,7 @@ Quando uma solicitação existir, o responsável pode registrar conclusão como 
 - Equipes/memberships por estabelecimento.
 - Integrações institucionais e dados em tempo real.
 - Analytics de impacto econômico com linha de base.
+- Inteligência comercial institucional conforme a spec 006, após validação de privacidade, metodologia e governança.
 - Aplicativo nativo.
 
 ## Fora do MVP
@@ -91,16 +103,17 @@ Quando uma solicitação existir, o responsável pode registrar conclusão como 
 
 ## Critérios globais de aceite
 
-- [ ] Visitante consulta lojas, produtos, atividades e circuitos sem login.
+- [ ] Visitante consulta lojas, produtos, atividades e rotas sem login.
 - [ ] Comerciante autorizado mantém estabelecimento e catálogo.
 - [ ] Administração publica e cancela atividades.
-- [ ] Administração cria circuito com diferentes tipos de parada.
-- [ ] Usuário autenticado inicia circuito e registra check-in.
+- [ ] Administração cria rota com diferentes tipos de parada.
+- [ ] Usuário autenticado inicia rota e registra check-in.
 - [ ] Check-in duplicado é tratado conforme regra da parada.
-- [ ] Progresso e conclusão correspondem às regras do circuito.
+- [ ] Progresso e conclusão correspondem às regras do rota.
 - [ ] Circuito não exige compra em todas as paradas.
 - [ ] QR Code não é apresentado como prova absoluta de presença.
 - [ ] Dados privados não aparecem em páginas públicas.
+- [ ] Indicadores institucionais, quando habilitados, exibem apenas agregações protegidas e não permitem consultar buscas ou respostas individuais.
 - [ ] Operações críticas possuem testes e auditoria.
 - [ ] Fluxos principais funcionam em celular e teclado.
 - [ ] Setup e execução são reproduzíveis conforme README.
@@ -108,7 +121,7 @@ Quando uma solicitação existir, o responsável pode registrar conclusão como 
 ## Critério de demonstrabilidade
 
 1. Consumidor descobre atividade no cronograma.
-2. Consulta circuito associado e suas paradas.
+2. Consulta rota associado e suas paradas.
 3. Encontra estabelecimentos e produtos participantes.
 4. Visita parada e registra check-in.
 5. Visualiza progresso e regra de conclusão.
