@@ -1,8 +1,8 @@
 from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.static import serve
 
 from apps.campaigns import views as campaigns
 from apps.core import views as core
@@ -41,4 +41,5 @@ urlpatterns = [
     path("painel/cupom/<str:code>/", campaigns.coupon_redeem, name="coupon_redeem"),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# shortcut: mídia servida pelo Django na demo, usar armazenamento externo em produção
+urlpatterns += [re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT})]
