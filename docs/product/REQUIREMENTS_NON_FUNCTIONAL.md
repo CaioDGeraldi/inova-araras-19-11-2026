@@ -38,6 +38,12 @@ Metas numéricas são objetivos iniciais de engenharia a medir em ambiente docum
 | RNF-032 | Reprodutibilidade | Instalação reproduzível com versões/dependências fixadas e uv.lock. |
 | RNF-033 | Backup | Antes de dados reais, definir backup e testar restauração conforme infraestrutura. |
 | RNF-034 | Conteúdo | Cancelamentos, validade, disponibilidade declarada e atualização do catálogo são claros. |
+| RNF-035 | Privacidade analítica | Eventos usados para inteligência comercial são minimizados e não formam histórico individual de consumo. |
+| RNF-036 | Privacidade analítica | Painéis e exportações aplicam agregação, limiar mínimo de grupo e supressão de células pequenas. |
+| RNF-037 | Governança | Acesso institucional exige finalidade, perfil autorizado, registro de auditoria e revisão periódica. |
+| RNF-038 | Transparência estatística | Indicadores e pesquisas exibem período, cobertura, tamanho de amostra, método e limitações relevantes. |
+
+A inteligência comercial deve ser testada contra tentativas de reidentificação por filtros sucessivos, grupos pequenos, exportações e comparação de períodos. Dados brutos devem ter retenção definida e acesso mais restrito que indicadores agregados.
 
 ## Verificação mínima
 
