@@ -1,26 +1,47 @@
 # Estado atual do projeto
 
-**Atualizado:** 18/11/2026, preparação documental.
+**Atualizado:** 18/11/2026, consolidação de produto e requisitos.
 
 ## Contexto
-Projeto para o 1º Inova Araras, 19/11/2026. Produto proposto: Vem pro Centro, dentro da iniciativa Centro em Movimento.
 
-## Repositório
+1º Inova Araras, 19/11/2026. Iniciativa: Centro em Movimento. Plataforma: Vem pro Centro. Desenvolvimento individual.
+
+## Repositório e PRs
+
 - Branch padrão: main.
 - Issue #3: fundação Django.
-- PR #4: fundação Django, aberto, não mergeado. Validar lockfile, setup, migrations, PostgreSQL, check, Ruff e pytest antes de assumir concluído.
-- PR documental de preparação: em andamento nesta branch.
+- PR #4: fundação Django, aberto e não mesclado segundo a última verificação registrada. Validar uv.lock, Python 3.12, migrations, PostgreSQL, Django check, Ruff e pytest antes de assumir concluído.
+- PR #5: preparação documental, branch 001/docs/project-readiness, alvo main. Esta atualização amplia o PR com baseline de produto, requisitos, domínio e plano de entrega.
+- Não foi feito merge de PR #4 ou #5 nesta etapa.
 
-## Concluído
-- Templates GitHub (PR anterior #2, segundo histórico da conversa).
-- Issue #3 e PR #4 criados.
-- Produto e premissas consolidados neste conjunto documental.
+## Documentação consolidada nesta branch
 
-## Pendências críticas
-- Revisar e validar fundação Django e PR #4.
-- Recuperar arquivo original do site de apresentação, caso não esteja no repositório.
-- Definir fluxo vertical e ordem de implementação após confirmação do desafio/escopo.
-- Confirmar decisões de cadastro, reserva e campanha que forem necessárias para o slice inicial.
+- PRD revisado: visão, atores, jornadas, Circuito Vivo, Cronograma, campanhas, privacidade e métricas.
+- MVP revisado: P0/P1/P2 e critérios de demonstrabilidade.
+- Requisitos funcionais identificados.
+- Requisitos não funcionais e metas verificáveis.
+- Modelo de domínio, relações, estados e invariantes.
+- Arquitetura e decisões revisadas.
+- Plano de entrega e riscos.
+- Guia SDD reforça que FractawProjects é o motor do workflow.
 
-## Próxima ação
-Auditar e finalizar a fundação Django antes de adicionar domínios; então selecionar e especificar o primeiro fluxo vertical do MVP.
+## Baseline de produto
+
+A jornada central é: descobrir → planejar → visitar → registrar participação → explorar/benefício → retornar.
+
+O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Circuito Vivo. Campanhas/cupons simples complementam a jornada. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
+
+## Pendências antes da implementação
+
+1. Revisar e validar PR #4 e a fundação técnica.
+2. Validar ordem final dos slices se o desafio exigir restrição de escopo diferente.
+3. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar dados fictícios como demonstração.
+4. Definir regra operacional de QR por parada/ocorrência e processo de rotação do código.
+5. Confirmar se cupons entram no primeiro slice ou após a jornada de circuito.
+6. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
+7. Definir política de privacidade, retenção e contato antes de dados reais.
+8. Criar specs e Issues por fatia vertical via FractawProjects, sem duplicar o workflow.
+
+## Validação
+
+Nenhum teste de aplicação foi executado por esta atualização documental. Não declarar fundação, banco, migrations, endpoints ou testes como validados.
