@@ -10,7 +10,7 @@ Metas numéricas são objetivos iniciais de engenharia a medir em ambiente docum
 | RNF-004 | Acessibilidade | Campos com labels; erros identificam problema e correção; semântica compatível com leitores de tela. |
 | RNF-005 | Acessibilidade | Zoom/reflow sem perda de função; respeitar prefers-reduced-motion. |
 | RNF-006 | Responsividade | Fluxos essenciais funcionam em celular, tablet e desktop sem rolagem horizontal indevida. |
-| RNF-007 | Usabilidade | Descoberta de lojas, atividades e circuitos funciona sem login. |
+| RNF-007 | Usabilidade | Descoberta de lojas, atividades e rotas funciona sem login. |
 | RNF-008 | Usabilidade | Formulários solicitam apenas dados necessários e apresentam erros próximos aos campos. |
 | RNF-009 | Desempenho | Meta inicial: LCP p75 até 2,5 s em páginas públicas sob perfil de teste documentado. |
 | RNF-010 | Desempenho | Meta inicial: INP p75 até 200 ms e CLS p75 até 0,1, quando mensuráveis. |
