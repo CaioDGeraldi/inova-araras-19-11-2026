@@ -3,7 +3,7 @@
 **Produto:** Vem pro Centro  
 **Iniciativa:** Centro em Movimento  
 **Prioridade:** P1 para campanhas e cupons simples; P2 para carteira de pontos.  
-**Referências:** PRD, MVP, requisitos funcionais RF-070 a RF-084 e RF-094 a RF-095, Modelo de Domínio, Spec 005 e fluxos de compra, Rotas de Descoberta e resgate de cupom.
+**Referências:** PRD, MVP, requisitos funcionais RF-070 a RF-084 e RF-094 a RF-099, Modelo de Domínio, Specs 005 e 007 e fluxos de compra, Rotas de Descoberta e resgate de cupom.
 
 ## Objetivo
 
@@ -269,9 +269,8 @@ Até essa decisão, não exibir saldo de pontos, conversão monetária ou promes
 
 1. **Autoria de campanhas por proprietários:** a Spec 005 mantém em aberto se essa capacidade entra no primeiro release. O fluxo assume administração centralizada no P1.
 2. **Política de cancelamento:** definir tratamento detalhado de cupons emitidos quando uma campanha for pausada ou cancelada, antes da implementação.
-3. **Confirmação de compra:** definir os campos mínimos e a referência idempotente do evento sem transformar o fluxo em PDV ou exigir dados pessoais desnecessários.
-4. **Financiamento compartilhado:** quando mais de uma parte assumir custos, definir como o acordo será representado e validado operacionalmente.
-5. **Pontos:** permanecem P2 e exigem desenho próprio antes de qualquer implementação.
+3. **Financiamento compartilhado:** quando mais de uma parte assumir custos, definir como o acordo será representado e validado operacionalmente.
+4. **Pontos:** permanecem P2 e exigem desenho próprio antes de qualquer implementação.
 
 Essas decisões não impedem documentar a jornada P1 de campanhas com cupons simples, desde que cada campanha demonstrativa tenha regra e financiador definidos.
 

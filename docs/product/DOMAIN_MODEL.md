@@ -116,10 +116,10 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 17. Compra confirmada não comprova pagamento: é declaração auditável do responsável, sem integração de caixa/PDV.
 18. QR de consumidor, QR de parada e QR de cupom têm finalidades e validações independentes.
 19. Cancelamentos e correções críticas deixam trilha de auditoria.
-14. Dados privados não podem ser inferidos por endpoints públicos.
-15. Indicadores institucionais não permitem reidentificar consumidores ou estabelecimentos por filtros, períodos ou grupos pequenos.
-16. Busca sem resultado é sinal de cobertura insuficiente na plataforma, não prova de inexistência da oferta no Centro.
-17. Pesquisas voluntárias apresentam método, amostra e limitações; amostras de conveniência não são representativas por padrão.
+20. Dados privados não podem ser inferidos por endpoints públicos.
+21. Indicadores institucionais não permitem reidentificar consumidores ou estabelecimentos por filtros, períodos ou grupos pequenos.
+22. Busca sem resultado é sinal de cobertura insuficiente na plataforma, não prova de inexistência da oferta no Centro.
+23. Pesquisas voluntárias apresentam método, amostra e limitações; amostras de conveniência não são representativas por padrão.
 
 ## Decisões de modelagem em aberto
 

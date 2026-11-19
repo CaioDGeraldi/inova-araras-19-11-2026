@@ -55,12 +55,14 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 
 - Campaign e Coupon.
 - Regras, elegibilidade, período e responsável pelo custo.
+- Meu QR temporário, opaco, rotativo e de uso único.
+- PurchaseConfirmation e confirmação explícita pelo responsável autenticado.
+- Avaliação de todas as campanhas elegíveis na mesma confirmação.
 - Emissão e resgate de cupom único.
-- Transação e idempotência.
-- Campanha associada a loja/rota.
-- Testes concorrentes e auditoria.
+- Transação, idempotência e unicidade de concessão por confirmação/campanha.
+- Testes concorrentes, autorização, auditoria e recuperação de falhas.
 
-**Saída:** benefício emitido por campanha e resgatado uma única vez em estabelecimento elegível.
+**Saída:** compra presencial registrada por declaração auditável do responsável; benefícios emitidos conforme campanhas elegíveis e resgatados uma única vez.
 
 ## Fase 5 — Pedido de reserva por contato externo e consolidação do piloto
 
@@ -128,18 +130,3 @@ Cada fase só é concluída com spec aprovada, implementação, testes executado
 - Ensaiar a narrativa nas duas perspectivas e registrar limitações do que ainda não estiver implementado.
 
 **Saída:** ambiente de demonstração reproduzível, sem dependência de dados reais ou operações manuais durante o pitch.
-
-
-### Confirmação de compra presencial (P1)
-
-- Implementar Meu QR como token temporário, aleatório, opaco, rotativo e de uso único, validado no servidor.
-- Disponibilizar no painel **Registrar compra**, com seleção explícita do estabelecimento, leitura do QR e conferência mínima da conta.
-- Exigir declaração explícita do responsável autenticado após a venda presencial; a leitura isolada não registra compra.
-- Solicitar valor total apenas quando uma regra de campanha exigir.
-- Registrar consumidor, loja, operador, instante, referência do token, chave de idempotência, campanhas/regras avaliadas e resultado.
-- Avaliar todas as campanhas elegíveis numa confirmação; emitir benefícios apenas após validação.
-- Proteger reenvio e concorrência sem bloquear compras legítimas distintas do mesmo consumidor na mesma loja.
-- Testar expiração, revogação, consumo único, replay, autorização, auditoria, falha de conexão e concessão duplicada.
-- Manter explícito que o QR identifica a conta, mas não comprova pagamento nem substitui PDV/caixa.
-
-**Saída:** compra presencial registrada por declaração auditável do responsável, com benefícios concedidos apenas conforme campanhas elegíveis.

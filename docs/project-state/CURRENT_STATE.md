@@ -43,10 +43,9 @@ O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do
 2. Validar ordem final dos slices se o desafio exigir restrição de escopo diferente.
 3. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar dados fictícios como demonstração.
 4. Definir regra operacional de QR por parada/ocorrência e processo de rotação do código.
-5. Confirmar se cupons entram no primeiro slice ou após a jornada de rota.
-6. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
-7. Definir política de privacidade, retenção e contato antes de dados reais.
-8. Revisar as specs 002–006 e gerar Issues por fatia vertical via FractawProjects, sem duplicar o workflow.
+5. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
+6. Definir política de privacidade, retenção e contato antes de dados reais.
+7. Revisar as specs 002–007 e gerar Issues por fatia vertical via FractawProjects, sem duplicar o workflow.
 
 ## Validação
 
