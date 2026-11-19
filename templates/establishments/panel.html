@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="h3">Painel</h1>
-<p>Para registrar uma compra ou resgatar um cupom, escaneie com a câmera do celular o QR que o cliente mostrar.</p>
+<div class="panel-head">
+    <i class="bi bi-shop" aria-hidden="true"></i>
+    <div>
+        <h1 class="h4 mb-0">Painel da loja</h1>
+        <p class="text-body-secondary small mb-0">Para registrar uma compra ou resgatar um cupom, escaneie com a câmera do celular o QR que o cliente mostrar.</p>
+    </div>
+</div>
 {% for establishment in establishments %}
-    <section class="mb-4">
-        <h2 class="h5">
-            {{ establishment.name }} <span class="badge text-bg-secondary">{{ establishment.get_status_display }}</span>
-        </h2>
+    <section class="panel-card surface">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <h2 class="h5 mb-0">{{ establishment.name }}</h2>
+            <span class="badge {% if establishment.status == 'aprovado' %}text-bg-success{% else %}text-bg-secondary{% endif %}">{{ establishment.get_status_display }}</span>
+        </div>
         {% if establishment.status != "aprovado" %}
             <p class="alert alert-warning" role="status">
                 {% if establishment.status == "pendente" %}Aguardando aprovação: a loja ainda não aparece para o público.
@@ -16,8 +22,8 @@
             </p>
         {% endif %}
         <p class="d-flex flex-wrap gap-2">
-            <a class="btn btn-outline-primary btn-sm" href="{% url 'establishment_edit' establishment.slug %}">Editar loja</a>
-            <a class="btn btn-primary btn-sm" href="{% url 'product_create' establishment.slug %}">Novo produto</a>
+            <a class="btn btn-outline-primary btn-sm" href="{% url 'establishment_edit' establishment.slug %}"><i class="bi bi-pencil" aria-hidden="true"></i>Editar loja</a>
+            <a class="btn btn-primary btn-sm" href="{% url 'product_create' establishment.slug %}"><i class="bi bi-plus-lg" aria-hidden="true"></i>Novo produto</a>
         </p>
         <ul class="list-group">
             {% for product in establishment.products.all %}
@@ -34,6 +40,6 @@
         </ul>
     </section>
 {% empty %}
-    <p>Nenhuma loja sob sua responsabilidade.</p>
+    <p class="surface p-3">Nenhuma loja sob sua responsabilidade.</p>
 {% endfor %}
 {% endblock %}

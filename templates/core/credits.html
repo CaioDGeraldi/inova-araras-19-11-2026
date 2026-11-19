@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 class="page-title">Créditos das fotos</h1>
+<p class="text-body-secondary">As fotos ilustrativas vêm do Wikimedia Commons, em licenças livres. Elas ilustram dados fictícios de demonstração e não mostram as lojas reais.</p>
+<ul class="credits-list list-unstyled d-grid gap-2">
+    {% for credit in credits %}
+        <li class="surface">
+            <img src="{% static 'img/demo/'|add:credit.image %}" alt="" loading="lazy">
+            <div>
+                <strong>{{ credit.used_for }}</strong>
+                <span class="d-block meta">Autor: {{ credit.author }} · Licença: {{ credit.license }}</span>
+                <a href="{{ credit.url }}" target="_blank" rel="noopener">Ver no Wikimedia Commons</a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

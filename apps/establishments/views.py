@@ -1,10 +1,13 @@
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 
+from apps.campaigns.models import Campaign
 from apps.discovery_routes.models import Route
 from apps.establishments.forms import EstablishmentForm, ProductForm
 from apps.establishments.models import Category, Establishment, Product
+from apps.events.models import Event
 
 
 def home(request):
@@ -17,12 +20,18 @@ def home(request):
         )
     if category.isdigit():
         establishments = establishments.filter(categories__id=category)
+    routes = Route.objects.filter(published=True).annotate(stop_count=Count("stops"))
     return render(
         request,
         "home.html",
         {
-            "establishments": establishments.distinct(),
-            "routes": Route.objects.filter(published=True),
+            "establishments": establishments.distinct().prefetch_related("categories"),
+            "routes": routes,
+            "active_route": next((route for route in routes if not route.period_error()), None),
+            "active_campaign": Campaign.objects.filter(
+                active=True, destination__status=Establishment.Status.APPROVED
+            ).select_related("origin", "destination").first(),
+            "events": Event.objects.filter(ends_at__gte=timezone.now())[:4],
             "categories": Category.objects.all(),
             "query": query,
             "category": category,

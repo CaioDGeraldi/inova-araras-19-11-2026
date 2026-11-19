@@ -1,0 +1,8 @@
+<article class="route-card">
+    {% include "establishments/_thumb.html" with image=route.image name=route.title %}
+    <div class="card-body-vpc">
+        <h3 class="card-title-vpc"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a></h3>
+        <span class="stop-count"><i class="bi bi-geo-alt" aria-hidden="true"></i>{{ route.stop_count }} parada{{ route.stop_count|pluralize }}</span>
+        {% if route.starts_on or route.ends_on %}<span class="meta"><i class="bi bi-calendar3" aria-hidden="true"></i>{% include "discovery_routes/_period.html" %}</span>{% endif %}
+    </div>
+</article>

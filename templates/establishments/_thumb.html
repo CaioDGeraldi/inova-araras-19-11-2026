@@ -1,5 +1,5 @@
 {% if image %}
-    <img class="thumb {{ size }}" src="{{ image.url }}" alt="{{ name }}">
+    <img class="card-photo {{ size }}" src="{{ image.url }}" alt="" loading="lazy">
 {% else %}
-    <div class="thumb thumb-placeholder {{ size }}" aria-hidden="true">{{ name|slice:":1"|upper }}</div>
+    <div class="card-photo photo-placeholder {{ size }}" aria-hidden="true">{{ name|slice:":1"|upper }}</div>
 {% endif %}

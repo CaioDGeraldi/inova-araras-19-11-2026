@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from django.shortcuts import get_object_or_404, redirect, render
 
 from apps.discovery_routes.models import Participation, Route, Stop
@@ -8,7 +9,9 @@ from apps.discovery_routes.models import Participation, Route, Stop
 
 def route_list(request):
     return render(
-        request, "discovery_routes/list.html", {"routes": Route.objects.filter(published=True)}
+        request,
+        "discovery_routes/list.html",
+        {"routes": Route.objects.filter(published=True).annotate(stop_count=Count("stops"))},
     )
 
 

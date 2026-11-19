@@ -1,37 +1,61 @@
 {% extends "base.html" %}
 
+{% block body_class %}{% if establishment.whatsapp_url %}has-sticky-cta{% endif %}{% endblock %}
+
 {% block content %}
-{% include "establishments/_thumb.html" with image=establishment.image name=establishment.name size="thumb-lg" %}
-<h1 class="h3 mt-3">{{ establishment.name }}</h1>
-{% if establishment.full_address %}
-    <p class="text-body-secondary">
-        {{ establishment.full_address }}
-        <br><a href="{{ establishment.directions_url }}" target="_blank" rel="noopener">Como chegar</a>
-    </p>
+<div class="cover">
+    {% include "establishments/_thumb.html" with image=establishment.image name=establishment.name %}
+</div>
+<section class="detail-card surface">
+    <h1>{{ establishment.name }}</h1>
+    <div class="d-flex flex-wrap gap-2 mb-3">
+        {% for item in establishment.categories.all %}
+            <span class="chip chip-static"><i class="bi bi-{% include 'establishments/_category_icon.html' with name=item.name %}" aria-hidden="true"></i>{{ item.name }}</span>
+        {% endfor %}
+    </div>
+    {% if establishment.full_address %}
+        <p class="address mb-3">
+            <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+            <span>{{ establishment.full_address }}</span>
+        </p>
+    {% endif %}
+    <div class="d-flex flex-wrap gap-2">
+        {% if establishment.full_address %}
+            <a class="btn btn-soft btn-sm" href="{{ establishment.directions_url }}" target="_blank" rel="noopener"><i class="bi bi-sign-turn-right" aria-hidden="true"></i>Como chegar</a>
+        {% endif %}
+        {% if establishment.instagram_url %}
+            <a class="btn btn-soft btn-sm" href="{{ establishment.instagram_url }}" target="_blank" rel="noopener"><i class="bi bi-instagram" aria-hidden="true"></i>Instagram</a>
+        {% endif %}
+    </div>
+    {% if establishment.description %}<p class="mt-3 mb-0">{{ establishment.description|linebreaksbr }}</p>{% endif %}
+</section>
+<section class="section" aria-labelledby="titulo-produtos">
+    <div class="section-head">
+        <h2 id="titulo-produtos">Produtos</h2>
+    </div>
+    {% with products=establishment.products.all %}
+        {% if products %}
+            <div class="product-grid">
+                {% for product in products %}
+                    <article class="product-card">
+                        {% include "establishments/_thumb.html" with image=product.image name=product.name %}
+                        <div class="card-body-vpc">
+                            <h3 class="card-title-vpc">{{ product.name }}</h3>
+                            {% if product.description %}<span class="meta">{{ product.description }}</span>{% endif %}
+                            {% if product.price %}<span class="price">R$ {{ product.price }}</span>{% else %}<span class="meta">Preço na loja</span>{% endif %}
+                            {% if not product.available %}<span class="badge text-bg-secondary">Indisponível</span>{% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="surface p-3 mb-0">Nenhum produto cadastrado.</p>
+        {% endif %}
+    {% endwith %}
+</section>
+{% if establishment.whatsapp_url %}
+    <div class="sticky-cta">
+        <a class="btn btn-whatsapp" href="{{ establishment.whatsapp_url }}" target="_blank" rel="noopener"><i class="bi bi-whatsapp" aria-hidden="true"></i>Reservar pelo WhatsApp</a>
+    </div>
 {% endif %}
-<p>{{ establishment.description|linebreaksbr }}</p>
-<p class="d-flex flex-wrap gap-2">
-    {% if establishment.whatsapp_url %}
-        <a class="btn btn-success" href="{{ establishment.whatsapp_url }}" target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
-    {% endif %}
-    {% if establishment.instagram_url %}
-        <a class="btn btn-outline-secondary" href="{{ establishment.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
-    {% endif %}
-</p>
-<h2 class="h5">Produtos</h2>
-<ul class="list-group">
-    {% for product in establishment.products.all %}
-        <li class="list-group-item d-flex align-items-center gap-3">
-            {% include "establishments/_thumb.html" with image=product.image name=product.name %}
-            <span class="flex-grow-1">
-                {{ product.name }}
-                {% if not product.available %}<span class="badge text-bg-secondary">Indisponível</span>{% endif %}
-                {% if product.description %}<br><small class="text-body-secondary">{{ product.description }}</small>{% endif %}
-            </span>
-            {% if product.price %}<span>R$ {{ product.price }}</span>{% endif %}
-        </li>
-    {% empty %}
-        <li class="list-group-item">Nenhum produto cadastrado.</li>
-    {% endfor %}
-</ul>
 {% endblock %}

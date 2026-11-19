@@ -18,6 +18,7 @@ urlpatterns = [
     path("sair/", auth_views.LogoutView.as_view(), name="logout"),
     path("cadastro/", core.signup, name="signup"),
     path("perfil/", core.profile, name="profile"),
+    path("creditos/", core.credits, name="credits"),
     path("lojas/<slug:slug>/", establishments.establishment_detail, name="establishment_detail"),
     path("rotas/", routes.route_list, name="route_list"),
     path("rotas/<slug:slug>/", routes.route_detail, name="route_detail"),
