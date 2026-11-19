@@ -9,7 +9,7 @@
     {{ event.starts_at|date:"d/m/Y H:i" }} a {{ event.ends_at|date:"d/m/Y H:i" }} · {{ event.location }}
 </p>
 <p>{{ event.description|linebreaksbr }}</p>
-<ul>
+<ul class="list-unstyled card card-body gap-1">
     {% if event.category %}<li>Categoria: {{ event.category }}</li>{% endif %}
     <li>Organizador: {{ event.organizer }}</li>
     <li>{% if event.free %}Gratuito{% else %}Pago{% endif %}</li>
