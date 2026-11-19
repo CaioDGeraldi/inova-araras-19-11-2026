@@ -45,9 +45,13 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 - Jornada de visitante parte da descoberta e chega ao check-in presencial.
 - Painel administrativo mantém o conteúdo.
 
-## Reservas e solicitações | P1
+## Reserva para retirada presencial | P1 do MVP
 
-Solicitação de interesse/reserva é P1 e não condiciona a demonstração do núcleo. Quando implementada, permite que o consumidor manifeste interesse e que o responsável aceite, recuse ou cancele. Não representa checkout, pagamento ou garantia de estoque. Até lá, a página do estabelecimento pode oferecer contato direto.
+A reserva integra o MVP após a estabilidade do núcleo de vitrine, cronograma e Rotas de Descoberta. O consumidor autenticado solicita a reserva de um produto publicado, informa quantidade e aguarda decisão do responsável. A solicitação pendente não garante nem separa o produto.
+
+O responsável aceita ou recusa. Ao aceitar, confirma a quantidade que será separada e define prazo de retirada. Pode marcar como pronta para retirada, confirmar a retirada presencial ou cancelar antes da retirada com justificativa. Reservas não retiradas expiram no prazo definido. O consumidor acompanha os estados pelo Perfil.
+
+A reserva não é compra, checkout ou garantia automática de estoque. O catálogo mantém disponibilidade declarada; o aceite representa o compromisso da loja de separar a quantidade confirmada até o prazo. Pagamento e conclusão da venda ocorrem presencialmente. Não há integração com PDV, baixa automática de estoque, entrega ou logística. A retirada e a compra são eventos distintos para fins de fidelidade.
 
 ## P1 | Após o núcleo estável
 
@@ -102,7 +106,10 @@ Solicitação de interesse/reserva é P1 e não condiciona a demonstração do n
 ## Critérios globais de aceite
 
 - [ ] Visitante consulta lojas, produtos, atividades e rotas sem login.
-- [ ] Comerciante autorizado mantém estabelecimento e catálogo.\n- [ ] Consumidor autenticado solicita reserva e acompanha a decisão da loja.\n- [ ] Responsável aceita/recusa, define prazo, marca como pronta e confirma retirada ou cancela com motivo.\n- [ ] Reservas não retiradas expiram e não são tratadas como compras.
+- [ ] Comerciante autorizado mantém estabelecimento e catálogo.
+- [ ] Consumidor autenticado solicita reserva e acompanha a decisão da loja.
+- [ ] Responsável aceita/recusa, define prazo, marca como pronta e confirma retirada ou cancela com motivo.
+- [ ] Reservas não retiradas expiram e não são tratadas como compras.
 - [ ] Administração publica e cancela atividades.
 - [ ] Administração cria rota com diferentes tipos de parada.
 - [ ] Usuário autenticado inicia rota e registra check-in.

@@ -185,7 +185,31 @@ Regras:
 - A página pública exibe a data de atualização do catálogo.
 - A pré-visualização não altera estado de publicação.
 
-## 7. Solicitações de reserva e retirada\n\n**Objetivo:** permitir que o responsável transforme uma solicitação digital em uma retirada presencial organizada, sem operar estoque integrado ou pagamento pela plataforma.\n\nNa área **Solicitações**, o responsável consulta solicitações pendentes e o histórico recente, identificando produto, quantidade solicitada, consumidor, data do pedido e prazo sugerido quando aplicável.\n\nFluxo:\n1. O responsável abre **Solicitações**.\n2. Analisa o produto, a quantidade e a disponibilidade real na loja.\n3. Aceita ou recusa a solicitação. A recusa exige uma justificativa curta apresentada ao consumidor.\n4. Ao aceitar, confirma a quantidade que será separada e define um prazo de retirada dentro dos limites operacionais configurados.\n5. Separa o produto e marca a reserva como **Pronta para retirada**.\n6. Na chegada do consumidor, confirma a retirada no painel.\n7. A venda e o pagamento acontecem diretamente no estabelecimento.\n\nRegras:\n- Solicitação pendente não separa nem garante produto.\n- A reserva só existe após aceite explícito do responsável.\n- O aceite representa o compromisso da loja de separar a quantidade confirmada até o prazo informado.\n- O responsável pode cancelar uma reserva aceita antes da retirada, informando motivo ao consumidor.\n- O prazo expirado encerra a reserva e libera a loja do compromisso de separação.\n- Confirmar retirada não equivale a confirmar pagamento ou compra para fins de fidelidade. A compra deve ser confirmada separadamente quando uma campanha exigir isso.\n- Não há integração com PDV, baixa automática de estoque, pagamento, entrega ou logística.\n\n## Estados alternativos e recuperação
+## 7. Solicitações de reserva e retirada
+
+**Objetivo:** permitir que o responsável transforme uma solicitação digital em uma retirada presencial organizada, sem operar estoque integrado ou pagamento pela plataforma.
+
+Na área **Solicitações**, o responsável consulta solicitações pendentes e o histórico recente, identificando produto, quantidade solicitada, consumidor, data do pedido e prazo sugerido quando aplicável.
+
+Fluxo:
+1. O responsável abre **Solicitações**.
+2. Analisa o produto, a quantidade e a disponibilidade real na loja.
+3. Aceita ou recusa a solicitação. A recusa exige uma justificativa curta apresentada ao consumidor.
+4. Ao aceitar, confirma a quantidade que será separada e define um prazo de retirada dentro dos limites operacionais configurados.
+5. Separa o produto e marca a reserva como **Pronta para retirada**.
+6. Na chegada do consumidor, confirma a retirada no painel.
+7. A venda e o pagamento acontecem diretamente no estabelecimento.
+
+Regras:
+- Solicitação pendente não separa nem garante produto.
+- A reserva só existe após aceite explícito do responsável.
+- O aceite representa o compromisso da loja de separar a quantidade confirmada até o prazo informado.
+- O responsável pode cancelar uma reserva aceita antes da retirada, informando motivo ao consumidor.
+- O prazo expirado encerra a reserva e libera a loja do compromisso de separação.
+- Confirmar retirada não equivale a confirmar pagamento ou compra para fins de fidelidade. A compra deve ser confirmada separadamente quando uma campanha exigir isso.
+- Não há integração com PDV, baixa automática de estoque, pagamento, entrega ou logística.
+
+## Estados alternativos e recuperação
 
 | Situação | Resposta da interface |
 |---|---|
@@ -233,7 +257,9 @@ Regras:
 - [ ] Responsável com múltiplas lojas escolhe explicitamente o estabelecimento ativo.
 - [ ] Responsável visualiza e edita somente estabelecimento associado à sua conta.
 - [ ] A autorização é verificada no servidor em todas as operações.
-- [ ] Responsável cria, edita, publica e arquiva produtos/serviços.\n- [ ] Responsável analisa, aceita ou recusa solicitações de reserva.\n- [ ] Responsável marca reservas aceitas como prontas, confirma retirada ou cancela com motivo.
+- [ ] Responsável cria, edita, publica e arquiva produtos/serviços.
+- [ ] Responsável analisa, aceita ou recusa solicitações de reserva.
+- [ ] Responsável marca reservas aceitas como prontas, confirma retirada ou cancela com motivo.
 - [ ] Produtos publicados aparecem na vitrine apenas quando a loja está aprovada e ativa.
 - [ ] Rascunhos e itens arquivados não aparecem publicamente.
 - [ ] Preço e disponibilidade são apresentados conforme declaração do responsável.

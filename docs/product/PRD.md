@@ -197,9 +197,13 @@ Taxa de 1 ponto por real e validade de 12 meses são parâmetros de piloto discu
 
 ## 14. Reservas e contato
 
-Solicitação de reserva/interesse é uma capacidade P1, posterior ao núcleo de descoberta e circulação. Não é checkout nem garantia de disponibilidade. A loja precisa confirmar ou recusar. Até sua implementação, o consumidor pode usar os canais públicos de contato. A confirmação de compra, quando aplicável a campanha, é ação posterior do responsável.
+Reserva de produto para retirada presencial integra o MVP como capacidade P1, implementada após a estabilidade do núcleo de vitrine, cronograma e Rotas de Descoberta. O consumidor autenticado solicita a reserva a partir do detalhe do produto, informa quantidade e envia a solicitação. O responsável da loja aceita ou recusa; a solicitação pendente não garante nem separa o produto.
 
-O MVP não processa pagamento, entrega ou logística. Se a janela apertar, manter contato direto e adiar solicitação sem comprometer vitrine, cronograma e Rotas de Descoberta.
+Ao aceitar, o responsável confirma a quantidade que será separada e informa o prazo de retirada. A reserva percorre os estados solicitada, aceita, pronta para retirada e retirada ou expirada. A loja pode cancelar antes da retirada, informando o motivo. O consumidor acompanha o estado e recebe instruções para comparecer ao estabelecimento.
+
+A disponibilidade do catálogo continua sendo declarada, não estoque integrado em tempo real. O aceite representa o compromisso operacional da loja de separar a quantidade confirmada até o prazo. Não há pagamento, checkout, entrega, integração com PDV ou baixa automática de estoque. A venda e o pagamento ocorrem presencialmente. A confirmação de retirada não equivale à confirmação de compra para fins de fidelidade; quando uma campanha depender de compra, o responsável confirma a compra separadamente.
+
+Se a janela de desenvolvimento apertar, priorizar solicitação, aceite/recusa e prazo de retirada; não remover as salvaguardas de confirmação explícita e expiração.
 
 ## 15. Comunidade e avaliações
 

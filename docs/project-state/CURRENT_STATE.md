@@ -31,7 +31,9 @@ A jornada central é: descobrir → planejar → visitar → registrar participa
 
 Rotas combinam descoberta temática, progresso e recompensas condicionadas a campanhas. Benefícios cruzados devem incentivar novas visitas a outros estabelecimentos; não há compra obrigatória em cada parada.
 
-A jornada comercial conecta descoberta digital, visita e compra presencial, com reserva simples para retirada como capacidade P1 do MVP. A plataforma não processa pagamentos nem opera estoque em tempo real.\n\nO núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Rotas de Descoberta. Campanhas/cupons simples complementam a jornada. Inteligência comercial, pesquisas de lacunas e painel institucional são evolução P2, sujeita a governança e validação de privacidade. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
+A jornada comercial conecta descoberta digital, visita e compra presencial, com reserva simples para retirada como capacidade P1 do MVP. A plataforma não processa pagamentos nem opera estoque em tempo real.
+
+O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Rotas de Descoberta. Campanhas/cupons simples complementam a jornada. Inteligência comercial, pesquisas de lacunas e painel institucional são evolução P2, sujeita a governança e validação de privacidade. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
 
 ## Pendências antes da implementação
 
@@ -51,7 +53,8 @@ Nenhum teste de aplicação foi executado por esta atualização documental. Nã
 ## Fluxos documentados
 
 1. `docs/flows/CONSUMER_NAVIGATION.md`: navegação principal do consumidor, cinco destinos, descoberta pública, Agenda, Rotas de Descoberta, Perfil e autenticação contextual.
-2. `docs/flows/COMMERCE_DISCOVERY.md`: busca e categorias, resultados, páginas públicas de estabelecimento e produto/serviço, contato, orientação de visita e entrada para reserva quando disponível.\n3. `docs/flows/CUSTOMER_TO_PURCHASE.md`: descoberta, avaliação, solicitação e confirmação de reserva, visita, retirada, compra presencial e fidelidade condicionada à confirmação da compra.
+2. `docs/flows/COMMERCE_DISCOVERY.md`: busca e categorias, resultados, páginas públicas de estabelecimento e produto/serviço, contato, orientação de visita e entrada para reserva quando disponível.
+3. `docs/flows/CUSTOMER_TO_PURCHASE.md`: descoberta, avaliação, solicitação e confirmação de reserva, visita, retirada, compra presencial e fidelidade condicionada à confirmação da compra.
 4. `docs/flows/DISCOVERY_ROUTES.md`: consulta de rotas, detalhe, autenticação contextual, participação, QR check-in, progresso, conclusão e recompensas condicionadas a campanhas elegíveis.
 5. `docs/flows/OWNER_PANEL.md`: entrada com a mesma conta, cadastro e seleção de estabelecimentos, aprovação, edição de informações, catálogo, pré-visualização e estados alternativos.
 
