@@ -1,7 +1,7 @@
 # Fluxo do consumidor: descoberta até compra
 
 **Produto:** Vem pro Centro  
-**Referências:** PRD, MVP e Spec 002 | Comércio e descoberta pública  
+**Referências:** PRD, MVP, Spec 002 | Comércio e descoberta pública e Spec 007 | Confirmação de compra presencial.  
 **Status:** definição funcional da jornada de compra presencial e pedido de reserva por canal externo.
 
 ## Objetivo
@@ -21,6 +21,7 @@ A solicitação de reserva acontece por conversa direta entre consumidor e estab
 - O prazo e as condições de retirada são combinados entre consumidor e loja na conversa.
 - Retirada e pagamento acontecem presencialmente.
 - Conversar sobre reserva não confirma uma compra para fins de fidelidade.
+- Benefício por compra exige confirmação explícita do responsável via Meu QR e campanha elegível; reserva, clique, visita ou check-in não substituem a confirmação.
 - O consumidor deve poder continuar explorando o Centro depois da compra.
 
 ## Visão geral
@@ -133,8 +134,10 @@ A conversa de reserva e a compra são eventos distintos.
 
 - A conversa de reserva não comprova que houve compra.
 - A retirada do produto não concede benefício automaticamente.
-- Se houver campanha que conceda benefício por compra, o responsável confirma a compra no fluxo específico da campanha, após a venda presencial.
-- O sistema verifica elegibilidade, período, limites e idempotência antes de conceder o benefício.
+- Se houver campanha que conceda benefício por compra, o consumidor apresenta **Meu QR** no estabelecimento após concluir a venda. O responsável seleciona a loja, escaneia o token temporário pelo painel, confere a conta e confirma explicitamente a compra.
+- O servidor registra a declaração do lojista de forma auditável e idempotente e avalia as campanhas elegíveis. Uma confirmação pode avaliar várias campanhas; o valor só é solicitado quando uma regra exigir.
+- O QR identifica a conta, mas não comprova pagamento. A plataforma não integra caixa/PDV e não exige CPF, documento ou comprovante por padrão.
+- QR de consumidor é distinto dos QR Codes de check-in de rota e de resgate de cupom. Ver `PURCHASE_CONFIRMATION.md`.
 - Benefícios cruzados podem incentivar o consumidor a visitar outro estabelecimento, conforme campanha ativa e responsável pelo custo.
 
 Depois da compra, a experiência pode apresentar campanhas, rotas, atividades e outros estabelecimentos para incentivar a continuidade da visita. Não deve sugerir que a pessoa precisa comprar em todas as paradas.
@@ -147,7 +150,7 @@ A reserva não pode ser uma etapa obrigatória.
 2. Consulta informações e endereço.
 3. Vai diretamente à loja.
 4. Realiza a compra no atendimento presencial.
-5. Se uma campanha permitir registrar compras espontâneas, o responsável confirma a compra pelo mecanismo previsto na campanha. Caso contrário, a compra não gera benefício automaticamente.
+5. Se uma campanha permitir registrar compras espontâneas, o consumidor apresenta Meu QR e o responsável confirma a compra pelo mecanismo definido em `PURCHASE_CONFIRMATION.md`. Caso contrário, a compra não gera benefício automaticamente.
 
 A compra espontânea não depende de solicitação prévia nem de checkout na plataforma.
 

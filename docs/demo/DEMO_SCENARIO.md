@@ -71,3 +71,17 @@ Comando esperado: `python manage.py seed_demo`.
 - Integrações externas, pagamentos ou estoque em tempo real.
 - Garantia de que toda funcionalidade planejada estará implementada no dia do pitch.
 - Execução automática do seed em ambientes de produção.
+
+
+## Demonstração de compra presencial confirmada
+
+Quando a campanha demonstrativa estiver configurada com regra, período, lojas, limites e responsável pelo custo, o roteiro inclui:
+
+1. Consumidor demonstrativo autenticado abre **Perfil → Meu QR** e apresenta o código temporário.
+2. Proprietário seleciona a loja e abre **Registrar compra** no painel.
+3. Escaneia o QR e confere a identificação mínima da conta. A leitura não registra compra.
+4. Declara explicitamente que a venda fictícia foi concluída.
+5. O servidor avalia as campanhas elegíveis e apresenta o resultado após confirmar a transação.
+6. A demonstração deixa explícito que o QR identifica a conta e que a confirmação é declaração do lojista, não comprovante de pagamento.
+
+Não utilizar QR, conta, contato ou transação de consumidor real no seed demonstrativo.

@@ -139,3 +139,14 @@ A barra deve manter posição, ordem, ícones reconhecíveis e rótulos visívei
 - Alvos interativos atendem ao mínimo WCAG 2.2 AA e devem ser ampliados quando possível para uso móvel.
 - A barra fixa não pode encobrir conteúdo, controles, avisos ou foco de teclado; considerar safe areas dos dispositivos.
 - Respeitar `prefers-reduced-motion`.
+
+
+## Registro de compra presencial e Meu QR
+
+A confirmação de compra é uma operação de domínio separada de reserva, check-in de rota e resgate de cupom. **Meu QR** representa um token temporário, aleatório, opaco, rotativo e de uso único, associado a uma conta autenticada. O servidor valida expiração, revogação e consumo; o QR não contém dados pessoais.
+
+O responsável principal autenticado seleciona uma loja sob sua responsabilidade, escaneia o QR, confere a conta e confirma explicitamente a venda presencial concluída. Ler o código não registra compra. A operação registra consumidor, loja, operador, instante, token referenciado, chave de idempotência, valor total apenas quando exigido por regra, campanhas/regras avaliadas e resultado.
+
+A confirmação e as concessões elegíveis devem ser consistentes e idempotentes. A mesma requisição não duplica a operação; compras distintas legítimas do mesmo consumidor na mesma loja continuam permitidas. A emissão de benefício deve ser única por confirmação e campanha/regra.
+
+Sem integração com caixa, PDV ou sistema fiscal, a confirmação é declaração auditável do responsável e não prova de pagamento. O QR de consumidor não substitui QR de parada nem QR de cupom. O fluxo completo está em `docs/flows/PURCHASE_CONFIRMATION.md` e `docs/specs/007-purchase-confirmation/spec.md`.

@@ -201,7 +201,15 @@ A validação inicial é somente consulta e não consome o cupom. Depois de apli
 
 O consumidor vê o estado atualizado somente após confirmação do servidor. Captura de tela ou aparência visual do cupom não substitui a consulta online pelo painel. O código é uma credencial de uso único e pode ser compartilhado; a validação online e a associação à conta reduzem riscos, mas não provam a identidade física de quem o apresenta. Benefícios de alto valor podem exigir verificação adicional definida pela campanha, sem solicitar documento ou dado sensível por padrão.
 
-Se a concessão depender de compra, a compra deve ser confirmada pelo responsável em um fluxo próprio da campanha. A confirmação é idempotente e auditável. A conversa de reserva, por si só, não comprova compra nem gera benefício.
+### Confirmação de compra presencial
+
+Quando uma campanha usar compra como condição de elegibilidade, o consumidor autenticado apresenta **Meu QR**, um QR Code individual temporário, opaco e rotativo, sem dados pessoais. O responsável principal autenticado seleciona a loja, escaneia o código no painel e, após conferir a conta, declara explicitamente que a venda presencial foi concluída. A leitura apenas identifica a conta; não confirma a compra.
+
+O servidor registra a confirmação e avalia as campanhas de compra ativas e elegíveis para aquela loja. Uma única confirmação pode avaliar mais de uma campanha. O valor total só é solicitado quando alguma regra ativa exigir, como um valor mínimo. O benefício é emitido somente após confirmação explícita e validação server-side. Compras espontâneas também podem ser registradas, sem reserva prévia.
+
+A operação registra consumidor, loja, responsável autenticado, instante, regras avaliadas, resultado e chave de idempotência. Repetir a mesma requisição não duplica a compra nem a concessão. O QR é credencial de identificação, não comprovante de pagamento: sem integração com PDV, caixa ou documento fiscal, a plataforma registra a declaração do lojista e não comprova que o pagamento ocorreu. Não exigir CPF, documento, telefone, e-mail ou comprovante por padrão.
+
+O QR de identificação do consumidor é independente do QR de parada das Rotas de Descoberta e do QR de cupom. Cada mecanismo possui finalidade e validação próprias. O fluxo completo está em `docs/flows/PURCHASE_CONFIRMATION.md` e sua especificação em `docs/specs/007-purchase-confirmation/spec.md`.
 
 Taxa de 1 ponto por real e validade de 12 meses são parâmetros de piloto discutidos anteriormente, não regras aprovadas nem hardcoded. Só entram em vigor após validação comercial e definição de financiamento.
 

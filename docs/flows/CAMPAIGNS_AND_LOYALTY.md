@@ -295,3 +295,12 @@ Essas decisões não impedem documentar a jornada P1 de campanhas com cupons sim
 - [ ] Falhas técnicas não são apresentadas como sucesso.
 - [ ] Histórico e auditoria permitem rastrear campanha, regra, origem, consumidor, receptor, operador e instante.
 - [ ] O P1 não introduz carteira de pontos, conversão monetária, cashback ou FEFO.
+
+
+## Confirmação de compra por Meu QR
+
+A condição de compra utiliza o fluxo independente definido em `PURCHASE_CONFIRMATION.md` e na Spec 007. Após concluir a venda presencial, o consumidor autenticado apresenta **Meu QR**, token temporário, opaco, rotativo e sem dados pessoais. O responsável principal autenticado seleciona a loja, escaneia o código, confere a conta e declara explicitamente a compra concluída. A leitura isolada não registra venda.
+
+O servidor registra consumidor, estabelecimento, operador, instante, referência do token, chave de idempotência, campanhas/regras avaliadas e resultado. Uma confirmação pode avaliar todas as campanhas de compra elegíveis para a loja; o valor total só é solicitado quando uma regra exigir. Benefícios só são emitidos após a declaração e validação server-side. Compras espontâneas são aceitas sem reserva prévia.
+
+Meu QR identifica a conta, mas não comprova pagamento. A plataforma não integra caixa, PDV ou sistema fiscal, não exige CPF/documento/comprovante por padrão e não promete antifraude absoluto. QR de consumidor, QR de rota e QR de cupom têm finalidades independentes.

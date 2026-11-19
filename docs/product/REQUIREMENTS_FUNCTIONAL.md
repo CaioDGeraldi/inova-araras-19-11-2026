@@ -108,8 +108,12 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | RF-091 | P0 | Responsável pode cadastrar e atualizar o número público de WhatsApp que receberá os contatos da loja. |
 | RF-092 | P1 | A mensagem preparada apresenta loja, produto, quantidade e link público; o consumidor precisa revisar e enviar manualmente. A plataforma não registra envio, resposta ou confirmação da reserva. |
 | RF-093 | P1 | Responsável pode cadastrar um perfil público de Instagram como canal alternativo; a plataforma abre o perfil/Direct e disponibiliza mensagem para cópia, sem presumir pré-preenchimento. |
-| RF-094 | P1 | Responsável autorizado pode confirmar compra concluída em fluxo próprio de campanha, independentemente da existência de conversa ou pedido de reserva na plataforma. |
-| RF-095 | P1 | Confirmação de compra é autorizada, idempotente e auditável; só gera benefício quando houver campanha elegível. |
+| RF-094 | P1 | Responsável principal autenticado seleciona um estabelecimento sob sua responsabilidade, lê o QR temporário de identificação apresentado pelo consumidor e associa a conta à operação; a leitura não confirma a compra. |
+| RF-095 | P1 | Após a venda presencial, o responsável confirma explicitamente a compra concluída; o servidor valida token, autorização, loja, campanhas, período, limites e elegibilidade, registra a operação de forma auditável e idempotente e só emite benefícios elegíveis. |
+| RF-096 | P1 | Consumidor autenticado pode gerar e apresentar **Meu QR**, token temporário, opaco, rotativo e sem dados pessoais; token expirado, revogado ou consumido é recusado. |
+| RF-097 | P1 | Uma confirmação pode avaliar todas as campanhas de compra ativas e elegíveis para a loja; o valor total só é solicitado quando uma regra exigir. |
+| RF-098 | P1 | A mesma requisição não duplica confirmação ou benefício; compras legítimas distintas não podem ser bloqueadas apenas por compartilharem consumidor e estabelecimento. |
+| RF-099 | P1 | Confirmação de compra é declaração do responsável, não prova de pagamento ou integração com PDV; QR de consumidor, QR de rota e QR de cupom são mecanismos distintos. |
 
 ## H. Comunidade
 

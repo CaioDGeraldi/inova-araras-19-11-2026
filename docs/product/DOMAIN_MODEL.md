@@ -23,6 +23,8 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Product:** produto ou serviço de Store. Preço e disponibilidade são declarados; imagem opcional; catálogo guarda data de atualização.
 
+**ConsumerIdentificationToken:** token temporário, aleatório, opaco e rotativo, emitido para uma conta autenticada e representado visualmente por **Meu QR**. Guarda hash/representação segura, usuário, instante de emissão, expiração e instante de consumo/revogação. Não contém dados pessoais nem substitui o identificador interno da conta.
+
 **Place:** local físico de atividade ou parada que não seja necessariamente loja, como praça ou espaço cultural. Não duplicar se Store já representar o local.
 
 **Event:** atividade programada, com organizador, local, início, término opcional, categoria, estado, gratuidade/preço e indicação de inscrição. Pode relacionar-se a Store e DiscoveryRoute.
@@ -40,6 +42,8 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 **Coupon:** benefício emitido conforme Campaign, com identificador opaco, não previsível e de uso único, destinatário individual, validade e estado. Código textual e QR Code são representações do mesmo identificador; QR não contém dados pessoais.
 
 **CouponRedemption:** registro histórico imutável de resgate, com cupom, consumidor, campanha/regra aplicada, estabelecimento receptor, instante e operador autenticado. A validação preliminar não cria resgate nem altera o estado do cupom.
+
+**PurchaseConfirmation:** registro transacional e auditável de uma compra presencial declarada como concluída pelo responsável autenticado. Referencia consumidor, estabelecimento, operador, instante, chave de idempotência, token de identificação consumido, valor total opcional e campanhas/regras avaliadas com seus resultados. Não representa pagamento processado ou comprovado pela plataforma.
 
 **Review / Report (P1):** opinião de consumidor e denúncia/moderação. Anonimato apenas na apresentação pública; autoria permanece vinculada internamente.
 
@@ -65,6 +69,8 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 - RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop.
 - Campaign N:M Store; Campaign 1:N Coupon.
 - Coupon 0..1 CouponRedemption para cupons de uso único; o registro associa consumidor, loja receptora e operador responsável.
+- User 1:N ConsumerIdentificationToken; tokens expirados, revogados ou consumidos não podem ser reutilizados.
+- User 1:N PurchaseConfirmation; Store 1:N PurchaseConfirmation; cada confirmação referencia o operador responsável e as campanhas/regras avaliadas. Uma confirmação pode originar benefícios em campanhas diferentes.
 - O encaminhamento de reserva gera apenas um link de contato externo com contexto de Store/Product; não cria entidade transacional nem estado de reserva na plataforma.
 - SearchSignal alimenta agregações sem expor evento individual; DemandAggregate pode ser contextualizado por FieldSurvey/SurveyResult.
 - Acesso institucional consulta somente DemandAggregate e SurveyResult agregados, com AuditEntry.
@@ -85,6 +91,10 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Coupon:** issued → redeemed, expired ou cancelled. Cupom resgatado não volta a issued sem operação compensatória auditada.
 
+**ConsumerIdentificationToken:** active → consumed, expired ou revoked. Um token consumido não volta a active.
+
+**PurchaseConfirmation:** pending_review → confirmed ou rejected; a confirmação final é imutável e correções são registradas por eventos administrativos auditados. A persistência de estado intermediário é detalhe de implementação.
+
 ## Invariantes
 
 1. User representa pessoa, não papel.
@@ -100,8 +110,12 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 11. CouponRedemption é atômico conforme política do cupom; validação preliminar não consome o benefício.
 12. Apenas responsável autenticado pela loja receptora ou admin autorizado pode confirmar o resgate.
 13. Um cupom de uso único possui no máximo um CouponRedemption; tentativas concorrentes não podem duplicá-lo.
-12. Compra confirmada não gera benefício duplicado.
-13. Cancelamentos e correções críticas deixam trilha de auditoria.
+14. A confirmação de compra exige token válido e autorização do responsável da loja; a leitura do QR isoladamente não confirma venda.
+15. Uma mesma chave de idempotência identifica uma única operação técnica; compras distintas legítimas não podem ser bloqueadas apenas por coincidirem consumidor e loja.
+16. A emissão de benefício é única por confirmação e campanha/regra, mesmo quando uma confirmação avalia várias campanhas.
+17. Compra confirmada não comprova pagamento: é declaração auditável do responsável, sem integração de caixa/PDV.
+18. QR de consumidor, QR de parada e QR de cupom têm finalidades e validações independentes.
+19. Cancelamentos e correções críticas deixam trilha de auditoria.
 14. Dados privados não podem ser inferidos por endpoints públicos.
 15. Indicadores institucionais não permitem reidentificar consumidores ou estabelecimentos por filtros, períodos ou grupos pequenos.
 16. Busca sem resultado é sinal de cobertura insuficiente na plataforma, não prova de inexistência da oferta no Centro.
@@ -111,9 +125,9 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 - Rota recorrente: RouteEdition/Occurrence no MVP ou período simples.
 - Check-in repetível por rota, parada ou ocorrência.
-- Token QR estático rotacionável ou token curto, conforme operação e ameaça de compartilhamento.
+- Duração exata do token temporário de **Meu QR** (referência inicial: até 60 segundos), sujeita a testes de usabilidade e segurança.
 - Place separado ou endereço embutido, conforme reuso real.
-- Campanha/cupons P1: confirmar após núcleo.
+- Campanhas/cupons e confirmação de compra P1 após estabilização do núcleo.
 - Definir política editorial e validação dos canais públicos de contato do estabelecimento.
 
-Não criar todas as entidades de uma vez. Primeira spec deve detalhar Store/Product e Event; próxima DiscoveryRoute/RouteStop/Participation/CheckIn. Campanhas e confirmação de compra entram em specs independentes. Links externos de contato não criam entidade de reserva na plataforma.
+Não criar todas as entidades de uma vez. Primeira spec deve detalhar Store/Product e Event; próxima DiscoveryRoute/RouteStop/Participation/CheckIn. Campanhas/cupons são detalhados na Spec 005; confirmação de compra tem spec própria (007). Links externos de contato não criam entidade de reserva na plataforma.

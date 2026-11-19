@@ -52,6 +52,10 @@ flowchart TD
     U --> V[Página pública atualizada]
     W --> X[Salvar WhatsApp e Instagram públicos]
     X --> Y[Pré-visualizar contatos na vitrine]
+    J --> Z[Registrar compra presencial]
+    Z --> ZA[Escanear Meu QR e conferir consumidor]
+    ZA --> ZB[Confirmar compra concluída]
+    ZB --> ZC[Servidor registra e avalia campanhas elegíveis]
 ```
 
 ## 1. Entrada no painel
@@ -240,6 +244,33 @@ Regras:
 - Correções e compensações exigem operação administrativa auditada.
 - Não criar usuários de equipe ou permissões granulares no MVP.
 
+## 9. Registro de compra presencial
+
+**Objetivo:** permitir que o responsável associe uma venda concluída à conta do consumidor e acione campanhas de compra elegíveis, sem depender de reserva prévia ou integração com caixa.
+
+Fluxo:
+1. O responsável seleciona o estabelecimento que está administrando.
+2. Abre **Registrar compra** no painel.
+3. O consumidor abre **Perfil → Meu QR** e apresenta o token temporário.
+4. O responsável escaneia o código; o servidor valida validade, uso e associação à conta.
+5. O painel mostra apenas identificação mínima para conferência. A leitura não confirma a compra.
+6. O responsável declara explicitamente que a venda presencial foi concluída.
+7. O painel solicita somente dados exigidos por campanhas aplicáveis, como valor total quando houver valor mínimo.
+8. O servidor valida autorização, estabelecimento, token, período, regras, limites e idempotência; registra a confirmação e emite benefícios elegíveis atomicamente.
+9. O painel mostra o resultado somente após confirmação do servidor.
+
+Regras:
+- Compra espontânea pode ser registrada; reserva prévia não é necessária.
+- Meu QR é temporário, opaco, rotativo e não contém dados pessoais. Token expirado, revogado ou consumido é recusado.
+- QR identifica a conta, não comprova pagamento. A confirmação é declaração do responsável autenticado, sem integração com PDV, caixa ou sistema fiscal.
+- Uma confirmação pode avaliar mais de uma campanha elegível; a mesma requisição não duplica compra ou benefício.
+- Compras legítimas distintas do mesmo consumidor na mesma loja não podem ser bloqueadas apenas pela combinação consumidor/loja.
+- O painel não solicita CPF, documento, telefone, e-mail, dados de cartão ou comprovante por padrão.
+- Correções são auditadas; não apagar ou alterar silenciosamente a confirmação original.
+- O QR de consumidor é distinto do QR de rota e do QR de cupom.
+
+O fluxo detalhado e os critérios de segurança estão em `PURCHASE_CONFIRMATION.md` e na Spec 007.
+
 ## Estados alternativos e recuperação
 
 | Situação | Resposta da interface |
@@ -268,6 +299,8 @@ Regras:
 - Uploads devem validar tipo, conteúdo e tamanho.
 - Operações administrativas de aprovação/suspensão não pertencem ao painel do proprietário.
 - Ações sensíveis devem preservar histórico/auditoria conforme a spec.
+- Confirmar compra exige declaração explícita após conferência; escanear Meu QR não confirma venda.
+- Idempotência evita repetição técnica, mas não prova pagamento nem detecta toda duplicidade de venda real.
 
 ## Limites desta definição
 
@@ -298,5 +331,8 @@ Regras:
 - [ ] Preço e disponibilidade são apresentados conforme declaração do responsável.
 - [ ] Pré-visualização não publica conteúdo nem altera estados.
 - [ ] Dados privados não aparecem em respostas públicas.
+- [ ] Responsável consegue registrar compra presencial por Meu QR, com confirmação explícita.
+- [ ] Token inválido, expirado ou consumido é recusado; a mesma operação não duplica benefícios.
+- [ ] QR de consumidor, QR de rota e QR de cupom têm finalidades distintas.
 - [ ] Erros e falhas preservam dados preenchidos e não afirmam sucesso indevido.
 - [ ] O fluxo funciona em celular, teclado e leitor de tela.

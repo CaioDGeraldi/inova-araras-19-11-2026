@@ -70,3 +70,12 @@ Próximos fluxos previstos:
 - Dados do seed devem ser fictícios, determinísticos, identificáveis como demonstração e isolados de dados reais.
 - Demonstração prevista em duas perspectivas: consumidor e proprietário de estabelecimento.
 - Os fluxos detalhados de navegação são definições funcionais, não protótipos nem implementação de telas.
+
+
+## Decisão funcional sincronizada: confirmação de compra
+
+A confirmação de compra presencial por Meu QR integra o P1 do MVP junto às campanhas e cupons simples. O consumidor autenticado apresenta token temporário, opaco, rotativo e sem dados pessoais. O responsável principal da loja escaneia, confere a conta e declara explicitamente a venda concluída. A leitura isolada não confirma compra.
+
+O servidor registra a operação de forma auditável e idempotente, avalia campanhas ativas e elegíveis para a loja e emite benefícios somente após validação. Uma confirmação pode avaliar várias campanhas; o valor total só é solicitado quando uma regra exigir. Compras espontâneas são aceitas. QR identifica conta, não comprova pagamento. Não há integração com caixa/PDV/fiscal e não se exigem documentos ou comprovantes por padrão.
+
+Documentos relacionados: `docs/flows/PURCHASE_CONFIRMATION.md`, `docs/specs/007-purchase-confirmation/spec.md`, PRD, MVP, requisitos RF-094 a RF-099, modelo de domínio, Spec 005, fluxos de compra, painel e campanhas.

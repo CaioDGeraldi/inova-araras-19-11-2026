@@ -42,6 +42,9 @@ Metas numéricas são objetivos iniciais de engenharia a medir em ambiente docum
 | RNF-036 | Privacidade analítica | Painéis e exportações aplicam agregação, limiar mínimo de grupo e supressão de células pequenas. |
 | RNF-037 | Governança | Acesso institucional exige finalidade, perfil autorizado, registro de auditoria e revisão periódica. |
 | RNF-038 | Transparência estatística | Indicadores e pesquisas exibem período, cobertura, tamanho de amostra, método e limitações relevantes. |
+| RNF-039 | Segurança | QR de identificação do consumidor usa token aleatório, opaco, temporário, rotativo e de uso único; validação, expiração, revogação e consumo ocorrem no servidor. |
+| RNF-040 | Privacidade | O QR de identificação não contém dados pessoais; o painel exibe somente identificação mínima e não registra segredo do token em logs. |
+| RNF-041 | Integridade | Confirmação de compra e emissão de benefício são atômicas ou recuperáveis por chave de idempotência, sem bloquear compras legítimas distintas do mesmo consumidor na mesma loja.
 
 A inteligência comercial deve ser testada contra tentativas de reidentificação por filtros sucessivos, grupos pequenos, exportações e comparação de períodos. Dados brutos devem ter retenção definida e acesso mais restrito que indicadores agregados.
 
@@ -52,6 +55,7 @@ A inteligência comercial deve ser testada contra tentativas de reidentificaçã
 - Medição de Core Web Vitals em perfil documentado.
 - Testes de autorização horizontal/vertical e acesso a objetos de terceiros.
 - Testes concorrentes para check-in, resgate e confirmação de compra.
+- Testes de token temporário: expiração, revogação, consumo único, replay, limitação de tentativas e ausência de dados pessoais.
 - Verificação de uploads e segredos.
 - Teste de restauração de backup antes de produção com dados reais.
 

@@ -10,7 +10,7 @@ Permitir campanhas com regras e responsável definidos, emissão de cupons eleg�
 
 ## Requisitos relacionados
 
-RF-070 a RF-079, RF-082 a RF-084; RF-094 a RF-095 quando compra confirmada for fonte de elegibilidade; RNF-013 a RNF-025, RNF-028, RNF-029.
+RF-070 a RF-079, RF-082 a RF-084; RF-094 a RF-099 quando compra confirmada for fonte de elegibilidade; RNF-013 a RNF-025, RNF-028, RNF-029, RNF-039 a RNF-041. A mecânica de identificação e confirmação da compra é especificada em `docs/specs/007-purchase-confirmation/spec.md`.
 
 ## Atores e permissões
 
@@ -28,6 +28,7 @@ RF-070 a RF-079, RF-082 a RF-084; RF-094 a RF-095 quando compra confirmada for f
 - Validação preliminar pelo painel do estabelecimento, por leitura do QR Code ou digitação do código.
 - Confirmação explícita do resgate após aplicação presencial do benefício.
 - CouponRedemption imutável e atômico, com consumidor, campanha/regra, loja receptora, operador e instante.
+- Integração com PurchaseConfirmation como origem possível de elegibilidade; os detalhes do QR de consumidor, declaração de venda, idempotência e auditoria pertencem à Spec 007.
 
 ## Excluído
 
@@ -39,6 +40,12 @@ RF-070 a RF-079, RF-082 a RF-084; RF-094 a RF-095 quando compra confirmada for f
 - Validação por WhatsApp, Instagram, captura de tela ou conferência offline.
 - Contas de funcionários, equipe ou permissões granulares no MVP.
 - Verificação de identidade por CPF, documento ou dado sensível como regra geral.
+
+## Origem por compra presencial
+
+Quando a condição da campanha for compra, o consumidor apresenta **Meu QR** e o responsável principal autenticado confirma a venda presencial concluída no painel. O mecanismo completo, inclusive token temporário, validação server-side, campos mínimos, chave de idempotência, concorrência e limites antifraude, está definido na Spec 007 e no fluxo `docs/flows/PURCHASE_CONFIRMATION.md`.
+
+A campanha não trata a leitura do QR como venda. A concessão ocorre somente após a declaração explícita do responsável e a validação da regra. Uma confirmação pode avaliar mais de uma campanha elegível. Compra espontânea também é aceita; reserva externa não é requisito.
 
 ## Fluxo principal
 
@@ -101,6 +108,10 @@ Redemption é registro histórico, não estado editável. A validação prelimin
 - [ ] Admin cria campanha com período, regra, lojas e responsável pelo custo.
 - [ ] Campanha incompleta ou sem responsável não pode ser ativada.
 - [ ] Consumidor consulta regras antes de aderir.
+- [ ] Responsável autorizado escaneia Meu QR, confere a conta e confirma explicitamente a compra concluída.
+- [ ] Token expirado, revogado, inválido ou consumido é recusado; leitura isolada não registra venda.
+- [ ] Compra espontânea pode ser confirmada sem reserva prévia.
+- [ ] Uma confirmação avalia todas as campanhas aplicáveis e não duplica concessões.
 - [ ] Cupom é emitido apenas para usuário elegível e associado à sua conta.
 - [ ] Consumidor consulta o cupom e apresenta código ou QR Code no estabelecimento.
 - [ ] QR Code e código textual representam o mesmo identificador.

@@ -58,3 +58,11 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 - Não criar caixa de entrada, entidade de reserva, status local ou integração de mensagens no MVP.
 - Não duplicar FractawProjects: o repositório do produto guarda contexto, specs e estado; FractawProjects conduz agentes e workflow.
 - Não fazer merge sem autorização explícita.
+
+- A confirmação manual de compra presencial integra o P1 junto a campanhas e cupons simples.
+- Consumidor autenticado apresenta Meu QR, token temporário, opaco, rotativo e sem dados pessoais; o responsável principal autenticado escaneia, confere a conta e declara explicitamente a venda concluída.
+- Leitura de QR não confirma compra. A confirmação é declaração auditável do responsável, não prova de pagamento nem integração com PDV/caixa/fiscal.
+- Uma confirmação avalia todas as campanhas de compra elegíveis para a loja; valor total só é solicitado quando a regra exigir.
+- Compra espontânea pode ser registrada sem reserva prévia. Reserva, clique, visita, retirada isolada e check-in não comprovam compra.
+- Idempotência protege contra reenvio técnico sem bloquear compras legítimas distintas do mesmo consumidor na mesma loja.
+- Meu QR, QR de rota e QR de cupom são mecanismos separados.

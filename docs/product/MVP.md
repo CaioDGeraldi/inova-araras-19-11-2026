@@ -56,9 +56,21 @@ Instagram é um canal alternativo opcional: abre o perfil/Direct e disponibiliza
 
 Não existe entidade de reserva, caixa de entrada, status no Perfil, histórico de solicitações, expiração automática, API de mensagens ou sincronização. O catálogo mantém disponibilidade declarada; o canal externo permite que a loja confirme a situação no momento do contato. Pagamento e conclusão da venda ocorrem presencialmente. Não há integração com PDV, baixa automática de estoque, entrega ou logística.
 
+## Confirmação de compra presencial | P1 do MVP
+
+A confirmação manual de compras presenciais integra o P1 junto às campanhas e cupons simples. O consumidor autenticado apresenta **Meu QR**, um código temporário, opaco e rotativo. O responsável principal da loja selecionada escaneia o código pelo painel, confere a conta e confirma explicitamente a venda concluída. A leitura do QR não registra a compra sozinha.
+
+O servidor registra a operação de forma auditável e idempotente e avalia as campanhas de compra ativas para aquela loja. Uma confirmação pode atender a mais de uma campanha elegível. O valor total só é solicitado quando uma regra exigir, por exemplo, um valor mínimo. Benefícios são emitidos apenas após confirmação e validação das regras. Compras espontâneas podem ser registradas sem reserva prévia.
+
+O QR identifica a conta, mas não comprova pagamento. O responsável declara que a venda foi concluída. Não há integração com caixa, PDV, estoque, sistema fiscal ou adquirente. Não exigir CPF, documento, contato pessoal ou comprovante por padrão. O fluxo não cria carteira de pontos: campanhas P1 concedem cupons/benefícios concretos conforme regras e responsável pelo custo.
+
+Detalhamento: `docs/flows/PURCHASE_CONFIRMATION.md` e `docs/specs/007-purchase-confirmation/spec.md`.
+
 ## P1 | Após o núcleo estável
 
 - Campanhas simples e cupons de uso único.
+- QR individual temporário do consumidor e confirmação manual de compra pelo responsável da loja.
+- Emissão de benefícios de compra somente após confirmação explícita e validação de campanha elegível.
 - Benefício cruzado entre estabelecimentos com emissor, receptor, financiador, validade e limites explícitos.
 - Resgate presencial pelo painel autenticado do estabelecimento receptor, com leitura de QR Code ou digitação do código.
 - Validação server-side de campanha, validade, elegibilidade, loja receptora, operador e limites.

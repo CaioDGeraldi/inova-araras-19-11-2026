@@ -128,3 +128,18 @@ Cada fase só é concluída com spec aprovada, implementação, testes executado
 - Ensaiar a narrativa nas duas perspectivas e registrar limitações do que ainda não estiver implementado.
 
 **Saída:** ambiente de demonstração reproduzível, sem dependência de dados reais ou operações manuais durante o pitch.
+
+
+### Confirmação de compra presencial (P1)
+
+- Implementar Meu QR como token temporário, aleatório, opaco, rotativo e de uso único, validado no servidor.
+- Disponibilizar no painel **Registrar compra**, com seleção explícita do estabelecimento, leitura do QR e conferência mínima da conta.
+- Exigir declaração explícita do responsável autenticado após a venda presencial; a leitura isolada não registra compra.
+- Solicitar valor total apenas quando uma regra de campanha exigir.
+- Registrar consumidor, loja, operador, instante, referência do token, chave de idempotência, campanhas/regras avaliadas e resultado.
+- Avaliar todas as campanhas elegíveis numa confirmação; emitir benefícios apenas após validação.
+- Proteger reenvio e concorrência sem bloquear compras legítimas distintas do mesmo consumidor na mesma loja.
+- Testar expiração, revogação, consumo único, replay, autorização, auditoria, falha de conexão e concessão duplicada.
+- Manter explícito que o QR identifica a conta, mas não comprova pagamento nem substitui PDV/caixa.
+
+**Saída:** compra presencial registrada por declaração auditável do responsável, com benefícios concedidos apenas conforme campanhas elegíveis.
