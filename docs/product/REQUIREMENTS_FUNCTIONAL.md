@@ -54,7 +54,7 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | RF-037 | P1 | Estabelecimento/organizador pode sugerir atividade para aprovação. |
 | RF-038 | P1 | Usuário autenticado pode salvar atividade. |
 | RF-039 | P1 | Atividade pode definir capacidade e período de inscrição. |
-| RF-040 | P1 | Atividade pode ser vinculada a estabelecimento e/ou circuito. |
+| RF-040 | P1 | Atividade pode ser vinculada a estabelecimento e/ou rota. |
 | RF-041 | P2 | Enviar lembretes/notificações de atividades salvas. |
 
 ## E. Rotas de Descoberta
@@ -91,7 +91,7 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | RF-076 | P1 | Resgate é atômico e não pode ser concluído duas vezes. |
 | RF-077 | P1 | Registrar emissor, destinatário, estabelecimento de resgate e instante. |
 | RF-078 | P1 | Campanha pode envolver benefício cruzado entre estabelecimentos. |
-| RF-079 | P1 | Campanha pode estar associada à participação/conclusão de circuito. |
+| RF-079 | P1 | Campanha pode estar associada à participação/conclusão de rota. |
 | RF-080 | P2 | Manter carteira de pontos, lotes, expiração e ledger. |
 | RF-081 | P2 | Compra confirmada pode gerar pontos conforme regra versionada e financiada. |
 
@@ -122,7 +122,7 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 
 | ID | Prioridade | Requisito |
 |---|---|---|
-| RF-110 | P0 | Administração gerencia categorias, estabelecimentos, cronograma e circuitos. |
+| RF-110 | P0 | Administração gerencia categorias, estabelecimentos, cronograma e rotas. |
 | RF-111 | P1 | Administração consulta registros de check-in, campanhas e resgates. |
 | RF-112 | P1 | Sistema apresenta indicadores operacionais agregados. |
 | RF-113 | P1 | Ações críticas geram trilha de auditoria. |
