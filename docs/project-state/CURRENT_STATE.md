@@ -40,7 +40,7 @@ O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do
 5. Confirmar se cupons entram no primeiro slice ou após a jornada de circuito.
 6. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
 7. Definir política de privacidade, retenção e contato antes de dados reais.
-8. Criar specs e Issues por fatia vertical via FractawProjects, sem duplicar o workflow.
+8. Revisar as specs 002–005 e gerar Issues por fatia vertical via FractawProjects, sem duplicar o workflow.
 
 ## Validação
 
