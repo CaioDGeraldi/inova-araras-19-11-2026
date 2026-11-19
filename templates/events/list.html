@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="h3">Agenda</h1>
+<ul class="list-group">
+    {% for event in events %}
+        <li class="list-group-item">
+            <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
+            {% if event.cancelled %}<span class="badge text-bg-danger">CANCELADO</span>{% endif %}
+            <br><small class="text-body-secondary">{{ event.starts_at|date:"d/m/Y H:i" }} · {{ event.location }}</small>
+        </li>
+    {% empty %}
+        <li class="list-group-item">Nenhum evento.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
