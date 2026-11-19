@@ -125,19 +125,21 @@ A campanha deve explicar o que a pessoa precisa fazer, onde pode fazê-lo e onde
 
 ## 3. Origem da elegibilidade: compra presencial
 
-A compra ocorre fora da plataforma, no estabelecimento. O fluxo de compra/reserva já define que conversa de WhatsApp ou Instagram não comprova venda.
+A compra ocorre fora da plataforma, no estabelecimento. A conversa de WhatsApp ou Instagram não comprova venda. O mecanismo operacional completo está definido em `PURCHASE_CONFIRMATION.md` e na Spec 007.
 
 1. O consumidor visita o estabelecimento e conclui a compra presencial.
-2. Se a campanha aceitar compras como condição, o responsável autenticado da loja de origem abre o fluxo de confirmação de compra.
-3. Seleciona a campanha aplicável e informa os dados mínimos exigidos por sua regra.
-4. O servidor verifica autorização, participação da loja, período, condição da campanha, limites e se o mesmo evento já foi processado.
-5. Se elegível, registra a confirmação da compra e dispara a concessão prevista.
-6. Se não elegível, não emite benefício e apresenta um motivo que não exponha dados de terceiros.
-7. A operação fica auditável e idempotente: repetir a mesma confirmação não gera um segundo benefício.
+2. O consumidor autenticado apresenta **Meu QR**, token temporário, opaco, rotativo e sem dados pessoais.
+3. O responsável principal autenticado seleciona a loja, abre **Registrar compra** e escaneia o código.
+4. O servidor valida token, validade, uso e associação à conta; o painel mostra apenas identificação mínima para conferência. A leitura não confirma a compra.
+5. Após conferir a conta e a venda concluída, o responsável declara explicitamente a compra no painel.
+6. O painel solicita somente os campos exigidos pelas campanhas aplicáveis, como valor total quando houver valor mínimo.
+7. O servidor revalida autorização, estabelecimento, token, período, regras, limites e idempotência; registra a confirmação e avalia todas as campanhas de compra elegíveis para aquela loja.
+8. Se elegível, emite os benefícios previstos; se não, registra o resultado sem conceder benefício indevido.
+9. A operação fica auditável e idempotente: repetir a mesma requisição não gera uma segunda confirmação ou concessão.
 
-A confirmação de compra é uma declaração operacional do responsável, não uma integração com caixa, PDV ou sistema fiscal. A implementação deve definir uma referência idempotente para a operação e registrar operador, estabelecimento, instante, campanha/regra e resultado. Não exigir CPF ou documento do consumidor por padrão.
+A confirmação é uma declaração operacional do responsável, não prova de pagamento nem integração com caixa, PDV ou sistema fiscal. Registrar consumidor, operador, estabelecimento, instante, referência do token, chave de idempotência, campanhas/regras avaliadas e resultado. O valor total só é registrado quando exigido por regra. Não exigir CPF, documento, telefone, e-mail ou comprovante por padrão. O QR identifica a conta e é independente do QR de rota e do QR de cupom.
 
-O fluxo vale tanto para compra precedida de conversa de reserva quanto para compra espontânea. A plataforma não depende de reserva prévia e não infere compra a partir de mensagem, clique, visita ou retirada.
+O fluxo vale tanto para compra precedida de conversa de reserva quanto para compra espontânea. A plataforma não depende de reserva prévia e não infere compra a partir de mensagem, clique, visita ou retirada isolada.
 
 ## 4. Origem da elegibilidade: conclusão de Rota de Descoberta
 
@@ -295,12 +297,3 @@ Essas decisões não impedem documentar a jornada P1 de campanhas com cupons sim
 - [ ] Falhas técnicas não são apresentadas como sucesso.
 - [ ] Histórico e auditoria permitem rastrear campanha, regra, origem, consumidor, receptor, operador e instante.
 - [ ] O P1 não introduz carteira de pontos, conversão monetária, cashback ou FEFO.
-
-
-## Confirmação de compra por Meu QR
-
-A condição de compra utiliza o fluxo independente definido em `PURCHASE_CONFIRMATION.md` e na Spec 007. Após concluir a venda presencial, o consumidor autenticado apresenta **Meu QR**, token temporário, opaco, rotativo e sem dados pessoais. O responsável principal autenticado seleciona a loja, escaneia o código, confere a conta e declara explicitamente a compra concluída. A leitura isolada não registra venda.
-
-O servidor registra consumidor, estabelecimento, operador, instante, referência do token, chave de idempotência, campanhas/regras avaliadas e resultado. Uma confirmação pode avaliar todas as campanhas de compra elegíveis para a loja; o valor total só é solicitado quando uma regra exigir. Benefícios só são emitidos após a declaração e validação server-side. Compras espontâneas são aceitas sem reserva prévia.
-
-Meu QR identifica a conta, mas não comprova pagamento. A plataforma não integra caixa, PDV ou sistema fiscal, não exige CPF/documento/comprovante por padrão e não promete antifraude absoluto. QR de consumidor, QR de rota e QR de cupom têm finalidades independentes.

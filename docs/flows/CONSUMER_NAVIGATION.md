@@ -153,6 +153,7 @@ Conteúdo previsto, conforme funcionalidades implementadas:
 - favoritos;
 - participações e progresso de Rotas de Descoberta;
 - benefícios e histórico de Fidelidade ao Centro;
+- **Meu QR**, para identificação temporária da conta em confirmações de compra presencial;
 - avaliações e contribuições;
 - acesso ao painel do estabelecimento, caso a pessoa tenha responsabilidade por uma loja.
 
@@ -160,6 +161,7 @@ Regras:
 - visitante não autenticado pode consultar as demais áreas; ao abrir Perfil, recebe opção clara de entrar ou criar conta;
 - a mesma conta representa a pessoa, independentemente de atuar como consumidor ou comerciante;
 - recursos ainda não implementados não devem aparecer como se estivessem disponíveis;
+- Meu QR exige autenticação e apresenta token temporário, opaco e sem dados pessoais; ele identifica a conta, não comprova pagamento;
 - dados pessoais e histórico de participação são privados.
 
 ## Autenticação e retorno à jornada
@@ -171,6 +173,7 @@ Ações que podem exigir autenticação:
 - registrar check-in;
 - salvar favoritos associados à conta;
 - consultar recursos privados do Perfil;
+- gerar e apresentar Meu QR para associar uma compra presencial à conta;
 - participar de benefícios que exijam identificação.
 
 Quando a autenticação interromper uma jornada:

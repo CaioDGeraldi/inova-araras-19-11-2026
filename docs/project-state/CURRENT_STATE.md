@@ -59,10 +59,15 @@ Nenhum teste de aplicação foi executado por esta atualização documental. Nã
 3. `docs/flows/CUSTOMER_TO_PURCHASE.md`: descoberta, avaliação, mensagem de reserva pelo WhatsApp ou Instagram, confirmação combinada na conversa externa, visita, compra presencial e fidelidade condicionada à confirmação da compra.
 4. `docs/flows/DISCOVERY_ROUTES.md`: consulta de rotas, detalhe, autenticação contextual, participação, QR check-in, progresso, conclusão e recompensas condicionadas a campanhas elegíveis.
 5. `docs/flows/OWNER_PANEL.md`: entrada com a mesma conta, cadastro e seleção de estabelecimentos, aprovação, edição de informações, catálogo, configuração de canais públicos de contato, resgate de cupons e pré-visualização.
-6. `docs/flows/COUPON_REDEMPTION.md`: apresentação pelo consumidor, validação online pelo responsável da loja, confirmação presencial e consumo único do cupom.\n7. `docs/flows/CAMPAIGNS_AND_LOYALTY.md`: criação e publicação de campanhas, origem da elegibilidade por compra confirmada ou conclusão de rota, emissão de cupons, benefícios cruzados, responsabilidade pelo custo e integração com resgate.
+6. `docs/flows/COUPON_REDEMPTION.md`: apresentação pelo consumidor, validação online pelo responsável da loja, confirmação presencial e consumo único do cupom.
+7. `docs/flows/PURCHASE_CONFIRMATION.md`: Meu QR temporário, leitura pelo responsável, declaração de compra concluída, avaliação de campanhas, idempotência, auditoria, privacidade e limites antifraude.
+7. `docs/flows/CAMPAIGNS_AND_LOYALTY.md`: criação e publicação de campanhas, origem da elegibilidade por compra confirmada ou conclusão de rota, emissão de cupons, benefícios cruzados, responsabilidade pelo custo e integração com resgate.
 
 Próximos fluxos previstos:
-- Demonstração integrada: encadeamento das jornadas de consumidor e proprietário para o pitch.\n- Administração da plataforma: aprovação, moderação e operação administrativa ainda sem fluxo consolidado.\n- Cronograma do Centro: jornada completa do consumidor e do organizador ainda sem fluxo consolidado.\n- Comunidade e avaliações: publicação, denúncia e moderação ainda sem fluxo consolidado.
+- Demonstração integrada: encadeamento das jornadas de consumidor e proprietário para o pitch.
+- Administração da plataforma: aprovação, moderação e operação administrativa ainda sem fluxo consolidado.
+- Cronograma do Centro: jornada completa do consumidor e do organizador ainda sem fluxo consolidado.
+- Comunidade e avaliações: publicação, denúncia e moderação ainda sem fluxo consolidado.
 
 ## Preparação da demonstração
 

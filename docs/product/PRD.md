@@ -301,7 +301,7 @@ Em dispositivos móveis, a navegação principal utiliza uma barra inferior fixa
 - **Explorar:** busca por estabelecimentos, produtos, serviços e categorias.
 - **Rotas:** Rotas de Descoberta, paradas e progresso.
 - **Agenda:** Cronograma do Centro e atividades.
-- **Perfil:** dados da conta, favoritos, Fidelidade ao Centro e avaliações, conforme funcionalidades disponíveis. As conversas e confirmações de reserva permanecem nos aplicativos externos.
+- **Perfil:** dados da conta, favoritos, Fidelidade ao Centro, avaliações e Meu QR para identificação da conta em compras presenciais, conforme funcionalidades disponíveis. As conversas e confirmações de reserva permanecem nos aplicativos externos. Meu QR não comprova pagamento; a compra é declarada pelo responsável autenticado da loja.
 
 A estrutura é uma decisão de navegação. A composição do feed, os atalhos internos e os detalhes de cada tela serão definidos nos fluxos antes da implementação visual. A experiência do proprietário permanece em painel operacional próprio, com sidebar retrátil e topbar, usando a mesma identidade e autenticação da pessoa.
 
