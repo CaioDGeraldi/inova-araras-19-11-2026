@@ -1,26 +1,52 @@
-# Guia de especificação do projeto
+# Especificação e SDD do projeto
 
-Este repositório contém contexto e especificações do produto Inova Araras. O processo, orquestração, papéis dos agentes, workflow de Issues/PRs e regras gerais SDD são delegados ao FractawProjects. Este documento não replica o sistema de agentes.
+Este repositório guarda a fonte de verdade do produto Inova Araras: visão, MVP, requisitos, domínio, arquitetura, decisões e estado. Orquestração, agentes, workflow de Issues/PRs e regras gerais de execução ficam no FractawProjects. Não duplicar o motor SDD aqui.
 
-## Fonte de verdade
-1. Decisões aprovadas e registradas.
-2. PRD: visão e requisitos de produto.
-3. MVP: prioridade e limite da entrega.
-4. Arquitetura e decisões: restrições técnicas.
-5. Specs: requisitos e critérios de aceitação de cada mudança.
-6. CURRENT_STATE: fotografia do estado operacional, não substitui documentos normativos.
+## Hierarquia de fontes
+
+1. Decisões aprovadas pelo responsável do produto.
+2. PRD: visão, problema, atores e objetivos.
+3. MVP: escopo e prioridades.
+4. Requisitos funcionais e não funcionais: comportamento e qualidade verificáveis.
+5. Modelo de domínio: entidades, relações, estados e invariantes.
+6. Arquitetura e decisões: restrições e escolhas técnicas.
+7. Specs: comportamento de uma mudança específica e critérios de aceite.
+8. CURRENT_STATE: fotografia operacional, nunca substitui decisões normativas.
+
+Em conflito, decisão aprovada mais recente prevalece; atualizar os documentos afetados para remover divergência.
 
 ## Fluxo esperado
-Contexto/Issue → spec e critérios de aceitação → plano e tasks gerados conforme workflow do FractawProjects → implementação → testes/evidências → revisão → PR → atualizar estado.
 
-## Specs
-Cada mudança relevante deve possuir spec em `docs/specs/NNN-slug/spec.md`. Critérios podem estar na spec ou em `acceptance.md`. Plan/tasks não precisam ser duplicados no repositório se o FractawProjects já os administra; registrar apenas quando exigido ou quando forem artefatos úteis e persistentes.
+Contexto/Issue → spec e critérios de aceitação → plano/tasks pelo FractawProjects → implementação → testes e evidências → revisão → PR → atualização do estado.
 
-## Regras específicas
+## Regras
+
 - Usar MVP como filtro de escopo.
-- Entregar slices verticais demonstráveis.
-- Distinguir proposta, decisão e hipótese.
-- Decisões reversíveis dentro da arquitetura podem ser tomadas pelo agente e documentadas. Mudança de produto, dados sensíveis, arquitetura fundamental ou expansão de escopo exige aprovação.
-- Testes reportados devem ser realmente executados.
-- Atualizar `docs/project-state/CURRENT_STATE.md` ao finalizar trabalho significativo.
-- Nunca fazer merge sem autorização explícita do responsável.
+- Entregar fatias verticais demonstráveis.
+- Distinguir decisão, recomendação, hipótese e dependência externa.
+- Mudança de produto, dados sensíveis, arquitetura fundamental ou expansão de escopo exige aprovação.
+- Decisões técnicas reversíveis podem ser propostas pelo agente, justificadas e registradas.
+- Testes só podem ser declarados como executados com evidência.
+- Atualizar CURRENT_STATE após trabalho significativo.
+- Não criar Issue por requisito individual sem agrupar por slice coerente.
+- Não duplicar templates, papéis ou workflows já mantidos pelo FractawProjects.
+- Nunca fazer merge sem autorização explícita.
+
+## Estrutura
+
+- docs/product/PRD.md
+- docs/product/MVP.md
+- docs/product/REQUIREMENTS_FUNCTIONAL.md
+- docs/product/REQUIREMENTS_NON_FUNCTIONAL.md
+- docs/product/DOMAIN_MODEL.md
+- docs/architecture/ARCHITECTURE.md
+- docs/architecture/DECISIONS.md
+- docs/roadmap/DELIVERY_PLAN.md
+- docs/specs/NNN-slug/spec.md
+- docs/project-state/CURRENT_STATE.md
+
+## Como usar specs
+
+Toda mudança relevante deve possuir spec em docs/specs/NNN-slug/spec.md. A spec deve apontar requisitos afetados, escopo incluído/excluído, atores, regras, dados/estados, segurança/privacidade/acessibilidade, dependências e critérios de aceite.
+
+Plan/tasks não precisam ser duplicados no repositório se FractawProjects já os administra; persistir apenas quando forem artefatos úteis ou exigidos.
