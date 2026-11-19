@@ -34,7 +34,7 @@ O projeto parte da percepção de que o comércio central enfrenta desafios de v
 Hipóteses que o piloto deve testar:
 1. Uma vitrine pesquisável facilita descobrir estabelecimentos e produtos desconhecidos.
 2. Uma programação centralizada oferece motivos concretos para visitar o Centro em dias e horários específicos.
-3. DiscoveryRouteos que conectam lojas, espaços e atividades aumentam a diversidade de locais visitados.
+3. Rotas que conectam lojas, espaços e atividades aumentam a diversidade de locais visitados.
 4. Benefícios cruzados podem incentivar a descoberta de outros estabelecimentos.
 5. Ferramentas simples e apoio assistido reduzem a barreira de entrada digital de pequenos comerciantes.
 6. A combinação de comércio, cultura, convivência e informação pode melhorar a experiência de frequentar o Centro.
@@ -100,15 +100,15 @@ Não incluir checkout, pagamento, entrega ou logística no MVP. Solicitação/re
 
 ## 10. Rotas de Descoberta
 
-Rotas de Descoberta é o mecanismo de circulação presencial. Um rota conecta estabelecimentos, espaços públicos ou atividades em um percurso temático. Pode ter ordem sugerida, paradas obrigatórias/opcionais, período de validade, regras de conclusão e benefício associado.
+Rotas de Descoberta é o mecanismo de circulação presencial. Uma rota conecta estabelecimentos, espaços públicos ou atividades em um percurso temático. Pode ter ordem sugerida, paradas obrigatórias/opcionais, período de validade, regras de conclusão e benefício associado.
 
 O consumidor consulta o rota sem login. Login é necessário para iniciar participação, registrar check-ins e acompanhar progresso individual.
 
 O MVP pode usar QR Code por parada como registro de visita. Check-in não é prova antifraude absoluta: códigos podem ser compartilhados. O produto deve descrevê-lo como registro de participação, aplicar controles de duplicidade e permitir substituição/rotação dos códigos. Não usar GPS contínuo.
 
-DiscoveryRouteos não devem exigir compra em todas as paradas. Participação pode envolver visita, presença em atividade, descoberta ou interação definida na regra.
+Rotas não devem exigir compra em todas as paradas. Participação pode envolver visita, presença em atividade, descoberta ou interação definida na regra.
 
-## 10. Inteligência comercial e oportunidades do Centro
+## 11. Inteligência comercial e oportunidades do Centro
 
 O Vem pro Centro pode produzir indicadores agregados para apoiar o planejamento do comércio e políticas públicas, sem expor consumidores individualmente. Essa capacidade é uma evolução posterior e não deve ser confundida com analytics individual ou monitoramento de pessoas.
 
@@ -163,7 +163,7 @@ Cada pesquisa deve declarar finalidade, público, método, período, responsáve
 
 Os sinais podem orientar campanhas de digitalização, capacitação, mobilização de comerciantes, pesquisas complementares e articulação para atrair categorias ausentes ou pouco representadas. Nenhuma recomendação deve ser tratada como decisão automática de política pública.
 
-## 11. Cronograma do Centro
+## 12. Cronograma do Centro
 
 O cronograma centraliza atividades que dão motivos para visitar o Centro: eventos culturais, feiras, oficinas, apresentações, ações comerciais, experiências e iniciativas comunitárias.
 
@@ -173,7 +173,7 @@ A administração publica e mantém o cronograma no MVP. Estabelecimentos podem 
 
 Uma atividade pode estar vinculada a rota e/ou estabelecimento, mas também pode ocorrer em praça ou espaço público.
 
-## 12. Campanhas e Fidelidade ao Centro
+## 13. Campanhas e Fidelidade ao Centro
 
 Campanhas podem ser individuais, coletivas ou institucionais. Cada campanha informa responsável, período, elegibilidade, benefício, limites, estabelecimentos participantes, regras de resgate, cancelamento e responsável pelo custo.
 
@@ -185,33 +185,33 @@ Se a concessão depender de compra, a compra deve ser confirmada pelo responsáv
 
 Taxa de 1 ponto por real e validade de 12 meses são parâmetros de piloto discutidos anteriormente, não regras aprovadas nem hardcoded. Só entram em vigor após validação comercial e definição de financiamento.
 
-## 13. Reservas e contato
+## 14. Reservas e contato
 
 A plataforma pode permitir solicitação de reserva/interesse. Isso não é checkout nem garantia de disponibilidade. A loja precisa confirmar ou recusar. A confirmação de compra, quando aplicável a campanha, é ação posterior do responsável.
 
 O MVP não processa pagamento, entrega ou logística. Se a janela apertar, manter contato direto e adiar solicitação sem comprometer vitrine, cronograma e Rotas de Descoberta.
 
-## 14. Comunidade e avaliações
+## 15. Comunidade e avaliações
 
 A evolução de comunidade pode permitir avaliações sobre atendimento, produtos, acessibilidade, atividades e experiências. O usuário escolhe exibição identificada ou anônima publicamente. O anonimato público não elimina a associação interna à conta para moderação e denúncias.
 
 Avaliações negativas legítimas não devem ser removidas apenas por serem desfavoráveis. Denúncia, política de conteúdo, moderação e resposta do estabelecimento são necessárias antes de ativar publicação aberta.
 
-## 15. Vaga Legal e iniciativas institucionais
+## 16. Vaga Legal e iniciativas institucionais
 
 Vaga Legal começa como informação e direcionamento a canais oficiais. Integração depende de fonte autorizada, acordo, segurança e viabilidade. O MVP mantém valor sem integração.
 
 Cadastro assistido, fotografia de produtos, capacitação e divulgação coletiva são propostas, não compromissos firmados. Não afirmar subsídios, redução de aluguel, benefícios tributários ou parcerias sem aprovação formal. SEBRAE é entidade privada de apoio, não órgão governamental.
 
-## 16. Experiências
+## 17. Experiências
 
-**Consumidor:** Início, Explorar, Rotas de Descoberta, Cronograma, Campanhas e Minha conta. A página inicial prioriza programação, rotas ativos, estabelecimentos e campanhas, sem esconder a busca.
+**Consumidor:** Início, Explorar, Rotas de Descoberta, Cronograma, Campanhas e Minha conta. A página inicial prioriza programação, rotas ativas, estabelecimentos e campanhas, sem esconder a busca.
 
 **Comerciante:** dashboard simples com sidebar retrátil e topbar de usuário/configurações. Áreas de visão geral, estabelecimento, produtos/serviços, solicitações, campanhas e participação em rotas.
 
 **Administração:** Django Admin pode cobrir operações internas inicialmente. Interfaces próprias só quando o fluxo exigir melhor experiência.
 
-## 17. Métricas
+## 18. Métricas
 
 Além das métricas operacionais, a evolução de inteligência comercial poderá acompanhar:
 - buscas sem resultado por categoria e período;
@@ -243,16 +243,16 @@ Check-in não mede tempo de permanência. Para estimar permanência, usar pesqui
 - Pesquisas devem ser voluntárias, transparentes e limitadas à finalidade declarada.
 - Revisar risco de reidentificação antes de compartilhar relatórios ou exportações.
 
-## 18. Privacidade, segurança e acessibilidade
+## 19. Privacidade, segurança e acessibilidade
 
 Aplicar LGPD: finalidade, adequação, necessidade, transparência, segurança, prevenção e direitos do titular. Não coletar localização contínua. Não expor dados privados do responsável, telefone pessoal ou CNPJ por padrão. Definir retenção e canal de contato.
 
 A interface deve atender WCAG 2.2 AA: contraste, teclado, foco visível, rótulos, mensagens de erro, zoom/reflow, leitores de tela, alvos adequados e respeito a prefers-reduced-motion.
 
-## 19. Restrições e dependências
+## 20. Restrições e dependências
 
 Não presumir parceria institucional, API de estacionamento, estoque em tempo real, financiamento de cupons, agenda oficial de eventos, subsídios ou dados quantitativos locais de fechamento de lojas. O produto deve funcionar com conteúdo mantido pela administração e comerciantes participantes.
 
-## 20. Critério de sucesso
+## 21. Critério de sucesso
 
 O MVP valida sua proposta quando uma pessoa consegue descobrir uma atividade ou estabelecimento, planejar uma visita, participar de rota presencial e registrar uma experiência/benefício, enquanto comerciante/administração mantêm informações sem operação excessivamente complexa. A demonstração deve mostrar jornada conectada, não telas independentes.
