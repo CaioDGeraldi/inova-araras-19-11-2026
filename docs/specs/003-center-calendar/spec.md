@@ -23,7 +23,7 @@ RF-030 a RF-041; RNF-001 a RNF-012, RNF-022 a RNF-025, RNF-030, RNF-031, RNF-034
 - Indicação de inscrição obrigatória/opcional.
 - Listagem pública por data e detalhe da atividade.
 - Estados draft, published, cancelled, completed/archived.
- 
+
 ### P1
 - Sugestão de atividade por responsável/organizador autenticado, sujeita à aprovação administrativa.
 - Salvar e remover atividade na conta do consumidor.
@@ -33,7 +33,7 @@ RF-030 a RF-041; RNF-001 a RNF-012, RNF-022 a RNF-025, RNF-030, RNF-031, RNF-034
 
 ## Excluído
 - Venda de ingressos e pagamento.
-- Inscrição completa, lista de presença e controle de vagas no primeiro corte.
+- Capacidade e período de inscrição (RF-039, P2), inscrição completa, lista de presença e controle de vagas no primeiro corte.
 - Notificações push ou lembretes.
 - Publicação direta por estabelecimento/organizador.
 - Integração com agenda externa sem autorização.
