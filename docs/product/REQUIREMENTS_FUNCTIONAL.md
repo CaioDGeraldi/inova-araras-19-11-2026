@@ -57,26 +57,26 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | RF-040 | P1 | Atividade pode ser vinculada a estabelecimento e/ou circuito. |
 | RF-041 | P2 | Enviar lembretes/notificações de atividades salvas. |
 
-## E. Circuito Vivo
+## E. Rotas de Descoberta
 
 | ID | Prioridade | Requisito |
 |---|---|---|
-| RF-050 | P0 | Administração cria, edita, publica, ativa e arquiva circuitos. |
-| RF-051 | P0 | Circuito possui nome, descrição, período opcional, imagem opcional e regra de conclusão. |
-| RF-052 | P0 | Circuito possui paradas ordenadas ou ordem sugerida. |
+| RF-050 | P0 | Administração cria, edita, publica, ativa e arquiva rotas de descoberta. |
+| RF-051 | P0 | Rota possui nome, descrição, período opcional, imagem opcional e regra de conclusão. |
+| RF-052 | P0 | Rota possui paradas ordenadas ou ordem sugerida. |
 | RF-053 | P0 | Parada referencia estabelecimento, atividade ou local. |
 | RF-054 | P0 | Parada pode ser obrigatória ou opcional. |
-| RF-055 | P0 | Visitante consulta circuito e paradas sem autenticação. |
-| RF-056 | P0 | Usuário autenticado inicia participação em circuito elegível. |
+| RF-055 | P0 | Visitante consulta rota e paradas sem autenticação. |
+| RF-056 | P0 | Usuário autenticado inicia participação em rota elegível. |
 | RF-057 | P0 | Usuário registra check-in em parada por QR Code válido. |
 | RF-058 | P0 | Validar token e elegibilidade da parada no servidor. |
 | RF-059 | P0 | Impedir duplicidade conforme política configurada. |
 | RF-060 | P0 | Apresentar progresso e estado da participação. |
-| RF-061 | P0 | Concluir participação quando regra do circuito for satisfeita. |
-| RF-062 | P0 | Circuito não exige compra em cada parada por padrão. |
-| RF-063 | P1 | Consultar histórico de circuitos e check-ins. |
+| RF-061 | P0 | Concluir participação quando regra da rota for satisfeita. |
+| RF-062 | P0 | Rota não exige compra em cada parada por padrão. |
+| RF-063 | P1 | Consultar histórico de rotas e check-ins. |
 | RF-064 | P1 | Administração revoga/rotaciona token de parada. |
-| RF-065 | P1 | Circuito pode possuir edições/ocorrências em períodos diferentes. |
+| RF-065 | P1 | Rota pode possuir edições/ocorrências em períodos diferentes. |
 
 ## F. Campanhas e benefícios
 
@@ -139,3 +139,23 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 - Nenhuma integração ou parceria pode ser presumida.
 
 Cada spec deve listar os RFs afetados. Testes de aceitação devem referenciar os IDs. Mudanças de escopo atualizam MVP e este documento.
+
+## J. Inteligência comercial e diagnóstico de lacunas
+
+| ID | Prioridade | Requisito |
+|---|---|---|
+| RF-120 | P2 | Registrar de forma minimizada eventos de busca sem resultado, sem associá-los a identidade ou histórico individual para fins analíticos. |
+| RF-121 | P2 | Normalizar e agrupar consultas por categoria, período e intenção provável, preservando limitações e evitando armazenar texto livre desnecessário. |
+| RF-122 | P2 | Distinguir buscas sem resultados, com poucos resultados, com resultados indisponíveis e consultas inconclusivas. |
+| RF-123 | P2 | Calcular indicadores de cobertura da oferta cadastrada por categoria e período. |
+| RF-124 | P2 | Identificar sinais de possível demanda não atendida combinando buscas, cobertura de catálogo, disponibilidade declarada e pesquisas. |
+| RF-125 | P2 | Exibir nível de confiança, período, cobertura e limitações metodológicas de cada sinal. |
+| RF-126 | P2 | Disponibilizar painel restrito a perfis institucionais autorizados com indicadores exclusivamente agregados. |
+| RF-127 | P2 | Impedir consulta ou exportação de buscas brutas, sessões, trajetórias, respostas individuais ou dados pessoais no painel. |
+| RF-128 | P2 | Suprimir grupos pequenos e combinações de filtros que possam permitir reidentificação. |
+| RF-129 | P2 | Registrar acesso, exportação e alterações de permissões do painel em trilha de auditoria. |
+| RF-130 | P2 | Permitir estruturar pesquisas voluntárias com finalidade, público, método, período, campos e retenção definidos. |
+| RF-131 | P2 | Apresentar resultados de pesquisas de forma agregada, acompanhados de tamanho da amostra, método e limitações. |
+| RF-132 | P2 | Permitir que administração registre validação de campo de sinais de demanda, incluindo confirmação, refutação ou necessidade de investigação adicional. |
+| RF-133 | P2 | Produzir relatórios agregados que apoiem campanhas de digitalização, capacitação e articulação institucional, sem decisão automática. |
+
