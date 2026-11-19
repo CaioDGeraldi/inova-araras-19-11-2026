@@ -4,7 +4,7 @@
 <h1 class="h3">Rotas de Descoberta</h1>
 <ul class="list-group">
     {% for route in routes %}
-        <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a></li>
+        <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a>{% if route.starts_on or route.ends_on %}<br><small class="text-body-secondary">{% include "discovery_routes/_period.html" %}</small>{% endif %}</li>
     {% empty %}
         <li class="list-group-item">Nenhuma rota publicada.</li>
     {% endfor %}

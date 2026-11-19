@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.utils import timezone
 
 from apps.establishments.models import Establishment
+from apps.events.models import Event
 
 
 def new_stop_token():
@@ -17,6 +18,8 @@ class Route(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField("descrição", blank=True)
     published = models.BooleanField("publicada", default=True)
+    starts_on = models.DateField("início", null=True, blank=True)
+    ends_on = models.DateField("fim", null=True, blank=True)
 
     class Meta:
         ordering = ["title"]
@@ -24,6 +27,14 @@ class Route(models.Model):
 
     def __str__(self):
         return self.title
+
+    def period_error(self):
+        today = timezone.localdate()
+        if self.starts_on and today < self.starts_on:
+            return f"A rota começa em {self.starts_on:%d/%m/%Y}."
+        if self.ends_on and today > self.ends_on:
+            return f"A rota terminou em {self.ends_on:%d/%m/%Y}."
+        return ""
 
     def get_absolute_url(self):
         return reverse("route_detail", args=[self.slug])
@@ -38,6 +49,14 @@ class Stop(models.Model):
         null=True,
         blank=True,
         verbose_name="estabelecimento",
+    )
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="stops",
+        verbose_name="evento",
     )
     order = models.PositiveSmallIntegerField("ordem", default=0)
     required = models.BooleanField("obrigatória", default=True)
