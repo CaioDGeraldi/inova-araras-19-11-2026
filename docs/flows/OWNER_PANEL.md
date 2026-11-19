@@ -214,6 +214,32 @@ Regras:
 - A plataforma apenas abre links externos. Não envia mensagens, não recebe respostas e não mantém status de reserva.
 - A ausência de canal de contato não impede a consulta pública ao catálogo; apenas oculta as ações que dependem daquele canal.
 
+## 8. Cupons e resgates
+
+**Objetivo:** permitir que o responsável da loja confirme presencialmente a utilização de cupons emitidos pelo Vem pro Centro, sem depender de mensagens, capturas de tela ou conferência informal.
+
+No MVP, o responsável principal autenticado é o operador do resgate. A área aparece para estabelecimento aprovado e participante da campanha.
+
+Fluxo:
+1. O responsável abre **Cupons e resgates** no painel.
+2. Lê o QR Code pela câmera do dispositivo ou informa o código textual.
+3. O painel envia o identificador ao servidor; a interface não decide validade localmente.
+4. Se válido, o painel apresenta benefício, campanha, validade, loja receptora e identificação mínima do consumidor.
+5. O responsável confere a apresentação e aplica o benefício na venda presencial.
+6. Depois de aplicar o benefício, seleciona **Confirmar resgate**.
+7. O servidor revalida cupom, campanha, loja, operador, validade e limites; registra o resgate e altera o cupom para utilizado na mesma transação.
+8. O painel informa sucesso somente após confirmação do servidor.
+
+Regras:
+- QR Code e código textual representam o mesmo identificador único.
+- A consulta inicial não consome o cupom. Se a venda não acontecer, o cupom continua disponível enquanto válido.
+- Somente o responsável autenticado pela loja receptora ou admin autorizado pode confirmar o resgate.
+- Captura de tela ou texto encaminhado não comprova validade; o painel consulta o servidor.
+- A área não exibe dados privados do consumidor.
+- Falha de conexão não pode ser apresentada como sucesso.
+- Correções e compensações exigem operação administrativa auditada.
+- Não criar usuários de equipe ou permissões granulares no MVP.
+
 ## Estados alternativos e recuperação
 
 | Situação | Resposta da interface |

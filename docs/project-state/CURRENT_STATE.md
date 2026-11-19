@@ -33,6 +33,8 @@ Rotas combinam descoberta temática, progresso e recompensas condicionadas a cam
 
 A jornada comercial conecta descoberta digital, conversa direta com o estabelecimento e compra presencial. O pedido de reserva abre o WhatsApp com mensagem contextualizada; Instagram é canal alternativo com texto para copiar. Consumidor e loja combinam confirmação e prazo na conversa externa. A plataforma não mantém registros ou status de reserva, não processa pagamentos nem opera estoque em tempo real.
 
+Campanhas e cupons P1 possuem resgate presencial: consumidor apresenta código ou QR Code associado à conta; responsável autenticado da loja receptora valida no painel, aplica o benefício e confirma. A consulta preliminar não consome o cupom; a confirmação revalida regras e registra o resgate atomicamente. Capturas de tela e mensagens não substituem validação online.
+
 O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Rotas de Descoberta. Campanhas/cupons simples complementam a jornada. Inteligência comercial, pesquisas de lacunas e painel institucional são evolução P2, sujeita a governança e validação de privacidade. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
 
 ## Pendências antes da implementação
@@ -56,7 +58,8 @@ Nenhum teste de aplicação foi executado por esta atualização documental. Nã
 2. `docs/flows/COMMERCE_DISCOVERY.md`: busca e categorias, resultados, páginas públicas de estabelecimento e produto/serviço, canais de contato, orientação de visita e atalhos externos de reserva.
 3. `docs/flows/CUSTOMER_TO_PURCHASE.md`: descoberta, avaliação, mensagem de reserva pelo WhatsApp ou Instagram, confirmação combinada na conversa externa, visita, compra presencial e fidelidade condicionada à confirmação da compra.
 4. `docs/flows/DISCOVERY_ROUTES.md`: consulta de rotas, detalhe, autenticação contextual, participação, QR check-in, progresso, conclusão e recompensas condicionadas a campanhas elegíveis.
-5. `docs/flows/OWNER_PANEL.md`: entrada com a mesma conta, cadastro e seleção de estabelecimentos, aprovação, edição de informações, catálogo, configuração de canais públicos de contato e pré-visualização.
+5. `docs/flows/OWNER_PANEL.md`: entrada com a mesma conta, cadastro e seleção de estabelecimentos, aprovação, edição de informações, catálogo, configuração de canais públicos de contato, resgate de cupons e pré-visualização.
+6. `docs/flows/COUPON_REDEMPTION.md`: apresentação pelo consumidor, validação online pelo responsável da loja, confirmação presencial e consumo único do cupom.
 
 Próximos fluxos previstos:
 - Demonstração integrada: encadeamento das jornadas de consumidor e proprietário para o pitch.

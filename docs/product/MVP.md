@@ -60,7 +60,10 @@ Não existe entidade de reserva, caixa de entrada, status no Perfil, histórico 
 
 - Campanhas simples e cupons de uso único.
 - Benefício cruzado entre estabelecimentos com emissor, receptor, financiador, validade e limites explícitos.
-- Resgate de cupom com proteção transacional contra duplicidade.
+- Resgate presencial pelo painel autenticado do estabelecimento receptor, com leitura de QR Code ou digitação do código.
+- Validação server-side de campanha, validade, elegibilidade, loja receptora, operador e limites.
+- Consulta preliminar sem consumo; confirmação explícita após aplicação do benefício na venda presencial.
+- Consumo atômico e de uso único; o consumidor consulta o estado atualizado em sua conta.
 - Estabelecimentos sugerem atividades para aprovação administrativa.
 - Consumidor salva atividades.
 - Avaliações com anonimato público, denúncia e moderação básica.

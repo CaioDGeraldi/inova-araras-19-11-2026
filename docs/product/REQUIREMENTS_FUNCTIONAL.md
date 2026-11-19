@@ -89,9 +89,12 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | RF-072 | P1 | Campanha identifica responsável pelo custo. |
 | RF-073 | P1 | Consumidor consulta campanhas ativas e regras. |
 | RF-074 | P1 | Emitir cupom elegível com identificador não previsível. |
-| RF-075 | P1 | Estabelecimento autorizado valida e resgata cupom. |
-| RF-076 | P1 | Resgate é atômico e não pode ser concluído duas vezes. |
-| RF-077 | P1 | Registrar emissor, destinatário, estabelecimento de resgate e instante. |
+| RF-075 | P1 | Responsável autenticado pela loja receptora valida cupom por QR Code ou código textual no painel; o servidor verifica campanha, validade, elegibilidade, limites, loja e autorização do operador. |
+| RF-076 | P1 | A validação preliminar não consome o cupom; após aplicar o benefício presencialmente, o operador confirma e o servidor revalida e consome atomicamente, impedindo duplicidade inclusive em concorrência. |
+| RF-077 | P1 | Registrar consumidor, campanha/regra, estabelecimento receptor, operador autorizado e instante, sem armazenar o código secreto completo em logs. |
+| RF-082 | P1 | Consumidor autenticado consulta seus cupons e apresenta o código ou QR Code associado à sua conta; o estado só muda após confirmação do servidor. |
+| RF-083 | P1 | A validação informa benefício, validade e loja elegível, além de dados mínimos para conferência, sem expor contatos ou dados privados do consumidor. |
+| RF-084 | P1 | Recusar cupom inexistente, expirado, cancelado, já resgatado, incompatível com a loja ou sem elegibilidade vigente. |
 | RF-078 | P1 | Campanha pode envolver benefício cruzado entre estabelecimentos. |
 | RF-079 | P1 | Campanha pode estar associada à participação/conclusão de rota. |
 | RF-080 | P2 | Manter carteira de pontos, lotes, expiração e ledger. |

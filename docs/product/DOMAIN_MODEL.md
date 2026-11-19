@@ -37,9 +37,9 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Campaign:** ação promocional com responsável, período, estado, elegibilidade, benefício, limites, lojas envolvidas e responsável pelo custo.
 
-**Coupon:** benefício emitido conforme Campaign, com identificador não previsível, destinatário quando individual, validade e estado.
+**Coupon:** benefício emitido conforme Campaign, com identificador opaco, não previsível e de uso único, destinatário individual, validade e estado. Código textual e QR Code são representações do mesmo identificador; QR não contém dados pessoais.
 
-**CouponRedemption:** registro de resgate, com cupom, consumidor, estabelecimento receptor, instante e operador. Resgate atômico.
+**CouponRedemption:** registro histórico imutável de resgate, com cupom, consumidor, campanha/regra aplicada, estabelecimento receptor, instante e operador autenticado. A validação preliminar não cria resgate nem altera o estado do cupom.
 
 **Review / Report (P1):** opinião de consumidor e denúncia/moderação. Anonimato apenas na apresentação pública; autoria permanece vinculada internamente.
 
@@ -64,7 +64,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 - User 1:N RouteParticipation; DiscoveryRoute 1:N RouteParticipation.
 - RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop.
 - Campaign N:M Store; Campaign 1:N Coupon.
-- Coupon 0..N CouponRedemption conforme regra; cupom de uso único tem no máximo um resgate.
+- Coupon 0..1 CouponRedemption para cupons de uso único; o registro associa consumidor, loja receptora e operador responsável.
 - O encaminhamento de reserva gera apenas um link de contato externo com contexto de Store/Product; não cria entidade transacional nem estado de reserva na plataforma.
 - SearchSignal alimenta agregações sem expor evento individual; DemandAggregate pode ser contextualizado por FieldSurvey/SurveyResult.
 - Acesso institucional consulta somente DemandAggregate e SurveyResult agregados, com AuditEntry.
@@ -97,7 +97,9 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 8. Participação conclui somente quando a regra da rota é satisfeita.
 9. Nenhuma parada exige compra por padrão.
 10. Campaign ativa possui período, regra, elegibilidade, limites e responsável pelo custo.
-11. CouponRedemption é atômico conforme política do cupom.
+11. CouponRedemption é atômico conforme política do cupom; validação preliminar não consome o benefício.
+12. Apenas responsável autenticado pela loja receptora ou admin autorizado pode confirmar o resgate.
+13. Um cupom de uso único possui no máximo um CouponRedemption; tentativas concorrentes não podem duplicá-lo.
 12. Compra confirmada não gera benefício duplicado.
 13. Cancelamentos e correções críticas deixam trilha de auditoria.
 14. Dados privados não podem ser inferidos por endpoints públicos.

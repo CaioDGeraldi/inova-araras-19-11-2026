@@ -191,6 +191,16 @@ A primeira versão deve priorizar cupons simples, controlados e auditáveis. Ben
 
 Não emitir benefício sem responsável financeiro/comercial identificado. Não converter pontos em dinheiro. Carteira de pontos, lotes, expiração, FEFO e regras configuráveis ficam para evolução específica, salvo exigência expressa e tempo para implementar com segurança.
 
+### Apresentação e resgate do cupom
+
+O consumidor autenticado consulta seus cupons em **Fidelidade ao Centro** e apresenta o código único ou QR Code no estabelecimento receptor. Ambos representam o mesmo identificador opaco, não previsível e associado à conta elegível; o QR não contém dados pessoais.
+
+O responsável autenticado pela loja abre **Cupons e resgates** no painel, lê o QR Code com a câmera ou digita o código. O servidor verifica existência, estado, validade, campanha, elegibilidade, limites, loja receptora e autorização do operador. Se válido, o painel mostra o benefício e os dados mínimos para conferência, sem expor telefone, e-mail ou outros dados privados.
+
+A validação inicial é somente consulta e não consome o cupom. Depois de aplicar o benefício na venda presencial, o responsável confirma o resgate. O servidor revalida as condições e registra o resgate e o estado `redeemed` na mesma transação. Cupom já utilizado, expirado, cancelado, incompatível com a loja ou sem elegibilidade é recusado. Tentativas simultâneas não podem gerar dois resgates.
+
+O consumidor vê o estado atualizado somente após confirmação do servidor. Captura de tela ou aparência visual do cupom não substitui a consulta online pelo painel. O código é uma credencial de uso único e pode ser compartilhado; a validação online e a associação à conta reduzem riscos, mas não provam a identidade física de quem o apresenta. Benefícios de alto valor podem exigir verificação adicional definida pela campanha, sem solicitar documento ou dado sensível por padrão.
+
 Se a concessão depender de compra, a compra deve ser confirmada pelo responsável em um fluxo próprio da campanha. A confirmação é idempotente e auditável. A conversa de reserva, por si só, não comprova compra nem gera benefício.
 
 Taxa de 1 ponto por real e validade de 12 meses são parâmetros de piloto discutidos anteriormente, não regras aprovadas nem hardcoded. Só entram em vigor após validação comercial e definição de financiamento.
