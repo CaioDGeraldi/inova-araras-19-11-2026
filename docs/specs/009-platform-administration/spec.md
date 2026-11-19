@@ -27,12 +27,12 @@ A forma de provisionar e revogar administradores deve ser segura e não pode dep
 - Verificação de autorização no servidor em páginas, ações e endpoints.
 - Navegação central para categorias, estabelecimentos, Cronograma do Centro e Rotas de Descoberta.
 - Integração com os fluxos de domínio existentes, sem duplicar regras de aprovação, publicação, cancelamento, check-in ou revogação.
-- Registro das decisões administrativas críticas.
+- Registro mínimo e auditável das decisões de aprovação, publicação, cancelamento e revogação nos próprios domínios.
 
 ## Escopo P1
 - Consulta operacional de registros de check-in, campanhas e resgates.
 - Indicadores operacionais agregados, com período e definição explícitos.
-- Trilha de auditoria para ações críticas.
+- Serviço centralizado de trilha de auditoria para ações críticas, ampliando os registros mínimos exigidos no P0.
 - Identificação e separação de dados demonstrativos e reais.
 
 ## Fora do escopo
@@ -61,7 +61,7 @@ A forma de provisionar e revogar administradores deve ser segura e não pode dep
 - RF-110 é atendido pela navegação administrativa e pelas capacidades de gestão definidas nessas specs.
 - RF-111 permite consulta operacional, não edição arbitrária de check-ins, compras, campanhas ou resgates.
 - RF-112 exibe indicadores agregados e não deve ser confundido com inteligência comercial P2.
-- RF-113 exige trilha para ações críticas; a lista exata de eventos auditáveis deve ser definida antes da implementação.
+- RF-113 exige trilha centralizada para ações críticas; a lista exata de eventos auditáveis deve ser definida antes da implementação. Os domínios mantêm seus registros mínimos P0.
 - RF-114 exige identificação inequívoca dos registros de demonstração e filtros que impeçam mistura silenciosa.
 - Compras confirmadas são declarações dos responsáveis, não faturamento auditado.
 - Dados demonstrativos nunca podem ser apresentados como dados reais.
