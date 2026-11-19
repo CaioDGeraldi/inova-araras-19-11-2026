@@ -98,7 +98,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 5. Toda RouteStop publicada possui alvo físico ou atividade definido.
 6. CheckIn aceito pertence a participação válida e parada do mesmo rota.
 7. Duplicidade de check-in é bloqueada conforme política explícita.
-8. Participação conclui somente quando a regra do rota é satisfeita.
+8. Participação conclui somente quando a regra da rota é satisfeita.
 9. Nenhuma parada exige compra por padrão.
 10. Campaign ativa possui período, regra, elegibilidade, limites e responsável pelo custo.
 11. CouponRedemption é atômico conforme política do cupom.
