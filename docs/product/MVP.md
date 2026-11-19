@@ -98,7 +98,7 @@ Detalhamento: `docs/flows/PURCHASE_CONFIRMATION.md` e `docs/specs/007-purchase-c
 
 
 - Carteira de pontos, lotes, expiração, FEFO, estorno e regras configuráveis.
-- Inscrição completa, lista de presença e notificações de eventos.
+- Definição de capacidade/período de inscrição, inscrição completa, lista de presença e notificações de eventos.
 - Notificações push.
 - Geolocalização opcional e pontual, se houver justificativa e consentimento.
 - Integração Vaga Legal.
