@@ -46,7 +46,7 @@ Os diretórios são limites conceituais, não ordem obrigatória de criação. N
 - Coupon pertence a Campaign; Redemption registra uso por consumidor e estabelecimento elegível.
 - Store mantém os canais públicos de contato; links de reserva contextualizam Store/Product, mas não criam uma entidade de reserva.
 
-Evitar duplicar endereço/local em entidades relacionadas sem regra clara. Place pode ser entidade própria ou value object conforme reutilização real.
+Evitar duplicar endereço/local em entidades relacionadas sem regra clara. Place é uma entidade reutilizável compartilhada por EventOccurrence e RouteStop.
 
 ## Estados e integridade
 
@@ -63,7 +63,7 @@ Transições devem ser explícitas e autorizadas no servidor. Não permitir edi�
 ## Transações e concorrência
 
 - Não existe transação de reserva no Vem pro Centro; links externos não possuem estados locais.
-- Check-in deve possuir restrição única conforme política de repetição (ex.: participação + parada + ocorrência).
+- Check-in possui restrição única por participação + parada; cada nova execução da rota cria nova RouteParticipation.
 - Resgate de cupom deve validar elegibilidade e gravar consumo atomicamente.
 - Confirmação de compra deve ser idempotente.
 - Benefícios e saldos não podem ser calculados apenas no cliente.

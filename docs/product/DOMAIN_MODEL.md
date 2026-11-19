@@ -27,11 +27,17 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Place:** local físico reutilizável de atividade ou parada que não seja necessariamente loja, como praça ou espaço cultural.
 
-**Event:** atividade principal programada, com organizador e categoria. Possui ocorrências individuais com data, horário, local e estado próprios. Não há expansão automática complexa de recorrência no primeiro release.
+**Event:** atividade principal programada, com organizador e categoria. Possui ocorrências individuais.
+
+**EventOccurrence:** realização individual de Event, com data, horário, Place, estado, gratuidade/preço e informação de inscrição. Cada ocorrência tem seus próprios dados operacionais; não há expansão automática complexa de recorrência no primeiro release.
 
 **DiscoveryRoute:** percurso temático publicado pela administração, com período opcional, regra de participação/conclusão, estado e paradas.
 
-**RouteStop:** parada de DiscoveryRoute, com ordem sugerida, obrigatoriedade, instruções e referência a Store, Event ou Place. Deve possuir exatamente um alvo válido no MVP.
+**EventSuggestion (P1):** proposta privada de atividade enviada por responsável/organizador autenticado. Estados: pending, needs_changes, approved_for_publication e rejected. Devolução registra orientação; autor pode editar e reenviar. Aprovação não publica automaticamente.
+
+**SavedEvent (P1):** vínculo removível entre User e EventOccurrence, único por conta/ocorrência. Não representa inscrição ou reserva de vaga.
+
+**RouteStop:** parada de DiscoveryRoute, com ordem sugerida, obrigatoriedade, instruções e referência a Store, EventOccurrence ou Place. Deve possuir exatamente um alvo válido no MVP.
 
 **RouteParticipation:** uma execução de User em DiscoveryRoute. Cada nova execução cria nova participação. Controla início, estado e conclusão.
 
@@ -45,7 +51,11 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **PurchaseConfirmation:** registro transacional e auditável de uma compra presencial declarada como concluída pelo responsável autenticado. Referencia consumidor, estabelecimento, operador, instante, chave de idempotência, token de identificação consumido, valor total opcional e campanhas/regras avaliadas com seus resultados. Não representa pagamento processado ou comprovado pela plataforma.
 
-**Review / Report (P1):** avaliação e denúncia/moderação. Nota inteira de 1 a 5; comentário opcional até 1.000 caracteres; uma avaliação ativa por conta/alvo, com edição versionada. Exclusão lógica preserva trilha mínima. Identificação pública usa nome de exibição escolhido ou anonimato; autoria permanece vinculada internamente.
+**Review (P1):** avaliação de estabelecimento ou EventOccurrence, com nota inteira de 1 a 5 e comentário opcional até 1.000 caracteres. Uma avaliação ativa por conta/alvo; edição versionada e exclusão lógica com trilha mínima. Identificação pública usa nome de exibição escolhido ou anonimato; autoria permanece vinculada internamente.
+
+**ReviewResponse (P1):** resposta oficial vinculada à avaliação e ao estabelecimento. Responsável autorizado pode editar/remover; alterações são auditáveis e não alteram a avaliação original.
+
+**Report (P1):** denúncia de avaliação ou resposta, com denunciante, alvo, motivo, estado e instante. Denúncia não oculta automaticamente o conteúdo; moderação registra decisão e motivo.
 
 **SearchSignal (P2):** evento minimizado de busca sem resultado ou com baixa cobertura. Deve evitar identidade, identificadores persistentes, localização precisa e armazenamento desnecessário de texto livre. Os eventos brutos têm acesso restrito e retenção limitada.
 
@@ -63,11 +73,14 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 - Store N:M Category.
 - Store 1:N Product.
 - Event 1:N EventOccurrence; EventOccurrence N:1 Place e organizador. A ocorrência pode relacionar-se a Store e DiscoveryRoute.
+- EventSuggestion pode originar Event após revisão e publicação administrativa; aprovação da sugestão não publica automaticamente.
+- User 1:N SavedEvent; SavedEvent N:1 EventOccurrence, com unicidade por conta/ocorrência.
 - DiscoveryRoute 1:N RouteStop.
 - RouteStop aponta para Store, Event ou Place.
 - User 1:N RouteParticipation; DiscoveryRoute 1:N RouteParticipation; cada participação é uma execução independente.
 - RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop e possui unicidade por participação/parada. Fallback assistido referencia operador.
 - Campaign N:M Store; Campaign 1:N Coupon.
+- Review 1:0..1 ReviewResponse; Report referencia Review ou ReviewResponse.
 - Coupon 0..1 CouponRedemption para cupons de uso único; o registro associa consumidor, loja receptora e operador responsável.
 - User 1:N ConsumerIdentificationToken; tokens expirados, revogados ou consumidos não podem ser reutilizados.
 - User 1:N PurchaseConfirmation; Store 1:N PurchaseConfirmation; cada confirmação referencia o operador responsável e as campanhas/regras avaliadas. Uma confirmação pode originar benefícios em campanhas diferentes.
@@ -79,13 +92,19 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Store:** draft → pending_review → approved; pending_review → rejected; approved → suspended; suspended → approved após revisão. Rejected/suspended não aparece como participante público.
 
-**Event:** draft → published → completed/archived; published → cancelled. Cancelamento preserva histórico e é exibido claramente.
+**EventOccurrence:** draft → published → completed/archived; published → cancelled. Cancelamento preserva histórico e é exibido claramente.
+
+**EventSuggestion:** pending → needs_changes → pending após reenvio; pending → approved_for_publication ou rejected. Aprovação não publica ocorrência automaticamente.
 
 **DiscoveryRoute:** draft → published → active → archived; published/active pode ser cancelled. Participações existentes preservam contexto histórico mínimo.
 
 **RouteParticipation:** active → completed ou cancelled. Completed é terminal, salvo correção administrativa auditada.
 
 **CheckIn:** submitted → accepted ou rejected. Check-in aceito não é apagado silenciosamente.
+
+**Review / ReviewResponse:** published, hidden ou removed, com histórico de edição/moderação.
+
+**Report:** submitted → under_review → dismissed ou action_taken.
 
 **Campaign:** draft → scheduled → active → ended; active pode ser paused/cancelled.
 
