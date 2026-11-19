@@ -1,7 +1,7 @@
 # Spec 002 | Comércio e descoberta pública
 
 ## Contexto
-A vitrine digital é a base de descoberta do Vem pro Centro. Sem estabelecimentos e catálogo confiáveis, cronograma e circuitos não conseguem direcionar visitantes para o comércio participante.
+A vitrine digital é a base de descoberta do Vem pro Centro. Sem estabelecimentos e catálogo confiáveis, cronograma e rotas não conseguem direcionar visitantes para o comércio participante.
 
 ## Objetivo
 Permitir que um responsável mantenha estabelecimento e catálogo e que qualquer visitante descubra lojas e produtos sem autenticação.

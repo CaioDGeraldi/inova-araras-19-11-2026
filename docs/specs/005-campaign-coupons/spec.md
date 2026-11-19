@@ -75,7 +75,7 @@ Redemption é registro histórico, não estado editável.
 - [ ] Testes cobrem autorização, validade, elegibilidade e concorrência.
 
 ## Decisões em aberto
-- Se campanhas/cupons entram no primeiro piloto ou após Circuito Vivo.
+- Se campanhas/cupons entram no primeiro piloto ou após Rotas de Descoberta.
 - Modelo de código apresentado: QR dinâmico, código curto ou ambos.
 - Quem pode emitir campanhas individuais no primeiro release.
 - Política de compensação quando cupom é resgatado indevidamente.

@@ -44,7 +44,7 @@ RF-050 a RF-065; RNF-001 a RNF-008, RNF-013 a RNF-025, RNF-027 a RNF-029, RNF-03
 9. Quando regra é satisfeita, participação passa a completed.
 
 ## Regras e invariantes
-- A rota publicado possui ao menos uma parada.
+- A rota publicada possui ao menos uma parada.
 - Cada parada possui exatamente um alvo válido no MVP: Store, Event ou Place.
 - A rota pode definir ordem sugerida sem exigir sequência, salvo configuração explícita.
 - Paradas opcionais não bloqueiam conclusão.
@@ -54,6 +54,8 @@ RF-050 a RF-065; RNF-001 a RNF-008, RNF-013 a RNF-025, RNF-027 a RNF-029, RNF-03
 - Duplicidade é bloqueada pela política configurada e também por restrição no banco.
 - Token não contém dados pessoais nem identificadores sequenciais.
 - Token revogado/expirado não gera check-in.
+- A administração consegue revogar imediatamente um token comprometido (P0).
+- A rotação planejada de tokens é posterior (P1).
 - QR Code compartilhado pode gerar fraude; o sistema não deve prometer prova absoluta de presença.
 - Check-in aceito não é apagado silenciosamente; correção é auditada.
 
@@ -67,22 +69,24 @@ CheckIn: submitted, accepted, rejected.
 - Operação de check-in transacional.
 - Impedir duas gravações concorrentes para a mesma chave de unicidade.
 - Limitar tentativas e registrar rejeições relevantes sem guardar token secreto em logs.
-- Permitir rotação/revogação de token.
+- Revogação de token comprometido ou inválido é capacidade mínima P0.
+- Rotação planejada de token é P1 e substitui o token anterior de forma atômica.
 - QR deve ser exibido no estabelecimento e o operador precisa de procedimento simples para substituí-lo.
 - Não coletar localização contínua.
 
 ## Critérios de aceitação
 - [ ] Admin cria rota e adiciona Store/Event/Place como paradas.
-- [ ] A rota público exibe paradas, ordem sugerida e regra de conclusão.
+- [ ] A rota pública exibe paradas, ordem sugerida e regra de conclusão.
 - [ ] Visitante consulta sem login.
 - [ ] Usuário autenticado inicia participação.
 - [ ] Check-in válido registra participação uma única vez conforme regra.
 - [ ] Token inválido, revogado, expirado ou fora do período é recusado.
+- [ ] Administração consegue revogar um token comprometido sem depender da rotação planejada.
 - [ ] Check-in de rota/parada incompatível é recusado.
 - [ ] Tentativas concorrentes não duplicam participação.
 - [ ] Progresso considera apenas check-ins aceitos e paradas obrigatórias.
 - [ ] Conclusão acontece somente quando regra é satisfeita.
-- [ ] A rota pode ser concluído sem compra em cada parada.
+- [ ] A rota pode ser concluída sem compra em cada parada.
 - [ ] Correções e cancelamentos preservam auditoria.
 - [ ] Testes cobrem autorização, token, duplicidade, concorrência e transições.
 

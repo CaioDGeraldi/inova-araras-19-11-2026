@@ -26,7 +26,7 @@ Views coordenam HTTP e apresentação. Regras de domínio não ficam em template
 - apps/establishments/: estabelecimento, responsável, categorias e publicação.
 - apps/catalog/: produtos/serviços e disponibilidade declarada.
 - apps/events/: programação, local, organizador, publicação e cancelamento.
-- apps/circuits/: circuito, parada, participação, check-in e conclusão.
+- apps/discovery_routes/: rota, parada, participação, check-in e conclusão.
 - apps/campaigns/: campanha, benefício, cupom, elegibilidade e resgate.
 - apps/reservations/: solicitações e confirmação de compra, somente se aprovadas.
 - apps/community/: avaliações, denúncias e moderação, quando priorizadas.
@@ -38,9 +38,9 @@ Os diretórios são limites conceituais, não ordem obrigatória de criação. N
 
 - User pode ser responsável por várias Stores.
 - Store possui categorias e produtos/serviços.
-- Event possui local e organizador; pode relacionar-se opcionalmente a Store ou Circuit.
-- Circuit possui CircuitStops ordenadas; uma parada referencia Store, Event ou Place.
-- User participa de Circuit por CircuitParticipation.
+- Event possui local e organizador; pode relacionar-se opcionalmente a Store ou DiscoveryRoute.
+- DiscoveryRoute possui RouteStops ordenadas; uma parada referencia Store, Event ou Place.
+- User participa de DiscoveryRoute por RouteParticipation.
 - CheckIn pertence a uma participação e parada.
 - Campaign pode envolver uma ou mais Stores.
 - Coupon pertence a Campaign; Redemption registra uso por consumidor e estabelecimento elegível.
@@ -52,7 +52,7 @@ Evitar duplicar endereço/local em entidades relacionadas sem regra clara. Place
 
 - Estabelecimento: draft/pending, approved, rejected, suspended.
 - Atividade: draft, published, cancelled, completed/archived.
-- Circuito: draft, published, active, completed, archived.
+- DiscoveryRouteo: draft, published, active, completed, archived.
 - Participação: active, completed, cancelled.
 - Check-in: accepted ou rejected, com motivo interno.
 - Campanha: draft, scheduled, active, paused, ended, cancelled.
@@ -82,7 +82,7 @@ QR contém token opaco/não sequencial, não dados pessoais. Validar no servidor
 - HTMX para interações incrementais; evitar SPA sem necessidade.
 - Animações discretas, respeitando prefers-reduced-motion.
 - WCAG 2.2 AA como baseline.
-- SEO em páginas públicas de lojas, produtos, atividades e circuitos.
+- SEO em páginas públicas de lojas, produtos, atividades e rotas.
 
 ## Segurança e privacidade
 

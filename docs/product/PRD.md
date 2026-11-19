@@ -187,7 +187,7 @@ Taxa de 1 ponto por real e validade de 12 meses são parâmetros de piloto discu
 
 ## 14. Reservas e contato
 
-A plataforma pode permitir solicitação de reserva/interesse. Isso não é checkout nem garantia de disponibilidade. A loja precisa confirmar ou recusar. A confirmação de compra, quando aplicável a campanha, é ação posterior do responsável.
+Solicitação de reserva/interesse é uma capacidade P1, posterior ao núcleo de descoberta e circulação. Não é checkout nem garantia de disponibilidade. A loja precisa confirmar ou recusar. Até sua implementação, o consumidor pode usar os canais públicos de contato. A confirmação de compra, quando aplicável a campanha, é ação posterior do responsável.
 
 O MVP não processa pagamento, entrega ou logística. Se a janela apertar, manter contato direto e adiar solicitação sem comprometer vitrine, cronograma e Rotas de Descoberta.
 

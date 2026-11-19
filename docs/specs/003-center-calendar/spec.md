@@ -20,7 +20,7 @@ RF-030 a RF-041; RNF-001 a RNF-012, RNF-022 a RNF-025, RNF-030, RNF-031, RNF-034
 - Indicação de inscrição obrigatória/opcional.
 - Listagem pública por data e detalhe da atividade.
 - Estados draft, published, cancelled, completed/archived.
-- Associação opcional com estabelecimento e circuito.
+- Associação opcional com estabelecimento e rota.
 
 ## Excluído
 - Venda de ingressos e pagamento.

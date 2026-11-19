@@ -106,3 +106,14 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 ## Evidências por fase
 
 Cada fase só é concluída com spec aprovada, implementação, testes executados e registrados, critérios de aceite verificados, revisão de segurança/autorização, atualização de CURRENT_STATE e PR revisável sem merge automático.
+
+## Preparação da demonstração do pitch
+
+- Implementar o comando `python manage.py seed_demo` após os modelos necessários estarem estáveis.
+- Criar cenário fictício coerente para consumidor e dois proprietários/estabelecimentos.
+- Popular catálogo, disponibilidade declarada, Cronograma do Centro e uma Rota de Descoberta com paradas obrigatórias e opcionais.
+- Garantir determinismo, idempotência, marcação dos registros e proteção contra execução em produção.
+- Configurar credenciais demonstrativas por ambiente local, sem segredos versionados.
+- Ensaiar a narrativa nas duas perspectivas e registrar limitações do que ainda não estiver implementado.
+
+**Saída:** ambiente de demonstração reproduzível, sem dependência de dados reais ou operações manuais durante o pitch.

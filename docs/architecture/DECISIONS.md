@@ -6,7 +6,7 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 
 - Iniciativa: **Centro em Movimento**.
 - Plataforma: **Vem pro Centro**.
-- Circuito Vivo é a proposta de circulação e descoberta presencial, não apenas uma lista de lojas.
+- Rotas de Descoberta é a proposta de circulação e descoberta presencial, não apenas uma lista de lojas.
 - Cronograma do Centro integra a experiência do Vem pro Centro.
 - Fidelidade ao Centro conecta campanhas e benefícios entre estabelecimentos.
 - Uma identidade individual pode atuar como consumidor e responsável por lojas.
@@ -18,9 +18,9 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 
 ## Recomendações como baseline do MVP
 
-- Priorizar jornada integrada: vitrine → cronograma → circuito → check-in → progresso → retorno.
+- Priorizar jornada integrada: vitrine → cronograma → rota → check-in → progresso → retorno.
 - Cronograma público gerenciado inicialmente pela administração.
-- Circuitos com paradas que podem representar estabelecimento, atividade ou local.
+- DiscoveryRouteos com paradas que podem representar estabelecimento, atividade ou local.
 - Check-in por QR Code como registro de participação, sem alegar prova absoluta de presença.
 - Não exigir compra em cada parada.
 - Campanhas simples/cupom antes de carteira complexa de pontos.
@@ -32,7 +32,7 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 ## Recomendações dependentes de confirmação operacional
 
 - Se reserva/solicitação entra no primeiro slice ou fica como contato direto.
-- Se campanhas/cupons entram no primeiro MVP executável ou após circuito.
+- Se campanhas/cupons entram no primeiro MVP executável ou após rota.
 - Se avaliações entram no piloto inicial.
 - Se check-in permite repetição por parada, ocorrência ou período.
 - Se eventos terão inscrição/limite de participantes no piloto.

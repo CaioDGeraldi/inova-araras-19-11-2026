@@ -96,7 +96,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 3. Store não aprovado/suspenso não é apresentado como participante oficial.
 4. Product não representa estoque transacional; disponibilidade é declarada.
 5. Toda RouteStop publicada possui alvo físico ou atividade definido.
-6. CheckIn aceito pertence a participação válida e parada do mesmo rota.
+6. CheckIn aceito pertence a participação válida e parada do mesma rota.
 7. Duplicidade de check-in é bloqueada conforme política explícita.
 8. Participação conclui somente quando a regra da rota é satisfeita.
 9. Nenhuma parada exige compra por padrão.

@@ -45,11 +45,9 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 - Jornada de visitante parte da descoberta e chega ao check-in presencial.
 - Painel administrativo mantém o conteúdo.
 
-## P0 condicionado à jornada comercial
+## Reservas e solicitações | P1
 
-Solicitação de reserva/interesse pode entrar no P0 se necessária para demonstrar contato com a loja e confirmação de compra. Não é checkout nem reserva garantida. Se o tempo apertar, usar contato direto e preservar vitrine + cronograma + rota.
-
-Quando uma solicitação existir, o responsável pode registrar conclusão como compra. A operação deve ser autorizada, idempotente e auditável. Só gera benefício se houver campanha ativa com regra explícita.
+Solicitação de interesse/reserva é P1 e não condiciona a demonstração do núcleo. Quando implementada, permite que o consumidor manifeste interesse e que o responsável aceite, recuse ou cancele. Não representa checkout, pagamento ou garantia de estoque. Até lá, a página do estabelecimento pode oferecer contato direto.
 
 ## P1 | Após o núcleo estável
 
@@ -133,3 +131,17 @@ Não demonstrar integrações, parcerias, dados ou transações não implementad
 ## Regra de priorização
 
 O projeto será desenvolvido por uma pessoa. Planejar uma entrega vertical de cada vez. Cada slice deve ter spec, critérios verificáveis, testes e evidência.
+
+## Seed demonstrativo
+
+A demonstração do pitch deve ser reproduzível sem depender de cadastros manuais feitos durante a apresentação.
+
+- Disponibilizar comando dedicado `python manage.py seed_demo`.
+- Criar dados inteiramente fictícios e claramente identificados como demonstração, sem reproduzir nomes ou dados de estabelecimentos reais.
+- O cenário deve incluir um consumidor, pelo menos dois proprietários, dois estabelecimentos de categorias diferentes, produtos com preços e disponibilidade declarada, atividades no Cronograma do Centro e uma Rota de Descoberta com paradas obrigatórias e opcionais.
+- Incluir campanha demonstrativa somente se as regras e o responsável pelo benefício estiverem definidos no próprio cenário.
+- O seed deve ser determinístico e idempotente: execuções repetidas atualizam/reutilizam os registros de demonstração sem duplicá-los.
+- Todos os registros devem possuir identificação inequívoca de origem demonstrativa para permitir manutenção e limpeza seletiva.
+- O comando deve recusar execução em produção e nunca apagar ou alterar registros que não pertençam ao conjunto demonstrativo.
+- Senhas de contas demonstrativas devem ser fornecidas por configuração local/variáveis de ambiente, nunca publicadas no repositório ou impressas em logs.
+- O seed não substitui fixtures de teste nem deve ser executado automaticamente em deploy.

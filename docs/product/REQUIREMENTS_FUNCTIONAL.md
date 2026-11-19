@@ -75,8 +75,9 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | RF-061 | P0 | Concluir participação quando regra da rota for satisfeita. |
 | RF-062 | P0 | Rota não exige compra em cada parada por padrão. |
 | RF-063 | P1 | Consultar histórico de rotas e check-ins. |
-| RF-064 | P1 | Administração revoga/rotaciona token de parada. |
+| RF-064 | P0 | Administração pode revogar imediatamente o token de uma parada comprometida ou inválida. |
 | RF-065 | P1 | Rota pode possuir edições/ocorrências em períodos diferentes. |
+| RF-066 | P1 | Administração pode rotacionar o token de uma parada, substituindo o anterior. |
 
 ## F. Campanhas e benefícios
 
