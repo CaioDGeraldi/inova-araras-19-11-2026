@@ -102,7 +102,7 @@ Não incluir checkout, pagamento, entrega ou logística no MVP. Solicitação/re
 
 Rotas de Descoberta é o mecanismo de circulação presencial. Uma rota conecta estabelecimentos, espaços públicos ou atividades em um percurso temático. Pode ter ordem sugerida, paradas obrigatórias/opcionais, período de validade, regras de conclusão e benefício associado.
 
-O consumidor consulta o rota sem login. Login é necessário para iniciar participação, registrar check-ins e acompanhar progresso individual.
+O consumidor consulta a rota sem login. Login é necessário para iniciar participação, registrar check-ins e acompanhar progresso individual.
 
 O MVP pode usar QR Code por parada como registro de visita. Check-in não é prova antifraude absoluta: códigos podem ser compartilhados. O produto deve descrevê-lo como registro de participação, aplicar controles de duplicidade e permitir substituição/rotação dos códigos. Não usar GPS contínuo.
 
@@ -205,7 +205,7 @@ Cadastro assistido, fotografia de produtos, capacitação e divulgação coletiv
 
 ## 17. Experiências
 
-**Consumidor:** Início, Explorar, Rotas de Descoberta, Cronograma, Campanhas e Minha conta. A página inicial prioriza programação, rotas ativas, estabelecimentos e campanhas, sem esconder a busca.
+**Consumidor:** Início, Explorar, Rotas, Agenda e Perfil. A barra inferior fixa mantém esses cinco destinos; campanhas e Fidelidade ao Centro são acessadas a partir das seções correspondentes. A composição do feed e os atalhos serão definidos nos fluxos.
 
 **Comerciante:** dashboard simples com sidebar retrátil e topbar de usuário/configurações. Áreas de visão geral, estabelecimento, produtos/serviços, solicitações, campanhas e participação em rotas.
 
@@ -226,8 +226,8 @@ Esses indicadores não demonstram, isoladamente, demanda econômica suficiente p
 
 
 - Oferta: estabelecimentos cadastrados/aprovados/ativos; catálogo preenchido e atualizado; atividades, rotas e campanhas ativos.
-- Descoberta: visualizações, buscas sem resultado, cliques em contato/como chegar, rotas iniciados.
-- Circulação: check-ins válidos, estabelecimentos distintos visitados, rotas concluídos, participação em atividades, cupons resgatados.
+- Descoberta: visualizações, buscas sem resultado, cliques em contato/como chegar, rotas iniciadas.
+- Circulação: check-ins válidos, estabelecimentos distintos visitados, rotas concluídas, participação em atividades, cupons resgatados.
 - Retenção: participantes que retornam, recorrência de visita registrada, comerciantes que atualizam catálogo.
 
 Check-in não mede tempo de permanência. Para estimar permanência, usar pesquisa voluntária ou metodologia específica, sem rastreamento contínuo. Impacto econômico exige linha de base e avaliação; métricas de uso isoladas não demonstram aumento de faturamento ou causalidade.
@@ -256,3 +256,19 @@ Não presumir parceria institucional, API de estacionamento, estoque em tempo re
 ## 21. Critério de sucesso
 
 O MVP valida sua proposta quando uma pessoa consegue descobrir uma atividade ou estabelecimento, planejar uma visita, participar de rota presencial e registrar uma experiência/benefício, enquanto comerciante/administração mantêm informações sem operação excessivamente complexa. A demonstração deve mostrar jornada conectada, não telas independentes.
+
+## Experiência e navegação do consumidor
+
+A interface do consumidor deve adotar padrões familiares de aplicativos móveis de descoberta e comércio, reduzindo a necessidade de aprendizado. A referência de familiaridade é a navegação de aplicativos como Instagram; não se deve copiar sua identidade visual.
+
+Em dispositivos móveis, a navegação principal utiliza uma barra inferior fixa com cinco seções:
+
+- **Início:** ponto de entrada e descoberta.
+- **Explorar:** busca por estabelecimentos, produtos, serviços e categorias.
+- **Rotas:** Rotas de Descoberta, paradas e progresso.
+- **Agenda:** Cronograma do Centro e atividades.
+- **Perfil:** dados da conta, favoritos, Fidelidade ao Centro, avaliações e solicitações quando disponíveis.
+
+A estrutura é uma decisão de navegação. A composição do feed, os atalhos internos e os detalhes de cada tela serão definidos nos fluxos antes da implementação visual. A experiência do proprietário permanece em painel operacional próprio, com sidebar retrátil e topbar, usando a mesma identidade e autenticação da pessoa.
+
+A interface deve ser mobile-first, previsível, consistente, acessível e responsiva. Em telas maiores, a navegação pode adaptar sua apresentação sem alterar a hierarquia das seções. Não exigir login para descoberta pública.

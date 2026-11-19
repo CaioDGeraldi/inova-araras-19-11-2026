@@ -52,7 +52,7 @@ Evitar duplicar endereço/local em entidades relacionadas sem regra clara. Place
 
 - Estabelecimento: draft/pending, approved, rejected, suspended.
 - Atividade: draft, published, cancelled, completed/archived.
-- DiscoveryRouteo: draft, published, active, completed, archived.
+- Rota: draft, published, active, completed, archived.
 - Participação: active, completed, cancelled.
 - Check-in: accepted ou rejected, com motivo interno.
 - Campanha: draft, scheduled, active, paused, ended, cancelled.
@@ -100,3 +100,42 @@ Autorização no servidor e por objeto/estabelecimento. Manter CSRF, validação
 ## Evolução
 
 Adicionar novos apps ou integrações apenas após spec e decisão. A arquitetura deve permitir extração futura, mas não pagar hoje o custo de uma distribuição que ainda não existe.
+
+## Direção visual e navegação do consumidor
+
+A experiência do consumidor é mobile-first e deve reutilizar padrões de interação já familiares em aplicativos de descoberta e comércio. A referência ao Instagram é de familiaridade de navegação, não de cópia de identidade visual, marca ou composição proprietária.
+
+### Navegação principal em dispositivos móveis
+
+Usar uma barra inferior fixa com cinco destinos estáveis:
+
+1. **Início:** entrada principal e superfície de descoberta.
+2. **Explorar:** busca e descoberta de estabelecimentos, produtos, serviços e categorias.
+3. **Rotas:** Rotas de Descoberta, paradas, participação e progresso.
+4. **Agenda:** Cronograma do Centro e detalhes das atividades.
+5. **Perfil:** identidade, favoritos, reservas/solicitações quando disponíveis, avaliações e Fidelidade ao Centro.
+
+A barra deve manter posição, ordem, ícones reconhecíveis e rótulos visíveis entre as seções. O conteúdo específico do feed inicial e a distribuição de atalhos serão definidos nos fluxos de navegação, sem antecipar decisões de conteúdo nesta etapa.
+
+### Comportamento responsivo
+
+- Em telas móveis, priorizar navegação inferior e interações confortáveis com uma mão.
+- Em telas maiores, adaptar a navegação para um padrão apropriado ao espaço disponível, sem alterar a hierarquia ou os nomes das seções.
+- A troca de seção não deve descartar estado de busca, filtros ou progresso sem uma ação explícita.
+- O painel do proprietário permanece uma experiência operacional distinta, com sidebar retrátil e topbar, acessível pela conta da pessoa conforme suas permissões.
+
+### Linguagem visual
+
+- Interface familiar, clara e consistente, sem reinventar convenções estabelecidas.
+- Identidade própria do Vem pro Centro; não reproduzir logotipo, componentes proprietários ou identidade do Instagram.
+- Cards e listas com hierarquia visual simples para lojas, produtos, campanhas, rotas e atividades.
+- Evitar excesso de elementos, gestos ocultos e navegação dependente apenas de ícones.
+- Manter feedback visível para ações, estados vazios, carregamento, erros e confirmações.
+
+### Acessibilidade
+
+- Rótulos textuais acompanham os ícones da navegação principal.
+- Foco visível, ordem lógica, contraste WCAG 2.2 AA e suporte a teclado/leitor de tela.
+- Alvos interativos atendem ao mínimo WCAG 2.2 AA e devem ser ampliados quando possível para uso móvel.
+- A barra fixa não pode encobrir conteúdo, controles, avisos ou foco de teclado; considerar safe areas dos dispositivos.
+- Respeitar `prefers-reduced-motion`.

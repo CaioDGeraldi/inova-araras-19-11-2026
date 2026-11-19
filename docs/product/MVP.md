@@ -40,7 +40,7 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 
 ### Demonstração integrada
 - Dados de demonstração identificados como tais.
-- Pelo menos um rota com paradas reais ou claramente demonstrativas.
+- Pelo menos uma rota com paradas reais ou claramente demonstrativas.
 - Pelo menos uma atividade publicada no cronograma.
 - Jornada de visitante parte da descoberta e chega ao check-in presencial.
 - Painel administrativo mantém o conteúdo.
@@ -119,7 +119,7 @@ Solicitação de interesse/reserva é P1 e não condiciona a demonstração do n
 ## Critério de demonstrabilidade
 
 1. Consumidor descobre atividade no cronograma.
-2. Consulta rota associado e suas paradas.
+2. Consulta a rota associada e suas paradas.
 3. Encontra estabelecimentos e produtos participantes.
 4. Visita parada e registra check-in.
 5. Visualiza progresso e regra de conclusão.
