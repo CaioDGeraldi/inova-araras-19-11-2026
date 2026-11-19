@@ -69,7 +69,12 @@ class Command(BaseCommand):
                     "owner": users[owner],
                     "name": f"{name} {TAG}",
                     "description": "Loja fictícia para a demonstração.",
-                    "address": "Centro, Araras",
+                    "postal_code": "13600-000",
+                    "street": "Rua Voluntários da Pátria",
+                    "number": str(100 + len(stores) * 50),
+                    "district": "Centro",
+                    "city": "Araras",
+                    "state": "SP",
                     "status": Establishment.Status.APPROVED,
                     "whatsapp": whatsapp,
                     "instagram": instagram,
@@ -86,11 +91,12 @@ class Command(BaseCommand):
             stores.append(store)
 
         now = timezone.now()
+        events = []
         for title, days, status in [
             ("Feira de artesanato", 3, Event.Status.PUBLISHED),
             ("Show na praça", 5, Event.Status.CANCELLED),
         ]:
-            Event.objects.update_or_create(
+            event, _ = Event.objects.update_or_create(
                 title=f"{title} {TAG}",
                 defaults={
                     "description": "Evento fictício para a demonstração.",
@@ -102,6 +108,7 @@ class Command(BaseCommand):
                     "status": status,
                 },
             )
+            events.append(event)
 
         route, _ = Route.objects.update_or_create(
             slug="rota-demo",
@@ -109,13 +116,20 @@ class Command(BaseCommand):
                 "title": f"Rota do Centro {TAG}",
                 "description": "Passe pelas paradas obrigatórias para concluir.",
                 "published": True,
+                "starts_on": timezone.localdate() - timedelta(days=1),
+                "ends_on": timezone.localdate() + timedelta(days=30),
             },
         )
         for order, (store, required) in enumerate(zip(stores, [True, True, False], strict=True)):
             Stop.objects.update_or_create(
                 route=route,
                 name=f"Parada {order + 1} {TAG}",
-                defaults={"establishment": store, "order": order, "required": required},
+                defaults={
+                    "establishment": store,
+                    "order": order,
+                    "required": required,
+                    "event": events[0] if order == 2 else None,
+                },
             )
 
         Campaign.objects.update_or_create(
