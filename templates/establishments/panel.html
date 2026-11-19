@@ -8,6 +8,13 @@
         <h2 class="h5">
             {{ establishment.name }} <span class="badge text-bg-secondary">{{ establishment.get_status_display }}</span>
         </h2>
+        {% if establishment.status != "aprovado" %}
+            <p class="alert alert-warning" role="status">
+                {% if establishment.status == "pendente" %}Aguardando aprovação: a loja ainda não aparece para o público.
+                {% elif establishment.status == "rejeitado" %}Loja rejeitada: não aparece para o público nem recebe compras ou cupons.
+                {% else %}Loja suspensa: não aparece para o público nem recebe compras ou cupons.{% endif %}
+            </p>
+        {% endif %}
         <p class="d-flex flex-wrap gap-2">
             <a class="btn btn-outline-primary btn-sm" href="{% url 'establishment_edit' establishment.slug %}">Editar loja</a>
             <a class="btn btn-primary btn-sm" href="{% url 'product_create' establishment.slug %}">Novo produto</a>
