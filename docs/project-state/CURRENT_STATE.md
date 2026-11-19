@@ -1,6 +1,6 @@
 # Estado atual do projeto
 
-**Atualizado:** 19/11/2026, documentação dos fluxos de descoberta.
+**Atualizado:** 19/11/2026, documentação do fluxo de Rotas de Descoberta.
 
 ## Contexto
 
@@ -50,9 +50,9 @@ Nenhum teste de aplicação foi executado por esta atualização documental. Nã
 
 1. `docs/flows/CONSUMER_NAVIGATION.md`: navegação principal do consumidor, cinco destinos, descoberta pública, Agenda, Rotas de Descoberta, Perfil e autenticação contextual.
 2. `docs/flows/COMMERCE_DISCOVERY.md`: busca e categorias, resultados, páginas públicas de estabelecimento e produto/serviço, contato, orientação de visita e estados alternativos.
+3. `docs/flows/DISCOVERY_ROUTES.md`: consulta de rotas, detalhe, autenticação contextual, participação, QR check-in, progresso, conclusão e estados alternativos.
 
 Próximos fluxos previstos:
-- Rotas de Descoberta: consulta, detalhe, participação, paradas, check-in e conclusão.
 - Painel do proprietário: acesso com a mesma conta, gestão do estabelecimento e catálogo.
 - Demonstração integrada: encadeamento das jornadas de consumidor e proprietário para o pitch.
 
