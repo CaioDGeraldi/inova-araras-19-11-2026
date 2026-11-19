@@ -72,7 +72,7 @@ O cenário integrado de apresentação está em `docs/demo/DEMO_SCENARIO.md`.
 ## Rastreabilidade entre fluxos, requisitos, specs e tasks
 
 - Comércio e descoberta: RF-001, RF-004, RF-005, RF-010 a RF-028; Spec 002 e tasks correspondentes.
-- Cronograma: RF-030 a RF-041; Spec 003 e tasks correspondentes. RF-037/RF-038/RF-040 são P1 e foram incorporados à spec.
+- Cronograma: RF-030 a RF-041; Spec 003 e tasks correspondentes. RF-037/RF-038/RF-040 são P1 e foram incorporados à spec. RF-039 foi ajustado para P2, alinhado ao corte de capacidade e período de inscrição no MVP.
 - Rotas: RF-050 a RF-066; Spec 004 e tasks correspondentes.
 - Campanhas e cupons: RF-070 a RF-084; Spec 005 e tasks correspondentes.
 - Reserva externa: RF-090 a RF-093, descritos nos fluxos de descoberta e compra e na Spec 002.
