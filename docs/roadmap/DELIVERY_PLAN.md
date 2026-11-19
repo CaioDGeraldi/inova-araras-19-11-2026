@@ -4,6 +4,20 @@
 
 Desenvolvimento individual, orientado por fatias verticais. A ordem representa dependências, não promessa de duração. A data do evento não justifica afirmar que funcionalidades estarão prontas sem implementação e validação.
 
+## Estado das fases após a demonstração de 19/11/2026
+
+- **Fase 0 — concluída:** base criada no PR #4 e validada posteriormente no PR #18. A Issue #3 foi encerrada. A Issue #7 foi encerrada como não planejada, pois o QR abre pela câmera nativa do dispositivo.
+- **Fase 1 — parcial:** cadastro, painel, catálogo, busca, contatos externos e complementos P0 integrados nos PRs #18, #22 e #24. Issue #8 permanece aberta para os critérios completos da Spec 002.
+- **Fase 2 — parcial:** consulta pública de eventos e associação evento/rota integradas nos PRs #18 e #22. Ocorrências/Place e recursos P1 permanecem pendentes na Issue #9.
+- **Fase 3 — parcial:** rotas, QR por URL, check-in e progresso integrados nos PRs #18 e #22. Rotação/revogação, fallback assistido e múltiplas execuções permanecem pendentes na Issue #10.
+- **Fase 4 — parcial:** campanha simples, confirmação manual simplificada e cupom cruzado integrados no PR #18. Token temporário, validade, limites e auditoria permanecem pendentes nas Issues #11 e #12.
+- **Fase 5 — pendente:** comunidade/moderação e camada completa de administração/auditoria continuam nas Issues #13 e #14.
+- **Fase 6 — parcial:** WhatsApp com mensagem contextualizada e Instagram como alternativa já aparecem na demo; não há estado local de reserva nem sincronização de conversa.
+- **Fase 7 — pendente:** inteligência comercial continua P2, sem implementação declarada.
+- **Demonstração:** `seed_demo` existe, mas não está pronto para produção. Credencial fixa, saída da senha, colisões potenciais e execução automática no `Procfile` estão acompanhadas pela Issue #15.
+
+O PR #18 e a Issue #17 correspondem a um corte temporário de demo de duas horas. Não significam entrega nem conclusão do MVP definido em `docs/product/MVP.md`.
+
 ## Fase 0 — Fundação confiável
 
 - Auditar PR #4.

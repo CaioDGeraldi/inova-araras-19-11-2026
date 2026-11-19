@@ -1,7 +1,7 @@
 # Spec 001 | Auditoria e conclusão da fundação Django
 
 ## Contexto
-PR #4 fornece a base proposta para o projeto. O PR registra validação incompleta: lockfile não gerado e Django, PostgreSQL, Ruff e pytest não executados.
+PR #4 forneceu a base do projeto, mas a validação inicial ficou incompleta. Posteriormente, o PR #18 registrou a geração/versionamento de `uv.lock`, migrações, Django check, pytest, Ruff e smoke tests com a aplicação conectada à configuração PostgreSQL. A Issue #3 foi encerrada após essa validação posterior.
 
 ## Objetivo
 Verificar a base no ambiente de desenvolvimento, corrigir problemas que impeçam o uso e deixar um baseline confiável para desenvolver o domínio.
@@ -23,15 +23,15 @@ Verificar a base no ambiente de desenvolvimento, corrigir problemas que impeçam
 - Abstrações não necessárias para a fundação.
 
 ## Critérios de aceitação
-- [ ] Instalação reproduzível com uv e lockfile versionado.
-- [ ] PostgreSQL local inicia e aplicação conecta.
-- [ ] Migrations aplicam sem erro e User customizado está ativo.
-- [ ] manage.py check passa.
-- [ ] Healthcheck responde.
-- [ ] Template base renderiza e HTMX está configurado.
-- [ ] Ruff e pytest passam ou falhas restantes estão documentadas e justificadas.
-- [ ] README permite outra pessoa iniciar o projeto.
-- [ ] Nenhum segredo real versionado.
+- [x] Instalação reproduzível com uv e lockfile versionado.
+- [x] PostgreSQL local inicia e aplicação conecta.
+- [x] Migrations aplicam sem erro e User customizado está ativo.
+- [x] manage.py check passa.
+- [x] Healthcheck responde.
+- [x] Template base renderiza e HTMX está configurado.
+- [x] Ruff e pytest passam; PR #18 registrou 1 teste aprovado.
+- [x] README permite outra pessoa iniciar o projeto.
+- [x] Nenhum segredo real de ambiente está versionado; credenciais demonstrativas inseguras permanecem tratadas separadamente na Issue #15.
 
-## Verificação
-Registrar comandos executados, resultados, falhas e ambiente. Não declarar critério cumprido sem evidência.
+## Verificação registrada
+PR #18 reporta `manage.py check`, `makemigrations --check`, `migrate`, `pytest` (1 teste), Ruff, seed repetido e smoke tests HTTP 200. `uv.lock` e `compose.yaml` estão versionados. A Issue #3 foi concluída com base nessas evidências posteriores ao PR #4.

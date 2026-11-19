@@ -1,6 +1,6 @@
 # Estado atual do projeto
 
-**Atualizado:** 19/11/2026, sincronização das decisões funcionais e criação do backlog de implementação.
+**Atualizado:** 19/11/2026, auditoria do backlog, PRs integrados e riscos da demonstração.
 
 ## Contexto
 
@@ -8,35 +8,39 @@
 
 ## Repositório e PRs
 
-- Branch padrão: main.
-- Issue #3: fundação Django.
-- PR #4: fundação Django, mergeado.
-- PR #5: preparação documental, branch `001/docs/project-readiness`, alvo main. Reúne baseline de produto, requisitos, domínio, plano de entrega, fluxos e specs. Última sincronização: commit `583f9e5` e commit subsequente de rastreabilidade do backlog.
-- PR #6: proposta institucional Centro em Movimento, aberta e não mesclada segundo a última verificação registrada.
-- PR #18: demo funcional (corte da Issue #17), mergeado.
-- Não foi feito merge automático de PRs.
+- Branch padrão: `main`.
+- PR #2: modelos de Issue e Pull Request, mergeado.
+- PR #4: fundação Django, mergeado. A validação inicial pendente foi concluída posteriormente e registrada no PR #18.
+- PR #5: baseline documental do produto, requisitos, domínio, plano, fluxos e Specs, mergeado.
+- PR #6: proposta institucional Centro em Movimento, mergeado.
+- PR #18: corte funcional de duas horas para a demonstração integrada, mergeado. Não representa entrega nem conclusão do MVP.
+- PR #20: Bootstrap, navegação móvel e acessibilidade básica da demonstração, mergeado.
+- PR #22: complementos P0 de endereço, imagens, estados da loja, evento na rota e período, mergeado.
+- PR #24: identidade visual e interface de consumo do Vem pro Centro, mergeado.
+- PR #25: preparação de demonstração no Heroku, mergeado. O `Procfile` ainda executa `seed_demo` em cada inicialização; o risco está registrado na Issue #15.
+- No snapshot de implementação até o PR #25, não havia Pull Requests abertos. O PR #26 contém apenas esta sincronização documental do backlog e do estado do projeto.
 
 ## Backlog de implementação
 
 As Issues abaixo representam entregas verticais, não arquivos individuais. Cada uma referencia suas Specs, tasks e fluxos. O desenvolvimento é individual; dependências indicam a ordem lógica, não divisão de equipe.
 
-| Identificador | Issue | Entrega | Dependências |
-|---|---:|---|---|
-| F0.01 | [#3](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/3) | Fundação Django | Nenhuma |
-| F0.02 | [#7](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/7) | Spike de leitura QR em navegadores móveis | F0.01 |
-| F0.03 | [#8](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/8) | Comércio e descoberta pública | F0.01 |
-| F0.04 | [#9](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/9) | Cronograma do Centro | F0.01; associação com lojas depende de F0.03 |
-| F0.05 | [#10](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/10) | Rotas de Descoberta e check-ins | F0.01 a F0.04 e spike F0.02 |
-| F0.06 | [#11](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/11) | Confirmação de compra por Meu QR | F0.01, F0.02, F0.03 |
-| F0.07 | [#12](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/12) | Campanhas, Fidelidade ao Centro e cupons | F0.01, F0.02, F0.05, F0.06 |
-| F0.08 | [#13](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/13) | Comunidade, avaliações e moderação | F0.01, F0.03; integração administrativa F0.09 |
-| F0.09 | [#14](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/14) | Administração e auditoria da plataforma | F0.01; integração por domínio F0.03 a F0.08 |
-| F0.10 | [#15](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/15) | Seed e cenário integrado de demonstração | Núcleo F0.03/F0.04; P1 conforme entrega |
-| F0.11 | [#16](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/16) | Política de privacidade e retenção pré-produção | Em paralelo; obrigatória antes de produção |
+| Identificador | Issue | Entrega | Estado em 19/11/2026 | Evidência / dependências |
+|---|---:|---|---|---|
+| F0.01 | [#3](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/3) | Fundação Django | Concluída | PR #4 + validações posteriores no PR #18 |
+| F0.02 | [#7](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/7) | Leitor QR em navegador móvel | Encerrada: não planejada | O dispositivo usa a câmera nativa para abrir a URL do QR |
+| F0.03 | [#8](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/8) | Comércio e descoberta pública | Aberta, parcial | PRs #18, #22 e #24; faltam critérios completos da Spec 002 |
+| F0.04 | [#9](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/9) | Cronograma do Centro | Aberta, parcial | PRs #18 e #22; faltam ocorrências/Place e recursos P1 |
+| F0.05 | [#10](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/10) | Rotas de Descoberta e check-ins | Aberta, parcial | PRs #18 e #22; faltam rotação/revogação, fallback e múltiplas execuções |
+| F0.06 | [#11](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/11) | Confirmação de compra por Meu QR | Aberta, parcial | PR #18 usa código fixo; token temporário, idempotência e auditoria ainda pendentes |
+| F0.07 | [#12](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/12) | Campanhas, Fidelidade ao Centro e cupons | Aberta, parcial | PR #18 entrega campanha simples; validade, limites e compensações pendentes |
+| F0.08 | [#13](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/13) | Comunidade, avaliações e moderação | Aberta | Implementação pendente |
+| F0.09 | [#14](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/14) | Administração e auditoria da plataforma | Aberta, parcial | Operações iniciais usam Django Admin; auditoria e consulta operacional pendentes |
+| F0.10 | [#15](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/15) | Seed e cenário integrado de demonstração seguro | Aberta, parcial | O comando existe; segurança de credenciais, isolamento e execução em deploy precisam ser corrigidos |
+| F0.11 | [#16](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/16) | Política de privacidade e retenção pré-produção | Aberta | Obrigatória antes de produção com dados reais e avaliações públicas |
 
-A Issue [#17](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/17) foi entregue como corte da demo (PR #18), cobrindo parte das entregas F0.03 a F0.10; o restante de cada uma segue no backlog.
+A Issue [#17](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/17) foi renomeada para `[DEMO-2H]` e registra somente o corte temporário de duas horas implementado no PR #18. Ela não entrega nem encerra o MVP. A definição oficial do MVP permanece em `docs/product/MVP.md`. A Issue [#19](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/19) também foi identificada como tarefa de interface da demo. As Issues #21 e #23 foram concluídas, respectivamente, pelos PRs #22 e #24.
 
-Issue #3 foi reaproveitada e renomeada como F0.01. Não foi criada uma segunda Issue para a fundação. As Issues não foram atribuídas a uma equipe; o responsável pelo desenvolvimento é único.
+A Issue #3 foi concluída após a validação posterior da fundação; a Issue #7 foi encerrada como não planejada porque não há leitor QR embutido no navegador. As Issues #8 a #12 permanecem abertas de propósito: os PRs integraram cortes parciais e não satisfazem todo o escopo das Specs.
 
 ## Documentação consolidada nesta branch
 
@@ -65,20 +69,28 @@ O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do
 
 As decisões consolidadas em 19/11/2026 estão refletidas nas Specs 002, 003, 004, 005, 008 e 009 e nos fluxos correspondentes: cadastro pendente e validado; ocorrências de atividade explícitas; QR estático revogável por parada com fallback assistido; campanhas centralizadas; regras de avaliação/moderação; provisionamento administrativo e auditoria. Não tratar essas decisões como pendências de produto.
 
-## Pendências antes da implementação
+## Pendências e próximos passos
 
-1. Revisar e validar PR #4 e a fundação técnica.
-2. Confirmar a ordem final dos slices conforme o tempo e as exigências do desafio.
-3. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar dados fictícios como demonstração.
-4. Executar spike de compatibilidade de leitura QR em navegadores móveis reais e selecionar a estratégia técnica.
-5. Formalizar política de privacidade, retenção, exclusão, anonimização e descarte antes da produção.
-6. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
-7. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar dados fictícios como demonstração.
-8. Gerar e manter Issues por fatia vertical, vinculadas às Specs e tasks, sem duplicar o workflow do motor SDD.
+1. Continuar as Issues #8 a #12 até atender os critérios completos das Specs 002 a 005 e 007; os PRs da demo contam como entregas parciais.
+2. Implementar comunidade/moderação (#13) e consolidar administração/auditoria (#14) conforme prioridade P1 e capacidade.
+3. Endurecer `seed_demo` (#15): remover senha fixa e saída de credenciais, impedir colisões com dados reais, recusar uso em produção e retirar a execução automática do Procfile. Separar restauração de imagens da criação/atualização de dados.
+4. Formalizar política de privacidade, retenção, exclusão, anonimização e descarte (#16) antes de produção com dados reais e antes de habilitar avaliações públicas.
+5. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar todo dado fictício como demonstração.
+6. Confirmar responsável, validade, limites e regras comerciais de cada benefício antes de ativar campanhas.
+7. Manter Issues vinculadas às Specs e tasks, sem criar uma Issue de “entrega do MVP” que duplique a definição em `docs/product/MVP.md`.
 
-## Validação
+Não há mais dependência F0.02: o fluxo usa câmera nativa do dispositivo para abrir a URL do QR.
 
-Esta atualização é documental. Nenhum teste de aplicação foi executado. Não declarar fundação, banco, migrations, endpoints ou testes como validados.
+## Validação registrada nos PRs integrados
+
+- PR #18: `manage.py check`, `makemigrations --check`, `migrate`, `pytest` (1 teste), Ruff, duas execuções do `seed_demo` com contagens iguais e smoke tests HTTP 200 foram registrados como aprovados.
+- PR #20: Django check, pytest (1 teste), Ruff e HTTP 200 nas telas capturadas foram registrados como aprovados.
+- PR #22: check, migrations, migrate, pytest (1 teste), Ruff e validações de imagem/período foram registrados como aprovados.
+- PR #24: check, pytest (1 teste), Ruff, seed repetido e HTTP 200 foram registrados como aprovados.
+- PR #25: check e Ruff foram registrados como aprovados.
+- `uv.lock` está versionado e `compose.yaml` configura PostgreSQL 16.
+
+Esses resultados são evidências relatadas nos PRs integrados, não uma nova execução de testes nesta atualização documental. A cobertura automatizada continua pequena; os critérios completos das Issues abertas não devem ser considerados concluídos por causa dos smoke tests da demonstração.
 
 ## Fluxos documentados
 
@@ -116,16 +128,17 @@ O servidor registra a operação de forma auditável e idempotente, avalia campa
 
 ## Preparação da demonstração
 
-- Seed demonstrativo documentado; implementação do comando `python manage.py seed_demo` ainda pendente.
-- Dados do seed devem ser fictícios, determinísticos, identificáveis como demonstração e isolados de dados reais.
-- Demonstração prevista em duas perspectivas: consumidor e proprietário de estabelecimento.
-- Os fluxos são definições funcionais, não protótipos nem implementação de telas.
+- O comando `python manage.py seed_demo` existe e foi executado duas vezes com contagens iguais, conforme evidência do PR #18.
+- A Issue #15 permanece aberta: o comando usa senha fixa, redefine senhas e imprime credenciais; o `Procfile` executa o seed a cada inicialização do serviço; a rotina ainda precisa de proteção contra colisões com registros reais e transação.
+- `docs/demo/DEMO_SCENARIO.md` descreve o cenário pretendido, mas não comprova que todos os fluxos P1 estão implementados.
+- A demonstração deve usar exclusivamente contas, contatos, estabelecimentos, produtos e transações fictícias e claramente identificadas.
 
-## Pendências deixadas pelo corte da #17
+## Atalhos e limitações da demonstração
 
-- Cupom sem validade.
-- Meu QR fixo, sem token temporário rotativo.
-- Check-in por GET.
-- WhatsApp com DDI 55 fixo.
-- Regras de negócio sem teste automatizado.
-- `ALLOWED_HOSTS` exige o IP da rede para testar o QR no celular.
+- Cupom sem validade; a Issue #12 continua aberta para completar as regras da Spec 005.
+- Meu QR fixo por conta, não o token temporário rotativo da Spec 007; Issue #11.
+- Check-in por GET, com a limitação registrada no PR #18; Issue #10.
+- WhatsApp usa DDI 55 fixo no estado atual.
+- Cobertura automatizada mínima: PRs registram 1 teste pytest, além de smoke tests; não equivale à validação completa das regras de negócio.
+- `ALLOWED_HOSTS` local exige incluir o IP da rede para testar QR em outro dispositivo.
+- `Procfile` executa `seed_demo` na inicialização e o comando usa credencial fixa; risco conhecido acompanhado pela Issue #15.
