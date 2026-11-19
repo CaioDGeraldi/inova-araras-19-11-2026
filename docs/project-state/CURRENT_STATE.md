@@ -1,6 +1,6 @@
 # Estado atual do projeto
 
-**Atualizado:** 18/11/2026, consolidação de produto e requisitos.
+**Atualizado:** 19/11/2026, documentação dos fluxos de descoberta.
 
 ## Contexto
 
@@ -11,7 +11,7 @@
 - Branch padrão: main.
 - Issue #3: fundação Django.
 - PR #4: fundação Django, aberto e não mesclado segundo a última verificação registrada. Validar uv.lock, Python 3.12, migrations, PostgreSQL, Django check, Ruff e pytest antes de assumir concluído.
-- PR #5: preparação documental, branch 001/docs/project-readiness, alvo main. Esta atualização amplia o PR com baseline de produto, requisitos, domínio e plano de entrega.
+- PR #5: preparação documental, branch 001/docs/project-readiness, alvo main. Esta atualização amplia o PR com baseline de produto, requisitos, domínio, plano de entrega e fluxos.
 - Não foi feito merge de PR #4 ou #5 nesta etapa.
 
 ## Documentação consolidada nesta branch
@@ -46,15 +46,19 @@ O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do
 
 Nenhum teste de aplicação foi executado por esta atualização documental. Não declarar fundação, banco, migrations, endpoints ou testes como validados.
 
-## Fluxos de navegação
+## Fluxos documentados
 
-- Primeiro fluxo documentado: `docs/flows/CONSUMER_NAVIGATION.md`.
-- Define cinco destinos da navegação inferior, descoberta pública, acesso à Agenda, Rotas de Descoberta, Perfil e autenticação contextual.
-- Detalhamento do painel do proprietário e da demonstração integrada permanece pendente.
+1. `docs/flows/CONSUMER_NAVIGATION.md`: navegação principal do consumidor, cinco destinos, descoberta pública, Agenda, Rotas de Descoberta, Perfil e autenticação contextual.
+2. `docs/flows/COMMERCE_DISCOVERY.md`: busca e categorias, resultados, páginas públicas de estabelecimento e produto/serviço, contato, orientação de visita e estados alternativos.
+
+Próximos fluxos previstos:
+- Rotas de Descoberta: consulta, detalhe, participação, paradas, check-in e conclusão.
+- Painel do proprietário: acesso com a mesma conta, gestão do estabelecimento e catálogo.
+- Demonstração integrada: encadeamento das jornadas de consumidor e proprietário para o pitch.
 
 ## Preparação da demonstração
 
 - Seed demonstrativo documentado; implementação do comando `python manage.py seed_demo` ainda pendente.
 - Dados do seed devem ser fictícios, determinísticos, identificáveis como demonstração e isolados de dados reais.
 - Demonstração prevista em duas perspectivas: consumidor e proprietário de estabelecimento.
-- Fluxos detalhados de navegação serão definidos em etapa própria antes da implementação das telas.
+- Os fluxos detalhados de navegação são definições funcionais, não protótipos nem implementação de telas.
