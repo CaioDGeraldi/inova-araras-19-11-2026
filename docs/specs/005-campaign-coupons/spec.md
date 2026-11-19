@@ -7,7 +7,7 @@ Fidelidade ao Centro e Campanhas Colaborativas conectam estabelecimentos por ben
 Permitir campanhas com regras e responsável definidos, emissão de cupons elegíveis e resgate único por estabelecimento autorizado.
 
 ## Requisitos relacionados
-RF-070 a RF-079; RF-093 a RF-095 quando compra confirmada for fonte de elegibilidade; RNF-013 a RNF-025, RNF-028, RNF-029.
+RF-070 a RF-079; RF-094 a RF-095 quando compra confirmada for fonte de elegibilidade; RNF-013 a RNF-025, RNF-028, RNF-029.
 
 ## Atores e permissões
 - Admin: cria e administra campanhas coletivas.

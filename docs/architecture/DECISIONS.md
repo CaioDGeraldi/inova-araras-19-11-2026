@@ -12,6 +12,7 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 - Uma identidade individual pode atuar como consumidor e responsável por lojas.
 - Descoberta pública não exige login.
 - Estoque é declarado, não em tempo real.
+- Pedido de reserva acontece por conversa externa iniciada na vitrine, prioritariamente pelo WhatsApp com mensagem pré-preenchida; a plataforma não controla o estado da conversa.
 - MVP usa monólito modular Django, sujeito à validação da fundação.
 - Vaga Legal é o nome correto.
 - PRD define visão; MVP limita escopo; requisitos detalham comportamento; domínio define estados/invariantes; specs orientam mudanças.
@@ -31,7 +32,7 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 
 ## Recomendações dependentes de confirmação operacional
 
-- Se reserva/solicitação entra no primeiro slice ou fica como contato direto.
+- Se o botão de mensagem contextualizada pelo WhatsApp entra no primeiro slice executável ou logo após estabilizar a vitrine; o cadastro do número público faz parte dos dados de contato do estabelecimento.
 - Se campanhas/cupons entram no primeiro MVP executável ou após rota.
 - Se avaliações entram no piloto inicial.
 - Se check-in permite repetição por parada, ocorrência ou período.
@@ -54,5 +55,6 @@ Este documento separa decisões adotadas, recomendações para o MVP e hipótese
 - Não coletar localização contínua.
 - Não conceder benefício sem regra, elegibilidade, limite e responsável pelo custo.
 - Não implementar permissões granulares sem caso real.
+- Não criar caixa de entrada, entidade de reserva, status local ou integração de mensagens no MVP.
 - Não duplicar FractawProjects: o repositório do produto guarda contexto, specs e estado; FractawProjects conduz agentes e workflow.
 - Não fazer merge sem autorização explícita.

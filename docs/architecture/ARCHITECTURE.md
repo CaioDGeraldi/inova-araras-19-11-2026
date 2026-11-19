@@ -28,7 +28,7 @@ Views coordenam HTTP e apresentação. Regras de domínio não ficam em template
 - apps/events/: programação, local, organizador, publicação e cancelamento.
 - apps/discovery_routes/: rota, parada, participação, check-in e conclusão.
 - apps/campaigns/: campanha, benefício, cupom, elegibilidade e resgate.
-- apps/reservations/: solicitações e confirmação de compra, somente se aprovadas.
+- Os pedidos de reserva são encaminhados por links externos de contato; não há app de reservas no MVP.
 - apps/community/: avaliações, denúncias e moderação, quando priorizadas.
 - apps/dashboard/: composição de experiências operacionais, não dono das regras.
 
@@ -44,7 +44,7 @@ Os diretórios são limites conceituais, não ordem obrigatória de criação. N
 - CheckIn pertence a uma participação e parada.
 - Campaign pode envolver uma ou mais Stores.
 - Coupon pertence a Campaign; Redemption registra uso por consumidor e estabelecimento elegível.
-- Reservation, se implementada, pertence a User e Store; conclusão pode originar compra elegível.
+- Store mantém os canais públicos de contato; links de reserva contextualizam Store/Product, mas não criam uma entidade de reserva.
 
 Evitar duplicar endereço/local em entidades relacionadas sem regra clara. Place pode ser entidade própria ou value object conforme reutilização real.
 
@@ -57,12 +57,12 @@ Evitar duplicar endereço/local em entidades relacionadas sem regra clara. Place
 - Check-in: accepted ou rejected, com motivo interno.
 - Campanha: draft, scheduled, active, paused, ended, cancelled.
 - Cupom: issued, redeemed, expired, cancelled.
-- Solicitação: pending, accepted, declined, cancelled, completed.
 
 Transições devem ser explícitas e autorizadas no servidor. Não permitir edição silenciosa de registros históricos críticos.
 
 ## Transações e concorrência
 
+- Não existe transação de reserva no Vem pro Centro; links externos não possuem estados locais.
 - Check-in deve possuir restrição única conforme política de repetição (ex.: participação + parada + ocorrência).
 - Resgate de cupom deve validar elegibilidade e gravar consumo atomicamente.
 - Confirmação de compra deve ser idempotente.
@@ -113,7 +113,7 @@ Usar uma barra inferior fixa com cinco destinos estáveis:
 2. **Explorar:** busca e descoberta de estabelecimentos, produtos, serviços e categorias.
 3. **Rotas:** Rotas de Descoberta, paradas, participação e progresso.
 4. **Agenda:** Cronograma do Centro e detalhes das atividades.
-5. **Perfil:** identidade, favoritos, reservas/solicitações quando disponíveis, avaliações e Fidelidade ao Centro.
+5. **Perfil:** identidade, favoritos, avaliações e Fidelidade ao Centro; pedidos de reserva e suas confirmações permanecem em canais externos.
 
 A barra deve manter posição, ordem, ícones reconhecíveis e rótulos visíveis entre as seções. O conteúdo específico do feed inicial e a distribuição de atalhos serão definidos nos fluxos de navegação, sem antecipar decisões de conteúdo nesta etapa.
 

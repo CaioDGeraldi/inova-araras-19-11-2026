@@ -18,7 +18,8 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | ID | Prioridade | Requisito |
 |---|---|---|
 | RF-010 | P0 | Responsável autenticado pode cadastrar estabelecimento. |
-| RF-011 | P0 | Estabelecimento possui nome público, descrição, endereço, contato e situação. |
+| RF-011 | P0 | Estabelecimento possui nome público, descrição, endereço, canais de contato públicos e situação. |
+| RF-018 | P0 | Responsável pode cadastrar e atualizar o número público de WhatsApp do estabelecimento, separado de seus contatos privados. |
 | RF-012 | P0 | Estabelecimento pode possuir múltiplas categorias. |
 | RF-013 | P0 | Estabelecimento possui responsável principal. |
 | RF-014 | P0 | Responsável pode editar o próprio estabelecimento. |
@@ -100,12 +101,12 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 
 | ID | Prioridade | Requisito |
 |---|---|---|
-| RF-090 | P1 | Consumidor autenticado pode enviar solicitação de interesse/reserva. |
-| RF-091 | P1 | Responsável pode aceitar, recusar ou cancelar solicitação. |
-| RF-092 | P1 | Solicitação não representa pagamento nem garantia automática de disponibilidade. |
-| RF-093 | P1 | Responsável pode marcar solicitação como compra concluída. |
-| RF-094 | P1 | Confirmação de compra é autorizada, idempotente e auditável. |
-| RF-095 | P1 | Compra confirmada só gera benefício quando houver campanha elegível. |
+| RF-090 | P1 | Consumidor pode abrir uma conversa de WhatsApp com mensagem contextualizada para pedir reserva de produto publicado, sem exigir conta no Vem pro Centro. |
+| RF-091 | P0 | Responsável pode cadastrar e atualizar o número público de WhatsApp que receberá os contatos da loja. |
+| RF-092 | P1 | A mensagem preparada apresenta loja, produto, quantidade e link público; o consumidor precisa revisar e enviar manualmente. A plataforma não registra envio, resposta ou confirmação da reserva. |
+| RF-093 | P1 | Responsável pode cadastrar um perfil público de Instagram como canal alternativo; a plataforma abre o perfil/Direct e disponibiliza mensagem para cópia, sem presumir pré-preenchimento. |
+| RF-094 | P1 | Responsável autorizado pode confirmar compra concluída em fluxo próprio de campanha, independentemente da existência de conversa ou pedido de reserva na plataforma. |
+| RF-095 | P1 | Confirmação de compra é autorizada, idempotente e auditável; só gera benefício quando houver campanha elegível. |
 
 ## H. Comunidade
 
@@ -134,6 +135,7 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 - Visitante não precisa de conta para descoberta.
 - Conta representa pessoa, não papel.
 - Estoque é declaração do comerciante.
+- Abertura de canal externo não comprova mensagem enviada nem reserva confirmada.
 - QR Code registra participação, não garante presença antifraude.
 - Benefício exige regra, elegibilidade, limites e responsável pelo custo.
 - Dados demonstrativos não podem ser apresentados como reais.

@@ -22,12 +22,14 @@ Este cenário é exclusivamente demonstrativo. Todos os nomes, pessoas, estabele
 3. Atualizar informações de apresentação da loja.
 4. Criar ou editar produto, preço, imagem e disponibilidade declarada.
 5. Conferir como a atualização aparece na vitrine pública.
-6. Consultar solicitações somente se esse fluxo estiver implementado e priorizado; caso contrário, demonstrar os canais de contato.
+6. Conferir e manter o WhatsApp público da loja e, opcionalmente, o perfil público do Instagram.
+7. Testar a geração do link de WhatsApp com dados demonstrativos e mensagem contextualizada, sem enviar mensagens para números reais.
+8. Conferir a alternativa do Instagram com texto para copiar.
 
 ## Conjunto mínimo de dados
 
 - 1 conta de consumidor fictícia.
-- 2 contas de proprietários fictícias.
+- 2 contas de proprietários fictícias, com canais de contato demonstrativos não operacionais ou claramente identificados como teste.
 - 2 estabelecimentos fictícios, de categorias distintas.
 - Categorias reutilizáveis e produtos variados, com preço e disponibilidade declarada.
 - 2 ou 3 atividades fictícias no Cronograma do Centro.
@@ -54,6 +56,8 @@ Comando esperado: `python manage.py seed_demo`.
 - [ ] Os dados são identificados visualmente como fictícios na demonstração e não são confundidos com participantes reais.
 - [ ] As duas contas de proprietário acessam somente seus respectivos estabelecimentos.
 - [ ] A conta de consumidor consegue percorrer a jornada pública prevista.
+- [ ] O botão de WhatsApp gera mensagem contextualizada com número demonstrativo e não envia automaticamente.
+- [ ] O perfil de Instagram demonstrativo permite visualizar o texto sugerido para cópia.
 - [ ] Rotas exibem paradas obrigatórias e opcionais de forma inequívoca.
 - [ ] O comando recusa ambiente de produção.
 - [ ] Nenhum registro real é alterado ou apagado pelo seed.

@@ -22,7 +22,8 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 - Store, categorias e aprovação.
 - Product/Service.
 - Painel mínimo do comerciante.
-- Vitrine pública, busca e páginas.
+- Cadastro de canais públicos, com WhatsApp separado de dados privados.
+- Vitrine pública, busca, páginas e contato externo.
 - Testes de autorização e exposição de dados.
 
 **Saída:** comerciante mantém loja/catálogo e visitante descobre sem login.
@@ -61,7 +62,17 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 
 **Saída:** benefício emitido por campanha e resgatado uma única vez em estabelecimento elegível.
 
-## Fase 5 — Consolidação do piloto
+## Fase 5 — Pedido de reserva por contato externo e consolidação do piloto
+
+- Gerar link de clique para conversa no WhatsApp com mensagem contextualizada e texto codificado para URL.
+- Exigir revisão e envio manual da mensagem pelo consumidor.
+- Disponibilizar Instagram como alternativa: abrir perfil/Direct e fornecer mensagem para cópia.
+- Não criar estado local de reserva, caixa de entrada, histórico ou sincronização de conversas.
+- Testar número ausente/inválido, falha de abertura e fallback para cópia.
+
+**Saída:** consumidor prepara pedido de reserva e combina a retirada diretamente com a loja, sem transação ou confirmação controlada pela plataforma.
+
+## Consolidação do piloto
 
 - Conteúdo real ou dados demonstrativos claramente marcados.
 - Revisão de acessibilidade e responsividade.
@@ -87,7 +98,7 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 
 1. Remover avaliações e comunidade do primeiro corte.
 2. Adiar carteira de pontos; manter cupom simples ou remover campanha.
-3. Adiar reservas e usar contato direto.
+3. Adiar o botão de mensagem contextualizada, mantendo canais públicos e contato direto.
 4. Adiar filtros por proximidade, notificações e inscrições.
 5. Preservar vitrine, cronograma e Rotas de Descoberta em jornada demonstrável.
 6. Não cortar autorização, integridade de check-in, segurança, acessibilidade essencial ou testes críticos.
