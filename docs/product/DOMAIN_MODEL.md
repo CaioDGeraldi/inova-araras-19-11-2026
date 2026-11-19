@@ -7,14 +7,15 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 - **Identidade:** pessoas e autenticação.
 - **Comércio:** estabelecimentos, categorias e catálogo.
 - **Programação:** atividades e locais.
-- **Circulação:** circuitos, paradas, participações e check-ins.
+- **Circulação:** rotas, paradas, participações e check-ins.
 - **Incentivos:** campanhas, cupons e resgates.
 - **Solicitações:** interesse/reserva e confirmação de compra, se incluídas.
 - **Comunidade:** avaliações e denúncias, após política de moderação.
+- **Inteligência comercial:** sinais agregados de busca, cobertura de oferta, pesquisas e relatórios institucionais.
 
 ## Entidades
 
-**User:** pessoa autenticada. Pode descobrir como visitante e participar de circuitos, solicitar contato, resgatar benefícios e avaliar. Pode ser responsável por vários estabelecimentos.
+**User:** pessoa autenticada. Pode descobrir como visitante e participar de rotas, solicitar contato, resgatar benefícios e avaliar. Pode ser responsável por vários estabelecimentos.
 
 **Store:** estabelecimento participante, responsável principal, nome público, descrição, endereço, contatos públicos, categorias, estado de aprovação e auditoria. Dados privados do responsável não são expostos.
 
@@ -24,15 +25,15 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Place:** local físico de atividade ou parada que não seja necessariamente loja, como praça ou espaço cultural. Não duplicar se Store já representar o local.
 
-**Event:** atividade programada, com organizador, local, início, término opcional, categoria, estado, gratuidade/preço e indicação de inscrição. Pode relacionar-se a Store e Circuit.
+**Event:** atividade programada, com organizador, local, início, término opcional, categoria, estado, gratuidade/preço e indicação de inscrição. Pode relacionar-se a Store e DiscoveryRoute.
 
-**Circuit:** percurso temático publicado pela administração, com período opcional, regra de participação/conclusão, estado e paradas.
+**DiscoveryRoute:** percurso temático publicado pela administração, com período opcional, regra de participação/conclusão, estado e paradas.
 
-**CircuitStop:** parada de Circuit, com ordem sugerida, obrigatoriedade, instruções e referência a Store, Event ou Place. Deve possuir exatamente um alvo válido no MVP.
+**RouteStop:** parada de DiscoveryRoute, com ordem sugerida, obrigatoriedade, instruções e referência a Store, Event ou Place. Deve possuir exatamente um alvo válido no MVP.
 
-**CircuitParticipation:** participação de User em Circuit ou ocorrência do circuito. Controla início, estado e conclusão.
+**RouteParticipation:** participação de User em DiscoveryRoute ou ocorrência do rota. Controla início, estado e conclusão.
 
-**CheckIn:** registro de tentativa/aceite de visita em CircuitStop, associado à participação. Guarda instante, resultado e referência segura ao token. Política de repetição explícita.
+**CheckIn:** registro de tentativa/aceite de visita em RouteStop, associado à participação. Guarda instante, resultado e referência segura ao token. Política de repetição explícita.
 
 **Campaign:** ação promocional com responsável, período, estado, elegibilidade, benefício, limites, lojas envolvidas e responsável pelo custo.
 
@@ -44,19 +45,31 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Review / Report (P1):** opinião de consumidor e denúncia/moderação. Anonimato apenas na apresentação pública; autoria permanece vinculada internamente.
 
+**SearchSignal (P2):** evento minimizado de busca sem resultado ou com baixa cobertura. Deve evitar identidade, identificadores persistentes, localização precisa e armazenamento desnecessário de texto livre. Os eventos brutos têm acesso restrito e retenção limitada.
+
+**DemandAggregate (P2):** indicador agregado por categoria e período, calculado a partir de sinais de busca, cobertura do catálogo, disponibilidade declarada e pesquisas. Armazena período, metodologia, cobertura, limiar aplicado e nível de confiança; não contém linhas individuais.
+
+**FieldSurvey (P2):** definição de pesquisa voluntária, com finalidade, público, método, período, questionário, responsável e política de retenção.
+
+**SurveyResult (P2):** resultado agregado de pesquisa, com tamanho de amostra, método de recrutamento, período, limitações e supressão de grupos pequenos. Respostas individuais não são disponibilizadas no painel institucional.
+
+**InstitutionalAccess / AuditEntry (P2):** autorização de acesso ao painel por finalidade e perfil, com trilha de auditoria de visualização, exportação e alteração de permissões.
+
 ## Relacionamentos
 
 - User 1:N Store como owner.
 - Store N:M Category.
 - Store 1:N Product.
-- Event N:1 Place e organizador; pode relacionar-se a Store e Circuit.
-- Circuit 1:N CircuitStop.
-- CircuitStop aponta para Store, Event ou Place.
-- User 1:N CircuitParticipation; Circuit 1:N CircuitParticipation.
-- CircuitParticipation 1:N CheckIn; CheckIn referencia CircuitStop.
+- Event N:1 Place e organizador; pode relacionar-se a Store e DiscoveryRoute.
+- DiscoveryRoute 1:N RouteStop.
+- RouteStop aponta para Store, Event ou Place.
+- User 1:N RouteParticipation; DiscoveryRoute 1:N RouteParticipation.
+- RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop.
 - Campaign N:M Store; Campaign 1:N Coupon.
 - Coupon 0..N CouponRedemption conforme regra; cupom de uso único tem no máximo um resgate.
 - Reservation referencia User e Store; conclusão pode originar compra elegível.
+- SearchSignal alimenta agregações sem expor evento individual; DemandAggregate pode ser contextualizado por FieldSurvey/SurveyResult.
+- Acesso institucional consulta somente DemandAggregate e SurveyResult agregados, com AuditEntry.
 
 ## Estados e transições
 
@@ -64,9 +77,9 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **Event:** draft → published → completed/archived; published → cancelled. Cancelamento preserva histórico e é exibido claramente.
 
-**Circuit:** draft → published → active → archived; published/active pode ser cancelled. Participações existentes preservam contexto histórico mínimo.
+**DiscoveryRoute:** draft → published → active → archived; published/active pode ser cancelled. Participações existentes preservam contexto histórico mínimo.
 
-**CircuitParticipation:** active → completed ou cancelled. Completed é terminal, salvo correção administrativa auditada.
+**RouteParticipation:** active → completed ou cancelled. Completed é terminal, salvo correção administrativa auditada.
 
 **CheckIn:** submitted → accepted ou rejected. Check-in aceito não é apagado silenciosamente.
 
@@ -82,24 +95,27 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 2. Apenas owner autorizado ou admin altera dados privados de Store.
 3. Store não aprovado/suspenso não é apresentado como participante oficial.
 4. Product não representa estoque transacional; disponibilidade é declarada.
-5. Toda CircuitStop publicada possui alvo físico ou atividade definido.
-6. CheckIn aceito pertence a participação válida e parada do mesmo circuito.
+5. Toda RouteStop publicada possui alvo físico ou atividade definido.
+6. CheckIn aceito pertence a participação válida e parada do mesmo rota.
 7. Duplicidade de check-in é bloqueada conforme política explícita.
-8. Participação conclui somente quando a regra do circuito é satisfeita.
+8. Participação conclui somente quando a regra do rota é satisfeita.
 9. Nenhuma parada exige compra por padrão.
 10. Campaign ativa possui período, regra, elegibilidade, limites e responsável pelo custo.
 11. CouponRedemption é atômico conforme política do cupom.
 12. Compra confirmada não gera benefício duplicado.
 13. Cancelamentos e correções críticas deixam trilha de auditoria.
 14. Dados privados não podem ser inferidos por endpoints públicos.
+15. Indicadores institucionais não permitem reidentificar consumidores ou estabelecimentos por filtros, períodos ou grupos pequenos.
+16. Busca sem resultado é sinal de cobertura insuficiente na plataforma, não prova de inexistência da oferta no Centro.
+17. Pesquisas voluntárias apresentam método, amostra e limitações; amostras de conveniência não são representativas por padrão.
 
 ## Decisões de modelagem em aberto
 
-- Circuito recorrente: CircuitEdition/Occurrence no MVP ou período simples.
-- Check-in repetível por circuito, parada ou ocorrência.
+- DiscoveryRouteo recorrente: DiscoveryRouteEdition/Occurrence no MVP ou período simples.
+- Check-in repetível por rota, parada ou ocorrência.
 - Token QR estático rotacionável ou token curto, conforme operação e ameaça de compartilhamento.
 - Place separado ou endereço embutido, conforme reuso real.
 - Campanha/cupons P1: confirmar após núcleo.
 - Reserva: confirmar prioridade e política de expiração.
 
-Não criar todas as entidades de uma vez. Primeira spec deve detalhar Store/Product e Event; próxima Circuit/CircuitStop/Participation/CheckIn. Campanhas e reservas entram em specs independentes.
+Não criar todas as entidades de uma vez. Primeira spec deve detalhar Store/Product e Event; próxima DiscoveryRoute/RouteStop/Participation/CheckIn. Campanhas e reservas entram em specs independentes.
