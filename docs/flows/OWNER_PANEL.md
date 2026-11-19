@@ -16,7 +16,7 @@ O painel é uma área operacional distinta da experiência pública do consumido
 - No MVP, cada estabelecimento possui um responsável principal.
 - Uma pessoa pode administrar mais de um estabelecimento.
 - O responsável só acessa e altera estabelecimentos vinculados à sua conta.
-- O responsável acompanha e processa solicitações de reserva dos produtos de seu estabelecimento.
+- O responsável cadastra e mantém os canais públicos de contato do estabelecimento.
 - A administração aprova, rejeita ou suspende estabelecimentos.
 - Dados de catálogo e disponibilidade são declarados pelo responsável, não sincronizados em tempo real.
 - O fluxo deve ser simples o suficiente para manutenção recorrente por um pequeno comerciante.
@@ -43,12 +43,15 @@ flowchart TD
     J --> O[Visão geral]
     O --> P[Editar informações]
     O --> Q[Gerenciar catálogo]
+    O --> W[Configurar canais de contato]
     P --> R[Salvar alterações]
     Q --> S[Criar ou editar produto/serviço]
     S --> T[Salvar rascunho ou publicar]
     R --> U[Pré-visualizar vitrine]
     T --> U
     U --> V[Página pública atualizada]
+    W --> X[Salvar WhatsApp e Instagram públicos]
+    X --> Y[Pré-visualizar contatos na vitrine]
 ```
 
 ## 1. Entrada no painel
@@ -78,7 +81,9 @@ Campos funcionais previstos:
 - descrição/apresentação;
 - endereço e referência;
 - categorias;
-- canais de contato que poderão ser exibidos publicamente;
+- número público de WhatsApp para atendimento e pedidos de reserva;
+- perfil público do Instagram, opcional;
+- outros canais públicos que a loja deseje exibir, quando suportados;
 - dados adicionais estritamente necessários à análise administrativa, se houver finalidade definida.
 
 Fluxo:
@@ -117,7 +122,7 @@ A pessoa pode editar os dados sob sua responsabilidade:
 - descrição;
 - endereço;
 - categorias;
-- contato público;
+- canais de contato públicos, com WhatsApp e Instagram separados de dados privados do responsável;
 - imagens, quando suportadas.
 
 Fluxo:
@@ -185,29 +190,29 @@ Regras:
 - A página pública exibe a data de atualização do catálogo.
 - A pré-visualização não altera estado de publicação.
 
-## 7. Solicitações de reserva e retirada
+## 7. Canais públicos de contato
 
-**Objetivo:** permitir que o responsável transforme uma solicitação digital em uma retirada presencial organizada, sem operar estoque integrado ou pagamento pela plataforma.
+**Objetivo:** permitir que o responsável informe como os consumidores podem conversar diretamente com o estabelecimento.
 
-Na área **Solicitações**, o responsável consulta solicitações pendentes e o histórico recente, identificando produto, quantidade solicitada, consumidor, data do pedido e prazo sugerido quando aplicável.
+Canais iniciais:
+- **WhatsApp:** número público de atendimento. É o canal prioritário para pedidos de reserva contextualizados.
+- **Instagram:** usuário/perfil público, opcional, usado para abrir o perfil/Direct e permitir que o consumidor copie uma mensagem sugerida.
 
 Fluxo:
-1. O responsável abre **Solicitações**.
-2. Analisa o produto, a quantidade e a disponibilidade real na loja.
-3. Aceita ou recusa a solicitação. A recusa exige uma justificativa curta apresentada ao consumidor.
-4. Ao aceitar, confirma a quantidade que será separada e define um prazo de retirada dentro dos limites operacionais configurados.
-5. Separa o produto e marca a reserva como **Pronta para retirada**.
-6. Na chegada do consumidor, confirma a retirada no painel.
-7. A venda e o pagamento acontecem diretamente no estabelecimento.
+1. O responsável abre **Canais de contato**.
+2. Informa o número de WhatsApp que a loja usa para atender consumidores.
+3. Confirma que esse número pode ser exibido publicamente.
+4. Opcionalmente, informa o usuário/perfil público do Instagram.
+5. Salva e pré-visualiza como os canais aparecem na página pública e nos detalhes dos produtos.
 
 Regras:
-- Solicitação pendente não separa nem garante produto.
-- A reserva só existe após aceite explícito do responsável.
-- O aceite representa o compromisso da loja de separar a quantidade confirmada até o prazo informado.
-- O responsável pode cancelar uma reserva aceita antes da retirada, informando motivo ao consumidor.
-- O prazo expirado encerra a reserva e libera a loja do compromisso de separação.
-- Confirmar retirada não equivale a confirmar pagamento ou compra para fins de fidelidade. A compra deve ser confirmada separadamente quando uma campanha exigir isso.
-- Não há integração com PDV, baixa automática de estoque, pagamento, entrega ou logística.
+- Não presumir que o telefone pessoal do responsável é o WhatsApp comercial.
+- Armazenar o número em formato internacional normalizado. Ao gerar o link do WhatsApp, usar o formato exigido pelo recurso de clique para conversa.
+- O responsável é responsável por manter os dados públicos corretos e atualizados.
+- O botão de pedido de reserva pelo WhatsApp só aparece quando há um número público válido.
+- O Instagram é alternativo. A interface abre o perfil/Direct e oferece texto para copiar, mas não promete mensagem pré-preenchida.
+- A plataforma apenas abre links externos. Não envia mensagens, não recebe respostas e não mantém status de reserva.
+- A ausência de canal de contato não impede a consulta pública ao catálogo; apenas oculta as ações que dependem daquele canal.
 
 ## Estados alternativos e recuperação
 
@@ -243,7 +248,7 @@ Regras:
 - Não define layout final, componentes, cores ou breakpoints.
 - Não inclui gestão de equipe ou múltiplos usuários por estabelecimento.
 - Não inclui estoque transacional, PDV, importação em lote ou integração fiscal.
-- Não inclui checkout, pagamento, entrega ou estoque transacional. Inclui reserva simples para retirada presencial.
+- Não inclui checkout, pagamento, entrega ou estoque transacional. O painel não gerencia reservas nem conversas externas; limita-se a manter os canais públicos de contato.
 - Não inclui métricas de vendas ou analytics avançado.
 - Não permite ao proprietário criar/publicar rotas ou campanhas sem regras e permissões próprias.
 - Não define o painel administrativo da iniciativa; aprovação é operação interna.
@@ -258,8 +263,10 @@ Regras:
 - [ ] Responsável visualiza e edita somente estabelecimento associado à sua conta.
 - [ ] A autorização é verificada no servidor em todas as operações.
 - [ ] Responsável cria, edita, publica e arquiva produtos/serviços.
-- [ ] Responsável analisa, aceita ou recusa solicitações de reserva.
-- [ ] Responsável marca reservas aceitas como prontas, confirma retirada ou cancela com motivo.
+- [ ] Responsável cadastra e atualiza o número público de WhatsApp do estabelecimento.
+- [ ] Responsável pode cadastrar um perfil público de Instagram como alternativa.
+- [ ] Canais públicos aparecem na vitrine sem expor contato pessoal privado.
+- [ ] A ausência de WhatsApp oculta o atalho de reserva, sem bloquear a vitrine.
 - [ ] Produtos publicados aparecem na vitrine apenas quando a loja está aprovada e ativa.
 - [ ] Rascunhos e itens arquivados não aparecem publicamente.
 - [ ] Preço e disponibilidade são apresentados conforme declaração do responsável.

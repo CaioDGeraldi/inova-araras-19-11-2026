@@ -86,7 +86,7 @@ O MVP não garante revitalização econômica, aumento de faturamento, redução
 
 ## 8. Estabelecimentos e catálogo
 
-Cada estabelecimento deve conter nome público, descrição, endereço, uma ou mais categorias, contato público, situação de publicação e responsável privado. Dados fiscais, se coletados, não serão públicos e só serão solicitados quando houver finalidade definida.
+Cada estabelecimento deve conter nome público, descrição, endereço, uma ou mais categorias, canais de contato público, situação de publicação e responsável privado. O responsável cadastra o WhatsApp público da loja como canal prioritário e pode informar um perfil público de Instagram como alternativa. Esses contatos devem ser distintos de dados privados do responsável. Dados fiscais, se coletados, não serão públicos e só serão solicitados quando houver finalidade definida.
 
 O responsável mantém produtos ou serviços com nome, descrição, preço quando aplicável, imagem opcional e disponibilidade declarada. O sistema exibe a data de atualização do catálogo. Não prometer estoque em tempo real.
 
@@ -96,7 +96,7 @@ Estabelecimentos não aprovados ou suspensos não aparecem como participantes of
 
 A vitrine é pública e mobile-first. Permite explorar estabelecimentos, produtos e serviços por busca e categoria. Páginas públicas apresentam endereço, contato, horário quando informado, catálogo e data de atualização.
 
-Não incluir checkout, pagamento, entrega ou logística no MVP. A reserva de produto para retirada presencial integra o MVP como compromisso operacional confirmado pela loja, sem converter o produto em marketplace transacional.
+Não incluir checkout, pagamento, entrega ou logística no MVP. O consumidor pode pedir reserva para retirada por uma conversa iniciada a partir da vitrine: o Vem pro Centro abre o WhatsApp com uma mensagem contextualizada, ou oferece o perfil/Direct do Instagram com texto para copiar. A confirmação e o prazo são combinados diretamente na conversa, sem registro ou acompanhamento da reserva pela plataforma.
 
 ## 10. Rotas de Descoberta
 
@@ -191,19 +191,21 @@ A primeira versão deve priorizar cupons simples, controlados e auditáveis. Ben
 
 Não emitir benefício sem responsável financeiro/comercial identificado. Não converter pontos em dinheiro. Carteira de pontos, lotes, expiração, FEFO e regras configuráveis ficam para evolução específica, salvo exigência expressa e tempo para implementar com segurança.
 
-Se a concessão depender de compra, a compra deve ser confirmada pelo responsável. A confirmação é idempotente e auditável. Compras espontâneas sem vínculo com solicitação não entram automaticamente no fluxo inicial.
+Se a concessão depender de compra, a compra deve ser confirmada pelo responsável em um fluxo próprio da campanha. A confirmação é idempotente e auditável. A conversa de reserva, por si só, não comprova compra nem gera benefício.
 
 Taxa de 1 ponto por real e validade de 12 meses são parâmetros de piloto discutidos anteriormente, não regras aprovadas nem hardcoded. Só entram em vigor após validação comercial e definição de financiamento.
 
 ## 14. Reservas e contato
 
-Reserva de produto para retirada presencial integra o MVP como capacidade P1, implementada após a estabilidade do núcleo de vitrine, cronograma e Rotas de Descoberta. O consumidor autenticado solicita a reserva a partir do detalhe do produto, informa quantidade e envia a solicitação. O responsável da loja aceita ou recusa; a solicitação pendente não garante nem separa o produto.
+O pedido de reserva é uma capacidade P1, implementada após a estabilidade do núcleo de vitrine, cronograma e Rotas de Descoberta. O consumidor seleciona a quantidade desejada e usa **Pedir reserva pelo WhatsApp**. A plataforma abre uma conversa com o número público cadastrado pela loja e apresenta uma mensagem com loja, produto, quantidade e link público. O consumidor revisa e envia manualmente. Não é necessário login no Vem pro Centro.
 
-Ao aceitar, o responsável confirma a quantidade que será separada e informa o prazo de retirada. A reserva percorre os estados solicitada, aceita, pronta para retirada e retirada ou expirada. A loja pode cancelar antes da retirada, informando o motivo. O consumidor acompanha o estado e recebe instruções para comparecer ao estabelecimento.
+A reserva só é considerada combinada quando o estabelecimento confirma diretamente na conversa e informa a quantidade que separará e o prazo de retirada. O consumidor usa a própria conversa como referência para comparecer à loja. O Vem pro Centro não recebe a confirmação nem acompanha o estado.
 
-A disponibilidade do catálogo continua sendo declarada, não estoque integrado em tempo real. O aceite representa o compromisso operacional da loja de separar a quantidade confirmada até o prazo. Não há pagamento, checkout, entrega, integração com PDV ou baixa automática de estoque. A venda e o pagamento ocorrem presencialmente. A confirmação de retirada não equivale à confirmação de compra para fins de fidelidade; quando uma campanha depender de compra, o responsável confirma a compra separadamente.
+O Instagram pode ser oferecido como canal alternativo: o link abre o perfil/Direct e o consumidor copia a mensagem sugerida. Não prometer preenchimento automático no Instagram. O WhatsApp permanece prioritário para o pedido com texto pré-preenchido.
 
-Se a janela de desenvolvimento apertar, priorizar solicitação, aceite/recusa e prazo de retirada; não remover as salvaguardas de confirmação explícita e expiração.
+O catálogo continua usando disponibilidade declarada, não estoque integrado em tempo real. A plataforma não possui entidade transacional de reserva, caixa de entrada, status, histórico, expiração automática, API do WhatsApp Business, webhook ou sincronização de mensagens. Não há pagamento, checkout, entrega, integração com PDV ou baixa automática de estoque. A venda e o pagamento ocorrem presencialmente.
+
+Se a janela de desenvolvimento apertar, priorizar número público de WhatsApp, geração da mensagem contextualizada e abertura confiável do canal externo; manter o Instagram como alternativa complementar.
 
 ## 15. Comunidade e avaliações
 
@@ -221,7 +223,7 @@ Cadastro assistido, fotografia de produtos, capacitação e divulgação coletiv
 
 **Consumidor:** Início, Explorar, Rotas, Agenda e Perfil. A barra inferior fixa mantém esses cinco destinos; campanhas e Fidelidade ao Centro são acessadas a partir das seções correspondentes. A composição do feed e os atalhos serão definidos nos fluxos.
 
-**Comerciante:** dashboard simples com sidebar retrátil e topbar de usuário/configurações. Áreas de visão geral, estabelecimento, produtos/serviços, solicitações, campanhas e participação em rotas.
+**Comerciante:** dashboard simples com sidebar retrátil e topbar de usuário/configurações. Áreas de visão geral, estabelecimento, produtos/serviços, canais públicos de contato, campanhas e participação em rotas.
 
 **Administração:** Django Admin pode cobrir operações internas inicialmente. Interfaces próprias só quando o fluxo exigir melhor experiência.
 
@@ -281,7 +283,7 @@ Em dispositivos móveis, a navegação principal utiliza uma barra inferior fixa
 - **Explorar:** busca por estabelecimentos, produtos, serviços e categorias.
 - **Rotas:** Rotas de Descoberta, paradas e progresso.
 - **Agenda:** Cronograma do Centro e atividades.
-- **Perfil:** dados da conta, favoritos, Fidelidade ao Centro, avaliações e solicitações quando disponíveis.
+- **Perfil:** dados da conta, favoritos, Fidelidade ao Centro e avaliações, conforme funcionalidades disponíveis. As conversas e confirmações de reserva permanecem nos aplicativos externos.
 
 A estrutura é uma decisão de navegação. A composição do feed, os atalhos internos e os detalhes de cada tela serão definidos nos fluxos antes da implementação visual. A experiência do proprietário permanece em painel operacional próprio, com sidebar retrátil e topbar, usando a mesma identidade e autenticação da pessoa.
 

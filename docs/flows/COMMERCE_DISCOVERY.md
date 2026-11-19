@@ -8,7 +8,7 @@
 
 Descrever como uma pessoa encontra estabelecimentos, produtos ou serviços no Centro, entende o que cada opção oferece e escolhe um próximo passo para visitar ou entrar em contato.
 
-A descoberta deve funcionar sem autenticação. O fluxo pode oferecer solicitação de reserva de produto para retirada presencial, mas nunca deve sugerir compra, pagamento ou confirmação automática de estoque.
+A descoberta deve funcionar sem autenticação. O detalhe do produto pode preparar um pedido de reserva e abrir o canal externo de atendimento cadastrado pela loja. A plataforma não envia a mensagem nem acompanha a confirmação.
 
 ## Visão geral
 
@@ -99,7 +99,7 @@ Informações públicas previstas, conforme cadastro e disponibilidade:
 - nome e apresentação do estabelecimento;
 - categorias;
 - endereço e referência de localização;
-- canais de contato definidos como públicos;
+- canais de contato definidos como públicos, com WhatsApp prioritário e Instagram opcional;
 - imagem de apresentação, quando disponível;
 - catálogo de produtos e serviços publicados;
 - preço, quando informado e aplicável;
@@ -146,7 +146,11 @@ Regras:
 - Preço ausente não deve ser apresentado como gratuito.
 - Disponibilidade é uma declaração do estabelecimento, não consulta de estoque em tempo real.
 - O detalhe pode oferecer solicitação de reserva para retirada presencial, quando o produto e o estabelecimento forem elegíveis.
-- A reserva exige autenticação e confirmação explícita do estabelecimento; a disponibilidade exibida no catálogo continua sendo declarada, não estoque em tempo real.
+- O atalho de reserva abre uma conversa externa com mensagem contextualizada; não cria uma solicitação ou estado dentro do Vem pro Centro.
+- No WhatsApp, a mensagem aparece preenchida e precisa ser enviada manualmente pelo consumidor.
+- No Instagram, o link abre o perfil/Direct e a interface disponibiliza a mensagem para cópia, sem prometer preenchimento automático.
+- A confirmação e o prazo de retirada são combinados diretamente entre consumidor e loja na conversa.
+- A plataforma não sabe se a mensagem foi enviada, lida ou respondida.
 - Reserva não é compra, checkout, pagamento ou entrega.
 - Se o item deixar de estar publicado, a interface informa que o conteúdo não está disponível e oferece retorno ao estabelecimento ou à busca, sem expor estados administrativos internos.
 
@@ -154,12 +158,16 @@ Regras:
 
 A descoberta deve terminar em uma ação útil, preferencialmente conectando a pessoa ao estabelecimento físico.
 
-**Contato público**
+**Contato público e pedido de reserva**
 
 - Apresentar somente canais que o estabelecimento marcou como públicos.
+- Priorizar o WhatsApp quando houver número público cadastrado.
+- O atalho de WhatsApp usa link de clique para conversa com texto contextualizado, incluindo produto, quantidade, loja e link público. O consumidor precisa revisar e enviar a mensagem.
+- Quando houver Instagram público, oferecer abertura do perfil/Direct e uma mensagem sugerida para copiar. Não prometer preenchimento automático do texto.
 - Identificar quando a ação abre um aplicativo ou serviço externo.
-- Não prometer resposta, atendimento imediato ou confirmação de produto.
-- Não criar conversa interna ou sistema de mensagens como parte deste fluxo.
+- Não afirmar que a mensagem foi enviada nem que a reserva foi confirmada.
+- A confirmação e as condições de retirada são combinadas diretamente entre consumidor e estabelecimento.
+- Não criar caixa de entrada, conversa interna ou sincronização de mensagens.
 
 **Como chegar**
 
@@ -180,6 +188,9 @@ A descoberta deve terminar em uma ação útil, preferencialmente conectando a p
 | Estabelecimento ou item não mais público | Exibir uma mensagem genérica de conteúdo indisponível e oferecer retorno à busca; não revelar estado administrativo. |
 | Falha temporária na busca | Diferenciar erro de serviço de ausência de resultados e permitir tentar novamente. |
 | Endereço ou contato ausente | Não exibir ação incompleta; permitir continuar explorando o catálogo. |
+| WhatsApp ausente | Não exibir o atalho de reserva pelo WhatsApp; oferecer Instagram ou outros canais públicos cadastrados. |
+| Instagram ausente | Não exibir a alternativa de Direct; manter os demais canais disponíveis. |
+| Falha ao abrir canal externo | Informar a indisponibilidade do link e manter o texto sugerido disponível para cópia quando aplicável.
 
 ## Autenticação
 
@@ -202,7 +213,7 @@ Não criar uma conta separada para consumidor e comerciante. O acesso de proprie
 - Não especifica layout final, componentes visuais, tipografia ou animações.
 - Não define algoritmo de busca, ranking, recomendação ou personalização.
 - Não define busca por distância, geolocalização ou mapa interno.
-- Não inclui checkout, pagamento, entrega ou estoque transacional. A reserva para retirada presencial é tratada no fluxo `CUSTOMER_TO_PURCHASE.md`.
+- Não inclui checkout, pagamento, entrega ou estoque transacional. O pedido de reserva é encaminhado por link a um canal externo e está detalhado em `CUSTOMER_TO_PURCHASE.md`; não há registro ou acompanhamento da reserva na plataforma.
 - Não inclui avaliações públicas ou moderação de comentários.
 - Não define captura de buscas para inteligência comercial. Essa evolução exige fluxo e salvaguardas próprios, conforme a spec de inteligência comercial.
 - Não define cadastro, aprovação ou edição do estabelecimento pelo proprietário; isso pertence ao fluxo do painel.
@@ -217,7 +228,9 @@ Não criar uma conta separada para consumidor e comerciante. O acesso de proprie
 - [ ] A pessoa consegue navegar de um produto/serviço para o estabelecimento responsável.
 - [ ] A página do estabelecimento apresenta catálogo e informações públicas disponíveis.
 - [ ] Preço e disponibilidade são apresentados sem sugerir garantia de estoque.
-- [ ] Quando elegível, o consumidor consegue solicitar reserva para retirada, com autenticação e confirmação do lojista.
+- [ ] Quando houver WhatsApp público, o consumidor consegue abrir uma conversa com mensagem de reserva contextualizada.
+- [ ] O consumidor precisa enviar a mensagem manualmente e a interface não presume confirmação.
+- [ ] Quando houver Instagram público, o consumidor consegue abrir o perfil/Direct e copiar uma mensagem sugerida.
 - [ ] Contato e orientação de visita usam somente dados públicos cadastrados.
 - [ ] Busca sem resultados não é tratada como prova de ausência de oferta no Centro.
 - [ ] Erros de serviço são diferenciados de resultados vazios.

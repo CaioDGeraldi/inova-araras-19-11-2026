@@ -19,7 +19,8 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 - Página pública da loja.
 - Cadastro/edição de produtos ou serviços com descrição, preço quando aplicável, imagem opcional e disponibilidade declarada.
 - Busca por estabelecimento/produto e filtro por categoria.
-- Endereço, contato e data de atualização visíveis.
+- Endereço, canais de contato públicos e data de atualização visíveis.
+- WhatsApp público da loja como canal prioritário para contato; Instagram pode ser informado como alternativa.
 
 ### Cronograma do Centro
 - Administração cadastra, publica, edita e cancela atividades.
@@ -47,11 +48,13 @@ Entregar uma primeira versão demonstrável que conecte descoberta digital a exp
 
 ## Reserva para retirada presencial | P1 do MVP
 
-A reserva integra o MVP após a estabilidade do núcleo de vitrine, cronograma e Rotas de Descoberta. O consumidor autenticado solicita a reserva de um produto publicado, informa quantidade e aguarda decisão do responsável. A solicitação pendente não garante nem separa o produto.
+A solicitação de reserva integra o MVP após a estabilidade do núcleo de vitrine, cronograma e Rotas de Descoberta. O consumidor escolhe a quantidade e aciona **Pedir reserva pelo WhatsApp**. O sistema abre WhatsApp ou WhatsApp Web no número público cadastrado pela loja, com uma mensagem contendo estabelecimento, produto, quantidade e link público. O consumidor precisa revisar e enviar a mensagem manualmente. Não é necessário login no Vem pro Centro.
 
-O responsável aceita ou recusa. Ao aceitar, confirma a quantidade que será separada e define prazo de retirada. Pode marcar como pronta para retirada, confirmar a retirada presencial ou cancelar antes da retirada com justificativa. Reservas não retiradas expiram no prazo definido. O consumidor acompanha os estados pelo Perfil.
+A confirmação e o prazo de retirada são combinados diretamente entre consumidor e loja no WhatsApp. O pedido só está combinado quando o estabelecimento responde confirmando o que consegue separar e até quando. A plataforma não acompanha a conversa nem registra o estado da reserva.
 
-A reserva não é compra, checkout ou garantia automática de estoque. O catálogo mantém disponibilidade declarada; o aceite representa o compromisso da loja de separar a quantidade confirmada até o prazo. Pagamento e conclusão da venda ocorrem presencialmente. Não há integração com PDV, baixa automática de estoque, entrega ou logística. A retirada e a compra são eventos distintos para fins de fidelidade.
+Instagram é um canal alternativo opcional: abre o perfil/Direct e disponibiliza uma mensagem contextualizada para copiar. Não há promessa de texto pré-preenchido no Instagram.
+
+Não existe entidade de reserva, caixa de entrada, status no Perfil, histórico de solicitações, expiração automática, API de mensagens ou sincronização. O catálogo mantém disponibilidade declarada; o canal externo permite que a loja confirme a situação no momento do contato. Pagamento e conclusão da venda ocorrem presencialmente. Não há integração com PDV, baixa automática de estoque, entrega ou logística.
 
 ## P1 | Após o núcleo estável
 
@@ -99,6 +102,8 @@ A reserva não é compra, checkout ou garantia automática de estoque. O catálo
 - Integração não autorizada com sistemas públicos/privados.
 - Recompensas sem responsável financeiro.
 - Chat interno.
+- Gestão de reservas dentro da plataforma, status no Perfil ou histórico de solicitações.
+- API do WhatsApp Business, webhooks ou sincronização de mensagens.
 - Recomendação por IA.
 - Permissões complexas por equipe.
 - Venda de ingressos.
@@ -107,9 +112,13 @@ A reserva não é compra, checkout ou garantia automática de estoque. O catálo
 
 - [ ] Visitante consulta lojas, produtos, atividades e rotas sem login.
 - [ ] Comerciante autorizado mantém estabelecimento e catálogo.
-- [ ] Consumidor autenticado solicita reserva e acompanha a decisão da loja.
-- [ ] Responsável aceita/recusa, define prazo, marca como pronta e confirma retirada ou cancela com motivo.
-- [ ] Reservas não retiradas expiram e não são tratadas como compras.
+- [ ] Estabelecimento cadastra um número público de WhatsApp para atendimento.
+- [ ] Consumidor abre uma conversa de WhatsApp com mensagem contextualizada de reserva.
+- [ ] A mensagem informa loja, produto, quantidade e link público, sem inserir dados pessoais do consumidor.
+- [ ] O consumidor precisa enviar a mensagem manualmente; abrir o WhatsApp não significa solicitação enviada.
+- [ ] A confirmação e o prazo de retirada são combinados diretamente na conversa.
+- [ ] Instagram pode ser cadastrado como canal alternativo, com texto para copiar e abertura do perfil/Direct.
+- [ ] A plataforma não apresenta status de reserva nem afirma conhecer o resultado da conversa.
 - [ ] Administração publica e cancela atividades.
 - [ ] Administração cria rota com diferentes tipos de parada.
 - [ ] Usuário autenticado inicia rota e registra check-in.

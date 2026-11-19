@@ -2,23 +2,25 @@
 
 **Produto:** Vem pro Centro  
 **Referências:** PRD, MVP e Spec 002 | Comércio e descoberta pública  
-**Status:** definição funcional da jornada de compra presencial e reserva para retirada.
+**Status:** definição funcional da jornada de compra presencial e pedido de reserva por canal externo.
 
 ## Objetivo
 
-Descrever como a descoberta digital pode levar o consumidor até uma compra realizada fisicamente no estabelecimento, incluindo a opção de reservar um produto para reduzir o tempo de espera e tornar a visita mais objetiva.
+Descrever como a descoberta digital pode levar o consumidor até uma compra realizada fisicamente no estabelecimento, incluindo a possibilidade de pedir que a loja separe um produto antes da visita.
 
-O Vem pro Centro facilita a descoberta e a preparação da visita. Não é marketplace transacional: não recebe pagamentos, não organiza entregas e não substitui a operação comercial da loja.
+A solicitação de reserva acontece por conversa direta entre consumidor e estabelecimento. O Vem pro Centro prepara o contato, mas não mantém uma caixa de entrada, não acompanha a conversa e não registra se a reserva foi aceita.
 
 ## Princípios
 
 - Descoberta pública não exige autenticação.
-- A pessoa pode visitar a loja e comprar espontaneamente, sem passar por reserva.
-- Reserva é opcional e exige autenticação.
-- Solicitação não equivale a reserva confirmada.
-- A loja verifica a disponibilidade real e confirma explicitamente o que consegue separar.
+- A pessoa pode visitar a loja e comprar espontaneamente, sem reservar.
+- Solicitar reserva não exige conta no Vem pro Centro: a conversa acontece no WhatsApp ou Instagram do estabelecimento.
+- Abrir um aplicativo de mensagens não envia a mensagem automaticamente. O consumidor revisa e envia.
+- A reserva só é considerada combinada quando o estabelecimento confirma diretamente na conversa.
+- A plataforma não sabe se a mensagem foi enviada, lida ou respondida.
+- O prazo e as condições de retirada são combinados entre consumidor e loja na conversa.
 - Retirada e pagamento acontecem presencialmente.
-- Confirmar retirada não confirma automaticamente a compra para fins de fidelidade.
+- Conversar sobre reserva não confirma uma compra para fins de fidelidade.
 - O consumidor deve poder continuar explorando o Centro depois da compra.
 
 ## Visão geral
@@ -29,27 +31,26 @@ flowchart TD
     B --> C[Produto e estabelecimento]
     C --> D{Próximo passo}
     D -->|Visitar diretamente| E[Ir até a loja]
-    D -->|Solicitar reserva| F{Autenticado?}
-    F -->|Não| G[Login ou cadastro]
-    G --> H[Retornar ao produto]
-    F -->|Sim| I[Informar quantidade e solicitar]
-    H --> I
-    I --> J[Aguardar decisão da loja]
-    J --> K{Decisão}
-    K -->|Recusada| L[Consultar motivo e alternativas]
-    K -->|Aceita| M[Reserva confirmada e prazo]
-    M --> N[Loja separa o produto]
-    N --> O[Pronta para retirada]
-    O --> P[Consumidor visita a loja]
-    E --> Q[Atendimento presencial]
-    P --> Q
-    Q --> R[Retirada e pagamento]
-    R --> S[Compra concluída]
-    S --> T{Campanha de fidelidade elegível?}
-    T -->|Sim| U[Loja confirma compra]
-    U --> V[Benefício conforme regras]
-    T -->|Não| W[Continuar explorando o Centro]
-    V --> W
+    D -->|Pedir reserva| F[Preparar mensagem]
+    F --> G{Canal disponível}
+    G -->|WhatsApp| H[Abrir conversa com texto pronto]
+    G -->|Instagram| I[Copiar texto e abrir Direct]
+    H --> J[Consumidor revisa e envia]
+    I --> J
+    J --> K[Loja responde na conversa]
+    K --> L{Confirma que vai separar?}
+    L -->|Não| M[Consumidor avalia alternativas]
+    L -->|Sim| N[Combinar quantidade e prazo]
+    N --> O[Consumidor visita a loja]
+    E --> P[Atendimento presencial]
+    O --> P
+    P --> Q[Retirada e pagamento]
+    Q --> R[Compra concluída]
+    R --> S{Campanha de fidelidade elegível?}
+    S -->|Sim| T[Loja confirma a compra no fluxo da campanha]
+    T --> U[Benefício conforme regras]
+    S -->|Não| V[Continuar explorando o Centro]
+    U --> V
 ```
 
 ## 1. Descoberta e avaliação
@@ -57,7 +58,7 @@ flowchart TD
 1. O consumidor abre Explorar, uma campanha, uma rota ou um link compartilhado.
 2. Pesquisa por produto, serviço, categoria ou estabelecimento.
 3. Abre o detalhe do produto e identifica a loja responsável.
-4. Avalia descrição, preço informado, imagens, endereço, contato e disponibilidade declarada.
+4. Avalia descrição, preço informado, imagens, endereço, canais de contato e disponibilidade declarada.
 5. Consulta a data de atualização do catálogo para entender a atualidade das informações.
 
 A interface não deve tratar disponibilidade declarada como confirmação de estoque. Preço e disponibilidade podem mudar antes da visita.
@@ -67,61 +68,76 @@ A interface não deve tratar disponibilidade declarada como confirmação de est
 A partir do produto, o consumidor pode:
 
 - **Visitar diretamente:** consultar endereço e canais públicos e ir até a loja. Não precisa criar conta nem solicitar reserva.
-- **Solicitar reserva:** pedir que a loja separe uma quantidade para retirada presencial. Essa ação exige autenticação.
+- **Pedir para reservar:** preparar uma mensagem para perguntar se a loja consegue separar determinada quantidade para retirada presencial.
 - **Continuar explorando:** comparar outros produtos e estabelecimentos antes de decidir.
 
-Contato direto continua disponível quando o consumidor prefere confirmar algum detalhe com a loja.
+A reserva é uma conversa, não uma transação ou solicitação criada no Vem pro Centro.
 
-## 3. Solicitação de reserva
+## 3. Pedido pelo WhatsApp
 
-1. O consumidor seleciona **Reservar para retirar**.
-2. Se não estiver autenticado, realiza login ou cadastro e retorna ao mesmo produto.
-3. Informa a quantidade desejada, limitada à quantidade permitida pela funcionalidade.
-4. Confere estabelecimento, produto, quantidade e condições de retirada.
-5. Envia a solicitação.
-6. O sistema registra o pedido como **Solicitada** e informa que ainda depende de confirmação da loja.
+O WhatsApp é o canal prioritário para pedir a reserva.
 
-A solicitação não separa o produto, não garante disponibilidade e não exige pagamento ou sinal.
+1. O consumidor informa a quantidade desejada no detalhe do produto, quando a interface oferecer esse campo.
+2. Seleciona **Pedir reserva pelo WhatsApp**.
+3. O sistema abre o WhatsApp ou WhatsApp Web usando o número público cadastrado pelo estabelecimento.
+4. O campo de mensagem aparece preenchido com um texto contextualizado.
+5. O consumidor revisa o conteúdo, pode editá-lo e toca em enviar.
+6. A conversa continua diretamente entre consumidor e estabelecimento.
 
-## 4. Decisão da loja
+A mensagem sugerida deve conter somente nome público do estabelecimento, nome do produto, quantidade desejada, link público do produto e a pergunta sobre disponibilidade e possibilidade de separação para retirada.
 
-A loja analisa a solicitação no Painel do Proprietário.
+Exemplo de texto preparado:
 
-- **Aceita:** confirma a quantidade que será separada e informa prazo de retirada. A partir desse aceite, a reserva está confirmada.
-- **Recusada:** informa um motivo curto. O consumidor pode voltar ao catálogo, escolher outra opção ou entrar em contato.
-- **Sem resposta:** a solicitação permanece pendente apenas durante a janela de resposta definida pelo produto. Ao expirar, é encerrada sem reserva confirmada.
+> Olá! Encontrei este produto no Vem pro Centro e gostaria de consultar a possibilidade de reservar:
+>
+> Produto: [nome do produto]  
+> Loja: [nome do estabelecimento]  
+> Quantidade: [quantidade]  
+> Link: [link do produto]
+>
+> Vocês conseguem confirmar a disponibilidade e informar até quando poderiam deixar separado para retirada?
 
-O prazo de resposta da loja e os limites máximos de retirada precisam ser parâmetros explícitos do produto, não decisões implícitas da interface.
+O texto é apenas um rascunho. O Vem pro Centro não envia a mensagem em nome do consumidor.
 
-## 5. Acompanhamento e retirada
+O link usa o formato de clique para conversa do WhatsApp, com número completo em formato internacional e texto codificado para URL. A aplicação não precisa da API do WhatsApp Business para esse comportamento.
 
-O consumidor acompanha o estado em Perfil:
+## 4. Alternativa pelo Instagram
 
-| Estado | Significado para o consumidor |
-|---|---|
-| Solicitada | A loja ainda não decidiu; o produto não está garantido. |
-| Aceita | A loja confirmou a quantidade e o prazo de retirada. |
-| Pronta para retirada | A loja informou que separou o produto. |
-| Recusada | A loja não aceitou a solicitação; o motivo é apresentado. |
-| Cancelada | A loja ou o consumidor cancelou antes da retirada. |
-| Expirada | O prazo de resposta ou retirada terminou. |
-| Retirada | A loja confirmou que o consumidor retirou o produto. |
+Quando o estabelecimento cadastrar um perfil público do Instagram:
 
-A tela de reserva apresenta endereço, horário de atendimento cadastrado quando confiável, prazo e instruções de retirada. Não prometer que a loja está aberta em tempo real.
+1. O consumidor seleciona **Falar pelo Instagram** ou **Perguntar sobre reserva no Instagram**.
+2. A interface disponibiliza uma mensagem contextualizada para copiar.
+3. O consumidor abre o perfil/Direct pelo link cadastrado.
+4. Cola, revisa e envia a mensagem.
+5. A loja confirma ou recusa diretamente nessa conversa.
 
-O consumidor se desloca até o estabelecimento, identifica a reserva e realiza o atendimento presencial. A loja entrega o produto e recebe o pagamento diretamente.
+O Instagram é um canal alternativo. Não assumir que o Direct aceita texto pré-preenchido por link. Caso o link direto de mensagem não funcione em determinado contexto ou dispositivo, oferecer o perfil público e manter o texto disponível para cópia.
+
+WhatsApp permanece prioritário para o pedido com texto pré-preenchido.
+
+## 5. Confirmação e retirada
+
+O consumidor considera a reserva combinada somente depois de receber uma confirmação explícita do estabelecimento na conversa.
+
+Na resposta, a loja deve confirmar produto e quantidade que consegue separar, que o item ficará reservado, o prazo ou horário limite para retirada e eventuais condições necessárias.
+
+O consumidor mantém essa confirmação na própria conversa e comparece ao estabelecimento dentro do prazo combinado.
+
+Se a loja não responder, não confirmar a disponibilidade ou recusar o pedido, o consumidor pode conversar novamente, escolher outro produto ou visitar a loja. A plataforma não altera nenhum estado e não envia notificações sobre a conversa.
+
+A entrega do produto e o pagamento acontecem presencialmente. Não existe confirmação de retirada dentro do Vem pro Centro nesta jornada.
 
 ## 6. Compra e Fidelidade ao Centro
 
-A retirada e a compra são eventos distintos.
+A conversa de reserva e a compra são eventos distintos.
 
-- A loja confirma a retirada para encerrar a reserva.
-- Se houver campanha que conceda benefício por compra, o responsável confirma separadamente que a compra foi concluída e informa apenas os dados mínimos necessários à regra.
+- A conversa de reserva não comprova que houve compra.
+- A retirada do produto não concede benefício automaticamente.
+- Se houver campanha que conceda benefício por compra, o responsável confirma a compra no fluxo específico da campanha, após a venda presencial.
 - O sistema verifica elegibilidade, período, limites e idempotência antes de conceder o benefício.
-- Não conceder pontos ou cupons apenas porque uma reserva foi solicitada, aceita ou retirada.
 - Benefícios cruzados podem incentivar o consumidor a visitar outro estabelecimento, conforme campanha ativa e responsável pelo custo.
 
-Depois da compra, a interface pode apresentar campanhas, rotas, atividades e estabelecimentos próximos para incentivar continuidade da visita. Não deve sugerir que a pessoa precisa comprar em todas as paradas.
+Depois da compra, a experiência pode apresentar campanhas, rotas, atividades e outros estabelecimentos para incentivar a continuidade da visita. Não deve sugerir que a pessoa precisa comprar em todas as paradas.
 
 ## 7. Fluxo alternativo: compra espontânea
 
@@ -139,56 +155,56 @@ A compra espontânea não depende de solicitação prévia nem de checkout na pl
 
 | Situação | Resposta |
 |---|---|
-| Consumidor não autenticado | Solicitar login apenas ao iniciar reserva e retornar ao produto após autenticação. |
-| Produto deixou de ser publicado | Impedir nova solicitação e oferecer retorno à loja ou à busca. |
-| Disponibilidade declarada como indisponível | Desabilitar reserva e explicar a informação publicada. |
-| Solicitação pendente | Informar que ainda não existe reserva confirmada e permitir cancelar a solicitação. |
-| Loja recusa | Mostrar motivo e permitir explorar alternativas. |
-| Loja cancela reserva aceita | Notificar o consumidor, informar motivo e não tratar como falha do consumidor. |
-| Prazo de retirada expira | Encerrar reserva, informar expiração e permitir nova consulta à loja. |
-| Consumidor cancela | Registrar cancelamento e liberar a loja do compromisso de separação. |
-| Produto não está disponível ao chegar | A loja deve poder registrar ocorrência/cancelamento; não afirmar que o sistema garantiu estoque. |
-| Falha de conexão ao enviar | Não duplicar solicitação; informar resultado incerto e permitir consultar estado antes de reenviar. |
-| Compra não elegível a campanha | Concluir retirada normalmente, sem conceder benefício. |
+| Estabelecimento sem WhatsApp público | Não exibir o atalho de reserva pelo WhatsApp; apresentar os demais canais públicos disponíveis. |
+| Estabelecimento com Instagram, mas sem WhatsApp | Permitir abrir o perfil/Direct e copiar a mensagem sugerida. |
+| Nenhum canal de contato cadastrado | Ocultar ações de contato e manter endereço e demais informações públicas disponíveis. |
+| WhatsApp ou Instagram não instalado | Informar que a ação depende do aplicativo ou serviço externo e oferecer link/perfil público para abertura alternativa. |
+| Consumidor abre o aplicativo e não envia a mensagem | Não apresentar pedido como enviado; o sistema não recebe confirmação de envio. |
+| Loja não responde | O consumidor pode tentar o canal alternativo ou visitar a loja. A plataforma não define prazo nem expiração. |
+| Loja informa indisponibilidade | O consumidor pode explorar outros produtos ou estabelecimentos. |
+| Loja confirma a reserva | A confirmação e o prazo permanecem na conversa externa. |
+| Loja cancela ou altera o combinado | A comunicação ocorre diretamente na conversa; a plataforma não recebe atualização. |
+| Link de contato inválido | Informar que o canal não está disponível e permitir voltar à página do estabelecimento. |
+| Produto deixa de ser publicado | Não gerar nova mensagem de reserva; oferecer retorno à loja ou à busca. |
 
 ## Autenticação, privacidade e integridade
 
-- Consulta pública permanece sem login.
-- Solicitação, acompanhamento e cancelamento de reserva exigem autenticação.
-- O consumidor vê apenas suas próprias reservas.
-- O responsável vê apenas solicitações dos estabelecimentos sob sua responsabilidade.
-- Alterações de estado devem registrar ator, data e estado anterior/novo para auditoria operacional.
-- Reenvios não podem criar reservas duplicadas para a mesma ação.
-- Exibir ao estabelecimento somente os dados necessários para processar a reserva.
-- Não usar a reserva como autorização para marketing ou compartilhamento de dados.
-- Aplicar limites contra abuso, spam e solicitações automatizadas.
+- Consulta pública e abertura dos canais de contato não exigem login.
+- A plataforma não precisa receber o número de telefone ou perfil social do consumidor para preparar a mensagem.
+- Não incluir nome, telefone, e-mail, endereço ou identificadores pessoais do consumidor no texto gerado.
+- Exibir somente canais que o estabelecimento cadastrou explicitamente como públicos.
+- O número de WhatsApp público é distinto de telefone pessoal ou privado do responsável.
+- A mensagem contém somente contexto do produto e link público.
+- A abertura do link não comprova envio, leitura, resposta ou aceite.
+- Não armazenar conteúdo de conversas externas.
+- Não criar status, histórico de reservas, notificações ou trilha de auditoria de conversas que a plataforma não consegue observar.
 
 ## Limites do MVP
 
 - Sem checkout, pagamento, sinal, reembolso ou carteira financeira.
 - Sem entrega, frete ou logística.
-- Sem integração com PDV ou estoque em tempo real.
-- Sem baixa automática de estoque.
-- Sem garantia antes do aceite explícito do responsável.
-- Sem reserva de serviços com agenda complexa nesta primeira versão; o fluxo cobre produtos cadastrados.
-- Sem concessão automática de fidelidade por solicitação, aceite ou retirada.
-- Sem chat interno; comunicação usa estados e justificativas padronizados, além dos canais públicos da loja.
+- Sem integração com estoque ou PDV.
+- Sem API do WhatsApp Business, webhook, automação de atendimento ou sincronização de mensagens.
+- Sem caixa de entrada, status de reserva ou histórico de solicitações no Vem pro Centro.
+- Sem confirmação ou expiração automática de reserva; consumidor e estabelecimento combinam as condições na conversa.
+- Sem reserva de serviços com agenda complexa nesta primeira versão; a mensagem contextualizada cobre produtos cadastrados.
+- Sem concessão automática de fidelidade por mensagem, conversa ou reserva.
+- Sem chat interno.
 
 ## Critérios de validação
 
 - [ ] Consumidor descobre e consulta produto sem autenticação.
 - [ ] Consumidor consegue escolher visita espontânea sem reservar.
-- [ ] Solicitar reserva exige autenticação e retorna ao produto original.
-- [ ] Solicitação registra produto, estabelecimento e quantidade.
-- [ ] Solicitação pendente não é apresentada como reserva confirmada.
-- [ ] Responsável aceita ou recusa e informa motivo quando recusa.
-- [ ] Aceite confirma quantidade e prazo de retirada.
-- [ ] Responsável marca produto como pronto para retirada.
-- [ ] Consumidor acompanha estados e prazo no Perfil.
-- [ ] Consumidor ou loja pode cancelar conforme regras.
-- [ ] Reserva expira quando o prazo termina.
-- [ ] Retirada é confirmada separadamente da compra.
+- [ ] Estabelecimento cadastra um número público de WhatsApp separado de contato privado.
+- [ ] Produto elegível apresenta atalho para abrir o WhatsApp com mensagem contextualizada.
+- [ ] A mensagem contém loja, produto, quantidade e link público.
+- [ ] O consumidor precisa revisar e enviar a mensagem manualmente.
+- [ ] A interface não afirma que a mensagem foi enviada ou que a reserva foi confirmada.
+- [ ] Estabelecimento pode cadastrar perfil público de Instagram como canal alternativo.
+- [ ] A opção Instagram disponibiliza texto para copiar e abre o perfil/Direct.
+- [ ] A interface não promete preenchimento automático de mensagem no Instagram.
+- [ ] Consumidor e loja combinam confirmação e prazo diretamente na conversa.
+- [ ] Consumidor realiza retirada e pagamento presencialmente.
 - [ ] Benefício de fidelidade depende de confirmação de compra e campanha elegível.
-- [ ] Consumidor realiza pagamento presencial diretamente à loja.
-- [ ] Permissões impedem acesso a reservas de terceiros.
-- [ ] Estados e transições críticas são auditáveis e idempotentes.
+- [ ] Nenhum dado pessoal do consumidor é acrescentado automaticamente à mensagem.
+- [ ] A plataforma não mantém status ou histórico de conversas externas.

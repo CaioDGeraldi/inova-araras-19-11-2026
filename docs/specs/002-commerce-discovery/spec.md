@@ -4,7 +4,7 @@
 A vitrine digital é a base de descoberta do Vem pro Centro. Sem estabelecimentos e catálogo confiáveis, cronograma e rotas não conseguem direcionar visitantes para o comércio participante.
 
 ## Objetivo
-Permitir que um responsável mantenha estabelecimento e catálogo e que qualquer visitante descubra lojas e produtos sem autenticação.
+Permitir que um responsável mantenha estabelecimento, catálogo e canais de contato e que qualquer visitante descubra lojas e produtos sem autenticação.
 
 ## Requisitos relacionados
 RF-001, RF-004, RF-005, RF-010 a RF-028; RNF-001 a RNF-008, RNF-013 a RNF-017, RNF-022 a RNF-025, RNF-030.
@@ -22,10 +22,14 @@ RF-001, RF-004, RF-005, RF-010 a RF-028; RNF-001 a RNF-008, RNF-013 a RNF-017, R
 - Página pública de estabelecimento e produto.
 - Busca por nome e filtro por categoria.
 - Preço, descrição, imagem opcional e disponibilidade declarada.
+- Cadastro e exibição de WhatsApp público e Instagram opcional.
+- Atalho externo de pedido de reserva com mensagem contextualizada.
 - Data de atualização do catálogo.
 
 ## Excluído
 - Checkout, pagamento, entrega e estoque transacional.
+- Entidade de reserva, caixa de entrada, histórico ou status de pedidos na plataforma.
+- Integração com API do WhatsApp Business, webhooks ou sincronização com Instagram Direct.
 - Gestão de equipe/memberships.
 - Integração automática de CNPJ ou estoque.
 - Avaliações públicas nesta spec.
@@ -46,6 +50,9 @@ RF-001, RF-004, RF-005, RF-010 a RF-028; RNF-001 a RNF-008, RNF-013 a RNF-017, R
 - Preço pode ser ausente quando não fizer sentido para o serviço.
 - Disponibilidade é declarada, nunca apresentada como estoque em tempo real.
 - Contato público é distinto de contato privado do responsável.
+- WhatsApp é o canal prioritário para pedido de reserva por link de clique para conversa com mensagem pré-preenchida; o consumidor precisa enviar manualmente.
+- Instagram é opcional: o link abre o perfil/Direct e a interface oferece texto para copiar, sem presumir preenchimento automático.
+- A confirmação e as condições de retirada são acordadas na conversa externa; a plataforma não conhece o estado da reserva.
 - CNPJ, se coletado, não é público e precisa de finalidade.
 
 ## Dados e estados
@@ -68,6 +75,10 @@ Category: active/inactive.
 - [ ] Owner não altera loja de terceiro.
 - [ ] Admin aprova/rejeita/suspende e a visibilidade acompanha o estado.
 - [ ] Catálogo exibe data da última atualização.
+- [ ] Responsável mantém número público de WhatsApp separado de seus dados privados.
+- [ ] Consumidor abre WhatsApp com mensagem contextualizada e precisa enviá-la manualmente.
+- [ ] Perfil público do Instagram pode ser cadastrado e aberto pelo link do perfil/Direct com texto copiável.
+- [ ] A interface não apresenta estado de reserva nem presume confirmação de conversa externa.
 - [ ] Dados privados não aparecem na resposta pública.
 - [ ] Testes cobrem permissões, estados e busca.
 

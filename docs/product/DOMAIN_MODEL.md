@@ -9,7 +9,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 - **Programação:** atividades e locais.
 - **Circulação:** rotas, paradas, participações e check-ins.
 - **Incentivos:** campanhas, cupons e resgates.
-- **Solicitações:** interesse/reserva e confirmação de compra, se incluídas.
+- **Contato comercial:** canais públicos e encaminhamento de pedidos de reserva para conversas externas.
 - **Comunidade:** avaliações e denúncias, após política de moderação.
 - **Inteligência comercial:** sinais agregados de busca, cobertura de oferta, pesquisas e relatórios institucionais.
 
@@ -17,7 +17,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **User:** pessoa autenticada. Pode descobrir como visitante e participar de rotas, solicitar contato, resgatar benefícios e avaliar. Pode ser responsável por vários estabelecimentos.
 
-**Store:** estabelecimento participante, responsável principal, nome público, descrição, endereço, contatos públicos, categorias, estado de aprovação e auditoria. Dados privados do responsável não são expostos.
+**Store:** estabelecimento participante, responsável principal, nome público, descrição, endereço, canais públicos de contato (WhatsApp e Instagram inicialmente), categorias, estado de aprovação e auditoria. Os contatos públicos são declarados pelo responsável e separados de seus dados privados.
 
 **Category:** classificação reutilizável de estabelecimento, produto/serviço ou atividade. Evitar taxonomia excessivamente rígida.
 
@@ -40,8 +40,6 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 **Coupon:** benefício emitido conforme Campaign, com identificador não previsível, destinatário quando individual, validade e estado.
 
 **CouponRedemption:** registro de resgate, com cupom, consumidor, estabelecimento receptor, instante e operador. Resgate atômico.
-
-**Reservation (opcional):** solicitação de interesse/reserva de User para Store. Não é pagamento nem garantia de estoque. Pode evoluir para accepted, declined, cancelled e completed.
 
 **Review / Report (P1):** opinião de consumidor e denúncia/moderação. Anonimato apenas na apresentação pública; autoria permanece vinculada internamente.
 
@@ -67,7 +65,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 - RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop.
 - Campaign N:M Store; Campaign 1:N Coupon.
 - Coupon 0..N CouponRedemption conforme regra; cupom de uso único tem no máximo um resgate.
-- Reservation referencia User e Store; conclusão pode originar compra elegível.
+- O encaminhamento de reserva gera apenas um link de contato externo com contexto de Store/Product; não cria entidade transacional nem estado de reserva na plataforma.
 - SearchSignal alimenta agregações sem expor evento individual; DemandAggregate pode ser contextualizado por FieldSurvey/SurveyResult.
 - Acesso institucional consulta somente DemandAggregate e SurveyResult agregados, com AuditEntry.
 
@@ -86,8 +84,6 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 **Campaign:** draft → scheduled → active → ended; active pode ser paused/cancelled.
 
 **Coupon:** issued → redeemed, expired ou cancelled. Cupom resgatado não volta a issued sem operação compensatória auditada.
-
-**Reservation:** pending → accepted/declined/cancelled; accepted → completed/cancelled. Confirmação de compra é idempotente.
 
 ## Invariantes
 
@@ -116,6 +112,6 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 - Token QR estático rotacionável ou token curto, conforme operação e ameaça de compartilhamento.
 - Place separado ou endereço embutido, conforme reuso real.
 - Campanha/cupons P1: confirmar após núcleo.
-- Reserva: confirmar prioridade e política de expiração.
+- Definir política editorial e validação dos canais públicos de contato do estabelecimento.
 
-Não criar todas as entidades de uma vez. Primeira spec deve detalhar Store/Product e Event; próxima DiscoveryRoute/RouteStop/Participation/CheckIn. Campanhas e reservas entram em specs independentes.
+Não criar todas as entidades de uma vez. Primeira spec deve detalhar Store/Product e Event; próxima DiscoveryRoute/RouteStop/Participation/CheckIn. Campanhas e confirmação de compra entram em specs independentes. Links externos de contato não criam entidade de reserva na plataforma.
