@@ -179,7 +179,7 @@ O cronograma centraliza atividades que dão motivos para visitar o Centro: event
 
 Cada atividade publicada informa título, descrição, data, horário de início e término quando aplicável, local, organizador, categoria, situação e condições de participação. Deve indicar se é gratuita ou paga e se exige inscrição. Atividades canceladas permanecem identificáveis como canceladas, com informação atualizada.
 
-A administração publica e mantém o cronograma no MVP. Estabelecimentos podem sugerir atividades em evolução posterior. Inscrição, lista de presença e notificações não são pré-requisitos para o valor inicial.
+A administração publica e mantém o cronograma no P0. No P1, estabelecimentos/organizadores autenticados podem sugerir atividades sujeitas à aprovação administrativa, e consumidores podem salvar atividades em sua conta. Salvar não representa inscrição ou reserva de vaga. Inscrição completa, lista de presença e notificações não são pré-requisitos para o valor inicial.
 
 Uma atividade pode estar vinculada a rota e/ou estabelecimento, mas também pode ocorrer em praça ou espaço público.
 
