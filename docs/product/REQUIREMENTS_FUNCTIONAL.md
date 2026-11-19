@@ -54,7 +54,7 @@ IDs estáveis para rastreabilidade entre PRD, specs, Issues, implementação e t
 | RF-036 | P0 | Atividade cancelada permanece identificável e informa cancelamento. |
 | RF-037 | P1 | Estabelecimento/organizador pode sugerir atividade para aprovação. |
 | RF-038 | P1 | Usuário autenticado pode salvar atividade. |
-| RF-039 | P1 | Atividade pode definir capacidade e período de inscrição. |
+| RF-039 | P2 | Atividade pode definir capacidade e período de inscrição. |
 | RF-040 | P1 | Atividade pode ser vinculada a estabelecimento e/ou rota. |
 | RF-041 | P2 | Enviar lembretes/notificações de atividades salvas. |
 
