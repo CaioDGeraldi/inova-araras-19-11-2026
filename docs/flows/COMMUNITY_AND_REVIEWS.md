@@ -2,7 +2,7 @@
 
 **Produto:** Vem pro Centro  
 **Prioridade:** P1 do MVP.  
-**Referências:** MVP, RF-100 a RF-106, RF-105 e fluxo `PLATFORM_ADMINISTRATION.md`. A especificação de domínio e moderação ainda precisa ser formalizada.
+**Referências:** MVP, RF-100 a RF-106, RF-105 e fluxo `PLATFORM_ADMINISTRATION.md`. Spec 008 | Comunidade e avaliações.
 
 ## Objetivo
 
