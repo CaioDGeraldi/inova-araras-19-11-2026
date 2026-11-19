@@ -31,7 +31,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 **RouteStop:** parada de DiscoveryRoute, com ordem sugerida, obrigatoriedade, instruções e referência a Store, Event ou Place. Deve possuir exatamente um alvo válido no MVP.
 
-**RouteParticipation:** participação de User em DiscoveryRoute ou ocorrência do rota. Controla início, estado e conclusão.
+**RouteParticipation:** participação de User em DiscoveryRoute ou ocorrência da rota. Controla início, estado e conclusão.
 
 **CheckIn:** registro de tentativa/aceite de visita em RouteStop, associado à participação. Guarda instante, resultado e referência segura ao token. Política de repetição explícita.
 
@@ -111,7 +111,7 @@ Modelo conceitual do MVP. Não obriga implementação imediata de todas as entid
 
 ## Decisões de modelagem em aberto
 
-- DiscoveryRouteo recorrente: DiscoveryRouteEdition/Occurrence no MVP ou período simples.
+- Rota recorrente: RouteEdition/Occurrence no MVP ou período simples.
 - Check-in repetível por rota, parada ou ocorrência.
 - Token QR estático rotacionável ou token curto, conforme operação e ameaça de compartilhamento.
 - Place separado ou endereço embutido, conforme reuso real.
