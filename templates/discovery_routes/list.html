@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="h3">Rotas de Descoberta</h1>
+<ul class="list-group">
+    {% for route in routes %}
+        <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a></li>
+    {% empty %}
+        <li class="list-group-item">Nenhuma rota publicada.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
