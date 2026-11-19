@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="h3">Painel</h1>
+<p>Para registrar uma compra ou resgatar um cupom, escaneie com a câmera do celular o QR que o cliente mostrar.</p>
+{% for establishment in establishments %}
+    <section class="mb-4">
+        <h2 class="h5">
+            {{ establishment.name }} <span class="badge text-bg-secondary">{{ establishment.get_status_display }}</span>
+        </h2>
+        <p class="d-flex flex-wrap gap-2">
+            <a class="btn btn-outline-primary btn-sm" href="{% url 'establishment_edit' establishment.slug %}">Editar loja</a>
+            <a class="btn btn-primary btn-sm" href="{% url 'product_create' establishment.slug %}">Novo produto</a>
+        </p>
+        <ul class="list-group">
+            {% for product in establishment.products.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center gap-2">
+                    <span>{{ product.name }}</span>
+                    <span class="d-flex gap-2">
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'product_edit' establishment.slug product.pk %}">Editar</a>
+                        <a class="btn btn-outline-danger btn-sm" href="{% url 'product_delete' establishment.slug product.pk %}">Excluir</a>
+                    </span>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Nenhum produto.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% empty %}
+    <p>Nenhuma loja sob sua responsabilidade.</p>
+{% endfor %}
+{% endblock %}

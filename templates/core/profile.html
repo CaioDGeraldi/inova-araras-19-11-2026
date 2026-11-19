@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load qr %}
+
+{% block content %}
+<h1 class="h3">Olá, {{ user.first_name|default:user.username }}</h1>
+<section class="mb-4">
+    <h2 class="h5">Meu QR</h2>
+    <p class="text-body-secondary">Mostre ao lojista para ele confirmar sua compra. O QR identifica a conta; não é pagamento.</p>
+    {% url 'purchase_confirm' user.account_code as purchase_path %}
+    {% qr purchase_path %}
+</section>
+<section class="mb-4">
+    <h2 class="h5">Meus cupons</h2>
+    {% for coupon in coupons %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="h6">{{ coupon.campaign.benefit }}</h3>
+                <p class="mb-2">Use em {{ coupon.campaign.destination.name }}, ganho em {{ coupon.campaign.origin.name }}.</p>
+                {% if coupon.redeemed_at %}
+                    <p class="mb-0 text-body-secondary">Resgatado em {{ coupon.redeemed_at|date:"d/m/Y H:i" }}.</p>
+                {% else %}
+                    {% url 'coupon_redeem' coupon.code as coupon_path %}
+                    {% qr coupon_path %}
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        <p>Nenhum cupom.</p>
+    {% endfor %}
+</section>
+<section>
+    <h2 class="h5">Minhas rotas</h2>
+    <ul class="list-group">
+        {% for participation in participations %}
+            <li class="list-group-item">
+                <a href="{{ participation.route.get_absolute_url }}">{{ participation.route.title }}</a>
+                {% if participation.completed_at %}<span class="badge text-bg-success">Concluída</span>{% endif %}
+            </li>
+        {% empty %}
+            <li class="list-group-item">Nenhuma rota iniciada.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

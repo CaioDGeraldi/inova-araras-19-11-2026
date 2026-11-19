@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load qr %}
+
+{% block content %}
+<h1 class="h3">QR das paradas: {{ route.title }}</h1>
+{% for stop in stops %}
+    <section class="mb-4">
+        <h2 class="h6">{{ stop.name }}</h2>
+        {% url 'checkin' stop.token as checkin_path %}
+        {% qr checkin_path %}
+    </section>
+{% endfor %}
+{% endblock %}

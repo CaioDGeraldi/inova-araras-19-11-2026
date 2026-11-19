@@ -1,8 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="py-5">
-    <h1 class="h3">Inova Araras 2026</h1>
-    <p class="text-body-secondary mb-0">Ambiente de desenvolvimento inicializado.</p>
+<section class="mb-4">
+    <h1 class="h3">Vem pro Centro</h1>
+    <p class="text-body-secondary">Dados fictícios de demonstração.</p>
+</section>
+<section class="mb-4">
+    <h2 class="h5">Rotas de Descoberta</h2>
+    <ul class="list-group">
+        {% for route in routes %}
+            <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a></li>
+        {% empty %}
+            <li class="list-group-item">Nenhuma rota publicada.</li>
+        {% endfor %}
+    </ul>
+</section>
+<section>
+    <h2 class="h5">Lojas</h2>
+    <form class="row g-2 mb-3" method="get">
+        <div class="col-12 col-md">
+            <input class="form-control" type="search" name="q" value="{{ query }}" placeholder="Buscar loja ou produto" aria-label="Buscar loja ou produto">
+        </div>
+        <div class="col-8 col-md-4">
+            <select class="form-select" name="categoria" aria-label="Categoria">
+                <option value="">Todas as categorias</option>
+                {% for item in categories %}
+                    <option value="{{ item.pk }}"{% if category == item.pk|stringformat:"s" %} selected{% endif %}>{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-4 col-md-auto">
+            <button class="btn btn-primary w-100" type="submit">Buscar</button>
+        </div>
+    </form>
+    <ul class="list-group">
+        {% for establishment in establishments %}
+            <li class="list-group-item"><a href="{{ establishment.get_absolute_url }}">{{ establishment.name }}</a></li>
+        {% empty %}
+            <li class="list-group-item">Nenhuma loja aprovada.</li>
+        {% endfor %}
+    </ul>
 </section>
 {% endblock %}

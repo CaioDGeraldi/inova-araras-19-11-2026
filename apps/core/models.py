@@ -1,11 +1,17 @@
+import secrets
 import uuid
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
+def new_account_code():
+    return secrets.token_urlsafe(12)
+
+
 class User(AbstractUser):
-    """Usuário principal do projeto."""
+    # shortcut: código estático por conta, trocar por token temporário da Spec 007
+    account_code = models.CharField(max_length=32, unique=True, default=new_account_code)
 
 
 class UUIDModel(models.Model):

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="h3">{{ event.title }}</h1>
+{% if event.cancelled %}
+    <div class="alert alert-danger fs-5" role="alert"><strong>Evento cancelado.</strong></div>
+{% endif %}
+<p class="text-body-secondary">
+    {{ event.starts_at|date:"d/m/Y H:i" }} a {{ event.ends_at|date:"d/m/Y H:i" }} · {{ event.location }}
+</p>
+<p>{{ event.description|linebreaksbr }}</p>
+<ul>
+    {% if event.category %}<li>Categoria: {{ event.category }}</li>{% endif %}
+    <li>Organizador: {{ event.organizer }}</li>
+    <li>{% if event.free %}Gratuito{% else %}Pago{% endif %}</li>
+    <li>{% if event.requires_registration %}Exige inscrição{% else %}Sem inscrição{% endif %}</li>
+    {% if event.establishment %}<li>Loja: <a href="{{ event.establishment.get_absolute_url }}">{{ event.establishment.name }}</a></li>{% endif %}
+</ul>
+{% endblock %}

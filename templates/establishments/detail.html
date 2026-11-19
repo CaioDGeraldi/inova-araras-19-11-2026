@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="h3">{{ establishment.name }}</h1>
+{% if establishment.address %}<p class="text-body-secondary">{{ establishment.address }}</p>{% endif %}
+<p>{{ establishment.description|linebreaksbr }}</p>
+<p class="d-flex flex-wrap gap-2">
+    {% if establishment.whatsapp_url %}
+        <a class="btn btn-success" href="{{ establishment.whatsapp_url }}" target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+    {% endif %}
+    {% if establishment.instagram_url %}
+        <a class="btn btn-outline-secondary" href="{{ establishment.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
+    {% endif %}
+</p>
+<h2 class="h5">Produtos</h2>
+<ul class="list-group">
+    {% for product in establishment.products.all %}
+        <li class="list-group-item d-flex justify-content-between gap-2">
+            <span>
+                {{ product.name }}
+                {% if not product.available %}<span class="badge text-bg-secondary">Indisponível</span>{% endif %}
+                {% if product.description %}<br><small class="text-body-secondary">{{ product.description }}</small>{% endif %}
+            </span>
+            {% if product.price %}<span>R$ {{ product.price }}</span>{% endif %}
+        </li>
+    {% empty %}
+        <li class="list-group-item">Nenhum produto cadastrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
