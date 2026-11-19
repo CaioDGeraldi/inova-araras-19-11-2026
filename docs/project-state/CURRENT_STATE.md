@@ -16,7 +16,7 @@
 
 ## Documentação consolidada nesta branch
 
-- PRD revisado: visão, atores, jornadas, Circuito Vivo, Cronograma, campanhas, privacidade e métricas.
+- PRD revisado: visão, atores, jornadas, Rotas de Descoberta, Cronograma, campanhas, privacidade e métricas.
 - MVP revisado: P0/P1/P2 e critérios de demonstrabilidade.
 - Requisitos funcionais identificados.
 - Requisitos não funcionais e metas verificáveis.
@@ -29,7 +29,7 @@
 
 A jornada central é: descobrir → planejar → visitar → registrar participação → explorar/benefício → retornar.
 
-O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Circuito Vivo. Campanhas/cupons simples complementam a jornada. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
+O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do Centro e Rotas de Descoberta. Campanhas/cupons simples complementam a jornada. Inteligência comercial, pesquisas de lacunas e painel institucional são evolução P2, sujeita a governança e validação de privacidade. Carteira de pontos complexa, pagamentos, GPS contínuo, integração Vaga Legal e aplicativo nativo ficam fora do núcleo inicial.
 
 ## Pendências antes da implementação
 
@@ -37,7 +37,7 @@ O núcleo de diferenciação é a integração de Vitrine Digital, Cronograma do
 2. Validar ordem final dos slices se o desafio exigir restrição de escopo diferente.
 3. Identificar estabelecimentos, locais e atividades reais disponíveis para o piloto; marcar dados fictícios como demonstração.
 4. Definir regra operacional de QR por parada/ocorrência e processo de rotação do código.
-5. Confirmar se cupons entram no primeiro slice ou após a jornada de circuito.
+5. Confirmar se cupons entram no primeiro slice ou após a jornada de rota.
 6. Confirmar responsável e regras comerciais de cada benefício antes de ativar campanhas.
 7. Definir política de privacidade, retenção e contato antes de dados reais.
 8. Revisar as specs 002–005 e gerar Issues por fatia vertical via FractawProjects, sem duplicar o workflow.
