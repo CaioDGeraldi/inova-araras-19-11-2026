@@ -2,7 +2,7 @@
 
 **Produto:** Vem pro Centro  
 **Prioridade:** P0 para operação do núcleo; P1 para auditoria operacional e moderação.  
-**Referências:** MVP, RF-005, RF-015, RF-030, RF-050, RF-064, RF-105, RF-110 a RF-114; Specs 002, 003, 004, 005 e 007.  
+**Referências:** MVP, RF-005, RF-015, RF-030, RF-050, RF-064, RF-105, RF-110 a RF-114; Specs 002, 003, 004, 005, 007, 008 e 009.  
 **Escopo:** operação administrativa do produto. Inteligência institucional e pesquisas permanecem P2.
 
 ## Objetivo
