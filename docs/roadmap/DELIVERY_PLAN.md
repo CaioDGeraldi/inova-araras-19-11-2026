@@ -38,9 +38,9 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 
 **Saída:** administrador publica atividade e visitante planeja visita.
 
-## Fase 3 — Circuito Vivo
+## Fase 3 — Rotas de Descoberta
 
-- Circuit e CircuitStop.
+- DiscoveryRoute e DiscoveryRouteStop.
 - Participação do consumidor.
 - QR Code e validação server-side.
 - CheckIn, duplicidade e auditoria.
@@ -48,7 +48,7 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 - Vincular Event/Store/Place a paradas.
 - Testes de token, concorrência, repetição e autorização.
 
-**Saída:** visitante consulta circuito, visita parada, registra participação e acompanha progresso.
+**Saída:** visitante consulta rota, visita parada, registra participação e acompanha progresso.
 
 ## Fase 4 — Incentivos simples
 
@@ -56,7 +56,7 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 - Regras, elegibilidade, período e responsável pelo custo.
 - Emissão e resgate de cupom único.
 - Transação e idempotência.
-- Campanha associada a loja/circuito.
+- Campanha associada a loja/rota.
 - Testes concorrentes e auditoria.
 
 **Saída:** benefício emitido por campanha e resgatado uma única vez em estabelecimento elegível.
@@ -70,13 +70,26 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 - Documentação de operação e moderação.
 - Teste ponta a ponta e roteiro de demonstração.
 
+## Fase 6 — Inteligência comercial e diagnóstico institucional (P2)
+
+- Definir taxonomia de buscas e categorias.
+- Instrumentar eventos minimizados de busca sem resultado.
+- Calcular cobertura de catálogo e sinais de demanda não atendida.
+- Conduzir pesquisas voluntárias com consumidores e comerciantes.
+- Validar sinais por levantamento de campo.
+- Disponibilizar painel institucional restrito, somente com dados agregados, metodologia e limitações.
+- Testar limiares, supressão de grupos pequenos, filtros sucessivos, exportações e risco de reidentificação.
+- Definir retenção, governança, finalidade e auditoria.
+
+**Saída:** diagnóstico exploratório que apoia campanhas de digitalização e planejamento, sem expor dados individuais e sem afirmar causalidade ou demanda comprovada sem validação.
+
 ## Cortes se o tempo apertar
 
 1. Remover avaliações e comunidade do primeiro corte.
 2. Adiar carteira de pontos; manter cupom simples ou remover campanha.
 3. Adiar reservas e usar contato direto.
 4. Adiar filtros por proximidade, notificações e inscrições.
-5. Preservar vitrine, cronograma e Circuito Vivo em jornada demonstrável.
+5. Preservar vitrine, cronograma e Rotas de Descoberta em jornada demonstrável.
 6. Não cortar autorização, integridade de check-in, segurança, acessibilidade essencial ou testes críticos.
 
 ## Dependências externas
@@ -86,6 +99,8 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 - Benefícios exigem acordo sobre elegibilidade e custo.
 - Eventos públicos dependem das autorizações aplicáveis.
 - Vaga Legal depende de dados e autorização.
+- Painel institucional depende de governança, finalidade, autorização de acesso e avaliação de privacidade.
+- Pesquisas dependem de método, participação voluntária e divulgação responsável dos limites da amostra.
 - Nenhuma dependência deve ser simulada como compromisso confirmado.
 
 ## Evidências por fase
