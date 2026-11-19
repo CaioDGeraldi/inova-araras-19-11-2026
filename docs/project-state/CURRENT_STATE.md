@@ -1,6 +1,6 @@
 # Estado atual do projeto
 
-**Atualizado:** 19/11/2026, consolidação dos fluxos do MVP e rastreabilidade documental.
+**Atualizado:** 19/11/2026, sincronização das decisões funcionais e criação do backlog de implementação.
 
 ## Contexto
 
@@ -11,9 +11,29 @@
 - Branch padrão: main.
 - Issue #3: fundação Django.
 - PR #4: fundação Django, aberto e não mesclado segundo a última verificação registrada. Validar uv.lock, Python 3.12, migrations, PostgreSQL, Django check, Ruff e pytest antes de assumir concluído.
-- PR #5: preparação documental, branch `001/docs/project-readiness`, alvo main. Reúne baseline de produto, requisitos, domínio, plano de entrega, fluxos e specs.
+- PR #5: preparação documental, branch `001/docs/project-readiness`, alvo main. Reúne baseline de produto, requisitos, domínio, plano de entrega, fluxos e specs. Última sincronização: commit `583f9e5` e commit subsequente de rastreabilidade do backlog.
 - PR #6: proposta institucional Centro em Movimento, aberta e não mesclada segundo a última verificação registrada.
 - Não foi feito merge automático de PRs.
+
+## Backlog de implementação
+
+As Issues abaixo representam entregas verticais, não arquivos individuais. Cada uma referencia suas Specs, tasks e fluxos. O desenvolvimento é individual; dependências indicam a ordem lógica, não divisão de equipe.
+
+| Identificador | Issue | Entrega | Dependências |
+|---|---:|---|---|
+| F0.01 | [#3](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/3) | Fundação Django | Nenhuma |
+| F0.02 | [#7](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/7) | Spike de leitura QR em navegadores móveis | F0.01 |
+| F0.03 | [#8](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/8) | Comércio e descoberta pública | F0.01 |
+| F0.04 | [#9](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/9) | Cronograma do Centro | F0.01; associação com lojas depende de F0.03 |
+| F0.05 | [#10](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/10) | Rotas de Descoberta e check-ins | F0.01 a F0.04 e spike F0.02 |
+| F0.06 | [#11](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/11) | Confirmação de compra por Meu QR | F0.01, F0.02, F0.03 |
+| F0.07 | [#12](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/12) | Campanhas, Fidelidade ao Centro e cupons | F0.01, F0.02, F0.05, F0.06 |
+| F0.08 | [#13](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/13) | Comunidade, avaliações e moderação | F0.01, F0.03; integração administrativa F0.09 |
+| F0.09 | [#14](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/14) | Administração e auditoria da plataforma | F0.01; integração por domínio F0.03 a F0.08 |
+| F0.10 | [#15](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/15) | Seed e cenário integrado de demonstração | Núcleo F0.03/F0.04; P1 conforme entrega |
+| F0.11 | [#16](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/16) | Política de privacidade e retenção pré-produção | Em paralelo; obrigatória antes de produção |
+
+Issue #3 foi reaproveitada e renomeada como F0.01. Não foi criada uma segunda Issue para a fundação. As Issues não foram atribuídas a uma equipe; o responsável pelo desenvolvimento é único.
 
 ## Documentação consolidada nesta branch
 

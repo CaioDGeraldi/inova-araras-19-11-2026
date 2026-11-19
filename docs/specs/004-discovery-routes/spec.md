@@ -50,15 +50,16 @@ RF-050 a RF-065; RNF-001 a RNF-008, RNF-013 a RNF-025, RNF-027 a RNF-029, RNF-03
 - Paradas opcionais não bloqueiam conclusão.
 - Nenhuma parada exige compra por padrão.
 - Check-in exige usuário autenticado e participação ativa.
-- Check-in aceito pertence à participação e rota corretos.
-- Duplicidade é bloqueada pela política configurada e também por restrição no banco.
+- Cada RouteParticipation representa uma execução/ocorrência da rota; uma nova execução exige nova participação.
+- Check-in é único por participação e parada.
+- Cada parada possui QR próprio com token estático, aleatório, opaco e não sequencial, sem PII.
+- Administração pode revogar o token e gerar outro; a substituição invalida o anterior atomicamente.
+- Check-in assistido por responsável autorizado do estabelecimento/local é fallback para falha de QR/câmera. Registra operador, participante, parada, instante e motivo; o consumidor não pode confirmar a própria presença.
+- Check-in aceito é registro de participação declarada, não prova absoluta de presença ou compra.
+- Revogação invalida tokens futuros, mas não apaga check-ins já aceitos.
+- Não criar DiscoveryRouteEdition no MVP. Rotas recorrentes/edições programadas ficam fora do primeiro release.
 - Token não contém dados pessoais nem identificadores sequenciais.
-- Token revogado/expirado não gera check-in.
-- A administração consegue revogar imediatamente um token comprometido (P0).
-- A rotação planejada de tokens é posterior (P1).
-- QR Code compartilhado pode gerar fraude; o sistema não deve prometer prova absoluta de presença.
-- Check-in aceito não é apagado silenciosamente; correção é auditada.
-
+- Correções de check-in preservam o evento original e registram operação compensatória auditável.
 
 ## Estados
 Rota: draft, published, active, cancelled, archived.  
@@ -68,14 +69,19 @@ CheckIn: submitted, accepted, rejected.
 ## Concorrência e segurança
 - Validar no servidor; nunca confiar em estado enviado pelo navegador.
 - Operação de check-in transacional.
-- Impedir duas gravações concorrentes para a mesma chave de unicidade.
+- Impedir duas gravações concorrentes para a mesma participação/parada.
 - Limitar tentativas e registrar rejeições relevantes sem guardar token secreto em logs.
-- Revogação de token comprometido ou inválido é capacidade mínima P0.
-- Rotação planejada de token é P1 e substitui o token anterior de forma atômica.
-- QR deve ser exibido no estabelecimento e o operador precisa de procedimento simples para substituí-lo.
+- Revogação e rotação substituem o token atual atomicamente; o token anterior deixa de funcionar.
+- O fallback assistido exige operador autorizado distinto do participante.
 - Não coletar localização contínua.
+- Check-in não comprova compra nem presença física de forma absoluta.
 
 ## Critérios de aceitação
+
+- [ ] QR estático, aleatório, opaco e não sequencial por parada pode ser revogado/rotacionado; token anterior é invalidado atomicamente.
+- [ ] Check-in é único por participação/parada; cada nova execução da rota exige nova RouteParticipation.
+- [ ] Fallback assistido registra operador autorizado, participante, parada, instante e motivo, sem autoconfirmação.
+- [ ] Revogação não apaga check-ins já aceitos; check-in não é prova absoluta de presença ou compra.
 
 - [ ] QR estático, aleatório, opaco e não sequencial por parada pode ser revogado/rotacionado; token anterior é invalidado atomicamente.
 - [ ] Check-in é único por participação/parada; cada nova execução da rota exige nova RouteParticipation.
@@ -96,8 +102,3 @@ CheckIn: submitted, accepted, rejected.
 - [ ] Correções e cancelamentos preservam auditoria.
 - [ ] Testes cobrem autorização, token, duplicidade, concorrência e transições.
 
-## Decisões em aberto
-- Política exata de repetição: uma vez por participação, por parada ou por ocorrência.
-- QR estático rotacionável versus token de curta duração; avaliar viabilidade operacional.
-- Se DiscoveryRouteEdition/Occurrence é necessária no piloto.
-- Se parada aceita check-in pelo comerciante como fallback de acessibilidade/tecnologia.
