@@ -1,0 +1,155 @@
+# Modelo de domínio | Vem pro Centro
+
+Modelo conceitual do MVP. Não obriga implementação imediata de todas as entidades nem define todas as colunas físicas. A modelagem deve ser refinada em specs.
+
+## Contextos
+
+- **Identidade:** pessoas e autenticação.
+- **Comércio:** estabelecimentos, categorias e catálogo.
+- **Programação:** atividades e locais.
+- **Circulação:** rotas, paradas, participações e check-ins.
+- **Incentivos:** campanhas, cupons e resgates.
+- **Contato comercial:** canais públicos e encaminhamento de pedidos de reserva para conversas externas.
+- **Comunidade:** avaliações e denúncias, após política de moderação.
+- **Inteligência comercial:** sinais agregados de busca, cobertura de oferta, pesquisas e relatórios institucionais.
+
+## Entidades
+
+**User:** pessoa autenticada. Pode descobrir como visitante e participar de rotas, solicitar contato, resgatar benefícios e avaliar. Pode ser responsável por vários estabelecimentos.
+
+**Store:** estabelecimento participante, responsável principal, nome público, descrição, endereço, canais públicos de contato (WhatsApp e Instagram inicialmente), categorias, estado de aprovação e auditoria. Os contatos públicos são declarados pelo responsável e separados de seus dados privados.
+
+**Category:** classificação reutilizável de estabelecimento, produto/serviço ou atividade. Evitar taxonomia excessivamente rígida.
+
+**Product:** produto ou serviço de Store. Preço e disponibilidade são declarados; imagem opcional; catálogo guarda data de atualização.
+
+**ConsumerIdentificationToken:** token temporário, aleatório, opaco e rotativo, emitido para uma conta autenticada e representado visualmente por **Meu QR**. Guarda hash/representação segura, usuário, instante de emissão, expiração e instante de consumo/revogação. Não contém dados pessoais nem substitui o identificador interno da conta.
+
+**Place:** local físico reutilizável de atividade ou parada que não seja necessariamente loja, como praça ou espaço cultural.
+
+**Event:** atividade principal programada, com organizador e categoria. Possui ocorrências individuais.
+
+**EventOccurrence:** realização individual de Event, com data, horário, Place, estado, gratuidade/preço e informação de inscrição. Cada ocorrência tem seus próprios dados operacionais; não há expansão automática complexa de recorrência no primeiro release.
+
+**DiscoveryRoute:** percurso temático publicado pela administração, com período opcional, regra de participação/conclusão, estado e paradas.
+
+**EventSuggestion (P1):** proposta privada de atividade enviada por responsável/organizador autenticado. Estados: pending, needs_changes, approved_for_publication e rejected. Devolução registra orientação; autor pode editar e reenviar. Aprovação não publica automaticamente.
+
+**SavedEvent (P1):** vínculo removível entre User e EventOccurrence, único por conta/ocorrência. Não representa inscrição ou reserva de vaga.
+
+**RouteStop:** parada de DiscoveryRoute, com ordem sugerida, obrigatoriedade, instruções e referência a Store, EventOccurrence ou Place. Deve possuir exatamente um alvo válido no MVP.
+
+**RouteParticipation:** uma execução de User em DiscoveryRoute. Cada nova execução cria nova participação. Controla início, estado e conclusão.
+
+**CheckIn:** registro de participação declarada em RouteStop, associado à participação. É único por participação/parada e guarda instante, resultado e referência segura ao token. Fallback assistido registra operador autorizado, participante, parada, instante e motivo; não permite autoconfirmação.
+
+**Campaign:** ação promocional com responsável, período, estado, elegibilidade, benefício, limites, lojas envolvidas e responsável pelo custo.
+
+**Coupon:** benefício emitido conforme Campaign, com identificador opaco, não previsível e de uso único, destinatário individual, validade e estado. Código textual e QR Code são representações do mesmo identificador; QR não contém dados pessoais.
+
+**CouponRedemption:** registro histórico imutável de resgate, com cupom, consumidor, campanha/regra aplicada, estabelecimento receptor, instante e operador autenticado. A validação preliminar não cria resgate nem altera o estado do cupom.
+
+**PurchaseConfirmation:** registro transacional e auditável de uma compra presencial declarada como concluída pelo responsável autenticado. Referencia consumidor, estabelecimento, operador, instante, chave de idempotência, token de identificação consumido, valor total opcional e campanhas/regras avaliadas com seus resultados. Não representa pagamento processado ou comprovado pela plataforma.
+
+**Review (P1):** avaliação de estabelecimento ou EventOccurrence, com nota inteira de 1 a 5 e comentário opcional até 1.000 caracteres. Uma avaliação ativa por conta/alvo; edição versionada e exclusão lógica com trilha mínima. Identificação pública usa nome de exibição escolhido ou anonimato; autoria permanece vinculada internamente.
+
+**ReviewResponse (P1):** resposta oficial vinculada à avaliação e ao estabelecimento. Responsável autorizado pode editar/remover; alterações são auditáveis e não alteram a avaliação original.
+
+**Report (P1):** denúncia de avaliação ou resposta, com denunciante, alvo, motivo, estado e instante. Denúncia não oculta automaticamente o conteúdo; moderação registra decisão e motivo.
+
+**SearchSignal (P2):** evento minimizado de busca sem resultado ou com baixa cobertura. Deve evitar identidade, identificadores persistentes, localização precisa e armazenamento desnecessário de texto livre. Os eventos brutos têm acesso restrito e retenção limitada.
+
+**DemandAggregate (P2):** indicador agregado por categoria e período, calculado a partir de sinais de busca, cobertura do catálogo, disponibilidade declarada e pesquisas. Armazena período, metodologia, cobertura, limiar aplicado e nível de confiança; não contém linhas individuais.
+
+**FieldSurvey (P2):** definição de pesquisa voluntária, com finalidade, público, método, período, questionário, responsável e política de retenção.
+
+**SurveyResult (P2):** resultado agregado de pesquisa, com tamanho de amostra, método de recrutamento, período, limitações e supressão de grupos pequenos. Respostas individuais não são disponibilizadas no painel institucional.
+
+**AuditEntry (P0/P1):** trilha restrita de ações administrativas e operacionais, com ator, recurso, ação, instante, resultado e motivo quando aplicável. Não armazena segredos, tokens completos ou PII desnecessária. Retenção e descarte são definidos na política de privacidade/segurança antes da produção.
+
+## Relacionamentos
+
+- User 1:N Store como owner.
+- Store N:M Category.
+- Store 1:N Product.
+- Event 1:N EventOccurrence; EventOccurrence N:1 Place e organizador. A ocorrência pode relacionar-se a Store e DiscoveryRoute.
+- EventSuggestion pode originar Event após revisão e publicação administrativa; aprovação da sugestão não publica automaticamente.
+- User 1:N SavedEvent; SavedEvent N:1 EventOccurrence, com unicidade por conta/ocorrência.
+- DiscoveryRoute 1:N RouteStop.
+- RouteStop aponta para Store, Event ou Place.
+- User 1:N RouteParticipation; DiscoveryRoute 1:N RouteParticipation; cada participação é uma execução independente.
+- RouteParticipation 1:N CheckIn; CheckIn referencia RouteStop e possui unicidade por participação/parada. Fallback assistido referencia operador.
+- Campaign N:M Store; Campaign 1:N Coupon.
+- Review 1:0..1 ReviewResponse; Report referencia Review ou ReviewResponse.
+- Coupon 0..1 CouponRedemption para cupons de uso único; o registro associa consumidor, loja receptora e operador responsável.
+- User 1:N ConsumerIdentificationToken; tokens expirados, revogados ou consumidos não podem ser reutilizados.
+- User 1:N PurchaseConfirmation; Store 1:N PurchaseConfirmation; cada confirmação referencia o operador responsável e as campanhas/regras avaliadas. Uma confirmação pode originar benefícios em campanhas diferentes.
+- O encaminhamento de reserva gera apenas um link de contato externo com contexto de Store/Product; não cria entidade transacional nem estado de reserva na plataforma.
+- SearchSignal alimenta agregações sem expor evento individual; DemandAggregate pode ser contextualizado por FieldSurvey/SurveyResult.
+- Acesso institucional P2 consulta somente DemandAggregate e SurveyResult agregados, com AuditEntry. A trilha administrativa P0/P1 é transversal e restrita.
+
+## Estados e transições
+
+**Store:** draft → pending_review → approved; pending_review → rejected; approved → suspended; suspended → approved após revisão. Rejected/suspended não aparece como participante público.
+
+**EventOccurrence:** draft → published → completed/archived; published → cancelled. Cancelamento preserva histórico e é exibido claramente.
+
+**EventSuggestion:** pending → needs_changes → pending após reenvio; pending → approved_for_publication ou rejected. Aprovação não publica ocorrência automaticamente.
+
+**DiscoveryRoute:** draft → published → active → archived; published/active pode ser cancelled. Participações existentes preservam contexto histórico mínimo.
+
+**RouteParticipation:** active → completed ou cancelled. Completed é terminal, salvo correção administrativa auditada.
+
+**CheckIn:** submitted → accepted ou rejected. Check-in aceito não é apagado silenciosamente.
+
+**Review / ReviewResponse:** published, hidden ou removed, com histórico de edição/moderação.
+
+**Report:** submitted → under_review → dismissed ou action_taken.
+
+**Campaign:** draft → scheduled → active → ended; active pode ser paused/cancelled.
+
+**Coupon:** issued → redeemed, expired ou cancelled. Cupom resgatado não volta a issued sem operação compensatória auditada.
+
+**ConsumerIdentificationToken:** active → consumed, expired ou revoked. Um token consumido não volta a active.
+
+**PurchaseConfirmation:** pending_review → confirmed ou rejected; a confirmação final é imutável e correções são registradas por eventos administrativos auditados. A persistência de estado intermediário é detalhe de implementação.
+
+## Invariantes
+
+1. User representa pessoa, não papel.
+2. Apenas owner autorizado ou admin altera dados privados de Store.
+3. Store não aprovado/suspenso não é apresentado como participante oficial.
+4. Product não representa estoque transacional; disponibilidade é declarada.
+5. Toda RouteStop publicada possui alvo físico ou atividade definido.
+6. CheckIn aceito pertence a participação válida e parada do mesma rota.
+7. Duplicidade de check-in é bloqueada conforme política explícita.
+8. Participação conclui somente quando a regra da rota é satisfeita.
+9. Nenhuma parada exige compra por padrão.
+10. Campaign ativa possui período, regra, elegibilidade, limites e responsável pelo custo.
+11. CouponRedemption é atômico conforme política do cupom; validação preliminar não consome o benefício.
+12. Apenas responsável autenticado pela loja receptora ou admin autorizado pode confirmar o resgate.
+13. Um cupom de uso único possui no máximo um CouponRedemption; tentativas concorrentes não podem duplicá-lo.
+14. A confirmação de compra exige token válido e autorização do responsável da loja; a leitura do QR isoladamente não confirma venda.
+15. Uma mesma chave de idempotência identifica uma única operação técnica; compras distintas legítimas não podem ser bloqueadas apenas por coincidirem consumidor e loja.
+16. A emissão de benefício é única por confirmação e campanha/regra, mesmo quando uma confirmação avalia várias campanhas.
+17. Compra confirmada não comprova pagamento: é declaração auditável do responsável, sem integração de caixa/PDV.
+18. QR de consumidor, QR de parada e QR de cupom têm finalidades e validações independentes.
+19. Cancelamentos e correções críticas deixam trilha de auditoria.
+20. Dados privados não podem ser inferidos por endpoints públicos.
+21. Indicadores institucionais não permitem reidentificar consumidores ou estabelecimentos por filtros, períodos ou grupos pequenos.
+22. Busca sem resultado é sinal de cobertura insuficiente na plataforma, não prova de inexistência da oferta no Centro.
+23. Pesquisas voluntárias apresentam método, amostra e limitações; amostras de conveniência não são representativas por padrão.
+
+## Decisões consolidadas e limites de implementação
+
+- Event possui ocorrências explícitas; não há expansão automática complexa de recorrência no primeiro release.
+- Place é reutilizável entre EventOccurrence e RouteStop.
+- Cada RouteParticipation representa uma execução; check-in é único por participação/parada.
+- QR de parada é estático, revogável e rotacionável atomicamente; fallback assistido exige operador autorizado.
+- Não criar DiscoveryRouteEdition no MVP.
+- Meu QR de compra mantém token temporário de referência até 60 segundos, sujeito a teste de usabilidade e segurança.
+- Campanhas do primeiro release são administradas centralmente.
+- Endereço estruturado e upload seguem limites da Spec 002.
+- Retenção de avaliações, denúncias e auditoria será formalizada antes da produção; não presumir prazo legal.
+
+Não criar todas as entidades de uma vez. Cada slice implementa somente o domínio necessário, conforme sua spec e tasks. Links externos de contato não criam entidade de reserva na plataforma.
