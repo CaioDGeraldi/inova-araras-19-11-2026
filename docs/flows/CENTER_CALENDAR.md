@@ -96,12 +96,12 @@ Regras:
 
 ## 3. Planejamento e navegação relacionada
 
-**Prioridade: P0**
+**Prioridade:** P0 para endereço e orientação de visita; P1 para associações explícitas com estabelecimentos e Rotas de Descoberta.
 
 A atividade pode levar a pessoa a continuar explorando o Centro:
 
-- abrir estabelecimento relacionado, quando houver vínculo;
-- abrir Rota de Descoberta relacionada, quando houver vínculo;
+- abrir estabelecimento relacionado, quando houver vínculo explícito (P1);
+- abrir Rota de Descoberta relacionada, quando houver vínculo explícito (P1);
 - consultar outras atividades da mesma data/categoria;
 - abrir serviço externo de mapas usando endereço público cadastrado, se disponível.
 
