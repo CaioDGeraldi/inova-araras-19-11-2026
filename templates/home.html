@@ -1,47 +1,99 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="mb-4">
-    <h1 class="h3">Vem pro Centro</h1>
-    <p class="alert alert-info" role="note">Dados fictícios de demonstração.</p>
+<section class="greeting mb-3">
+    <span class="demo-note mb-2"><i class="bi bi-info-circle" aria-hidden="true"></i>Dados fictícios de demonstração.</span>
+    <h1>{% if user.is_authenticated %}Olá, {{ user.username|capfirst }}!{% else %}Olá! Bem-vindo ao Centro{% endif %}</h1>
+    <p class="mb-0">O que você quer descobrir no Centro hoje?</p>
 </section>
-<section class="mb-4">
-    <h2 class="h5">Rotas de Descoberta</h2>
-    <ul class="list-group">
-        {% for route in routes %}
-            <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a>{% if route.starts_on or route.ends_on %}<br><small class="text-body-secondary">{% include "discovery_routes/_period.html" %}</small>{% endif %}</li>
-        {% empty %}
-            <li class="list-group-item">Nenhuma rota publicada.</li>
+<form class="search-pill mb-3" method="get" action="{% url 'home' %}#lojas" role="search">
+    <i class="bi bi-search" aria-hidden="true"></i>
+    <input class="form-control" type="search" name="q" value="{{ query }}" placeholder="Buscar loja ou produto" aria-label="Buscar loja ou produto">
+    {% if category %}<input type="hidden" name="categoria" value="{{ category }}">{% endif %}
+</form>
+<nav aria-label="Categorias">
+    <ul class="scroller chips list-unstyled mb-0">
+        <li><a class="chip" href="{% url 'home' %}{% if query %}?q={{ query|urlencode }}{% endif %}#lojas"{% if not category %} aria-current="true"{% endif %}><i class="bi bi-grid" aria-hidden="true"></i>Todas</a></li>
+        {% for item in categories %}
+            <li><a class="chip" href="?categoria={{ item.pk }}{% if query %}&amp;q={{ query|urlencode }}{% endif %}#lojas"{% if category == item.pk|stringformat:"s" %} aria-current="true"{% endif %}><i class="bi bi-{% include 'establishments/_category_icon.html' with name=item.name %}" aria-hidden="true"></i>{{ item.name }}</a></li>
         {% endfor %}
     </ul>
+</nav>
+{% if not query and not category %}
+    {% if active_route or active_campaign %}
+        <section class="section mt-2" aria-labelledby="destaques">
+            <h2 id="destaques" class="visually-hidden">Destaques</h2>
+            <div class="scroller">
+                {% if active_route %}
+                    <article class="hero">
+                        {% if active_route.image %}<img src="{{ active_route.image.url }}" alt="">{% endif %}
+                        <span class="eyebrow"><i class="bi bi-signpost-split" aria-hidden="true"></i>Rota ativa</span>
+                        <h3>{{ active_route.title }}</h3>
+                        <p>{{ active_route.stop_count }} parada{{ active_route.stop_count|pluralize }} · {% include "discovery_routes/_period.html" with route=active_route %}</p>
+                        <a class="btn btn-on-photo" href="{{ active_route.get_absolute_url }}">Ver rota<i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                {% endif %}
+                {% if active_campaign %}
+                    <article class="hero hero-campaign">
+                        <i class="bi bi-ticket-perforated hero-icon" aria-hidden="true"></i>
+                        <span class="eyebrow"><i class="bi bi-megaphone" aria-hidden="true"></i>Campanha ativa</span>
+                        <h3>{{ active_campaign.benefit }}</h3>
+                        <p>Compre em {{ active_campaign.origin.name }} e ganhe um cupom para usar em {{ active_campaign.destination.name }}.</p>
+                        <a class="btn btn-on-photo" href="{{ active_campaign.origin.get_absolute_url }}">Conhecer a loja<i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
+{% endif %}
+<section id="lojas" class="section" aria-labelledby="titulo-lojas">
+    <div class="section-head">
+        <h2 id="titulo-lojas">{% if query or category %}Resultados{% else %}Lojas do Centro{% endif %}</h2>
+        {% if query or category %}<a href="{% url 'home' %}">Limpar</a>{% endif %}
+    </div>
+    {% if establishments %}
+        <div class="{% if query or category %}store-grid{% else %}scroller{% endif %}">
+            {% for establishment in establishments %}
+                {% include "establishments/_store_card.html" %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="surface p-3 mb-0">{% if query or category %}Nenhuma loja encontrada. Tente outra busca ou categoria.{% else %}Nenhuma loja aprovada.{% endif %}</p>
+    {% endif %}
 </section>
-<section id="lojas">
-    <h2 class="h5">Lojas</h2>
-    <form class="row g-2 mb-3" method="get">
-        <div class="col-12 col-md">
-            <input class="form-control" type="search" name="q" value="{{ query }}" placeholder="Buscar loja ou produto" aria-label="Buscar loja ou produto">
+{% if not query and not category %}
+    <section class="section" aria-labelledby="titulo-agenda">
+        <div class="section-head">
+            <h2 id="titulo-agenda">Agenda do Centro</h2>
+            <a href="{% url 'event_list' %}">Ver tudo<i class="bi bi-chevron-right" aria-hidden="true"></i></a>
         </div>
-        <div class="col-8 col-md-4">
-            <select class="form-select" name="categoria" aria-label="Categoria">
-                <option value="">Todas as categorias</option>
-                {% for item in categories %}
-                    <option value="{{ item.pk }}"{% if category == item.pk|stringformat:"s" %} selected{% endif %}>{{ item.name }}</option>
-                {% endfor %}
-            </select>
+        <div class="event-grid">
+            {% for event in events %}
+                <article class="event-card compact{% if event.cancelled %} is-cancelled{% endif %}">
+                    {% include "events/_date_badge.html" %}
+                    <div class="card-body-vpc">
+                        {% if event.cancelled %}<span class="badge-cancelled"><i class="bi bi-x-octagon" aria-hidden="true"></i>Cancelado</span>{% endif %}
+                        <h3 class="card-title-vpc"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+                        <span class="meta"><i class="bi bi-clock" aria-hidden="true"></i>{{ event.starts_at|date:"d/m H:i" }} · {{ event.location }}</span>
+                    </div>
+                </article>
+            {% empty %}
+                <p class="surface p-3 mb-0">Nenhum evento nos próximos dias.</p>
+            {% endfor %}
         </div>
-        <div class="col-4 col-md-auto">
-            <button class="btn btn-primary w-100" type="submit">Buscar</button>
+    </section>
+    <section class="section" aria-labelledby="titulo-rotas">
+        <div class="section-head">
+            <h2 id="titulo-rotas">Rotas de Descoberta</h2>
+            <a href="{% url 'route_list' %}">Ver todas<i class="bi bi-chevron-right" aria-hidden="true"></i></a>
         </div>
-    </form>
-    <ul class="list-group">
-        {% for establishment in establishments %}
-            <li class="list-group-item d-flex align-items-center gap-3">
-                {% include "establishments/_thumb.html" with image=establishment.image name=establishment.name %}
-                <a href="{{ establishment.get_absolute_url }}">{{ establishment.name }}</a>
-            </li>
-        {% empty %}
-            <li class="list-group-item">Nenhuma loja aprovada.</li>
-        {% endfor %}
-    </ul>
-</section>
+        <div class="event-grid">
+            {% for route in routes %}
+                {% include "discovery_routes/_route_card.html" %}
+            {% empty %}
+                <p class="surface p-3 mb-0">Nenhuma rota publicada.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
 {% endblock %}

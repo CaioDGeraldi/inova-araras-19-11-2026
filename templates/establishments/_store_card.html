@@ -1,0 +1,10 @@
+<article class="store-card">
+    {% include "establishments/_thumb.html" with image=establishment.image name=establishment.name %}
+    <div class="card-body-vpc">
+        <h3 class="card-title-vpc"><a href="{{ establishment.get_absolute_url }}">{{ establishment.name }}</a></h3>
+        {% for item in establishment.categories.all %}
+            <span class="chip chip-static"><i class="bi bi-{% include 'establishments/_category_icon.html' with name=item.name %}" aria-hidden="true"></i>{{ item.name }}</span>
+        {% endfor %}
+        {% if establishment.district %}<span class="meta"><i class="bi bi-geo-alt" aria-hidden="true"></i>{{ establishment.district }}</span>{% endif %}
+    </div>
+</article>

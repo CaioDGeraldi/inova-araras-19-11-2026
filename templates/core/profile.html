@@ -2,42 +2,57 @@
 {% load qr %}
 
 {% block content %}
-<h1 class="h3">Olá, {{ user.first_name|default:user.username }}</h1>
-<section class="mb-4">
-    <h2 class="h5">Meu QR</h2>
-    <p class="text-body-secondary">Mostre ao lojista para ele confirmar sua compra. O QR identifica a conta; não é pagamento.</p>
+<h1 class="page-title">Olá, {{ user.first_name|default:user.username }}</h1>
+<section class="qr-card surface" aria-labelledby="titulo-qr">
+    <span class="eyebrow text-body-secondary"><i class="bi bi-qr-code" aria-hidden="true"></i>Sua conta</span>
+    <h2 id="titulo-qr" class="h4 mt-1 mb-0">Meu QR</h2>
     {% url 'purchase_confirm' user.account_code as purchase_path %}
-    {% qr purchase_path %}
+    <div class="qr-frame">{% qr purchase_path %}</div>
+    <p class="text-body-secondary small mb-0">Mostre ao lojista para ele confirmar sua compra. O QR identifica a conta; não é pagamento.</p>
 </section>
-<section class="mb-4">
-    <h2 class="h5">Meus cupons</h2>
-    {% for coupon in coupons %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <h3 class="h6">{{ coupon.campaign.benefit }}</h3>
-                <p class="mb-2">Use em {{ coupon.campaign.destination.name }}, ganho em {{ coupon.campaign.origin.name }}.</p>
-                {% if coupon.redeemed_at %}
-                    <p class="mb-0 text-body-secondary">Resgatado em {{ coupon.redeemed_at|date:"d/m/Y H:i" }}.</p>
-                {% else %}
-                    {% url 'coupon_redeem' coupon.code as coupon_path %}
-                    {% qr coupon_path %}
+<section class="section" aria-labelledby="titulo-cupons">
+    <div class="section-head">
+        <h2 id="titulo-cupons">Meus cupons</h2>
+    </div>
+    <div class="d-grid gap-3">
+        {% for coupon in coupons %}
+            <article class="ticket{% if coupon.redeemed_at %} is-redeemed{% endif %}">
+                <div class="ticket-main">
+                    <span class="eyebrow"><i class="bi bi-ticket-perforated" aria-hidden="true"></i>Cupom</span>
+                    <h3 class="ticket-benefit">{{ coupon.campaign.benefit }}</h3>
+                    <span class="meta"><i class="bi bi-shop" aria-hidden="true"></i>Use em <strong>{{ coupon.campaign.destination.name }}</strong></span>
+                    <span class="meta"><i class="bi bi-bag-check" aria-hidden="true"></i>Ganho em {{ coupon.campaign.origin.name }}</span>
+                    {% if coupon.redeemed_at %}
+                        <span class="state state-off mt-2"><i class="bi bi-check2-all" aria-hidden="true"></i>Resgatado em {{ coupon.redeemed_at|date:"d/m/Y H:i" }}</span>
+                    {% else %}
+                        <span class="state state-ok mt-2"><i class="bi bi-check-circle" aria-hidden="true"></i>Disponível</span>
+                    {% endif %}
+                </div>
+                {% if not coupon.redeemed_at %}
+                    <div class="ticket-stub">
+                        {% url 'coupon_redeem' coupon.code as coupon_path %}
+                        {% qr coupon_path %}
+                        <span class="meta">Mostre este QR na loja receptora.</span>
+                    </div>
                 {% endif %}
-            </div>
-        </div>
-    {% empty %}
-        <p>Nenhum cupom.</p>
-    {% endfor %}
+            </article>
+        {% empty %}
+            <p class="surface p-3 mb-0">Nenhum cupom ainda. Compre numa loja com campanha ativa para ganhar um.</p>
+        {% endfor %}
+    </div>
 </section>
-<section>
-    <h2 class="h5">Minhas rotas</h2>
-    <ul class="list-group">
+<section class="section" aria-labelledby="titulo-minhas-rotas">
+    <div class="section-head">
+        <h2 id="titulo-minhas-rotas">Minhas rotas</h2>
+    </div>
+    <ul class="list-unstyled d-grid gap-2 mb-0">
         {% for participation in participations %}
-            <li class="list-group-item">
+            <li class="surface p-3 d-flex justify-content-between align-items-center gap-2">
                 <a href="{{ participation.route.get_absolute_url }}">{{ participation.route.title }}</a>
-                {% if participation.completed_at %}<span class="badge text-bg-success">Concluída</span>{% endif %}
+                {% if participation.completed_at %}<span class="badge text-bg-success">Concluída</span>{% else %}<span class="badge state-off">Em andamento</span>{% endif %}
             </li>
         {% empty %}
-            <li class="list-group-item">Nenhuma rota iniciada.</li>
+            <li class="surface p-3">Nenhuma rota iniciada.</li>
         {% endfor %}
     </ul>
 </section>

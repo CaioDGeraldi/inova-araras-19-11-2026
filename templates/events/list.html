@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="h3">Agenda</h1>
-<ul class="list-group">
+<h1 class="page-title">Agenda do Centro</h1>
+<div class="event-grid">
     {% for event in events %}
-        <li class="list-group-item">
-            <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
-            {% if event.cancelled %}<span class="badge text-bg-danger">CANCELADO</span>{% endif %}
-            <br><small class="text-body-secondary">{{ event.starts_at|date:"d/m/Y H:i" }} · {{ event.location }}</small>
-        </li>
+        <article class="event-card{% if event.cancelled %} is-cancelled{% endif %}">
+            {% include "establishments/_thumb.html" with image=event.image name=event.title %}
+            {% include "events/_date_badge.html" with extra="on-photo" %}
+            {% if event.cancelled %}<span class="badge-cancelled on-photo"><i class="bi bi-x-octagon" aria-hidden="true"></i>Cancelado</span>{% endif %}
+            <div class="card-body-vpc">
+                <h2 class="card-title-vpc"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h2>
+                <span class="meta"><i class="bi bi-clock" aria-hidden="true"></i>{{ event.starts_at|date:"d/m/Y H:i" }}</span>
+                <span class="meta"><i class="bi bi-geo-alt" aria-hidden="true"></i>{{ event.location }}</span>
+            </div>
+        </article>
     {% empty %}
-        <li class="list-group-item">Nenhum evento.</li>
+        <p class="surface p-3 mb-0">Nenhum evento.</p>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
