@@ -16,34 +16,40 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 
 **Saída:** baseline reproduzível. Não iniciar domínios sobre fundação não verificada.
 
-## Fase 1 — Comércio mínimo
+## Fase 1 — Comércio mínimo e operação administrativa P0
 
 - Identidade e autorização.
-- Store, categorias e aprovação.
+- Acesso protegido ao painel administrativo.
+- Categorias, Store e aprovação.
 - Product/Service.
 - Painel mínimo do comerciante.
 - Cadastro de canais públicos, com WhatsApp separado de dados privados.
 - Vitrine pública, busca, páginas e contato externo.
+- Navegação administrativa para categorias e estabelecimentos.
 - Testes de autorização e exposição de dados.
 
-**Saída:** comerciante mantém loja/catálogo e visitante descobre sem login.
+**Saída:** comerciante mantém loja/catálogo, administração controla elegibilidade e visitante descobre sem login.
 
-## Fase 2 — Cronograma
+## Fase 2 — Cronograma do Centro
 
 - Place/organizador.
 - Event e categorias.
 - Administração de publicação/cancelamento.
 - Calendário/listagem por data e detalhe público.
 - Datas no fuso America/Sao_Paulo.
-- Testes de visibilidade e cancelamento.
+- P1: sugestões de atividades sujeitas à aprovação.
+- P1: salvar/remover atividades na conta, sem criar inscrição.
+- Testes de visibilidade, autorização, ordenação e cancelamento.
 
-**Saída:** administrador publica atividade e visitante planeja visita.
+**Saída:** administração publica atividades e visitante planeja a visita; recursos P1 permitem contribuição moderada e salvamento pessoal.
 
 ## Fase 3 — Rotas de Descoberta
 
 - DiscoveryRoute e DiscoveryRouteStop.
+- Administração de rotas e paradas.
 - Participação do consumidor.
 - QR Code e validação server-side.
+- Revogação imediata de token comprometido (P0).
 - CheckIn, duplicidade e auditoria.
 - Progresso e conclusão.
 - Vincular Event/Store/Place a paradas.
@@ -64,26 +70,34 @@ Desenvolvimento individual, orientado por fatias verticais. A ordem representa d
 
 **Saída:** compra presencial registrada por declaração auditável do responsável; benefícios emitidos conforme campanhas elegíveis e resgatados uma única vez.
 
-## Fase 5 — Pedido de reserva por contato externo e consolidação do piloto
+## Fase 5 — Comunidade e operação P1
+
+- Avaliações de estabelecimentos/experiências com autoria identificada ou anônima publicamente.
+- Respostas oficiais de responsáveis autorizados.
+- Denúncias e fila de moderação.
+- Política de comunidade, decisão fundamentada e trilha de auditoria.
+- Consulta operacional de check-ins, campanhas e resgates.
+- Indicadores operacionais agregados com período, unidade e fonte.
+- Separação explícita entre dados demonstrativos e reais.
+- Testes de autorização, anonimato público, moderação e auditoria.
+
+**Saída:** consumidores podem compartilhar experiências e a operação consegue moderar e acompanhar indicadores básicos sem expor dados individuais.
+
+## Fase 6 — Pedido de reserva por contato externo e consolidação do piloto
 
 - Gerar link de clique para conversa no WhatsApp com mensagem contextualizada e texto codificado para URL.
 - Exigir revisão e envio manual da mensagem pelo consumidor.
 - Disponibilizar Instagram como alternativa: abrir perfil/Direct e fornecer mensagem para cópia.
 - Não criar estado local de reserva, caixa de entrada, histórico ou sincronização de conversas.
 - Testar número ausente/inválido, falha de abertura e fallback para cópia.
-
-**Saída:** consumidor prepara pedido de reserva e combina a retirada diretamente com a loja, sem transação ou confirmação controlada pela plataforma.
-
-## Consolidação do piloto
-
 - Conteúdo real ou dados demonstrativos claramente marcados.
 - Revisão de acessibilidade e responsividade.
 - Segurança, logs e backup.
-- Métricas operacionais.
-- Documentação de operação e moderação.
 - Teste ponta a ponta e roteiro de demonstração.
 
-## Fase 6 — Inteligência comercial e diagnóstico institucional (P2)
+**Saída:** consumidor prepara pedido de reserva e combina a retirada diretamente com a loja; piloto demonstrável sem depender de dados reais ou operações manuais durante o pitch.
+
+## Fase 7 — Inteligência comercial e diagnóstico institucional (P2)
 
 - Definir taxonomia de buscas e categorias.
 - Instrumentar eventos minimizados de busca sem resultado.
