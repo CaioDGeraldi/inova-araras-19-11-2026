@@ -78,6 +78,7 @@ Detalhamento: `docs/flows/PURCHASE_CONFIRMATION.md` e `docs/specs/007-purchase-c
 - Consumo atômico e de uso único; o consumidor consulta o estado atualizado em sua conta.
 - Estabelecimentos sugerem atividades para aprovação administrativa.
 - Consumidor salva atividades.
+- Atividades podem ser associadas explicitamente a estabelecimentos e/ou Rotas de Descoberta.
 - Avaliações com anonimato público, denúncia e moderação básica.
 - Histórico de rotas e participação.
 - Filtros por proximidade sem rastreamento contínuo.
