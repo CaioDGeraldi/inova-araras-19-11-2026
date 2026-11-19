@@ -1,0 +1,5 @@
+{% if image %}
+    <img class="thumb {{ size }}" src="{{ image.url }}" alt="{{ name }}">
+{% else %}
+    <div class="thumb thumb-placeholder {{ size }}" aria-hidden="true">{{ name|slice:":1"|upper }}</div>
+{% endif %}

@@ -1,0 +1,1 @@
+{% if route.starts_on and route.ends_on %}De {{ route.starts_on|date:"d/m/Y" }} a {{ route.ends_on|date:"d/m/Y" }}{% elif route.starts_on %}A partir de {{ route.starts_on|date:"d/m/Y" }}{% else %}Até {{ route.ends_on|date:"d/m/Y" }}{% endif %}

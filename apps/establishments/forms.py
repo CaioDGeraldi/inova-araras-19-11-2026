@@ -6,11 +6,24 @@ from apps.establishments.models import Establishment, Product
 class EstablishmentForm(forms.ModelForm):
     class Meta:
         model = Establishment
-        fields = ["name", "description", "address", "whatsapp", "instagram", "categories"]
+        fields = [
+            "name",
+            "description",
+            "image",
+            "postal_code",
+            "street",
+            "number",
+            "district",
+            "city",
+            "state",
+            "whatsapp",
+            "instagram",
+            "categories",
+        ]
         widgets = {"categories": forms.CheckboxSelectMultiple}
 
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ["name", "description", "price", "available"]
+        fields = ["name", "description", "image", "price", "available"]

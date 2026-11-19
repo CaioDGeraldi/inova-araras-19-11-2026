@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="h3">{{ establishment.name }}</h1>
-{% if establishment.address %}<p class="text-body-secondary">{{ establishment.address }}</p>{% endif %}
+{% include "establishments/_thumb.html" with image=establishment.image name=establishment.name size="thumb-lg" %}
+<h1 class="h3 mt-3">{{ establishment.name }}</h1>
+{% if establishment.full_address %}
+    <p class="text-body-secondary">
+        {{ establishment.full_address }}
+        <br><a href="{{ establishment.directions_url }}" target="_blank" rel="noopener">Como chegar</a>
+    </p>
+{% endif %}
 <p>{{ establishment.description|linebreaksbr }}</p>
 <p class="d-flex flex-wrap gap-2">
     {% if establishment.whatsapp_url %}
@@ -15,8 +21,9 @@
 <h2 class="h5">Produtos</h2>
 <ul class="list-group">
     {% for product in establishment.products.all %}
-        <li class="list-group-item d-flex justify-content-between gap-2">
-            <span>
+        <li class="list-group-item d-flex align-items-center gap-3">
+            {% include "establishments/_thumb.html" with image=product.image name=product.name %}
+            <span class="flex-grow-1">
                 {{ product.name }}
                 {% if not product.available %}<span class="badge text-bg-secondary">Indisponível</span>{% endif %}
                 {% if product.description %}<br><small class="text-body-secondary">{{ product.description }}</small>{% endif %}

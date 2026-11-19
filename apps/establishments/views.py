@@ -47,7 +47,7 @@ def panel(request):
 @login_required
 def establishment_edit(request, slug):
     establishment = get_object_or_404(request.user.establishments, slug=slug)
-    form = EstablishmentForm(request.POST or None, instance=establishment)
+    form = EstablishmentForm(request.POST or None, request.FILES or None, instance=establishment)
     if form.is_valid():
         form.save()
         return redirect("panel")
@@ -58,7 +58,7 @@ def establishment_edit(request, slug):
 def product_edit(request, slug, pk=None):
     establishment = get_object_or_404(request.user.establishments, slug=slug)
     product = get_object_or_404(establishment.products, pk=pk) if pk else None
-    form = ProductForm(request.POST or None, instance=product)
+    form = ProductForm(request.POST or None, request.FILES or None, instance=product)
     if form.is_valid():
         form.instance.establishment = establishment
         form.save()

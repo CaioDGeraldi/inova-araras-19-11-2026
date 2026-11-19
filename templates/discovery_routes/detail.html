@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1 class="h3">{{ route.title }}</h1>
+{% if route.starts_on or route.ends_on %}<p class="text-body-secondary">{% include "discovery_routes/_period.html" %}</p>{% endif %}
 <p>{{ route.description|linebreaksbr }}</p>
 {% if participation %}
     <p>
@@ -20,6 +21,9 @@
                 <a href="{{ stop.establishment.get_absolute_url }}">{{ stop.name }}</a>
             {% else %}
                 {{ stop.name }}
+            {% endif %}
+            {% if stop.event %}
+                <br><small>Evento: <a href="{{ stop.event.get_absolute_url }}">{{ stop.event.title }}</a></small>
             {% endif %}
             {% if stop.required %}
                 <span class="badge text-bg-primary">Obrigatória</span>

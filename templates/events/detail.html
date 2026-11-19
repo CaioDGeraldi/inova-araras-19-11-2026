@@ -14,6 +14,14 @@
     <li>Organizador: {{ event.organizer }}</li>
     <li>{% if event.free %}Gratuito{% else %}Pago{% endif %}</li>
     <li>{% if event.requires_registration %}Exige inscrição{% else %}Sem inscrição{% endif %}</li>
-    {% if event.establishment %}<li>Loja: <a href="{{ event.establishment.get_absolute_url }}">{{ event.establishment.name }}</a></li>{% endif %}
+    {% if event.establishment and event.establishment.status == "aprovado" %}<li>Loja: <a href="{{ event.establishment.get_absolute_url }}">{{ event.establishment.name }}</a></li>{% endif %}
 </ul>
+{% if routes %}
+    <h2 class="h5 mt-4">Rotas que passam por aqui</h2>
+    <ul class="list-group">
+        {% for route in routes %}
+            <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
 {% endblock %}

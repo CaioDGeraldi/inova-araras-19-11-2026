@@ -9,7 +9,7 @@
     <h2 class="h5">Rotas de Descoberta</h2>
     <ul class="list-group">
         {% for route in routes %}
-            <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a></li>
+            <li class="list-group-item"><a href="{{ route.get_absolute_url }}">{{ route.title }}</a>{% if route.starts_on or route.ends_on %}<br><small class="text-body-secondary">{% include "discovery_routes/_period.html" %}</small>{% endif %}</li>
         {% empty %}
             <li class="list-group-item">Nenhuma rota publicada.</li>
         {% endfor %}
@@ -35,7 +35,10 @@
     </form>
     <ul class="list-group">
         {% for establishment in establishments %}
-            <li class="list-group-item"><a href="{{ establishment.get_absolute_url }}">{{ establishment.name }}</a></li>
+            <li class="list-group-item d-flex align-items-center gap-3">
+                {% include "establishments/_thumb.html" with image=establishment.image name=establishment.name %}
+                <a href="{{ establishment.get_absolute_url }}">{{ establishment.name }}</a>
+            </li>
         {% empty %}
             <li class="list-group-item">Nenhuma loja aprovada.</li>
         {% endfor %}
