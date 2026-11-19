@@ -11,14 +11,14 @@ Centro em Movimento é uma iniciativa de revitalização do Centro de Araras. Ve
 
 > Não queremos apenas levar o comércio local para o digital. Queremos usar a tecnologia para trazer pessoas de volta ao comércio local e dar motivos para que explorem, aproveitem e retornem ao Centro.
 
-O produto não é apenas um catálogo nem um marketplace de retirada. Sua proposta combina descoberta comercial, programação presencial, circuitos de visitação e incentivos entre estabelecimentos.
+O produto não é apenas um catálogo nem um marketplace de retirada. Sua proposta combina descoberta comercial, programação presencial, rotas de visitação e incentivos entre estabelecimentos.
 
 ## 2. Estrutura da iniciativa
 
 - **Centro em Movimento:** iniciativa ampla de revitalização, articulação e melhoria da experiência no Centro.
 - **Vem pro Centro:** plataforma digital que conecta as iniciativas.
 - **Vitrine Digital do Centro:** descoberta de estabelecimentos, produtos e serviços.
-- **Circuito Vivo:** percursos e experiências que estimulam circulação e descoberta presencial.
+- **Rotas de Descoberta:** percursos e experiências que estimulam circulação e descoberta presencial.
 - **Cronograma do Centro:** programação de eventos, atividades e experiências, com data, horário e local.
 - **Fidelidade ao Centro:** programa de benefícios que incentiva consumo e relacionamento entre estabelecimentos.
 - **Campanhas Colaborativas:** ações individuais, coletivas e cruzadas.
@@ -34,7 +34,7 @@ O projeto parte da percepção de que o comércio central enfrenta desafios de v
 Hipóteses que o piloto deve testar:
 1. Uma vitrine pesquisável facilita descobrir estabelecimentos e produtos desconhecidos.
 2. Uma programação centralizada oferece motivos concretos para visitar o Centro em dias e horários específicos.
-3. Circuitos que conectam lojas, espaços e atividades aumentam a diversidade de locais visitados.
+3. DiscoveryRouteos que conectam lojas, espaços e atividades aumentam a diversidade de locais visitados.
 4. Benefícios cruzados podem incentivar a descoberta de outros estabelecimentos.
 5. Ferramentas simples e apoio assistido reduzem a barreira de entrada digital de pequenos comerciantes.
 6. A combinação de comércio, cultura, convivência e informação pode melhorar a experiência de frequentar o Centro.
@@ -45,26 +45,28 @@ Não afirmar que essas hipóteses já foram comprovadas em Araras. O piloto deve
 
 - Facilitar a descoberta de estabelecimentos, produtos e serviços.
 - Tornar visível a programação do Centro.
-- Conectar atividades e estabelecimentos por circuitos presenciais.
-- Permitir registro de participação e progresso em circuitos.
+- Conectar atividades e estabelecimentos por rotas presenciais.
+- Permitir registro de participação e progresso em rotas.
 - Viabilizar campanhas e cupons com regras transparentes.
 - Facilitar a presença digital dos comerciantes.
 - Gerar indicadores operacionais para avaliar adoção e circulação.
+- Identificar sinais agregados de interesse não atendido e lacunas de oferta, com validação por pesquisas e levantamento local.
+- Apoiar o planejamento institucional com dados agregados, transparentes e protegidos.
 
 O MVP não garante revitalização econômica, aumento de faturamento, redução de vacância ou permanência física. Esses impactos dependem de adesão, programação, condições urbanas, segurança, mobilidade, parceiros e avaliação longitudinal.
 
 ## 5. Públicos e atores
 
-- **Visitante/consumidor:** descobre lojas, produtos, atividades, circuitos e benefícios.
+- **Visitante/consumidor:** descobre lojas, produtos, atividades, rotas e benefícios.
 - **Comerciante/responsável:** mantém perfil do estabelecimento, catálogo e campanhas autorizadas.
 - **Organizador:** propõe ou mantém informações de atividade, conforme permissão.
-- **Administração:** aprova estabelecimentos, publica programação, configura circuitos e campanhas, modera conteúdo e acompanha indicadores.
+- **Administração:** aprova estabelecimentos, publica programação, configura rotas e campanhas, modera conteúdo e acompanha indicadores.
 - **Parceiros potenciais:** Prefeitura, ACIA, SEBRAE, instituições de ensino, organizações culturais e proprietários. Nenhuma parceria é presumida como firmada.
 
 ## 6. Princípios
 
 1. Presença física como resultado: recursos centrais conectam descoberta digital a experiências presenciais.
-2. Descoberta pública: consultar lojas, produtos, atividades e circuitos não exige conta.
+2. Descoberta pública: consultar lojas, produtos, atividades e rotas não exige conta.
 3. Baixa fricção para pequenos negócios.
 4. Transparência sobre disponibilidade, regras, custos, datas e cancelamentos.
 5. A plataforma direciona ao estabelecimento; não precisa operar checkout ou entrega.
@@ -96,15 +98,70 @@ A vitrine é pública e mobile-first. Permite explorar estabelecimentos, produto
 
 Não incluir checkout, pagamento, entrega ou logística no MVP. Solicitação/reserva pode existir como contato prévio, sem converter o produto em marketplace transacional.
 
-## 10. Circuito Vivo
+## 10. Rotas de Descoberta
 
-Circuito Vivo é o mecanismo de circulação presencial. Um circuito conecta estabelecimentos, espaços públicos ou atividades em um percurso temático. Pode ter ordem sugerida, paradas obrigatórias/opcionais, período de validade, regras de conclusão e benefício associado.
+Rotas de Descoberta é o mecanismo de circulação presencial. Um rota conecta estabelecimentos, espaços públicos ou atividades em um percurso temático. Pode ter ordem sugerida, paradas obrigatórias/opcionais, período de validade, regras de conclusão e benefício associado.
 
-O consumidor consulta o circuito sem login. Login é necessário para iniciar participação, registrar check-ins e acompanhar progresso individual.
+O consumidor consulta o rota sem login. Login é necessário para iniciar participação, registrar check-ins e acompanhar progresso individual.
 
 O MVP pode usar QR Code por parada como registro de visita. Check-in não é prova antifraude absoluta: códigos podem ser compartilhados. O produto deve descrevê-lo como registro de participação, aplicar controles de duplicidade e permitir substituição/rotação dos códigos. Não usar GPS contínuo.
 
-Circuitos não devem exigir compra em todas as paradas. Participação pode envolver visita, presença em atividade, descoberta ou interação definida na regra.
+DiscoveryRouteos não devem exigir compra em todas as paradas. Participação pode envolver visita, presença em atividade, descoberta ou interação definida na regra.
+
+## 10. Inteligência comercial e oportunidades do Centro
+
+O Vem pro Centro pode produzir indicadores agregados para apoiar o planejamento do comércio e políticas públicas, sem expor consumidores individualmente. Essa capacidade é uma evolução posterior e não deve ser confundida com analytics individual ou monitoramento de pessoas.
+
+### Identificação de buscas sem resultados
+
+Registrar eventos mínimos de busca quando a consulta não retorna resultados relevantes. O registro deve priorizar termo normalizado, categoria/filtros aplicados, período e resultado agregado. Não armazenar identidade do consumidor, identificadores persistentes, localização precisa ou histórico individual para essa finalidade.
+
+Os indicadores devem distinguir:
+- busca sem qualquer resultado;
+- busca com resultados, mas sem disponibilidade declarada;
+- busca com poucos resultados;
+- busca potencialmente ambígua, inválida ou sem intenção comercial clara.
+
+Termos livres podem conter dados pessoais. A aplicação deve reduzir esse risco antes de armazenar ou agregar consultas, limitar acesso aos dados operacionais e aplicar retenção curta. O painel não deve exibir consultas individuais.
+
+### Identificação de categorias com demanda não atendida
+
+Uma busca sem resultado não prova que a cidade não oferece aquele produto ou serviço. A oferta pode existir em loja não cadastrada, catálogo incompleto, produto sem nome equivalente ou disponibilidade desatualizada.
+
+Uma oportunidade comercial deve ser classificada somente pela combinação de sinais, como:
+- volume e recorrência de buscas normalizadas sem resultado;
+- quantidade e cobertura de estabelecimentos/catálogos cadastrados na categoria;
+- buscas com poucos resultados ou indisponibilidade declarada;
+- resultados de pesquisas voluntárias com consumidores;
+- confirmação por levantamento de campo e consulta aos comerciantes.
+
+O sistema deve apresentar nível de confiança, período analisado, cobertura da plataforma e limitações dos dados. Não deve rotular uma categoria como ausente no Centro com base apenas em buscas digitais.
+
+### Painel de inteligência para gestão pública e planejamento
+
+Painel restrito a perfis institucionais autorizados e à administração do projeto, com indicadores agregados por categoria e período, tendências, cobertura do catálogo, sinais de demanda não atendida e resultados de pesquisas de campo.
+
+Regras:
+- não apresentar dados pessoais, sessões, trajetórias ou histórico individual;
+- não expor consultas em nível de linha;
+- suprimir grupos pequenos e combinações que permitam inferir pessoas ou negócios;
+- aplicar limiar mínimo de volume e agregação temporal antes de exibir métricas;
+- não ranquear publicamente estabelecimentos nem divulgar desempenho comercial individual;
+- distinguir dados observados, estimativas, respostas de pesquisa e hipóteses;
+- exibir data, cobertura, metodologia e limitações;
+- acesso institucional depende de finalidade, autorização, controle de acesso e registro de auditoria.
+
+O painel é instrumento de diagnóstico e planejamento. Não substitui pesquisa econômica, decisão pública ou validação presencial.
+
+### Pesquisas para identificar lacunas comerciais
+
+A iniciativa pode conduzir pesquisas voluntárias com consumidores, comerciantes e visitantes para entender categorias procuradas, necessidades não atendidas, barreiras de acesso, hábitos de visita e dificuldades de digitalização.
+
+Cada pesquisa deve declarar finalidade, público, método, período, responsável, campos coletados, retenção e forma de divulgação. Coletar o mínimo necessário; evitar dados sensíveis e identificação desnecessária. Resultados publicados devem ser agregados e acompanhados de tamanho da amostra, método de recrutamento e limitações. Amostras de conveniência não podem ser apresentadas como representativas de toda a população.
+
+### Uso dos resultados
+
+Os sinais podem orientar campanhas de digitalização, capacitação, mobilização de comerciantes, pesquisas complementares e articulação para atrair categorias ausentes ou pouco representadas. Nenhuma recomendação deve ser tratada como decisão automática de política pública.
 
 ## 11. Cronograma do Centro
 
@@ -114,7 +171,7 @@ Cada atividade publicada informa título, descrição, data, horário de início
 
 A administração publica e mantém o cronograma no MVP. Estabelecimentos podem sugerir atividades em evolução posterior. Inscrição, lista de presença e notificações não são pré-requisitos para o valor inicial.
 
-Uma atividade pode estar vinculada a circuito e/ou estabelecimento, mas também pode ocorrer em praça ou espaço público.
+Uma atividade pode estar vinculada a rota e/ou estabelecimento, mas também pode ocorrer em praça ou espaço público.
 
 ## 12. Campanhas e Fidelidade ao Centro
 
@@ -132,7 +189,7 @@ Taxa de 1 ponto por real e validade de 12 meses são parâmetros de piloto discu
 
 A plataforma pode permitir solicitação de reserva/interesse. Isso não é checkout nem garantia de disponibilidade. A loja precisa confirmar ou recusar. A confirmação de compra, quando aplicável a campanha, é ação posterior do responsável.
 
-O MVP não processa pagamento, entrega ou logística. Se a janela apertar, manter contato direto e adiar solicitação sem comprometer vitrine, cronograma e Circuito Vivo.
+O MVP não processa pagamento, entrega ou logística. Se a janela apertar, manter contato direto e adiar solicitação sem comprometer vitrine, cronograma e Rotas de Descoberta.
 
 ## 14. Comunidade e avaliações
 
@@ -148,20 +205,43 @@ Cadastro assistido, fotografia de produtos, capacitação e divulgação coletiv
 
 ## 16. Experiências
 
-**Consumidor:** Início, Explorar, Circuito Vivo, Cronograma, Campanhas e Minha conta. A página inicial prioriza programação, circuitos ativos, estabelecimentos e campanhas, sem esconder a busca.
+**Consumidor:** Início, Explorar, Rotas de Descoberta, Cronograma, Campanhas e Minha conta. A página inicial prioriza programação, rotas ativos, estabelecimentos e campanhas, sem esconder a busca.
 
-**Comerciante:** dashboard simples com sidebar retrátil e topbar de usuário/configurações. Áreas de visão geral, estabelecimento, produtos/serviços, solicitações, campanhas e participação em circuitos.
+**Comerciante:** dashboard simples com sidebar retrátil e topbar de usuário/configurações. Áreas de visão geral, estabelecimento, produtos/serviços, solicitações, campanhas e participação em rotas.
 
 **Administração:** Django Admin pode cobrir operações internas inicialmente. Interfaces próprias só quando o fluxo exigir melhor experiência.
 
 ## 17. Métricas
 
-- Oferta: estabelecimentos cadastrados/aprovados/ativos; catálogo preenchido e atualizado; atividades, circuitos e campanhas ativos.
-- Descoberta: visualizações, buscas sem resultado, cliques em contato/como chegar, circuitos iniciados.
-- Circulação: check-ins válidos, estabelecimentos distintos visitados, circuitos concluídos, participação em atividades, cupons resgatados.
+Além das métricas operacionais, a evolução de inteligência comercial poderá acompanhar:
+- buscas sem resultado por categoria e período;
+- buscas com poucos resultados ou sem disponibilidade declarada;
+- cobertura de estabelecimentos e catálogos por categoria;
+- recorrência de sinais de demanda não atendida;
+- resultados agregados de pesquisas voluntárias;
+- oportunidades confirmadas ou descartadas após validação de campo.
+
+Esses indicadores não demonstram, isoladamente, demanda econômica suficiente para abertura de negócio. Devem ser interpretados com cobertura, amostra, sazonalidade e limitações metodológicas.
+
+
+
+- Oferta: estabelecimentos cadastrados/aprovados/ativos; catálogo preenchido e atualizado; atividades, rotas e campanhas ativos.
+- Descoberta: visualizações, buscas sem resultado, cliques em contato/como chegar, rotas iniciados.
+- Circulação: check-ins válidos, estabelecimentos distintos visitados, rotas concluídos, participação em atividades, cupons resgatados.
 - Retenção: participantes que retornam, recorrência de visita registrada, comerciantes que atualizam catálogo.
 
 Check-in não mede tempo de permanência. Para estimar permanência, usar pesquisa voluntária ou metodologia específica, sem rastreamento contínuo. Impacto econômico exige linha de base e avaliação; métricas de uso isoladas não demonstram aumento de faturamento ou causalidade.
+
+### Inteligência e pesquisas: salvaguardas específicas
+
+- Não construir perfil individual de consumo para o painel institucional.
+- Não disponibilizar consultas brutas ou respostas individuais.
+- Aplicar agregação, limiar mínimo de grupo e supressão de células pequenas.
+- Impedir filtros cruzados que permitam reidentificação por diferença entre consultas.
+- Separar dados operacionais identificáveis, quando estritamente necessários, dos conjuntos analíticos.
+- Definir prazo de retenção e descarte dos eventos brutos.
+- Pesquisas devem ser voluntárias, transparentes e limitadas à finalidade declarada.
+- Revisar risco de reidentificação antes de compartilhar relatórios ou exportações.
 
 ## 18. Privacidade, segurança e acessibilidade
 
@@ -175,4 +255,4 @@ Não presumir parceria institucional, API de estacionamento, estoque em tempo re
 
 ## 20. Critério de sucesso
 
-O MVP valida sua proposta quando uma pessoa consegue descobrir uma atividade ou estabelecimento, planejar uma visita, participar de circuito presencial e registrar uma experiência/benefício, enquanto comerciante/administração mantêm informações sem operação excessivamente complexa. A demonstração deve mostrar jornada conectada, não telas independentes.
+O MVP valida sua proposta quando uma pessoa consegue descobrir uma atividade ou estabelecimento, planejar uma visita, participar de rota presencial e registrar uma experiência/benefício, enquanto comerciante/administração mantêm informações sem operação excessivamente complexa. A demonstração deve mostrar jornada conectada, não telas independentes.
