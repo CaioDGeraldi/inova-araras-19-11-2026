@@ -1,7 +1,7 @@
 # Spec 004 | Rotas de Descoberta
 
 ## Contexto
-Rotas de Descoberta conecta estabelecimentos, atividades e espaços do Centro em percursos de descoberta. Seu propósito é estimular circulação física e experiências, não obrigar uma sequência de compras.
+Uma Rota de Descoberta conecta estabelecimentos, atividades e espaços do Centro em percursos de descoberta. Seu propósito é estimular circulação física e experiências, não obrigar uma sequência de compras.
 
 ## Objetivo
 Permitir que a administração monte rotas, que visitantes conheçam suas paradas e que usuários autenticados registrem participação presencial por check-in e acompanhem progresso.
@@ -44,9 +44,9 @@ RF-050 a RF-065; RNF-001 a RNF-008, RNF-013 a RNF-025, RNF-027 a RNF-029, RNF-03
 9. Quando regra é satisfeita, participação passa a completed.
 
 ## Regras e invariantes
-- DiscoveryRouteo publicado possui ao menos uma parada.
+- A rota publicado possui ao menos uma parada.
 - Cada parada possui exatamente um alvo válido no MVP: Store, Event ou Place.
-- DiscoveryRouteo pode definir ordem sugerida sem exigir sequência, salvo configuração explícita.
+- A rota pode definir ordem sugerida sem exigir sequência, salvo configuração explícita.
 - Paradas opcionais não bloqueiam conclusão.
 - Nenhuma parada exige compra por padrão.
 - Check-in exige usuário autenticado e participação ativa.
@@ -58,7 +58,7 @@ RF-050 a RF-065; RNF-001 a RNF-008, RNF-013 a RNF-025, RNF-027 a RNF-029, RNF-03
 - Check-in aceito não é apagado silenciosamente; correção é auditada.
 
 ## Estados
-DiscoveryRoute: draft, published, active, cancelled, archived.  
+Rota: draft, published, active, cancelled, archived.  
 Participation: active, completed, cancelled.  
 CheckIn: submitted, accepted, rejected.
 
@@ -73,7 +73,7 @@ CheckIn: submitted, accepted, rejected.
 
 ## Critérios de aceitação
 - [ ] Admin cria rota e adiciona Store/Event/Place como paradas.
-- [ ] DiscoveryRouteo público exibe paradas, ordem sugerida e regra de conclusão.
+- [ ] A rota público exibe paradas, ordem sugerida e regra de conclusão.
 - [ ] Visitante consulta sem login.
 - [ ] Usuário autenticado inicia participação.
 - [ ] Check-in válido registra participação uma única vez conforme regra.
@@ -82,7 +82,7 @@ CheckIn: submitted, accepted, rejected.
 - [ ] Tentativas concorrentes não duplicam participação.
 - [ ] Progresso considera apenas check-ins aceitos e paradas obrigatórias.
 - [ ] Conclusão acontece somente quando regra é satisfeita.
-- [ ] DiscoveryRouteo pode ser concluído sem compra em cada parada.
+- [ ] A rota pode ser concluído sem compra em cada parada.
 - [ ] Correções e cancelamentos preservam auditoria.
 - [ ] Testes cobrem autorização, token, duplicidade, concorrência e transições.
 
