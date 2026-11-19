@@ -16,6 +16,7 @@ O painel é uma área operacional distinta da experiência pública do consumido
 - No MVP, cada estabelecimento possui um responsável principal.
 - Uma pessoa pode administrar mais de um estabelecimento.
 - O responsável só acessa e altera estabelecimentos vinculados à sua conta.
+- O responsável acompanha e processa solicitações de reserva dos produtos de seu estabelecimento.
 - A administração aprova, rejeita ou suspende estabelecimentos.
 - Dados de catálogo e disponibilidade são declarados pelo responsável, não sincronizados em tempo real.
 - O fluxo deve ser simples o suficiente para manutenção recorrente por um pequeno comerciante.
@@ -184,7 +185,7 @@ Regras:
 - A página pública exibe a data de atualização do catálogo.
 - A pré-visualização não altera estado de publicação.
 
-## Estados alternativos e recuperação
+## 7. Solicitações de reserva e retirada\n\n**Objetivo:** permitir que o responsável transforme uma solicitação digital em uma retirada presencial organizada, sem operar estoque integrado ou pagamento pela plataforma.\n\nNa área **Solicitações**, o responsável consulta solicitações pendentes e o histórico recente, identificando produto, quantidade solicitada, consumidor, data do pedido e prazo sugerido quando aplicável.\n\nFluxo:\n1. O responsável abre **Solicitações**.\n2. Analisa o produto, a quantidade e a disponibilidade real na loja.\n3. Aceita ou recusa a solicitação. A recusa exige uma justificativa curta apresentada ao consumidor.\n4. Ao aceitar, confirma a quantidade que será separada e define um prazo de retirada dentro dos limites operacionais configurados.\n5. Separa o produto e marca a reserva como **Pronta para retirada**.\n6. Na chegada do consumidor, confirma a retirada no painel.\n7. A venda e o pagamento acontecem diretamente no estabelecimento.\n\nRegras:\n- Solicitação pendente não separa nem garante produto.\n- A reserva só existe após aceite explícito do responsável.\n- O aceite representa o compromisso da loja de separar a quantidade confirmada até o prazo informado.\n- O responsável pode cancelar uma reserva aceita antes da retirada, informando motivo ao consumidor.\n- O prazo expirado encerra a reserva e libera a loja do compromisso de separação.\n- Confirmar retirada não equivale a confirmar pagamento ou compra para fins de fidelidade. A compra deve ser confirmada separadamente quando uma campanha exigir isso.\n- Não há integração com PDV, baixa automática de estoque, pagamento, entrega ou logística.\n\n## Estados alternativos e recuperação
 
 | Situação | Resposta da interface |
 |---|---|
@@ -218,7 +219,7 @@ Regras:
 - Não define layout final, componentes, cores ou breakpoints.
 - Não inclui gestão de equipe ou múltiplos usuários por estabelecimento.
 - Não inclui estoque transacional, PDV, importação em lote ou integração fiscal.
-- Não inclui checkout, pagamento, entrega ou reserva.
+- Não inclui checkout, pagamento, entrega ou estoque transacional. Inclui reserva simples para retirada presencial.
 - Não inclui métricas de vendas ou analytics avançado.
 - Não permite ao proprietário criar/publicar rotas ou campanhas sem regras e permissões próprias.
 - Não define o painel administrativo da iniciativa; aprovação é operação interna.
@@ -232,7 +233,7 @@ Regras:
 - [ ] Responsável com múltiplas lojas escolhe explicitamente o estabelecimento ativo.
 - [ ] Responsável visualiza e edita somente estabelecimento associado à sua conta.
 - [ ] A autorização é verificada no servidor em todas as operações.
-- [ ] Responsável cria, edita, publica e arquiva produtos/serviços.
+- [ ] Responsável cria, edita, publica e arquiva produtos/serviços.\n- [ ] Responsável analisa, aceita ou recusa solicitações de reserva.\n- [ ] Responsável marca reservas aceitas como prontas, confirma retirada ou cancela com motivo.
 - [ ] Produtos publicados aparecem na vitrine apenas quando a loja está aprovada e ativa.
 - [ ] Rascunhos e itens arquivados não aparecem publicamente.
 - [ ] Preço e disponibilidade são apresentados conforme declaração do responsável.

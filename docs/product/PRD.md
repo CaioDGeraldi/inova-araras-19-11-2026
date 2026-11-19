@@ -96,7 +96,7 @@ Estabelecimentos não aprovados ou suspensos não aparecem como participantes of
 
 A vitrine é pública e mobile-first. Permite explorar estabelecimentos, produtos e serviços por busca e categoria. Páginas públicas apresentam endereço, contato, horário quando informado, catálogo e data de atualização.
 
-Não incluir checkout, pagamento, entrega ou logística no MVP. Solicitação/reserva pode existir como contato prévio, sem converter o produto em marketplace transacional.
+Não incluir checkout, pagamento, entrega ou logística no MVP. A reserva de produto para retirada presencial integra o MVP como compromisso operacional confirmado pela loja, sem converter o produto em marketplace transacional.
 
 ## 10. Rotas de Descoberta
 

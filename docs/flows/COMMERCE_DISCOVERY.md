@@ -8,7 +8,7 @@
 
 Descrever como uma pessoa encontra estabelecimentos, produtos ou serviços no Centro, entende o que cada opção oferece e escolhe um próximo passo para visitar ou entrar em contato.
 
-A descoberta deve funcionar sem autenticação. O fluxo não pode sugerir compra, reserva, disponibilidade em tempo real ou confirmação de estoque quando essas capacidades não existem.
+A descoberta deve funcionar sem autenticação. O fluxo pode oferecer solicitação de reserva de produto para retirada presencial, mas nunca deve sugerir compra, pagamento ou confirmação automática de estoque.
 
 ## Visão geral
 
@@ -145,7 +145,9 @@ Regras:
 
 - Preço ausente não deve ser apresentado como gratuito.
 - Disponibilidade é uma declaração do estabelecimento, não consulta de estoque em tempo real.
-- O detalhe não oferece carrinho, checkout, pagamento, entrega ou reserva no MVP.
+- O detalhe pode oferecer solicitação de reserva para retirada presencial, quando o produto e o estabelecimento forem elegíveis.
+- A reserva exige autenticação e confirmação explícita do estabelecimento; a disponibilidade exibida no catálogo continua sendo declarada, não estoque em tempo real.
+- Reserva não é compra, checkout, pagamento ou entrega.
 - Se o item deixar de estar publicado, a interface informa que o conteúdo não está disponível e oferece retorno ao estabelecimento ou à busca, sem expor estados administrativos internos.
 
 ## 5. Contato e orientação de visita
@@ -200,7 +202,7 @@ Não criar uma conta separada para consumidor e comerciante. O acesso de proprie
 - Não especifica layout final, componentes visuais, tipografia ou animações.
 - Não define algoritmo de busca, ranking, recomendação ou personalização.
 - Não define busca por distância, geolocalização ou mapa interno.
-- Não inclui checkout, pagamento, entrega, reserva ou estoque transacional.
+- Não inclui checkout, pagamento, entrega ou estoque transacional. A reserva para retirada presencial é tratada no fluxo `CUSTOMER_TO_PURCHASE.md`.
 - Não inclui avaliações públicas ou moderação de comentários.
 - Não define captura de buscas para inteligência comercial. Essa evolução exige fluxo e salvaguardas próprios, conforme a spec de inteligência comercial.
 - Não define cadastro, aprovação ou edição do estabelecimento pelo proprietário; isso pertence ao fluxo do painel.
@@ -215,6 +217,7 @@ Não criar uma conta separada para consumidor e comerciante. O acesso de proprie
 - [ ] A pessoa consegue navegar de um produto/serviço para o estabelecimento responsável.
 - [ ] A página do estabelecimento apresenta catálogo e informações públicas disponíveis.
 - [ ] Preço e disponibilidade são apresentados sem sugerir garantia de estoque.
+- [ ] Quando elegível, o consumidor consegue solicitar reserva para retirada, com autenticação e confirmação do lojista.
 - [ ] Contato e orientação de visita usam somente dados públicos cadastrados.
 - [ ] Busca sem resultados não é tratada como prova de ausência de oferta no Centro.
 - [ ] Erros de serviço são diferenciados de resultados vazios.

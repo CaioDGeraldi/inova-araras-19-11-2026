@@ -102,7 +102,7 @@ Solicitação de interesse/reserva é P1 e não condiciona a demonstração do n
 ## Critérios globais de aceite
 
 - [ ] Visitante consulta lojas, produtos, atividades e rotas sem login.
-- [ ] Comerciante autorizado mantém estabelecimento e catálogo.
+- [ ] Comerciante autorizado mantém estabelecimento e catálogo.\n- [ ] Consumidor autenticado solicita reserva e acompanha a decisão da loja.\n- [ ] Responsável aceita/recusa, define prazo, marca como pronta e confirma retirada ou cancela com motivo.\n- [ ] Reservas não retiradas expiram e não são tratadas como compras.
 - [ ] Administração publica e cancela atividades.
 - [ ] Administração cria rota com diferentes tipos de parada.
 - [ ] Usuário autenticado inicia rota e registra check-in.
