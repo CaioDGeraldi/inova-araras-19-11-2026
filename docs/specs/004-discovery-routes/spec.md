@@ -39,7 +39,7 @@ RF-050 a RF-065; RNF-001 a RNF-008, RNF-013 a RNF-025, RNF-027 a RNF-029, RNF-03
 4. Visitante consulta rota e decide participar.
 5. Usuário autenticado inicia participação.
 6. No local, usuário lê QR Code; aplicação envia token ao servidor.
-7. Servidor valida token, período, estado do rota, parada, participação e política de repetição.
+7. Servidor valida token, período, estado da rota, parada, participação e política de repetição.
 8. Servidor grava CheckIn atomicamente e recalcula progresso.
 9. Quando regra é satisfeita, participação passa a completed.
 
