@@ -1,25 +1,29 @@
 {% load static django_htmx %}
+{% with current=request.resolver_match.url_name %}
 <!doctype html>
 <html lang="pt-br" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Vem pro Centro{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="{% static 'css/app.css' %}" rel="stylesheet">
     {% htmx_script %}
 </head>
 <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
-    <nav class="navbar navbar-expand bg-body-tertiary">
-        <div class="container flex-wrap gap-2">
-            <a class="navbar-brand" href="{% url 'home' %}">Vem pro Centro</a>
-            <ul class="navbar-nav flex-wrap gap-2 align-items-center">
-                <li class="nav-item"><a class="nav-link" href="{% url 'route_list' %}">Rotas</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'event_list' %}">Agenda</a></li>
+    <a class="visually-hidden-focusable btn btn-light position-absolute" href="#conteudo">Ir para o conteúdo</a>
+    <nav class="navbar navbar-expand-md bg-body-tertiary border-bottom" aria-label="Principal">
+        <div class="container gap-2">
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">Vem pro Centro</a>
+            <ul class="navbar-nav ms-auto flex-row gap-2 align-items-center">
+                <li class="nav-item d-none d-md-block"><a class="nav-link" href="{% url 'home' %}"{% if current == 'home' and not request.GET.q and not request.GET.categoria %} aria-current="page"{% endif %}>Início</a></li>
+                <li class="nav-item d-none d-md-block"><a class="nav-link" href="{% url 'home' %}?q=#lojas"{% if current == 'establishment_detail' or request.GET.q or request.GET.categoria %} aria-current="page"{% endif %}>Explorar</a></li>
+                <li class="nav-item d-none d-md-block"><a class="nav-link" href="{% url 'route_list' %}"{% if current == 'route_list' or current == 'route_detail' %} aria-current="page"{% endif %}>Rotas</a></li>
+                <li class="nav-item d-none d-md-block"><a class="nav-link" href="{% url 'event_list' %}"{% if current == 'event_list' or current == 'event_detail' %} aria-current="page"{% endif %}>Agenda</a></li>
                 {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Perfil</a></li>
+                    <li class="nav-item d-none d-md-block"><a class="nav-link" href="{% url 'profile' %}"{% if current == 'profile' %} aria-current="page"{% endif %}>Perfil</a></li>
                     {% if user.establishments.exists %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'panel' %}">Painel</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'panel' %}"{% if current == 'panel' %} aria-current="page"{% endif %}>Painel da loja</a></li>
                     {% endif %}
                     <li class="nav-item">
                         <form method="post" action="{% url 'logout' %}">
@@ -34,12 +38,22 @@
             </ul>
         </div>
     </nav>
-    <main class="container py-4">
+    <main id="conteudo" class="container py-4">
         {% for message in messages %}
             <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
         {% endfor %}
         {% block content %}{% endblock %}
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <nav class="bottom-nav fixed-bottom d-md-none" aria-label="Navegação principal">
+        <ul class="list-unstyled d-flex h-100 m-0 p-0">
+            <li class="flex-fill"><a class="d-flex flex-column align-items-center justify-content-center h-100" href="{% url 'home' %}"{% if current == 'home' and not request.GET.q and not request.GET.categoria %} aria-current="page"{% endif %}><span class="icon" aria-hidden="true">⌂</span>Início</a></li>
+            <li class="flex-fill"><a class="d-flex flex-column align-items-center justify-content-center h-100" href="{% url 'home' %}?q=#lojas"{% if current == 'establishment_detail' or request.GET.q or request.GET.categoria %} aria-current="page"{% endif %}><span class="icon" aria-hidden="true">⌕</span>Explorar</a></li>
+            <li class="flex-fill"><a class="d-flex flex-column align-items-center justify-content-center h-100" href="{% url 'route_list' %}"{% if current == 'route_list' or current == 'route_detail' %} aria-current="page"{% endif %}><span class="icon" aria-hidden="true">⚑</span>Rotas</a></li>
+            <li class="flex-fill"><a class="d-flex flex-column align-items-center justify-content-center h-100" href="{% url 'event_list' %}"{% if current == 'event_list' or current == 'event_detail' %} aria-current="page"{% endif %}><span class="icon" aria-hidden="true">▦</span>Agenda</a></li>
+            <li class="flex-fill"><a class="d-flex flex-column align-items-center justify-content-center h-100" href="{% if user.is_authenticated %}{% url 'profile' %}{% else %}{% url 'login' %}?next={% url 'profile' %}{% endif %}"{% if current == 'profile' %} aria-current="page"{% endif %}><span class="icon" aria-hidden="true">☺</span>Perfil</a></li>
+        </ul>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+{% endwith %}

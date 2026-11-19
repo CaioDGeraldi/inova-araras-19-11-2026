@@ -10,9 +10,10 @@
 
 - Branch padrão: main.
 - Issue #3: fundação Django.
-- PR #4: fundação Django, aberto e não mesclado segundo a última verificação registrada. Validar uv.lock, Python 3.12, migrations, PostgreSQL, Django check, Ruff e pytest antes de assumir concluído.
+- PR #4: fundação Django, mergeado.
 - PR #5: preparação documental, branch `001/docs/project-readiness`, alvo main. Reúne baseline de produto, requisitos, domínio, plano de entrega, fluxos e specs. Última sincronização: commit `583f9e5` e commit subsequente de rastreabilidade do backlog.
 - PR #6: proposta institucional Centro em Movimento, aberta e não mesclada segundo a última verificação registrada.
+- PR #18: demo funcional (corte da Issue #17), mergeado.
 - Não foi feito merge automático de PRs.
 
 ## Backlog de implementação
@@ -32,6 +33,8 @@ As Issues abaixo representam entregas verticais, não arquivos individuais. Cada
 | F0.09 | [#14](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/14) | Administração e auditoria da plataforma | F0.01; integração por domínio F0.03 a F0.08 |
 | F0.10 | [#15](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/15) | Seed e cenário integrado de demonstração | Núcleo F0.03/F0.04; P1 conforme entrega |
 | F0.11 | [#16](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/16) | Política de privacidade e retenção pré-produção | Em paralelo; obrigatória antes de produção |
+
+A Issue [#17](https://github.com/CaioDGeraldi/inova-araras-19-11-2026/issues/17) foi entregue como corte da demo (PR #18), cobrindo parte das entregas F0.03 a F0.10; o restante de cada uma segue no backlog.
 
 Issue #3 foi reaproveitada e renomeada como F0.01. Não foi criada uma segunda Issue para a fundação. As Issues não foram atribuídas a uma equipe; o responsável pelo desenvolvimento é único.
 
@@ -117,3 +120,12 @@ O servidor registra a operação de forma auditável e idempotente, avalia campa
 - Dados do seed devem ser fictícios, determinísticos, identificáveis como demonstração e isolados de dados reais.
 - Demonstração prevista em duas perspectivas: consumidor e proprietário de estabelecimento.
 - Os fluxos são definições funcionais, não protótipos nem implementação de telas.
+
+## Pendências deixadas pelo corte da #17
+
+- Cupom sem validade.
+- Meu QR fixo, sem token temporário rotativo.
+- Check-in por GET.
+- WhatsApp com DDI 55 fixo.
+- Regras de negócio sem teste automatizado.
+- `ALLOWED_HOSTS` exige o IP da rede para testar o QR no celular.
