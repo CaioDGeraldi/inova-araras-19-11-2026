@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="h3">Compra confirmada</h1>
+<p>{{ consumer.first_name|default:"Cliente" }} em {{ establishment.name }}.</p>
+{% for coupon in coupons %}
+    <p class="alert alert-success">Cupom emitido: {{ coupon.campaign.benefit }} em {{ coupon.campaign.destination.name }}.</p>
+{% empty %}
+    <p>Nenhuma campanha ativa desta loja.</p>
+{% endfor %}
+{% endblock %}

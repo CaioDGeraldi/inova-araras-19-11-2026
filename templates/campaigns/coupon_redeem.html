@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="h3">Cupom</h1>
+<p>{{ coupon.campaign.benefit }}, ganho em {{ coupon.campaign.origin.name }}.</p>
+<p>Cliente: <strong>{{ coupon.consumer.first_name|default:"sem nome" }}</strong></p>
+{% if coupon.redeemed_at %}
+    <p class="alert alert-secondary">Resgatado em {{ coupon.redeemed_at|date:"d/m/Y H:i" }}.</p>
+{% else %}
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Resgatar cupom</button>
+    </form>
+{% endif %}
+{% endblock %}
